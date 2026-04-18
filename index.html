@@ -794,6 +794,90 @@ ul { list-style: none; }
 }
 
 /* ============================================================
+   GLOSSÁRIO INTERATIVO — Tooltip para abreviaturas
+   ============================================================ */
+
+abbr.gloss,
+.aula-content abbr.gloss {
+  position: relative;
+  color: var(--gold-light);
+  cursor: help;
+  text-decoration: none;
+  border-bottom: 1px dotted var(--gold-dim);
+  font-weight: 500;
+  font-style: normal;
+}
+abbr.gloss:hover {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+abbr.gloss::after {
+  content: attr(data-gloss);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--navy-mid);
+  color: var(--gray-100);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.55;
+  white-space: normal;
+  min-width: 220px;
+  max-width: 320px;
+  text-align: left;
+  letter-spacing: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 100;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+}
+abbr.gloss::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 3px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0; height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid var(--border-strong);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+  z-index: 101;
+}
+abbr.gloss:hover::after,
+abbr.gloss:hover::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Mobile: tooltip em toque */
+@media (max-width: 768px) {
+  abbr.gloss::after {
+    min-width: 180px;
+    max-width: 260px;
+    font-size: 11.5px;
+  }
+  abbr.gloss:active::after,
+  abbr.gloss:active::before,
+  abbr.gloss:focus::after,
+  abbr.gloss:focus::before {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* ============================================================
    PLACEHOLDER (MÓDULO VAZIO)
    ============================================================ */
 
@@ -1470,6 +1554,714 @@ ul { list-style: none; }
   .tc-arrow { transform: rotate(90deg); padding: 6px 0; }
   .letter-card { padding: 28px 22px; }
   .tc-manifesto { padding: 36px 24px; }
+}
+
+/* ============================================================
+   LAYOUTS BLOCO 3 — MANHÃ DE DOMINGO · PESQUISADOR
+   ============================================================ */
+
+/* Círculo de abertura (retomada do argumento) */
+.circle-open {
+  background:
+    radial-gradient(ellipse at top, rgba(201,168,76,0.06) 0%, transparent 60%),
+    var(--navy-card);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: 40px 44px;
+  margin: 28px 0;
+  text-align: center;
+  position: relative;
+}
+.circle-open::before {
+  content: '';
+  position: absolute;
+  top: 24px; left: 50%;
+  transform: translateX(-50%);
+  width: 40px; height: 40px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  background: transparent;
+}
+.circle-open::after {
+  content: '';
+  position: absolute;
+  top: 38px; left: 50%;
+  transform: translateX(-50%);
+  width: 12px; height: 12px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+.circle-label {
+  margin-top: 50px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.circle-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35em;
+  color: var(--white);
+  font-style: italic;
+  line-height: 1.5;
+  max-width: 620px;
+  margin: 0 auto;
+}
+.circle-text strong {
+  color: var(--gold);
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Alucinação — bloco de alerta especial */
+.hallucination-warning {
+  background:
+    linear-gradient(135deg, rgba(248,113,113,0.05) 0%, transparent 60%),
+    var(--navy-card);
+  border: 1px solid rgba(248,113,113,0.3);
+  border-left: 3px solid var(--coral);
+  border-radius: var(--radius);
+  padding: 26px 30px;
+  margin: 24px 0;
+}
+.hallucination-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--coral);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hallucination-label::before {
+  content: '⚠';
+  font-size: 14px;
+}
+.hallucination-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2em;
+  color: var(--white);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.hallucination-text {
+  color: var(--gray-100);
+  line-height: 1.7;
+  font-weight: 300;
+}
+.hallucination-text strong {
+  color: var(--coral);
+  font-weight: 500;
+}
+
+/* Divisão de papéis das 3 IAs (table-ish elegante) */
+.role-table {
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: 28px 0;
+}
+.role-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  align-items: stretch;
+}
+.role-row:last-child { border-bottom: none; }
+.role-cell-name {
+  background: rgba(201,168,76,0.04);
+  padding: 22px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+.role-name-ai {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15em;
+  color: var(--gold);
+  font-weight: 700;
+}
+.role-name-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+}
+.role-cell-content {
+  padding: 22px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.role-strength {
+  font-size: 0.95em;
+  color: var(--gray-100);
+  line-height: 1.6;
+  font-weight: 300;
+}
+.role-strength strong {
+  color: var(--gold-light);
+  font-weight: 500;
+}
+.role-use {
+  font-size: 0.85em;
+  color: var(--gray-300);
+  font-style: italic;
+  padding-top: 6px;
+  border-top: 1px solid rgba(201,168,76,0.1);
+  margin-top: 4px;
+  font-weight: 300;
+}
+
+/* NotebookLM hero — biblioteca pessoal */
+.notebook-hero {
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 36px 40px;
+  margin: 28px 0;
+  position: relative;
+  overflow: hidden;
+}
+.notebook-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+}
+.notebook-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.notebook-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6em;
+  color: var(--white);
+  font-weight: 700;
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+.notebook-title em {
+  color: var(--gold);
+  font-style: italic;
+}
+.notebook-desc {
+  font-size: 1em;
+  color: var(--gray-100);
+  line-height: 1.7;
+  font-weight: 300;
+  max-width: 640px;
+}
+
+/* Grid de capacidades do NotebookLM */
+.capability-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin: 24px 0;
+}
+.capability-card {
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.capability-icon {
+  width: 36px; height: 36px;
+  background: rgba(201,168,76,0.1);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2em;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.capability-content {
+  flex: 1;
+}
+.capability-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05em;
+  color: var(--white);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.capability-text {
+  font-size: 0.88em;
+  color: var(--gray-300);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* Timeline de construção da ferramenta */
+.build-timeline {
+  position: relative;
+  margin: 32px 0;
+  padding-left: 24px;
+}
+.build-timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px; top: 14px; bottom: 14px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--gold) 0%, rgba(201,168,76,0.15) 100%);
+}
+.build-step {
+  position: relative;
+  padding-left: 28px;
+  padding-bottom: 24px;
+}
+.build-step:last-child { padding-bottom: 0; }
+.build-step::before {
+  content: '';
+  position: absolute;
+  left: -24px; top: 4px;
+  width: 16px; height: 16px;
+  background: var(--navy);
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+}
+.build-step::after {
+  content: '';
+  position: absolute;
+  left: -19px; top: 9px;
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+.build-step-time {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.build-step-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1em;
+  color: var(--white);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.build-step-text {
+  color: var(--gray-100);
+  line-height: 1.65;
+  font-weight: 300;
+  font-size: 0.92em;
+}
+
+/* Responsive Bloco 3 */
+@media (max-width: 900px) {
+  .capability-grid { grid-template-columns: 1fr; }
+  .role-row { grid-template-columns: 1fr; }
+  .role-cell-name { border-bottom: 1px solid var(--border); }
+  .notebook-hero { padding: 28px 22px; }
+  .circle-open { padding: 32px 22px; }
+}
+
+/* ============================================================
+   LAYOUTS BLOCO 4 — TARDE DE DOMINGO · INTEGRADOR
+   ============================================================ */
+
+/* Dossiê de caso clínico — visual de ficha hospitalar */
+.case-dossier {
+  background: var(--navy-card);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: 0;
+  margin: 28px 0;
+  overflow: hidden;
+  position: relative;
+}
+.case-dossier::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--coral), var(--gold), var(--teal));
+}
+.case-header {
+  padding: 28px 36px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--navy);
+}
+.case-stamp {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--coral);
+  border: 1px solid var(--coral);
+  padding: 4px 12px;
+  border-radius: 2px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+.case-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.55em;
+  color: var(--white);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.case-subtitle {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+}
+
+.case-section {
+  padding: 22px 36px;
+  border-bottom: 1px solid var(--border);
+}
+.case-section:last-child { border-bottom: none; }
+.case-section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.case-section-body {
+  font-size: 0.94em;
+  color: var(--gray-100);
+  line-height: 1.7;
+  font-weight: 300;
+}
+.case-section-body strong { color: var(--gold-light); font-weight: 500; }
+.case-section-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+}
+.case-section-body ul li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 6px;
+}
+.case-section-body ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+}
+
+/* Grid de responsabilidades da turma */
+.role-matrix {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 24px 0;
+}
+.matrix-card {
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+.matrix-role {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.matrix-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.02em;
+  color: var(--white);
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.matrix-task {
+  font-size: 0.85em;
+  color: var(--gray-300);
+  line-height: 1.55;
+  font-weight: 300;
+}
+
+/* Timeline de 90 minutos da discussão */
+.timeline-90 {
+  position: relative;
+  margin: 32px 0;
+  padding-left: 28px;
+}
+.timeline-90::before {
+  content: '';
+  position: absolute;
+  left: 10px; top: 14px; bottom: 14px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--teal), var(--gold), var(--coral));
+}
+.timeline-stage {
+  position: relative;
+  padding-left: 34px;
+  padding-bottom: 26px;
+}
+.timeline-stage:last-child { padding-bottom: 0; }
+.timeline-stage::before {
+  content: '';
+  position: absolute;
+  left: -22px; top: 4px;
+  width: 18px; height: 18px;
+  background: var(--navy);
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+}
+.timeline-stage::after {
+  content: '';
+  position: absolute;
+  left: -15px; top: 11px;
+  width: 4px; height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+.timeline-stage.active::before {
+  background: var(--gold);
+  box-shadow: 0 0 0 4px rgba(201,168,76,0.2);
+}
+.timeline-stage.active::after {
+  background: var(--navy);
+}
+.timeline-time {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.timeline-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.08em;
+  color: var(--white);
+  font-weight: 700;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+.timeline-body {
+  font-size: 0.9em;
+  color: var(--gray-100);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* Cards de responsabilidade ética */
+.ethics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin: 24px 0;
+}
+.ethics-card {
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+}
+.ethics-card.can { border-top-color: var(--green); }
+.ethics-card.must { border-top-color: var(--gold); }
+.ethics-card.cant { border-top-color: var(--coral); }
+.ethics-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.ethics-card.can .ethics-label { color: var(--green); }
+.ethics-card.must .ethics-label { color: var(--gold); }
+.ethics-card.cant .ethics-label { color: var(--coral); }
+.ethics-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05em;
+  color: var(--white);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.ethics-text {
+  font-size: 0.88em;
+  color: var(--gray-300);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* Palco de apresentação das ferramentas */
+.stage-card {
+  background:
+    radial-gradient(ellipse at top, rgba(201,168,76,0.08) 0%, transparent 60%),
+    var(--navy-card);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: 36px 40px;
+  margin: 24px 0;
+  text-align: center;
+}
+.stage-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.stage-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4em;
+  color: var(--white);
+  font-style: italic;
+  line-height: 1.4;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.stage-title strong {
+  color: var(--gold);
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* Plano de 7 dias */
+.plan-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin: 24px 0;
+}
+.plan-day {
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 10px;
+  text-align: center;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+}
+.plan-day-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6em;
+  font-weight: 900;
+  color: var(--gold);
+  opacity: 0.5;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.plan-day-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.plan-day-task {
+  font-size: 0.78em;
+  color: var(--gray-300);
+  line-height: 1.45;
+  font-weight: 300;
+  flex: 1;
+}
+
+/* Certificado final (encerramento) */
+.certificate {
+  background:
+    radial-gradient(ellipse at center, rgba(201,168,76,0.06) 0%, transparent 70%),
+    var(--navy-card);
+  border: 2px solid var(--gold);
+  border-radius: var(--radius-lg);
+  padding: 48px 44px;
+  margin: 32px 0;
+  text-align: center;
+  position: relative;
+}
+.certificate::before {
+  content: '';
+  position: absolute;
+  top: 14px; left: 14px; right: 14px; bottom: 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: calc(var(--radius-lg) - 4px);
+  pointer-events: none;
+}
+.cert-stamp {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.cert-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2em;
+  color: var(--white);
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+.cert-title em {
+  color: var(--gold);
+  font-style: italic;
+}
+.cert-subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1em;
+  color: var(--gray-100);
+  font-style: italic;
+  line-height: 1.55;
+  max-width: 580px;
+  margin: 0 auto 24px;
+}
+.cert-meta {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* Responsive Bloco 4 */
+@media (max-width: 900px) {
+  .role-matrix { grid-template-columns: 1fr; }
+  .ethics-grid { grid-template-columns: 1fr; }
+  .plan-days { grid-template-columns: repeat(3, 1fr); }
+  .case-header, .case-section { padding-left: 22px; padding-right: 22px; }
+  .certificate { padding: 32px 22px; }
+  .stage-card { padding: 28px 22px; }
 }
 
 /* ============================================================
@@ -2330,12 +3122,86 @@ const PROGRAMA = [
             <div class="field-card-hint">Pode ser um protocolo de conduta, uma recomendação de diretriz, uma decisão que você repete toda semana sem reflexão renovada. Escolha um que te cause leve incômodo — ele será o foco.</div>
           </div>
 
+          <h3>Controvérsias por especialidade — territórios férteis para investigar</h3>
+          <p>As controvérsias abaixo são pontos de partida <em>plausíveis</em> para a Teoria do Contrário. Não afirmam que o protocolo está errado — apontam onde a literatura recente tem <strong>debate legítimo</strong>. Escolha uma que ressoe com sua prática, ou deixe que ela te inspire a encontrar a sua própria.</p>
+
+          <div class="capability-grid">
+            <div class="capability-card">
+              <div class="capability-icon">◇</div>
+              <div class="capability-content">
+                <div class="capability-title">Ginecologia e Obstetrícia</div>
+                <div class="capability-text">Indicação de cesárea em apresentação pélvica a termo · uso rotineiro de sulfato de magnésio em pré-eclâmpsia leve · corticoterapia antenatal após 34 semanas · indução eletiva entre 39 e 40 semanas · duração mínima da segunda fase do trabalho de parto</div>
+              </div>
+            </div>
+
+            <div class="capability-card">
+              <div class="capability-icon">◇</div>
+              <div class="capability-content">
+                <div class="capability-title">Enfermagem Obstétrica</div>
+                <div class="capability-text">Tempo de contato pele a pele após cesárea sem intercorrência · uso rotineiro de ocitocina no terceiro período · clampeamento precoce vs tardio em situações limítrofes · protocolos de jejum pré-parto em trabalho de parto ativo</div>
+              </div>
+            </div>
+
+            <div class="capability-card">
+              <div class="capability-icon">◇</div>
+              <div class="capability-content">
+                <div class="capability-title">Cardiologia</div>
+                <div class="capability-text">Estratificação de risco pré-operatória em cirurgias não cardíacas · anticoagulação em <abbr class="gloss" data-gloss="Fibrilação Atrial" title="Fibrilação Atrial">FA</abbr> de baixo score · estatina em prevenção primária acima de 75 anos · uso rotineiro de betabloqueador em insuficiência cardíaca com fração preservada</div>
+              </div>
+            </div>
+
+            <div class="capability-card">
+              <div class="capability-icon">◇</div>
+              <div class="capability-content">
+                <div class="capability-title">Cardiologia Pediátrica</div>
+                <div class="capability-text">Momento ideal de fechamento cirúrgico de comunicação interventricular pequena · profilaxia antibiótica em cardiopatias congênitas para procedimentos odontológicos · intervalo de acompanhamento em sopros inocentes</div>
+              </div>
+            </div>
+
+            <div class="capability-card">
+              <div class="capability-icon">◇</div>
+              <div class="capability-content">
+                <div class="capability-title">Pediatria</div>
+                <div class="capability-text">Tempo de antibiótico em <abbr class="gloss" data-gloss="Infecção do Trato Urinário" title="Infecção do Trato Urinário">ITU</abbr> febril · protocolo de bronquiolite com salbutamol · duração de fototerapia em icterícia neonatal limítrofe · uso profilático de vitamina D após o primeiro ano</div>
+              </div>
+            </div>
+
+            <div class="capability-card">
+              <div class="capability-icon">◇</div>
+              <div class="capability-content">
+                <div class="capability-title">Pneumologia</div>
+                <div class="capability-text">Uso de corticoide inalatório em <abbr class="gloss" data-gloss="Doença Pulmonar Obstrutiva Crônica" title="Doença Pulmonar Obstrutiva Crônica">DPOC</abbr> não-exacerbador · duração de antibiótico em pneumonia adquirida na comunidade · indicação de oxigenoterapia domiciliar limítrofe · investigação de tosse crônica antes de prova terapêutica</div>
+              </div>
+            </div>
+
+            <div class="capability-card">
+              <div class="capability-icon">◇</div>
+              <div class="capability-content">
+                <div class="capability-title">Medicina Intensiva</div>
+                <div class="capability-text">Tempo ideal de intubação orotraqueal em insuficiência respiratória de <abbr class="gloss" data-gloss="Coronavirus Disease 2019 — doença respiratória causada pelo vírus SARS-CoV-2" title="Coronavirus Disease 2019 — doença respiratória causada pelo vírus SARS-CoV-2">COVID</abbr> · uso de corticoide em sepse sem choque · estratégia restritiva vs liberal de fluidos · duração de sedação profunda em ventilação mecânica</div>
+              </div>
+            </div>
+
+            <div class="capability-card">
+              <div class="capability-icon">◇</div>
+              <div class="capability-content">
+                <div class="capability-title">Direito em Saúde</div>
+                <div class="capability-text">Responsabilização médica em decisões compartilhadas com família · validade jurídica do uso de <abbr class="gloss" data-gloss="Inteligência Artificial" title="Inteligência Artificial">IA</abbr> como apoio diagnóstico · consentimento informado em situações de urgência · limites da objeção de consciência em obstetrícia</div>
+              </div>
+            </div>
+
+            <div class="capability-card">
+              <div class="capability-icon">◇</div>
+              <div class="capability-content">
+                <div class="capability-title">Estudante de Medicina</div>
+                <div class="capability-text">Valor real do internato em hospital terciário vs secundário · eficácia dos métodos tradicionais de memorização vs espaçamento · utilidade do <abbr class="gloss" data-gloss="Exame Nacional de Revalidação de Diplomas Médicos ou provas de residência" title="Exame Nacional de Revalidação de Diplomas Médicos ou provas de residência">REVALIDA</abbr> como métrica de competência · obrigatoriedade de publicação científica na graduação</div>
+              </div>
+            </div>
+          </div>
+
           <div class="callout">
-            <div class="callout-label">Exemplos reais desta turma (use como inspiração)</div>
-            <p><strong>Obstetrícia:</strong> indicação de cesárea em apresentação pélvica a termo · uso rotineiro de sulfato de magnésio em pré-eclâmpsia leve · corticoterapia antenatal após 34 semanas</p>
-            <p><strong>Cardiologia:</strong> estratificação de risco pré-operatória em cirurgias não cardíacas · anticoagulação em FA de baixo score · uso de estatina em prevenção primária acima de 75 anos</p>
-            <p><strong>Pediatria:</strong> tempo de antibiótico em ITU febril · protocolo de bronquiolite com salbutamol · vacinação em grupos específicos</p>
-            <p><strong>Pneumologia:</strong> uso de corticoide inalatório em DPOC não-exacerbador · duração de antibiótico em PAC · indicação de oxigenoterapia domiciliar</p>
+            <div class="callout-label">Aviso intelectual</div>
+            <p>Estas controvérsias estão nas literaturas de cada campo — mas o <strong>peso delas varia muito</strong>. Algumas são debates ativos com evidência robusta dos dois lados; outras são posições minoritárias com evidência fraca. Parte do exercício da Teoria do Contrário é justamente <em>descobrir em qual dos dois grupos</em> sua controvérsia escolhida se encaixa.</p>
           </div>
 
           <h3>O exercício ao vivo</h3>
@@ -2419,37 +3285,355 @@ const PROGRAMA = [
         id: 'boas-vindas-dia2',
         horario: '08:00–08:10',
         titulo: 'Boas-vindas ao Segundo Dia',
-        summary: 'Retomada do clima do grupo. Breve alinhamento sobre o que vem pela frente.',
+        summary: 'Breve. Essencial. Ontem foi construção. Hoje é aplicação científica. Breve alinhamento de clima, energia e o que vem.',
         avatar: null,
-        conteudo: null,
+        conteudo: `
+          <div class="quote-hero">
+            <div class="quote-mark">"</div>
+            <div class="quote-text">Ontem vocês <strong>construíram</strong> o sistema.<br>Hoje vão <strong>colocá-lo à prova</strong>.</div>
+          </div>
+
+          <h3>Como você chegou até aqui</h3>
+          <p>Se você fez o que combinamos ontem, está chegando ao Bloco 3 com <strong>três ativos</strong>:</p>
+
+          <div class="checklist">
+            <div class="checklist-header">O que você traz de ontem</div>
+            <div class="checklist-item">
+              <div class="check-box done">✓</div>
+              <div class="check-text">Um <strong>sistema de 4 IAs personalizado</strong> (GPT + Claude + Gemini + NotebookLM) funcionando para sua especialidade</div>
+            </div>
+            <div class="checklist-item">
+              <div class="check-box done">✓</div>
+              <div class="check-text">Um <strong>prompt blindado de segurança medicamentosa</strong> que já pode ir para o consultório na segunda</div>
+            </div>
+            <div class="checklist-item">
+              <div class="check-box done">✓</div>
+              <div class="check-text">Uma <strong>folha de papel com três perguntas respondidas</strong> — o plantio da Teoria do Contrário</div>
+            </div>
+          </div>
+
+          <h3>O que hoje vai mudar</h3>
+          <p>O Dia 2 tem uma lógica diferente do Dia 1. Ontem aprendemos a <strong>falar com a IA</strong>. Hoje aprendemos a <strong>pedir evidência</strong> para a IA.</p>
+          <p>Isso parece pequeno. Não é. A transição de "ajuda a decidir" para "mostra por que decidir assim" é a transição que separa o médico que usa IA do médico que é <em>aumentado</em> pela IA.</p>
+
+          <div class="mini-map">
+            <div class="mini-map-item">
+              <div class="mini-map-label">Agora · 4h</div>
+              <div class="mini-map-role">Pesquisador</div>
+            </div>
+            <div class="mini-map-item">
+              <div class="mini-map-label">Tarde · 4h</div>
+              <div class="mini-map-role">Integrador</div>
+            </div>
+            <div class="mini-map-item">
+              <div class="mini-map-label">Saída</div>
+              <div class="mini-map-role">Certificado</div>
+            </div>
+            <div class="mini-map-item">
+              <div class="mini-map-label">Segunda</div>
+              <div class="mini-map-role">Prática</div>
+            </div>
+          </div>
+
+          <div class="callout">
+            <div class="callout-label">Regra do dia</div>
+            <p>Quem esqueceu a folha de papel com as três perguntas de ontem — escreva as respostas de memória agora, em 2 minutos. A Teoria do Contrário não avança sem elas.</p>
+          </div>
+        `,
         prompts: null
       },
       {
         id: 'retomada-argumento',
         horario: '08:10–08:20',
         titulo: 'Retomada — O Argumento de Ontem',
-        summary: 'Cada participante compartilha em uma linha o argumento contrário que construiu no Dia 1.',
+        summary: 'Cada participante compartilha em uma linha o argumento contrário que dormiu com ele. Não é apresentação. É confissão coletiva de dúvida clínica.',
         avatar: null,
-        conteudo: null,
+        conteudo: `
+          <div class="circle-open">
+            <div class="circle-label">Círculo de abertura</div>
+            <div class="circle-text">
+              Cada um, <strong>uma linha</strong>.<br>
+              O protocolo que você escolheu.<br>
+              A dúvida que ficou.
+            </div>
+          </div>
+
+          <h3>Como funciona</h3>
+          <p>Vamos em sentido horário. Cada participante tem <strong>máximo 30 segundos</strong>. Não é hora de defender, explicar contexto, pedir desculpas pela dúvida. É hora de colocar a pergunta em voz alta, para o grupo, pela primeira vez.</p>
+
+          <div class="alert-grid">
+            <div class="alert-card info">
+              <div class="alert-label">O QUE DIZER</div>
+              <div class="alert-title">Protocolo + dúvida</div>
+              <div class="alert-text">"Sigo [X] em [situação Y]. Minha dúvida é se [pergunta específica]."</div>
+            </div>
+            <div class="alert-card warning">
+              <div class="alert-label">O QUE NÃO DIZER</div>
+              <div class="alert-title">Justificativas</div>
+              <div class="alert-text">Não explique por que sempre seguiu. Não diga "mas eu sei que...". A dúvida solta é mais poderosa.</div>
+            </div>
+            <div class="alert-card danger">
+              <div class="alert-label">O QUE NÃO FAZER</div>
+              <div class="alert-title">Responder aos colegas</div>
+              <div class="alert-text">Ninguém comenta a dúvida do outro. Cada dúvida fica no ar. A resposta é individual, na pesquisa de hoje.</div>
+            </div>
+          </div>
+
+          <h3>Por que esse ritual importa</h3>
+          <p>Três razões práticas, que vão ficar evidentes nas próximas 4 horas:</p>
+
+          <div class="steps-guide">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h4>Compromisso público</h4>
+                <p>Quando a dúvida é falada em voz alta, a pesquisa de hoje ganha outro peso. Você não vai entregar meia-pesquisa para uma pergunta que o grupo ouviu.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h4>Inspiração cruzada</h4>
+                <p>Ginecologistas vão ouvir dúvidas de cardiologia que parecem análogas. Pediatras vão pegar emprestado um framing da obstetrícia. A sala vira cérebro coletivo.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h4>Preparação para o Bloco 4</h4>
+                <p>À tarde, cada dúvida vai voltar — agora respondida. Esse arco — dúvida de manhã, evidência ao longo do dia, conclusão na tarde — é o coração do curso.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout">
+            <div class="callout-label">Quem começa</div>
+            <p>O primeiro é sempre o mais difícil. Eu começo — mostrando como falar uma dúvida minha da prática intensivista em 20 segundos. Depois vocês.</p>
+          </div>
+        `,
         prompts: null
       },
       {
         id: 'artigos-reais',
         horario: '08:20–09:15',
         titulo: 'Como Encontrar Artigos Científicos Reais',
-        summary: 'Como pedir referências para GPT e Gemini sem receber artigos inexistentes. Estratégias de busca por especialidade com prompts AIMED.',
+        summary: 'A IA pode inventar artigos com autor, revista, ano, DOI — tudo convincente, tudo falso. Este módulo ensina a separar literatura real de alucinação, e extrair o máximo do que é real.',
         avatar: null,
-        conteudo: null,
-        prompts: null
+        conteudo: `
+          <h3>O problema que vamos atacar</h3>
+          <p>A pergunta mais frequente de médicos que começam a usar IA para pesquisa é alguma versão desta: <em>"Pedi referências e a IA citou um artigo lindo, da New England, com autor e DOI. Fui conferir e não existe. Por quê?"</em></p>
+
+          <div class="hallucination-warning">
+            <div class="hallucination-label">Fenômeno central</div>
+            <div class="hallucination-title">Alucinação de referência</div>
+            <div class="hallucination-text">Os modelos generativos aprenderam a <strong>forma</strong> de uma referência científica — autor, ano, título, revista, DOI — mas nem sempre têm acesso ao <strong>conteúdo real</strong> que essa forma deveria apontar. Quando forçados a gerar uma citação sem acesso à fonte, eles preenchem o formato com algo plausível. Plausível <em>não significa real</em>.</div>
+          </div>
+
+          <h3>A solução — dividir o trabalho entre as IAs certas</h3>
+          <p>O segredo de pesquisa científica com IA não é confiar numa IA, é <strong>saber qual IA faz cada coisa</strong>. Cada uma tem uma relação diferente com a literatura.</p>
+
+          <div class="role-table">
+            <div class="role-row">
+              <div class="role-cell-name">
+                <div class="role-name-ai">ChatGPT</div>
+                <div class="role-name-tag">OpenAI</div>
+              </div>
+              <div class="role-cell-content">
+                <div class="role-strength"><strong>Síntese e comparação.</strong> Excelente para resumir, comparar estudos que você forneceu, discutir mecanismos fisiopatológicos. Menos confiável para buscar referências <em>novas</em>.</div>
+                <div class="role-use">Use quando: já tem os artigos e quer comparar, sintetizar ou explorar mecanismo.</div>
+              </div>
+            </div>
+            <div class="role-row">
+              <div class="role-cell-name">
+                <div class="role-name-ai">Gemini</div>
+                <div class="role-name-tag">Google</div>
+              </div>
+              <div class="role-cell-content">
+                <div class="role-strength"><strong>Busca indexada ao vivo.</strong> Único dos três com acesso ao Google Scholar em tempo real. Cita links verificáveis. Ainda comete erros, mas muito menos em referências.</div>
+                <div class="role-use">Use quando: precisa encontrar artigos reais e recentes sobre um tópico.</div>
+              </div>
+            </div>
+            <div class="role-row">
+              <div class="role-cell-name">
+                <div class="role-name-ai">Claude</div>
+                <div class="role-name-tag">Anthropic</div>
+              </div>
+              <div class="role-cell-content">
+                <div class="role-strength"><strong>Leitura crítica profunda.</strong> Você carrega o PDF completo do artigo e ele analisa metodologia, limitações, validade externa. Não busca — lê.</div>
+                <div class="role-use">Use quando: tem o artigo em mãos e quer análise crítica rigorosa.</div>
+              </div>
+            </div>
+          </div>
+
+          <h3>O fluxo que não falha</h3>
+          <p>Pesquisa científica séria com IA segue sempre esta sequência:</p>
+
+          <div class="steps-guide">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h4>Gemini busca</h4>
+                <p>"Encontre 5 artigos dos últimos 3 anos sobre [tópico específico], com link de acesso."</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h4>Você verifica</h4>
+                <p>Clique em cada link. Se não abrir, não existe ou não está acessível. Descarte sem dó.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h4>Claude lê</h4>
+                <p>Baixe o PDF dos artigos verificados. Suba no Claude. Peça análise metodológica crítica de cada um.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">4</div>
+              <div class="step-content">
+                <h4>GPT sintetiza</h4>
+                <p>Com as análises do Claude na mão, peça ao GPT: "Compare estes estudos, identifique concordâncias e divergências, e me dê uma síntese."</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">5</div>
+              <div class="step-content">
+                <h4>NotebookLM armazena</h4>
+                <p>Carregue tudo no NotebookLM. Agora você tem uma biblioteca pessoal consultável, com citação precisa, sobre essa pergunta específica.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout">
+            <div class="callout-label">A regra de ouro da referência científica com IA</div>
+            <p><strong>Se você não abriu o artigo, ele não existe.</strong> Nunca cite uma referência em prontuário, aula ou publicação sem ter conferido que o artigo é real, o autor escreveu aquilo e o ano está correto. A IA é assistente — a responsabilidade da citação é sempre do médico.</p>
+          </div>
+        `,
+        prompts: {
+          titulo: 'Busca de literatura científica com verificação embutida',
+          nivel1: {
+            hint: 'Busca simples — bom começo, mas precisa verificar os links',
+            texto: `Encontre 5 artigos científicos sobre [TÓPICO ESPECÍFICO] publicados nos últimos 3 anos.\n\nPara cada um, me dê: autor principal, ano, revista, tipo de estudo e link de acesso.\n\nSe não tiver certeza de algum dado, sinalize.`
+          },
+          nivel2: {
+            hint: 'Busca estruturada — com critérios de qualidade e verificabilidade',
+            texto: `<span class="ai-a">Use meu Perfil Clínico Permanente. Aja como bibliotecário científico sênior, com acesso ao Google Scholar e bases médicas indexadas. Postura: paranoia editorial — você só cita o que pode verificar.</span>\n\n<span class="ai-i">Pergunta de pesquisa específica:\n[Formule a pergunta PICO — Paciente, Intervenção, Comparação, Outcome]\n\nFiltros que aplico:\n- Janela temporal: últimos [X] anos\n- Tipos de estudo priorizados: [meta-análise, RCT, estudo de coorte, consensos]\n- Línguas: português, inglês, espanhol\n- Excluir: opinião de especialista isolada, pré-prints não revisados</span>\n\n<span class="ai-m">Encontre os 5 artigos mais relevantes para minha pergunta, em ordem de qualidade metodológica decrescente.\n\nPara cada um, forneça:\n- Autor principal + ano\n- Título completo\n- Revista (com fator de impacto aproximado se souber)\n- Tipo de estudo\n- N de participantes (se estudo primário)\n- Principal achado em 2 linhas\n- Link de acesso (DOI ou URL)\n- Nível de confiança na informação (1-10)</span>\n\n<span class="ai-e">Formato em tabela:\n| # | Autor (ano) | Revista | Tipo | N | Achado | Link | Confiança |\n|---|---|---|---|---|---|---|---|\n\nAo final, liste separadamente:\n- Artigos dos quais tenho certeza absoluta\n- Artigos plausíveis mas não verificados — marcar [VERIFICAR]</span>\n\n<span class="ai-d">Princípios:\n- NUNCA invente referências. Se não tem certeza, marque [VERIFICAR] explicitamente\n- Priorize fontes brasileiras quando o tópico tiver realidade epidemiológica própria\n- Se a pergunta for controversa, sinalize estudos com conclusões divergentes\n- Se a evidência disponível for pobre, diga abertamente "literatura escassa, evidência fraca"</span>`
+          },
+          nivel3: {
+            hint: 'Busca + análise + síntese + mapa de controvérsia — preparação para NotebookLM',
+            texto: `<span class="ai-a">Use meu Perfil Clínico Permanente. Você é bibliotecário científico e epidemiologista, com 20 anos de experiência em revisões sistemáticas. Rigor acadêmico total, zero entusiasmo ingênuo. Seu trabalho é <strong>mapear o campo</strong> da literatura sobre minha pergunta, não só listar artigos.</span>\n\n<span class="ai-i">Pergunta de pesquisa (formato PICO estruturado):\n- População: [especifique]\n- Intervenção/exposição: [especifique]\n- Comparação: [especifique ou "não aplicável"]\n- Outcome primário: [especifique]\n- Outcome secundário: [se relevante]\n\nContexto da pergunta:\n[Por que eu estou pesquisando isso? Para decisão clínica individual / revisão de protocolo do hospital / aula / apresentação em congresso]\n\nJanela temporal: [últimos X anos]\n\nGrau de profundidade desejado: [superficial (5 artigos) / médio (10-15) / profundo (20+ artigos e revisões)]</span>\n\n<span class="ai-m">Execute em 4 etapas obrigatórias (não pule nenhuma):\n\nEtapa 1 — Mapa do campo\nAntes de listar artigos, responda: há consenso? Há controvérsia? Se há controvérsia, quais são as correntes principais? Quem são os autores/grupos de referência de cada corrente?\n\nEtapa 2 — Seleção de artigos\nEscolha os 10 artigos mais relevantes, priorizando:\n- 2-3 meta-análises ou revisões sistemáticas recentes\n- 3-4 RCTs grandes e de alta qualidade\n- 2-3 estudos observacionais robustos\n- 1-2 consensos de sociedades médicas (se houver)\n\nPara cada artigo:\n- Referência completa\n- Principal achado em 2 linhas\n- Limitação principal\n- Posição na controvérsia (se houver)\n\nEtapa 3 — Análise crítica da evidência como um todo\n- A qualidade geral da evidência é alta, moderada, baixa ou muito baixa? (padrão GRADE)\n- Os estudos são generalizáveis para a população brasileira?\n- Há conflitos de interesse sistemáticos (indústria, etc.)?\n- Há vieses recorrentes (publicação, seleção, etc.)?\n\nEtapa 4 — Roteiro de aprofundamento\nQuais 3 artigos específicos valem a leitura completa no Claude?\nQuais 2-3 perguntas ainda estão em aberto na literatura?\nQuais bases de dados específicas (não indexadas no Google Scholar) eu deveria consultar?</span>\n\n<span class="ai-e">Formato estruturado:\n\n**Mapa do campo** (parágrafo de 5-8 linhas)\n\n**Tabela de 10 artigos** (# | Ref | Tipo | N | Achado | Limitação | Link | Confiança)\n\n**Análise da evidência como um todo** (bullets GRADE)\n\n**Roteiro para o Claude** (3 artigos-chave com justificativa)\n\n**Perguntas em aberto** (2-3 perguntas que nem a melhor evidência atual responde)\n\n**Base para NotebookLM** (lista de DOIs/links para eu carregar no NotebookLM após verificação)</span>\n\n<span class="ai-d">Rigor científico inegociável:\n- JAMAIS invente artigo, autor, DOI, n, fator de impacto, resultado\n- Se uma informação não é certeza, marque [VERIFICAR] explicitamente\n- Se a literatura é escassa para minha pergunta, diga abertamente — não preencha com qualquer coisa\n- Diferencie evidência de alta qualidade de evidência de baixa qualidade com rigor\n- Se o campo tem controvérsia ideológica (ex: rastreamento, telemedicina, paliativismo), apresente as correntes com equilíbrio\n\nHonestidade brasileira:\n- Se o estudo foi em países de alta renda e não há dados brasileiros, sinalize\n- Se o protocolo brasileiro diverge do internacional, aponte\n- Considere realidade do SUS vs saúde suplementar quando relevante\n\nAo final, uma linha final inegociável:\n"Verifique cada referência antes de citar. Responsabilidade da citação é sempre do médico."</span>`
+          }
+        }
       },
       {
         id: 'tres-ias-ciencia',
         horario: '09:15–10:00',
         titulo: 'As Três IAs na Análise Científica',
-        summary: 'GPT sintetiza e compara. Gemini acessa literatura indexada. Claude lê PDFs completos e critica metodologia. Quando usar cada um.',
+        summary: 'Cada uma tem um papel na pesquisa. Confundir quem faz o quê é o erro que transforma pesquisa séria em perda de tempo. Aqui você aprende a orquestrar.',
         avatar: null,
-        conteudo: null,
-        prompts: null
+        conteudo: `
+          <h3>A orquestra de três</h3>
+          <p>Até aqui você viu as 3 IAs como alternativas — "use a que achar melhor". Neste módulo muda tudo: elas são <strong>colaboradoras com papéis distintos</strong>. Um médico pesquisador de verdade usa as três em sequência, e cada uma contribui com o que faz melhor.</p>
+
+          <div class="callout">
+            <div class="callout-label">A analogia que ajuda</div>
+            <p>Imagine uma revisão sistemática tradicional: bibliotecário busca, pesquisador lê, estatístico sintetiza. As três IAs fazem exatamente isso. <strong>Gemini é bibliotecário. Claude é pesquisador. GPT é sintetizador.</strong> Cada um no papel que faz melhor.</p>
+          </div>
+
+          <h3>Os papéis em profundidade</h3>
+
+          <div class="role-table">
+            <div class="role-row">
+              <div class="role-cell-name">
+                <div class="role-name-ai">Gemini</div>
+                <div class="role-name-tag">Bibliotecário</div>
+              </div>
+              <div class="role-cell-content">
+                <div class="role-strength"><strong>Busca em tempo real indexada ao Google Scholar.</strong> Único dos três com acesso a artigos recém-publicados. Entrega URLs verificáveis. Melhor para "encontrar o que existe".</div>
+                <div class="role-use">Tarefa típica: "me dê as meta-análises dos últimos 3 anos sobre terapia anticoagulante em gestação de alto risco, com links"</div>
+              </div>
+            </div>
+            <div class="role-row">
+              <div class="role-cell-name">
+                <div class="role-name-ai">Claude</div>
+                <div class="role-name-tag">Pesquisador</div>
+              </div>
+              <div class="role-cell-content">
+                <div class="role-strength"><strong>Leitura profunda e crítica de PDFs inteiros.</strong> Janela de contexto gigante — aguenta artigos longos inteiros. Rigor metodológico. Faz análise GRADE, identifica viés, critica desenho de estudo.</div>
+                <div class="role-use">Tarefa típica: "leia este artigo inteiro e me diga as 3 principais limitações metodológicas que o autor não discute"</div>
+              </div>
+            </div>
+            <div class="role-row">
+              <div class="role-cell-name">
+                <div class="role-name-ai">GPT</div>
+                <div class="role-name-tag">Sintetizador</div>
+              </div>
+              <div class="role-cell-content">
+                <div class="role-strength"><strong>Comparação estruturada e síntese argumentativa.</strong> Melhor para cruzar informações de várias fontes, identificar padrões, construir narrativa coerente a partir de dados dispersos.</div>
+                <div class="role-use">Tarefa típica: "com base nessas 5 análises do Claude, quais são as conclusões convergentes e onde estão as divergências?"</div>
+              </div>
+            </div>
+          </div>
+
+          <h3>Quando a orquestração muda tudo</h3>
+          <p>Um exemplo concreto. Imagine que você quer responder: <em>"Sulfato de magnésio em pré-eclâmpsia leve — tem benefício real ou é supertratamento?"</em> Esta é exatamente o tipo de pergunta da Teoria do Contrário.</p>
+
+          <div class="steps-guide">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h4>Gemini encontra o campo</h4>
+                <p>Pede uma varredura. Gemini devolve 12 artigos recentes, com links verificáveis. Você verifica e baixa os 6 mais relevantes em PDF.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h4>Claude disseca cada PDF</h4>
+                <p>Sobe os 6 artigos um por vez. Pede análise crítica: população estudada, desenho, viés, força da conclusão. Recebe 6 análises profundas.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h4>GPT cruza tudo</h4>
+                <p>Cola as 6 análises do Claude. Pede ao GPT: onde há concordância? Onde há controvérsia? Qual é a força do argumento contrário e qual é a força do argumento a favor?</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">4</div>
+              <div class="step-content">
+                <h4>NotebookLM guarda</h4>
+                <p>Tudo isso vai para o NotebookLM. Agora você tem uma "biblioteca tematizada" sobre aquela dúvida específica, consultável com citação precisa pelo resto da sua vida.</p>
+              </div>
+            </div>
+          </div>
+
+          <h3>Exercício ao vivo</h3>
+          <p>Vamos fazer essa orquestração <strong>juntos</strong>, usando a dúvida real da minha prática intensivista. Você vai ver o fluxo inteiro acontecer em tempo real — do Gemini buscando, Claude lendo, GPT sintetizando. Depois cada um replica com a própria dúvida da Teoria do Contrário.</p>
+
+          <div class="callout">
+            <div class="callout-label">O tempo é amigo</div>
+            <p>Vocês têm <strong>45 minutos</strong> no próximo módulo para fazer isso com calma. Não apresse. Pesquisa bem-feita é investimento que rende por anos.</p>
+          </div>
+        `,
+        prompts: {
+          titulo: 'Orquestração das 3 IAs — prompt para Claude ler PDF',
+          nivel1: {
+            hint: 'Pedido básico de leitura — melhor que não pedir nada',
+            texto: `Analise o artigo que anexei. Me diga os principais achados e as limitações.`
+          },
+          nivel2: {
+            hint: 'Análise crítica estruturada — o Claude faz o que faz melhor',
+            texto: `<span class="ai-a">Use meu Perfil Clínico Permanente. Você é epidemiologista e pesquisador sênior, com 20 anos em revisões críticas. Postura: rigor metodológico total, zero complacência com estudos fracos.</span>\n\n<span class="ai-i">Estou analisando o PDF do artigo anexado como parte de uma pesquisa para:\n[Tema da Teoria do Contrário — qual protocolo estou investigando]</span>\n\n<span class="ai-m">Analise o artigo em 4 eixos:\n\n1. Desenho do estudo e população\n2. Principais achados (numéricos e qualitativos)\n3. Limitações declaradas pelo autor vs limitações reais (o que o autor minimiza?)\n4. Aplicabilidade ao contexto brasileiro e à minha pergunta de pesquisa</span>\n\n<span class="ai-e">Tabela de resumo no final:\n- Nível de evidência (GRADE)\n- Tamanho do efeito (absoluto e relativo)\n- NNT/NNH se aplicável\n- Força da recomendação que este artigo sozinho pode gerar (forte/condicional/fraca)\n\nUma frase final: este artigo sustenta, enfraquece ou é neutro em relação ao meu protocolo?</span>\n\n<span class="ai-d">Não tenha pena do autor. Se a metodologia tem falhas, aponte. Se a conclusão é mais forte que os dados suportam, sinalize.</span>`
+          },
+          nivel3: {
+            hint: 'Análise crítica profunda — validade interna + externa + viés + aplicabilidade',
+            texto: `<span class="ai-a">Use meu Perfil Clínico Permanente. Você é reviewer sênior de revista médica de alto impacto, epidemiologista clínico com especialização em metodologia. Trabalho: uma leitura que um residente inteligente gostaria de ter lido antes de aceitar o artigo como verdade. Zero condescendência. Máximo rigor.</span>\n\n<span class="ai-i">Contexto da leitura:\nEstou investigando a pergunta da minha Teoria do Contrário: [escreva a pergunta exata]\nO artigo anexado foi selecionado pelo Gemini na busca inicial como um dos mais relevantes.\nPreciso decidir se este artigo:\n(a) sustenta meu protocolo atual\n(b) sustenta o argumento contrário\n(c) é neutro/inconclusivo para minha pergunta\n\nMeu contexto de prática: [SUS/privado, terciário/secundário, população que atendo]</span>\n\n<span class="ai-m">Execute análise crítica em 7 dimensões obrigatórias:\n\n1. VALIDADE INTERNA\n- Desenho adequado à pergunta?\n- Randomização (se RCT): descrita, oculta, com balanço de grupos?\n- Cegamento: quem foi cego, como foi verificado?\n- Perda de seguimento: quantos saíram, por quê, análise por intenção de tratar?\n- Análise estatística: pré-especificada, correções de múltiplas comparações, ajuste de confundidores?\n\n2. VALIDADE EXTERNA (aplicabilidade)\n- A população estudada inclui pacientes como os que eu atendo?\n- O contexto de cuidado é semelhante ao brasileiro?\n- As intervenções estão disponíveis no SUS / saúde suplementar?\n- Os desfechos medidos importam clinicamente ou são apenas surrogates?\n\n3. TAMANHO E NATUREZA DO EFEITO\n- Efeito absoluto (não apenas relativo — RR e HR enganam)\n- Intervalo de confiança: atravessa o limite de não-efeito?\n- NNT/NNH calculados ou calculáveis\n- O efeito é clinicamente significativo ou apenas estatisticamente?\n\n4. VIESES POSSÍVEIS\n- Viés de seleção\n- Viés de aferição\n- Viés de publicação (este estudo foi registrado antes? Resultado negativo teria sido publicado?)\n- Viés de conflito de interesse (financiamento, vínculos dos autores)\n\n5. COMPARAÇÃO COM LITERATURA ANTERIOR\n- Este estudo confirma ou contradiz meta-análises prévias?\n- Se contradiz: é estudo maior/melhor ou é outlier?\n- O autor discute honestamente a literatura divergente?\n\n6. APLICABILIDADE À MINHA PERGUNTA\n- O estudo responde diretamente à minha pergunta da Teoria do Contrário?\n- Responde parcialmente? Em que aspecto?\n- Não responde, mas informa um aspecto relacionado? Qual?\n\n7. POSICIONAMENTO FINAL\n- Este artigo sustenta, enfraquece, é neutro ou é <em>contraproducente</em> para meu protocolo atual?\n- Quanto peso este artigo sozinho deve ter na minha decisão? (fraco/moderado/forte)\n- Vale a pena buscar artigos que referenciam este (citações posteriores)?</span>\n\n<span class="ai-e">Formato estruturado:\n\n**Síntese em 3 linhas** (leitura crítica brutal do artigo)\n\n**Análise por dimensão** (7 seções numeradas, com subtópicos)\n\n**Tabela GRADE de conclusão:**\n| Dimensão | Qualidade | Observação |\n\n**Decisão sobre este artigo:**\nPosição: [sustenta / enfraquece / neutro / contraditório ao meu protocolo]\nPeso na decisão: [fraco / moderado / forte]\nJustificativa em 2 linhas.\n\n**Próximos passos recomendados:**\n- Artigos relacionados para buscar\n- Perguntas que este artigo abre\n- Se vale a pena carregar no NotebookLM ou descartar</span>\n\n<span class="ai-d">Princípios metodológicos:\n- Não invente dados do artigo. Se não estiver no PDF, diga "não descrito"\n- Diferencie sempre o que o autor <em>afirma</em> do que os dados <em>mostram</em>\n- Conflito de interesse importa — sinalize explicitamente\n- Estudo financiado pela indústria não é automaticamente ruim, mas merece atenção extra\n- Se o artigo é excelente, diga com a mesma firmeza que diria se fosse ruim\n- Considere a paciente brasileira média como beneficiário final — aplicabilidade importa tanto quanto validade\n\nProibido: entusiasmo ingênuo, jargão acadêmico gratuito, complacência com falhas metodológicas.</span>`
+          }
+        }
       },
       {
         id: 'cafe-3',
@@ -2461,19 +3645,327 @@ const PROGRAMA = [
         id: 'notebooklm',
         horario: '10:15–11:00',
         titulo: 'NotebookLM — Biblioteca Científica Pessoal',
-        summary: 'Carga dos artigos selecionados, consulta com citações precisas, análise comparativa de estudos conflitantes.',
+        summary: 'Das 4 IAs do curso, o NotebookLM é a mais subestimada e a mais transformadora. É onde a pesquisa de hoje vira ativo permanente para os próximos 10 anos da sua carreira.',
         avatar: null,
-        conteudo: null,
-        prompts: null
+        conteudo: `
+          <div class="notebook-hero">
+            <div class="notebook-label">NotebookLM</div>
+            <div class="notebook-title">Sua biblioteca científica pessoal<br>— com <em>zero alucinação</em></div>
+            <div class="notebook-desc">Você carrega documentos (PDFs, artigos, protocolos, suas anotações) e o NotebookLM responde perguntas <strong>apenas com base nesses documentos</strong>, com citação precisa da página e do parágrafo. É a resposta ao problema que atormenta todo médico que usa IA para pesquisa: "como eu tenho certeza que isso é verdade?"</div>
+          </div>
+
+          <h3>O que o NotebookLM faz diferente</h3>
+          <p>As outras IAs foram treinadas em bilhões de textos da internet. Quando você pergunta algo, elas respondem com base nesse conhecimento vago e datado — e podem alucinar. O NotebookLM inverte: ele só sabe <strong>o que você alimentar</strong>. Isso é limitação <em>e</em> superpoder.</p>
+
+          <div class="capability-grid">
+            <div class="capability-card">
+              <div class="capability-icon">▣</div>
+              <div class="capability-content">
+                <div class="capability-title">Citação rastreável</div>
+                <div class="capability-text">Toda resposta vem com link direto para o trecho exato do documento de origem. Você clica, abre, lê o parágrafo.</div>
+              </div>
+            </div>
+            <div class="capability-card">
+              <div class="capability-icon">✕</div>
+              <div class="capability-content">
+                <div class="capability-title">Zero alucinação</div>
+                <div class="capability-text">Se a informação não está nos seus documentos, o NotebookLM diz que não sabe. Não inventa, não preenche com aproximação.</div>
+              </div>
+            </div>
+            <div class="capability-card">
+              <div class="capability-icon">◉</div>
+              <div class="capability-content">
+                <div class="capability-title">Análise comparativa</div>
+                <div class="capability-text">Carregue 10 artigos sobre um tópico. Pergunte: "em quais esses estudos concordam? em quais divergem?" Ele cruza e responde.</div>
+              </div>
+            </div>
+            <div class="capability-card">
+              <div class="capability-icon">♫</div>
+              <div class="capability-content">
+                <div class="capability-title">Podcast automático</div>
+                <div class="capability-text">Gera áudio de 10-15 minutos discutindo seus documentos em formato de conversa — ouça no carro, na corrida.</div>
+              </div>
+            </div>
+          </div>
+
+          <h3>O que carregar — a biblioteca ideal de cada médico</h3>
+          <p>Cada participante vai sair do curso com pelo menos <strong>um notebook próprio</strong>. Aqui estão as três categorias que recomendo organizar:</p>
+
+          <div class="platform-grid">
+            <div class="platform-card gpt">
+              <div class="platform-name">Notebook 01</div>
+              <div class="platform-role">Sua especialidade · base</div>
+              <ul class="platform-steps">
+                <li>Diretrizes nacionais (SBP, FEBRASGO, SBC, etc.)</li>
+                <li>Protocolos do seu hospital atualizados</li>
+                <li>Meta-análises-chave dos últimos 5 anos</li>
+                <li>Livros-texto de referência em PDF</li>
+              </ul>
+            </div>
+            <div class="platform-card claude">
+              <div class="platform-name">Notebook 02</div>
+              <div class="platform-role">Teoria do Contrário</div>
+              <ul class="platform-steps">
+                <li>Artigos sobre o protocolo que você está questionando</li>
+                <li>Evidência a favor e evidência contra</li>
+                <li>Posições divergentes de sociedades distintas</li>
+                <li>Seu próprio raciocínio em formato de notas</li>
+              </ul>
+            </div>
+            <div class="platform-card gemini">
+              <div class="platform-name">Notebook 03</div>
+              <div class="platform-role">Casos complexos</div>
+              <ul class="platform-steps">
+                <li>Casos difíceis da sua prática (anonimizados)</li>
+                <li>Laudos de exames que te desafiaram</li>
+                <li>Discussões multiprofissionais que guardou</li>
+                <li>Sua própria curva de aprendizado documentada</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3>Exercício ao vivo</h3>
+          <p>Cada participante vai criar <strong>agora</strong> o Notebook 02 (Teoria do Contrário) com os artigos que o Gemini selecionou e o Claude analisou. Vamos ver juntos como a pergunta da manhã encontra a evidência organizada.</p>
+
+          <div class="steps-guide">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h4>Abra o NotebookLM</h4>
+                <p>notebooklm.google.com — gratuito, entra com sua conta Google.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h4>Crie um notebook novo</h4>
+                <p>Nome sugerido: "TC — [seu protocolo]". Exemplo: "TC — sulfato de magnésio em pré-eclâmpsia leve".</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h4>Carregue os artigos verificados</h4>
+                <p>Mínimo 5, ideal 10. Suba como PDF, cole link (para artigos abertos) ou texto.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">4</div>
+              <div class="step-content">
+                <h4>Pergunte a dúvida-mãe</h4>
+                <p>Use o prompt abaixo adaptado à sua pergunta. Observe como a resposta vem com citação clicável do documento exato.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">5</div>
+              <div class="step-content">
+                <h4>Gere o podcast</h4>
+                <p>Clique em "Audio Overview" → Generate. Ouça no caminho para o hotel. Dois apresentadores discutem seus documentos em português.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout">
+            <div class="callout-label">O ativo permanente</div>
+            <p>Esse notebook que você cria agora <strong>fica com você para sempre</strong>. Você pode adicionar novos artigos conforme eles surgem, expandir a biblioteca, gerar novos podcasts. É o oposto de curso que acaba no domingo — este continua rendendo.</p>
+          </div>
+        `,
+        prompts: {
+          titulo: 'Pergunta-chave para o NotebookLM carregado com artigos da Teoria do Contrário',
+          nivel1: {
+            hint: 'Pergunta direta — funciona, mas perde profundidade',
+            texto: `Com base nos documentos carregados, qual é a evidência a favor do protocolo atual e qual é a evidência contra?`
+          },
+          nivel2: {
+            hint: 'Pergunta estruturada — força análise comparativa',
+            texto: `<span class="ai-m">Com base exclusivamente nos documentos carregados neste notebook, responda em 3 blocos:\n\n1. SÍNTESE DA EVIDÊNCIA A FAVOR do protocolo atual ([descreva o protocolo])\n- Quais estudos sustentam?\n- Qual a força do efeito descrito?\n- Qual a qualidade metodológica?\n\n2. SÍNTESE DA EVIDÊNCIA CONTRA (ou dos argumentos contrários):\n- Quais estudos questionam?\n- Quais limitações do protocolo são apontadas?\n- Há populações onde o protocolo não se aplica bem?\n\n3. SÍNTESE DA MINHA DECISÃO\n- Dado o que está nesses documentos, meu protocolo deve ser: mantido / revisado / abandonado / aplicado com restrições?\n- Qual é a justificativa em 3 linhas?\n- Quais perguntas ainda ficam em aberto?</span>\n\n<span class="ai-e">Para cada afirmação, cite o documento de origem com link clicável.</span>\n\n<span class="ai-d">Se a informação não estiver nos documentos carregados, diga "não há evidência nos documentos disponíveis". Não extrapole.</span>`
+          },
+          nivel3: {
+            hint: 'Análise GRADE completa — nível de evidência + recomendação final',
+            texto: `<span class="ai-a">Você é epidemiologista sênior fazendo análise GRADE de uma pergunta clínica específica. Trabalha apenas com os documentos carregados neste notebook — nada de conhecimento externo.</span>\n\n<span class="ai-i">Pergunta da minha Teoria do Contrário:\n[Escreva a pergunta em formato PICO]\n\nProtocolo atual que sigo: [descreva]\nArgumento contrário que estou investigando: [descreva]\n\nDocumentos carregados: [quantos artigos, quais tipos — meta-análises, RCTs, observacionais, diretrizes]</span>\n\n<span class="ai-m">Execute análise completa em 5 camadas:\n\nCamada 1 — Mapa da evidência\nListe cada documento carregado com: autor, ano, tipo de estudo, n, achado principal, posição (a favor / contra / neutro em relação ao protocolo)\n\nCamada 2 — Qualidade da evidência (GRADE)\nAvalie o conjunto da evidência:\n- Risco de viés\n- Inconsistência entre estudos\n- Evidência indireta (aplica-se à minha população?)\n- Imprecisão (intervalos de confiança amplos?)\n- Viés de publicação suspeito?\n\nClassifique a qualidade geral: Alta / Moderada / Baixa / Muito Baixa\n\nCamada 3 — Tamanho do efeito\nQual é o efeito absoluto reportado?\nNNT / NNH calculáveis?\nO efeito é clinicamente relevante?\nIntervalos de confiança cruzam o limite de não-efeito?\n\nCamada 4 — Aplicabilidade brasileira\nOs estudos foram feitos em populações semelhantes à brasileira?\nAs intervenções estão disponíveis no SUS / saúde suplementar?\nHá particularidades epidemiológicas que mudam a aplicabilidade?\n\nCamada 5 — Recomendação final\nDado tudo acima, qual é a recomendação mais defensável?\n- Forte a favor do protocolo atual\n- Condicional a favor (aplica em subgrupos, com ressalvas)\n- Neutro (evidência insuficiente)\n- Condicional contra (evidência sugere revisão)\n- Forte contra (evidência sustenta abandono do protocolo)</span>\n\n<span class="ai-e">Formato:\n\n**Decisão final em 3 linhas** (topo)\n\n**Tabela — Mapa da evidência** (cada documento com cada campo)\n\n**Qualidade GRADE** (com justificativa detalhada)\n\n**Efeito absoluto e relevância clínica** (com números quando disponíveis)\n\n**Aplicabilidade ao meu contexto** (parágrafo crítico)\n\n**Recomendação final estruturada:**\n- Direção: [a favor / contra / neutro]\n- Força: [forte / condicional]\n- Justificativa em 3 linhas\n\n**Perguntas ainda em aberto** (que nem os documentos carregados respondem bem)\n\nCite SEMPRE a fonte exata de cada afirmação — com link clicável para o documento e trecho.</span>\n\n<span class="ai-d">Princípios inegociáveis desta análise:\n- Trabalhe SÓ com os documentos carregados. Não use conhecimento externo. Não cite artigos não presentes.\n- Se uma pergunta não é respondida pelos documentos, diga "evidência indisponível nesta base"\n- Diferencie claramente "o que os estudos mostram" de "o que os autores concluem"\n- Não alimente confirmação nem refutação — seja honesto sobre o que a evidência realmente sustenta\n- A decisão final é do médico, não sua. Você oferece análise, não mandato</span>`
+          }
+        }
       },
       {
         id: 'construindo-ferramenta',
         horario: '11:00–12:00',
         titulo: 'Construindo Minha Ferramenta',
-        summary: 'Cada participante escolhe um problema real da sua rotina e aplica a Metodologia AIMED para construir sua solução personalizada.',
+        summary: 'A hora em que o sistema vira objeto. Não mais "prompts que eu uso" — uma ferramenta com nome, propósito e limites, criada por você, funcionando antes do almoço.',
         avatar: null,
-        conteudo: null,
-        prompts: null
+        conteudo: `
+          <h3>De prompts avulsos para ferramenta integrada</h3>
+          <p>Até agora você aprendeu a usar prompts. Este módulo é sobre transformar esses prompts numa <strong>ferramenta nomeada e reutilizável</strong> — que você batiza, configura e incorpora à sua rotina clínica permanentemente.</p>
+          <p>A diferença prática: um prompt avulso é como um Post-it. Uma ferramenta é como um instrumento no consultório. Você não pensa nele toda vez — ele está lá quando você precisa.</p>
+
+          <div class="callout">
+            <div class="callout-label">A pergunta que guia este módulo</div>
+            <p>Qual é uma tarefa que você repete na sua rotina clínica, toda semana, que toma tempo e pode ser resolvida por uma ferramenta bem construída?</p>
+          </div>
+
+          <h3>Exemplos possíveis — para acender a imaginação</h3>
+          <p>Os exemplos abaixo são <strong>ilustrativos</strong>, não casos reais. Servem para você visualizar o formato da ferramenta e pensar na sua própria. Há um exemplo para cada perfil profissional desta turma — escolha o que mais ressoa com sua prática.</p>
+
+          <div class="capability-grid">
+            <div class="capability-card">
+              <div class="capability-icon">1</div>
+              <div class="capability-content">
+                <div class="capability-title">Analisador de Pré-natal de Alto Risco</div>
+                <div class="capability-text"><em>Para Ginecologia e Obstetrícia.</em> A GO cola os dados da consulta; a ferramenta entrega classificação de risco, próximos exames, sinais de alerta e orientações padronizadas.</div>
+              </div>
+            </div>
+            <div class="capability-card">
+              <div class="capability-icon">2</div>
+              <div class="capability-content">
+                <div class="capability-title">Checklist de Segurança Obstétrica</div>
+                <div class="capability-text"><em>Para Enfermagem Obstétrica.</em> A enfermeira cola a prescrição médica; a ferramenta revisa dose, intervalo, compatibilidade com via de administração e contraindicações antes da medicação ser administrada.</div>
+              </div>
+            </div>
+            <div class="capability-card">
+              <div class="capability-icon">3</div>
+              <div class="capability-content">
+                <div class="capability-title">Revisor de Prontuário Jurídico-Médico</div>
+                <div class="capability-text"><em>Para Direito em Saúde.</em> A advogada cola o prontuário; a ferramenta identifica pontos frágeis de documentação, riscos de responsabilização, conformidade com normativas do <abbr class="gloss" data-gloss="Conselho Federal de Medicina — órgão que regulamenta a prática médica no Brasil" title="Conselho Federal de Medicina — órgão que regulamenta a prática médica no Brasil">CFM</abbr> e oportunidades de defesa técnica.</div>
+              </div>
+            </div>
+            <div class="capability-card">
+              <div class="capability-icon">4</div>
+              <div class="capability-content">
+                <div class="capability-title">Discutidor de Caso em <abbr class="gloss" data-gloss="Unidade de Terapia Intensiva" title="Unidade de Terapia Intensiva">UTI</abbr></div>
+                <div class="capability-text"><em>Para Medicina Intensiva.</em> O intensivista cola a evolução do dia; a ferramenta sugere diagnósticos diferenciais, exames a considerar, ajustes terapêuticos e pontos a discutir com a família.</div>
+              </div>
+            </div>
+            <div class="capability-card">
+              <div class="capability-icon">5</div>
+              <div class="capability-content">
+                <div class="capability-title">Conferente de Prescrição Pediátrica</div>
+                <div class="capability-text"><em>Para Pediatria.</em> O pediatra cola a prescrição; a ferramenta confere dose por peso, intervalos, interações e ajustes por idade, bloqueando prescrições perigosas.</div>
+              </div>
+            </div>
+            <div class="capability-card">
+              <div class="capability-icon">6</div>
+              <div class="capability-content">
+                <div class="capability-title">Revisor de Laudo Cardiológico</div>
+                <div class="capability-text"><em>Para Cardiologia.</em> O cardiologista cola o laudo do <abbr class="gloss" data-gloss="Ecocardiograma — ultrassom do coração" title="Ecocardiograma — ultrassom do coração">ECO</abbr>; a ferramenta destaca achados críticos, correlaciona com os sintomas do paciente e sugere próximos passos.</div>
+              </div>
+            </div>
+            <div class="capability-card">
+              <div class="capability-icon">7</div>
+              <div class="capability-content">
+                <div class="capability-title">Avaliador Pediátrico-Cardiológico</div>
+                <div class="capability-text"><em>Para Cardiologia Pediátrica.</em> O cardiopediatra cola dados e exames da criança; a ferramenta correlaciona achados cardíacos com idade, peso e desenvolvimento, sinalizando urgências específicas da faixa etária.</div>
+              </div>
+            </div>
+            <div class="capability-card">
+              <div class="capability-icon">8</div>
+              <div class="capability-content">
+                <div class="capability-title">Estratificador de Asma e <abbr class="gloss" data-gloss="Doença Pulmonar Obstrutiva Crônica" title="Doença Pulmonar Obstrutiva Crônica">DPOC</abbr></div>
+                <div class="capability-text"><em>Para Pneumologia.</em> O pneumologista cola espirometria e história; a ferramenta classifica o controle, sugere ajuste terapêutico conforme diretriz atual e identifica fenótipos de difícil manejo.</div>
+              </div>
+            </div>
+            <div class="capability-card">
+              <div class="capability-icon">9</div>
+              <div class="capability-content">
+                <div class="capability-title">Simulador de Casos para Residência</div>
+                <div class="capability-text"><em>Para Estudantes de Medicina.</em> O estudante cola um tema de estudo; a ferramenta gera caso clínico completo, faz perguntas socráticas, corrige raciocínio e prepara para provas de residência.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout">
+            <div class="callout-label">A sua ferramenta é única</div>
+            <p>Os nove exemplos acima são pontos de partida. A ferramenta que você vai construir hoje pode ser <strong>diferente de todas</strong> — deve ser, na verdade. Ela resolve <em>seu</em> problema específico, na <em>sua</em> rotina, com <em>seus</em> critérios. Use os exemplos como inspiração, não como template.</p>
+          </div>
+
+          <h3>Os 5 componentes de uma ferramenta clínica</h3>
+          <p>Independente da especialidade, uma ferramenta bem construída tem 5 elementos. Cada um deve estar explícito no prompt que você vai criar.</p>
+
+          <div class="build-timeline">
+            <div class="build-step">
+              <div class="build-step-time">Elemento 01</div>
+              <div class="build-step-title">Nome</div>
+              <div class="build-step-text">Como você chama a ferramenta. Direto, memorável. "Analisador de CTG", "Checador de Prescrição", "Discutidor de Caso Complexo".</div>
+            </div>
+            <div class="build-step">
+              <div class="build-step-time">Elemento 02</div>
+              <div class="build-step-title">Propósito</div>
+              <div class="build-step-text">Em uma frase, o que a ferramenta resolve. "Esta ferramenta analisa cardiotocografias de gestantes de alto risco e classifica o traçado conforme FIGO."</div>
+            </div>
+            <div class="build-step">
+              <div class="build-step-time">Elemento 03</div>
+              <div class="build-step-title">Input esperado</div>
+              <div class="build-step-text">Que tipo de informação você vai colar quando usar. Isso determina como a ferramenta processa.</div>
+            </div>
+            <div class="build-step">
+              <div class="build-step-time">Elemento 04</div>
+              <div class="build-step-title">Output entregue</div>
+              <div class="build-step-text">O formato exato da resposta. Tabela? Lista? Parágrafo? Com quais seções? Sempre que usar, o resultado deve sair no mesmo padrão.</div>
+            </div>
+            <div class="build-step">
+              <div class="build-step-time">Elemento 05</div>
+              <div class="build-step-title">Limites e salvaguardas</div>
+              <div class="build-step-text">O que a ferramenta NUNCA faz. Quando ela deve recusar responder e sugerir que você consulte um especialista. Quando deve sinalizar alerta crítico.</div>
+            </div>
+          </div>
+
+          <h3>Onde hospedar sua ferramenta</h3>
+          <p>Você pode salvar o prompt dessa ferramenta em qualquer das três IAs — cada uma tem uma forma diferente:</p>
+
+          <div class="role-table">
+            <div class="role-row">
+              <div class="role-cell-name">
+                <div class="role-name-ai">GPT</div>
+                <div class="role-name-tag">Custom GPT</div>
+              </div>
+              <div class="role-cell-content">
+                <div class="role-strength">Crie um GPT personalizado — aparece na sua barra lateral como app. Nome, ícone, instruções salvas permanentemente.</div>
+                <div class="role-use">Ideal para: ferramentas do dia a dia, acesso rápido via celular.</div>
+              </div>
+            </div>
+            <div class="role-row">
+              <div class="role-cell-name">
+                <div class="role-name-ai">Claude</div>
+                <div class="role-name-tag">Projeto</div>
+              </div>
+              <div class="role-cell-content">
+                <div class="role-strength">Crie um Projeto — salva instruções + arquivos anexados (protocolos, diretrizes). Todas as conversas dentro dele herdam o contexto.</div>
+                <div class="role-use">Ideal para: ferramentas com base documental, análises profundas recorrentes.</div>
+              </div>
+            </div>
+            <div class="role-row">
+              <div class="role-cell-name">
+                <div class="role-name-ai">Gemini</div>
+                <div class="role-name-tag">Gem</div>
+              </div>
+              <div class="role-cell-content">
+                <div class="role-strength">Crie um Gem — acessível pelo app, pelo web, e pelo Gemini Live (voz). Integra com Drive, Gmail, Calendar.</div>
+                <div class="role-use">Ideal para: ferramentas que você quer usar por voz ou que precisam de dados do Google Workspace.</div>
+              </div>
+            </div>
+          </div>
+
+          <h3>Exercício — sua ferramenta em 45 minutos</h3>
+          <p>Pega a pergunta da sua Teoria do Contrário e transforme em ferramenta. Ao final do módulo, sua ferramenta deve estar: criada, salva, testada com um caso real, pronta para apresentar no Bloco 4.</p>
+
+          <div class="callout">
+            <div class="callout-label">A ferramenta é o certificado</div>
+            <p>O certificado oficial de 16 horas sai impresso amanhã. Mas a ferramenta que você constrói agora <strong>é o certificado real do curso</strong>. Ela é a prova concreta, funcional, levável para casa, de que os dois dias valeram.</p>
+          </div>
+        `,
+        prompts: {
+          titulo: 'Estrutura mestre de ferramenta clínica — template pronto para personalizar',
+          nivel1: {
+            hint: 'Template básico — edite os campos e já é uma ferramenta funcional',
+            texto: `# [NOME DA FERRAMENTA]\n\n## Propósito\n[Uma frase explicando o que essa ferramenta faz]\n\n## Quando usar\n[Contexto clínico específico — quando você vai clicar nela]\n\n## Input esperado\nQuando eu usar essa ferramenta, vou colar:\n- [tipo de informação 1]\n- [tipo de informação 2]\n\n## O que você faz\n[Descreva em passos o que a IA deve fazer com o input]\n\n## Formato do output\n[Estrutura da resposta — seções, tabelas, ordem]\n\n## Limites\n- Nunca [o que não fazer]\n- Sempre [o que garantir]\n- Se [condição específica], sinalize alerta e sugira consulta especializada`
+          },
+          nivel2: {
+            hint: 'Estrutura AIMED completa — ferramenta com identidade própria',
+            texto: `<span class="ai-a"># [NOME DA FERRAMENTA]\nEx: "Analisador de Pré-natal de Alto Risco"\n\nVocê é um(a) [especialista relevante — ex: obstetra com especialização em medicina fetal e alto risco]. Sua missão nesta ferramenta é [função específica da ferramenta].\n\nPostura clínica desta ferramenta:\n- [Ex: conservadora em decisões de indicação de interrupção]\n- [Ex: rigorosa em critérios de classificação de risco]\n- [Ex: alinhada à FEBRASGO 2024]</span>\n\n<span class="ai-i">Input esperado:\nQuando eu acionar esta ferramenta, vou colar:\n- [Item 1 — ex: idade gestacional e IG por USG]\n- [Item 2 — ex: antecedentes obstétricos]\n- [Item 3 — ex: exames do pré-natal]\n- [Item 4 — ex: comorbidades e medicações]\n- [Item 5 — ex: queixa ou ponto de decisão atual]\n\nSe algum item crítico estiver faltando, pergunte antes de responder.</span>\n\n<span class="ai-m">Processamento em 3 etapas:\n\n1. Classificação de risco usando [critérios específicos da sua especialidade]\n\n2. Identificação dos pontos clínicos que mudam a conduta\n\n3. Proposta de próximos passos em janelas temporais</span>\n\n<span class="ai-e">Formato fixo de saída (sempre igual, toda vez que eu usar):\n\n**Classificação de risco:** [categoria]\n\n**Pontos críticos identificados:**\n[lista bullets]\n\n**Conduta sugerida:**\n- Imediato (próximas 24h): ...\n- Curto prazo (1 semana): ...\n- Acompanhamento (próximas semanas): ...\n\n**Alertas:** (se houver)\n\n**Próximos exames sugeridos:**\n[lista específica]</span>\n\n<span class="ai-d">Limites inegociáveis:\n- Nunca sugerir conduta específica sem confirmar dados críticos\n- Nunca substituir avaliação presencial\n- Se identificar critério de iminência ou gravidade aguda, sinalizar no topo antes de qualquer análise\n- Sempre mencionar que a decisão final é do médico assistente\n- Se o caso foge do escopo desta ferramenta (ex: não é obstétrico), redirecionar explicitamente\n\nSalvaguardas automáticas:\n- [Alerta crítico 1 específico da sua especialidade]\n- [Alerta crítico 2]\n- [Alerta crítico 3]</span>`
+          },
+          nivel3: {
+            hint: 'Ferramenta profissional — com personalidade, versionamento e logs',
+            texto: `<span class="ai-a"># FERRAMENTA: [NOME] v1.0\nAutor: Dr(a). [seu nome], [especialidade]\nEdição: AIMED Joinville, 26 de Abril de 2026\n\n## IDENTIDADE\nVocê é um(a) [especialista de referência] atuando como ferramenta de apoio à decisão clínica de Dr(a). [seu nome], [especialidade]. Não é assistente genérico — é uma ferramenta com propósito específico, escopo definido e autoridade delimitada.\n\nVocê foi construída para [propósito de uma frase] em um contexto de [tipo de hospital/prática]. Seu usuário-alvo é o próprio autor e, eventualmente, colegas de mesma área.\n\n## POSTURA\n- Rigor clínico acima de conveniência\n- Evidência sobre autoridade\n- Especificidade do contexto brasileiro sobre generalização internacional\n- Ponto de vista explícito: [descreva a postura clínica — ex: proativa em alto risco / conservadora em baixo risco]</span>\n\n<span class="ai-i">## INPUT ESTRUTURADO\nQuando eu acionar esta ferramenta, vou trazer:\n\nInformações obrigatórias (sem elas, você deve perguntar antes):\n- [Item 1]\n- [Item 2]\n- [Item 3]\n\nInformações desejáveis (você pode inferir limites, mas deve sinalizar ausência):\n- [Item 4]\n- [Item 5]\n\nInformações contextuais (melhoram a análise se presentes):\n- [Item 6]\n- [Item 7]\n\n## BASE DOCUMENTAL\nSua análise se ancora em:\n- [Diretriz 1 — ex: FEBRASGO 2024 capítulo X]\n- [Diretriz 2]\n- [Protocolo do hospital [nome]]\n- [Meta-análise de referência]\n\nQuando a evidência for controversa, use a base acima como ponto de partida e sinalize a controvérsia.</span>\n\n<span class="ai-m">## ALGORITMO DE PROCESSAMENTO\n\nEtapa 1: VALIDAÇÃO\n- Os dados fornecidos são suficientes para análise segura?\n- Há inconsistências entre os dados?\n- Se sim, peça clarificação antes de prosseguir.\n\nEtapa 2: RACIOCÍNIO CLÍNICO (explicite passo a passo)\n- [Passo específico 1]\n- [Passo específico 2]\n- [Passo específico 3]\n\nEtapa 3: CLASSIFICAÇÃO\n- Usando [critério específico], classifique o caso em [categorias possíveis]\n- Justifique a classificação com os dados concretos fornecidos\n\nEtapa 4: RECOMENDAÇÃO\n- Proposta de conduta em janelas temporais\n- Justificativa para cada recomendação\n- Alternativas válidas quando houver equipoise\n\nEtapa 5: AUTO-CRÍTICA\n- 1 ponto onde sua análise pode estar errada\n- 1 cenário onde outro especialista discordaria\n- 1 informação que, se fornecida, mudaria a conduta</span>\n\n<span class="ai-e">## FORMATO FIXO DE SAÍDA (invariável)\n\n---\n**FERRAMENTA: [NOME] v1.0** · Processamento em [data/hora]\n\n**Status dos dados:** [completos / incompletos — se incompletos, listar o que falta]\n\n**Classificação:** [categoria conforme critério]\n\n**Pontos clínicos críticos:**\n[lista numerada]\n\n**Raciocínio:**\n[parágrafo de 4-6 linhas]\n\n**Conduta sugerida:**\n\n| Janela | Ação | Justificativa |\n|---|---|---|\n| Imediato (0-2h) | | |\n| Curto prazo (2-24h) | | |\n| Médio prazo (1-7 dias) | | |\n\n**Alertas de segurança:** [se houver — em destaque]\n\n**Alternativas válidas:** [se houver equipoise, liste opções]\n\n**Auto-crítica:**\n- Fragilidade da análise: ...\n- Possível divergência: ...\n- Informação que mudaria conduta: ...\n\n**Próximos exames ou encaminhamentos sugeridos:**\n[lista específica]\n\n---\n*Ferramenta construída no AIMED Joinville 2026. Apoio à decisão — não substitui julgamento clínico presencial.*</span>\n\n<span class="ai-d">## LIMITES E SALVAGUARDAS INEGOCIÁVEIS\n\nProibições absolutas:\n- Nunca dar conduta definitiva sem os dados mínimos obrigatórios\n- Nunca sugerir medicação sem verificar interações com as em uso\n- Nunca minimizar sinal de gravidade para adequar à proposta de conduta\n- Nunca inventar referência, dose, protocolo ou diretriz\n- Nunca responder sobre casos fora do escopo desta ferramenta (se vier algo de outra especialidade, redirecionar explicitamente)\n\nObrigações automáticas:\n- Sempre sinalizar [sinal de gravidade específico da especialidade] se presente\n- Sempre considerar contexto brasileiro (SUS, saúde suplementar, disponibilidade regional)\n- Sempre diferenciar "o que o guideline diz" de "o que um sênior experiente faria"\n- Sempre mencionar ao final: "A decisão clínica e a responsabilidade são do médico assistente"\n\nCondições de parada:\nSe o caso apresentar:\n- [Critério crítico 1 específico] → emitir alerta imediato e sugerir escalada\n- [Critério crítico 2] → emitir alerta\n- [Critério 3] → emitir alerta\n\nAo detectar qualquer condição acima, interromper análise padrão e emitir alerta prioritário.</span>`
+          }
+        }
       }
     ]
   },
@@ -2487,19 +3979,261 @@ const PROGRAMA = [
         id: 'caso-multissistemico',
         horario: '14:00–14:10',
         titulo: 'O Caso que Nenhum Especialista Resolve Sozinho',
-        summary: 'Apresentação objetiva do caso clínico real e multissistêmico — construído para as especialidades da turma de Joinville.',
+        summary: 'Uma gestante em terapia intensiva. Nove especialidades na sala. Nenhuma resolve sozinha. É aqui que os dois dias se provam — ou não.',
         avatar: null,
-        conteudo: null,
+        conteudo: `
+          <div class="stage-card">
+            <div class="stage-label">Abertura do Bloco 4</div>
+            <div class="stage-title">Tudo que vocês aprenderam nos últimos dois dias<br>vai ser <strong>testado agora</strong>.</div>
+          </div>
+
+          <h3>Por que este caso</h3>
+          <p>A composição desta turma é rara. Temos sete ginecologistas-obstetras, uma enfermeira obstétrica, um pediatra, um cardiologista pediátrico, um cardiologista adulto, um pneumologista, um intensivista que também é diretor médico, uma advogada de saúde e um estudante de medicina. Um caso que <strong>não envolva todos</strong> desperdiça a sala.</p>
+          <p>O caso que vou apresentar precisa da cabeça de cada um de vocês para ser resolvido. É isso que estamos fazendo aqui — não simulando, <em>fazendo</em>.</p>
+
+          <div class="case-dossier">
+            <div class="case-header">
+              <div class="case-stamp">Caso clínico · confidencial · turma AIMED Joinville</div>
+              <div class="case-title">Gestante grave em Unidade de Terapia Intensiva</div>
+              <div class="case-subtitle">Hospital terciário · Madrugada · Equipe de plantão reduzida</div>
+            </div>
+
+            <div class="case-section">
+              <div class="case-section-label">Identificação</div>
+              <div class="case-section-body">
+                Paciente feminino, 34 anos, <strong>gestação única de 31 semanas e 4 dias</strong> por <abbr class="gloss" data-gloss="Ultrassonografia" title="Ultrassonografia">USG</abbr> do primeiro trimestre. <strong>G3P1A1</strong> (cesárea prévia em 2022 por <abbr class="gloss" data-gloss="Doença Hipertensiva Específica da Gestação" title="Doença Hipertensiva Específica da Gestação">DHEG</abbr> grave; aborto espontâneo em 2024). Pré-natal de alto risco iniciado às 16 semanas em serviço público.
+              </div>
+            </div>
+
+            <div class="case-section">
+              <div class="case-section-label">Motivo da admissão</div>
+              <div class="case-section-body">
+                Chegou ao pronto-socorro obstétrico há 6 horas com dispneia progressiva há 48 horas, piora nas últimas 3 horas. Edema periférico importante há uma semana. Cefaleia frontal há 12 horas. <strong>Transferida para UTI há 90 minutos</strong> por insuficiência respiratória com necessidade de oxigenoterapia em máscara com reservatório.
+              </div>
+            </div>
+
+            <div class="case-section">
+              <div class="case-section-label">Antecedentes</div>
+              <div class="case-section-body">
+                <ul>
+                  <li><strong>Hipertensão arterial crônica</strong> diagnosticada aos 28 anos, em uso de metildopa 500mg 3×/dia</li>
+                  <li>Sopro cardíaco detectado no pré-natal atual às 22 semanas, <abbr class="gloss" data-gloss="Ecocardiograma — ultrassom do coração" title="Ecocardiograma — ultrassom do coração">ECO</abbr> marcado para 28 semanas não foi realizado (falta na consulta)</li>
+                  <li>Tabagismo passivo, nega drogas</li>
+                  <li>Obesidade pré-gestacional (IMC 34)</li>
+                  <li>Parente de primeiro grau com cardiomiopatia dilatada</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="case-section">
+              <div class="case-section-label">Exame físico na admissão da UTI</div>
+              <div class="case-section-body">
+                <ul>
+                  <li>Regular estado geral, dispneica, sudoreica, ansiosa</li>
+                  <li><abbr class="gloss" data-gloss="Pressão Arterial" title="Pressão Arterial">PA</abbr> 172×114 mmHg · <abbr class="gloss" data-gloss="Frequência Cardíaca" title="Frequência Cardíaca">FC</abbr> 128 bpm · FR 32 irpm · SpO2 89% em ar ambiente, 94% com máscara de alto fluxo</li>
+                  <li>Ausculta pulmonar: estertores crepitantes em bases, mais pronunciados à direita</li>
+                  <li>Ausculta cardíaca: ritmo regular, sopro sistólico em foco mitral 3+/6, taquicardia</li>
+                  <li>Abdome gravídico compatível com a idade gestacional, útero tônico</li>
+                  <li>Edema de membros inferiores 4+/4, edema de mãos e face</li>
+                  <li>Reflexos vivos, sem sinais neurológicos focais</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="case-section">
+              <div class="case-section-label">Exames laboratoriais (últimas 2 horas)</div>
+              <div class="case-section-body">
+                Plaquetas 82.000 · <abbr class="gloss" data-gloss="Transaminase Glutâmico-Oxalacética — enzima hepática" title="Transaminase Glutâmico-Oxalacética — enzima hepática">TGO</abbr> 156 · <abbr class="gloss" data-gloss="Transaminase Glutâmico-Pirúvica — enzima hepática" title="Transaminase Glutâmico-Pirúvica — enzima hepática">TGP</abbr> 188 · <abbr class="gloss" data-gloss="Desidrogenase Láctica — enzima que se eleva em hemólise e lesão tecidual" title="Desidrogenase Láctica — enzima que se eleva em hemólise e lesão tecidual">LDH</abbr> 742 · Creatinina 1.4 · Ureia 68 · Ácido úrico 9.1 · Bilirrubina total 2.1 · Proteinúria 24h 4,8g · Troponina ultrasensível elevada (3× valor de referência) · BNP elevado · Gasometria arterial: pH 7,32 · PaCO2 28 · PaO2 62 · HCO3 18.
+              </div>
+            </div>
+
+            <div class="case-section">
+              <div class="case-section-label">Exames de imagem e monitorização fetal</div>
+              <div class="case-section-body">
+                <ul>
+                  <li><abbr class="gloss" data-gloss="Eletrocardiograma" title="Eletrocardiograma">ECG</abbr>: taquicardia sinusal, sobrecarga ventricular esquerda, alterações inespecíficas da repolarização</li>
+                  <li><abbr class="gloss" data-gloss="Radiografia" title="Radiografia">RX</abbr> tórax portátil: cardiomegalia importante, congestão pulmonar bilateral, linhas B de Kerley</li>
+                  <li>Ecocardiograma à beira do leito (intensivista): fração de ejeção 28%, hipocinesia difusa, insuficiência mitral moderada, cavidades esquerdas aumentadas</li>
+                  <li>USG obstétrico: feto único vivo, peso estimado 1.520g (p40), líquido amniótico reduzido (ILA 6), Doppler da artéria umbilical com índice de pulsatilidade no p92</li>
+                  <li><abbr class="gloss" data-gloss="Cardiotocografia — exame que registra batimentos cardíacos fetais e contrações uterinas" title="Cardiotocografia — exame que registra batimentos cardíacos fetais e contrações uterinas">CTG</abbr>: traçado categoria II, variabilidade mínima, ausência de acelerações, sem desacelerações tardias repetidas</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="case-section">
+              <div class="case-section-label">Estado atual — agora, na UTI</div>
+              <div class="case-section-body">
+                Paciente consciente, orientada, <strong>manifestou desejo de conversar com a família antes de qualquer decisão</strong>. Marido aguarda na sala de espera da UTI, muito ansioso. Mãe da paciente chega em 40 minutos vindo de outra cidade. O intensivista de plantão está sozinho no momento (o colega está respondendo a uma emergência em outra área). O centro obstétrico tem uma sala disponível. A UTI neonatal tem leito reservado. Hora atual: <strong>03:17 da madrugada</strong>.
+              </div>
+            </div>
+          </div>
+
+          <h3>O que cada especialidade desta turma precisa resolver</h3>
+          <p>Este caso só existe porque temos esta turma. Cada perfil tem papel específico nos próximos 90 minutos:</p>
+
+          <div class="role-matrix">
+            <div class="matrix-card">
+              <div class="matrix-role">7 GOs + Carla</div>
+              <div class="matrix-name">Decisão obstétrica</div>
+              <div class="matrix-task">Momento e via de parto. Tolerância à espera. Autonomia da paciente. Comunicação com marido.</div>
+            </div>
+            <div class="matrix-card">
+              <div class="matrix-role">Stefan</div>
+              <div class="matrix-name">Manejo crítico</div>
+              <div class="matrix-task">Suporte hemodinâmico. Diuréticos. Proteção materna. Decisão sobre via aérea.</div>
+            </div>
+            <div class="matrix-card">
+              <div class="matrix-role">André</div>
+              <div class="matrix-name">Cardiomiopatia materna</div>
+              <div class="matrix-task">Cardiomiopatia periparto vs descompensação de cardiopatia pré-existente. Segurança medicamentosa.</div>
+            </div>
+            <div class="matrix-card">
+              <div class="matrix-role">Francisco</div>
+              <div class="matrix-name">Recepção neonatal</div>
+              <div class="matrix-task">Avaliação cardíaca do prematuro. Risco de cardiopatia congênita associada.</div>
+            </div>
+            <div class="matrix-card">
+              <div class="matrix-role">João</div>
+              <div class="matrix-name">Investigação pulmonar</div>
+              <div class="matrix-task">Edema pulmonar cardiogênico vs tromboembolismo. Estratégia ventilatória pré-intubação.</div>
+            </div>
+            <div class="matrix-card">
+              <div class="matrix-role">Diogo</div>
+              <div class="matrix-name">Prematuro de 31 semanas</div>
+              <div class="matrix-task">Recepção em sala de parto. Surfactante. Suporte inicial. Comunicação com os pais.</div>
+            </div>
+            <div class="matrix-card">
+              <div class="matrix-role">Quelen</div>
+              <div class="matrix-name">Questão jurídica</div>
+              <div class="matrix-task">Autonomia da gestante grave. Consentimento em situação limítrofe. Documentação com uso de <abbr class="gloss" data-gloss="Inteligência Artificial" title="Inteligência Artificial">IA</abbr>.</div>
+            </div>
+            <div class="matrix-card">
+              <div class="matrix-role">Arthur</div>
+              <div class="matrix-name">Residente sênior</div>
+              <div class="matrix-task">Observação ativa. Pergunta uma dúvida que ninguém pensou. Apresenta a síntese final ao grupo.</div>
+            </div>
+            <div class="matrix-card">
+              <div class="matrix-role">As 4 IAs</div>
+              <div class="matrix-name">Escriba e consultor</div>
+              <div class="matrix-task">Registram a discussão em tempo real. Ao final, apresentam síntese independente para confronto.</div>
+            </div>
+          </div>
+
+          <div class="callout">
+            <div class="callout-label">Regra dos próximos 90 minutos</div>
+            <p>Ninguém resolve sozinho. Cada especialidade fala quando for convocada — e <strong>é convocada pelo grupo</strong>, não por mim. Se o grupo esquecer de chamar a advogada no momento da decisão compartilhada com a família, a família não vai ser ouvida. Cada silêncio vira decisão.</p>
+          </div>
+        `,
         prompts: null
       },
       {
         id: 'discussao-coletiva',
         horario: '14:10–15:40',
         titulo: 'Discussão Clínica com IA',
-        summary: '90 minutos de discussão coletiva. A IA acompanha e registra em tempo real. Ao final, apresenta sua síntese e proposta de conduta.',
+        summary: '90 minutos de discussão coletiva com a IA funcionando como escriba, consultora e advogada do diabo em tempo real. O momento mais denso dos dois dias.',
         avatar: null,
-        conteudo: null,
-        prompts: null
+        conteudo: `
+          <h3>A regra de ouro destes 90 minutos</h3>
+          <p>A discussão é <strong>conduzida por vocês</strong>, não por mim. Eu modero, asseguro que todos sejam ouvidos e que a IA esteja sendo usada corretamente — mas as decisões clínicas, as objeções, as correções, saem da sala. Ninguém é plateia.</p>
+
+          <div class="callout">
+            <div class="callout-label">O papel da IA neste momento</div>
+            <p>A IA não é aluna nem palestrante. Ela é o <strong>escriba e consultora</strong>. Registra tudo que for dito, identifica contradições em tempo real, sugere perspectivas que ninguém levantou, questiona quando o grupo converge rápido demais. Ao final dos 90 minutos, apresenta uma proposta própria para confronto.</p>
+          </div>
+
+          <h3>Arquitetura dos 90 minutos</h3>
+
+          <div class="timeline-90">
+            <div class="timeline-stage active">
+              <div class="timeline-time">14:10 – 14:25 · 15 min</div>
+              <div class="timeline-title">Fase 1 — Apreensão do caso</div>
+              <div class="timeline-body">Cada especialidade lê o dossiê em silêncio por 5 minutos. Depois, 10 minutos de perguntas de esclarecimento ao grupo. O Claude fica aberto no telão registrando as perguntas levantadas.</div>
+            </div>
+
+            <div class="timeline-stage">
+              <div class="timeline-time">14:25 – 14:45 · 20 min</div>
+              <div class="timeline-title">Fase 2 — Cada especialidade fala</div>
+              <div class="timeline-body">Rodada estruturada. Cada profissional tem 2 minutos para expor sua leitura do caso do ponto de vista da própria especialidade. Ninguém interrompe. O GPT Voice registra a fala de cada um.</div>
+            </div>
+
+            <div class="timeline-stage">
+              <div class="timeline-time">14:45 – 15:05 · 20 min</div>
+              <div class="timeline-title">Fase 3 — Divergências e decisões</div>
+              <div class="timeline-body">Onde os especialistas discordam? O grupo entra em discussão livre, mediada. A IA é consultada nos pontos de impasse: "dado o que foi dito, qual é a evidência?"</div>
+            </div>
+
+            <div class="timeline-stage">
+              <div class="timeline-time">15:05 – 15:20 · 15 min</div>
+              <div class="timeline-title">Fase 4 — Decisão coletiva</div>
+              <div class="timeline-body">O grupo propõe conduta para as próximas 24 horas. Quem faz o quê. Em que ordem. Como se comunica com a paciente, com o marido, com a mãe que está chegando.</div>
+            </div>
+
+            <div class="timeline-stage">
+              <div class="timeline-time">15:20 – 15:35 · 15 min</div>
+              <div class="timeline-title">Fase 5 — A IA apresenta sua síntese</div>
+              <div class="timeline-body">Com base em tudo que foi dito nos 70 minutos anteriores, a IA apresenta <strong>sua própria proposta de conduta</strong>. Concorda com o grupo? Discorda? Onde? Por quê?</div>
+            </div>
+
+            <div class="timeline-stage">
+              <div class="timeline-time">15:35 – 15:40 · 5 min</div>
+              <div class="timeline-title">Fase 6 — Confronto</div>
+              <div class="timeline-body">O grupo responde à IA. Onde ela acertou? Onde errou? Onde levantou algo que o grupo havia perdido? Arthur faz a síntese final em 2 minutos.</div>
+            </div>
+          </div>
+
+          <h3>O que a IA registra durante a discussão</h3>
+
+          <div class="capability-grid">
+            <div class="capability-card">
+              <div class="capability-icon">◐</div>
+              <div class="capability-content">
+                <div class="capability-title">Transcrição estruturada</div>
+                <div class="capability-text">Cada fala identificada por perfil profissional. Argumentos numerados. Pontos de consenso destacados em dourado, divergências em coral.</div>
+              </div>
+            </div>
+            <div class="capability-card">
+              <div class="capability-icon">◔</div>
+              <div class="capability-content">
+                <div class="capability-title">Mapa de decisão</div>
+                <div class="capability-text">Árvore de decisões clínicas sendo construída em tempo real conforme o grupo discute. Cada ramo com sua justificativa.</div>
+              </div>
+            </div>
+            <div class="capability-card">
+              <div class="capability-icon">◑</div>
+              <div class="capability-content">
+                <div class="capability-title">Pontos não levantados</div>
+                <div class="capability-text">Aspectos do caso que o grupo pode estar negligenciando. Apresentados silenciosamente no final, não durante — para não interromper o raciocínio.</div>
+              </div>
+            </div>
+            <div class="capability-card">
+              <div class="capability-icon">◒</div>
+              <div class="capability-content">
+                <div class="capability-title">Síntese final autônoma</div>
+                <div class="capability-text">Proposta de conduta construída exclusivamente a partir do que foi dito na sala. Sem "conhecimento externo" — apenas síntese do raciocínio coletivo.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout">
+            <div class="callout-label">Uma observação metodológica</div>
+            <p>Este é o momento do curso mais difícil de reproduzir fora daqui. Você pode ler sobre "IA na discussão clínica", mas ver <strong>uma sala inteira de médicos discutindo um caso real enquanto a IA registra e responde</strong> é algo que só acontece aqui. Guarde a memória visual dos próximos 90 minutos — ela será referência profissional por anos.</p>
+          </div>
+        `,
+        prompts: {
+          titulo: 'Comando de ativação da IA como escriba da discussão coletiva',
+          nivel1: {
+            hint: 'Comando básico — ativa o modo escriba',
+            texto: `Você é escriba de uma discussão clínica multiprofissional sobre um caso de gestante grave em UTI.\n\nRegistre cada fala, identifique o profissional (por especialidade), organize os argumentos.\n\nAo final, me peça autorização para apresentar sua síntese.`
+          },
+          nivel2: {
+            hint: 'Comando estruturado — registro + mapa de decisão',
+            texto: `<span class="ai-a">Você é escriba clínico e consultor médico sênior. Sua função agora é mediar e registrar uma discussão clínica multiprofissional sobre um caso complexo, em tempo real.</span>\n\n<span class="ai-i">O caso é uma gestante de 31 semanas e 4 dias com insuficiência cardíaca aguda, pré-eclâmpsia grave e feto com alteração de Doppler. Na sala estão: 7 ginecologistas-obstetras, 1 enfermeira obstétrica, 1 intensivista, 1 pediatra, 1 cardiopediatra, 1 cardiologista adulto, 1 pneumologista, 1 advogada de saúde, 1 estudante de medicina.</span>\n\n<span class="ai-m">Durante a discussão (90 minutos), execute 3 tarefas em paralelo:\n\n1. TRANSCRIÇÃO: registre cada fala relevante, identificando o profissional por especialidade e o argumento central\n\n2. MAPA DE DECISÃO: construa uma árvore de decisões sendo discutida, com cada ramo e sua justificativa\n\n3. PONTOS NÃO LEVANTADOS: mantenha uma lista silenciosa dos aspectos que o grupo está negligenciando. Apresente apenas quando solicitado.\n\nAo final da Fase 5, apresente sua síntese autônoma: sua proposta de conduta baseada exclusivamente no que foi dito na sala.</span>\n\n<span class="ai-e">Formato ao final:\n\n**Transcrição estruturada** (por fase, por profissional)\n\n**Mapa de decisão construído**\n\n**Pontos não levantados pelo grupo**\n\n**Síntese autônoma da IA**</span>\n\n<span class="ai-d">Durante a discussão, fique em silêncio a menos que explicitamente convocado.\n\nNa síntese final: seja honesto. Se o grupo deixou algo crítico de fora, aponte. Se concorda com a conduta proposta, diga. Se discorda, explique.\n\nNunca substitua a decisão do grupo. Você é escriba e consultor — não diretor.</span>`
+          },
+          nivel3: {
+            hint: 'Comando master — escriba + consultor + advogado do diabo integrados',
+            texto: `<span class="ai-a">Você é simultaneamente três figuras para esta discussão:\n\n1. ESCRIBA CLÍNICO — registra com precisão cada fala relevante\n2. CONSULTOR MULTIDISCIPLINAR — responde quando questionado, com rigor e brevidade\n3. ADVOGADO DO DIABO INTELECTUALMENTE HONESTO — ao final, constrói o argumento contrário às conclusões do grupo\n\nSua identidade é profissional e neutra. Você não se alinha com nenhuma especialidade da sala. Trabalha para o caso, não para o grupo.</span>\n\n<span class="ai-i">Caso clínico:\nGestante de 34 anos, 31s4d, G3P1A1, com quadro complexo multissistêmico — insuficiência cardíaca aguda (FE 28%, cardiomegalia, congestão pulmonar), pré-eclâmpsia grave com critérios de HELLP parcial (plaquetas 82k, TGO/TGP elevadas, LDH 742), proteinúria 4,8g/24h, hipertensão 172×114, edema pulmonar, feto com Doppler umbilical anormal e líquido amniótico reduzido, CTG categoria II.\n\nContexto: UTI, 03:17 da madrugada, centro obstétrico disponível, UTI neonatal com leito, intensivista sozinho no momento, família chegando.\n\nNa sala: 7 GOs, 1 enfermeira obstétrica, 1 intensivista (Stefan — também diretor médico), 1 pediatra (Diogo), 1 cardiopediatra (Francisco), 1 cardiologista adulto (André), 1 pneumologista (João), 1 advogada de saúde (Quelen), 1 estudante de medicina (Arthur).</span>\n\n<span class="ai-m">Durante os 90 minutos da discussão, atue em 6 fases:\n\nFASE 1 (14:10-14:25) — Apreensão silenciosa\nRegistre as perguntas de esclarecimento que cada profissional faz. Identifique padrões — quem pergunta o quê revela como cada especialidade lê o caso.\n\nFASE 2 (14:25-14:45) — Rodada estruturada\nPara cada fala (2 min/profissional), registre:\n- Quem fala\n- Argumento central\n- Fundamento (evidência, experiência, intuição)\n- Conduta proposta por essa especialidade\n\nFASE 3 (14:45-15:05) — Divergências\nIdentifique e destaque os pontos de discordância entre as especialidades. Quando o grupo ficar travado, aguarde convocação. Se for consultado: responda com rigor, brevidade, sem tomar partido.\n\nFASE 4 (15:05-15:20) — Decisão coletiva\nRegistre a decisão final do grupo. Quem faz o quê, quando, como. Identifique se restaram pontos não resolvidos.\n\nFASE 5 (15:20-15:35) — Sua síntese autônoma\nApresente SUA proposta de conduta, construída a partir de tudo que foi dito. Estruture em:\n- O que o grupo concluiu (síntese)\n- Onde concordo com o grupo (com justificativa)\n- Onde discordaria do grupo (com justificativa clínica)\n- Pontos que o grupo não levantou e que um sênior experiente levantaria\n- O argumento contrário mais forte à decisão coletiva (Teoria do Contrário aplicada ao caso)\n\nFASE 6 (15:35-15:40) — Confronto final\nResponda às reações do grupo. Ajuste, mantenha, concorde, discorde. Honestidade total.</span>\n\n<span class="ai-e">Formatos esperados em cada fase:\n\nFases 1-4: registro estruturado (você não publica, mantém consigo)\n\nFase 5 — Relatório final:\n\n**SÍNTESE COLETIVA**\nO que o grupo concluiu, em 5 linhas, por eixo (obstétrico / intensivo / cardiológico / pediátrico / jurídico-ético).\n\n**CONCORDÂNCIAS**\nOnde a sala convergiu, e por que a convergência é sólida.\n\n**DISCORDÂNCIAS INTERNAS DO GRUPO**\nQuais pontos restaram não-resolvidos entre as especialidades, e por quê.\n\n**MINHA ANÁLISE (divergências da IA em relação ao grupo)**\nAponte pontos específicos onde minha leitura diverge da coletiva. Com justificativa clínica.\n\n**PONTOS NÃO LEVANTADOS**\nAspectos críticos do caso que o grupo pode ter negligenciado.\n\n**O ARGUMENTO CONTRÁRIO À DECISÃO COLETIVA**\nConstrua o argumento mais forte possível contra a conduta proposta pelo grupo — Teoria do Contrário aplicada em tempo real.\n\n**SUGESTÃO FINAL PARA O GRUPO**\nO que eu, como consultor externo, revisaria antes de implementar a conduta proposta.</span>\n\n<span class="ai-d">Princípios inegociáveis:\n\nDurante a discussão:\n- Silêncio absoluto a menos que convocado\n- Quando convocado: brevidade rigorosa, 3-5 linhas no máximo\n- Nunca tome partido de uma especialidade\n- Nunca decida pelo grupo\n\nNa síntese final:\n- Honestidade intelectual total — se a decisão do grupo foi equivocada em algum ponto, diga\n- Respeito à hierarquia clínica: você é consultor, não chefe de equipe\n- Considere sempre o contexto brasileiro: SUS, madrugada, equipe reduzida, família presente\n- Considere a LGPD e a autonomia da paciente\n- Na Teoria do Contrário final: não seja sensacionalista. Apresente o melhor argumento contrário, não o mais dramático\n- Reconheça quando a decisão do grupo foi melhor que sua proposta inicial\n\nLembrete final:\n"A decisão clínica é e continuará sendo do grupo. Sou consultor qualificado, não substituto do julgamento coletivo."</span>`
+          }
+        }
       },
       {
         id: 'cafe-4',
@@ -2511,36 +4245,508 @@ const PROGRAMA = [
         id: 'tc-colhendo',
         horario: '16:00–16:30',
         titulo: 'Teoria do Contrário — Colhendo',
-        summary: 'Cada especialista traz sua conclusão para o grupo. O protocolo se sustenta, precisa de revisão ou tem exceções?',
+        summary: 'A pergunta que você dormiu com ela volta agora. 36 horas depois, com evidência, com método, com o grupo ouvindo. É hora de colher o que foi plantado.',
         avatar: null,
-        conteudo: null,
+        conteudo: `
+          <div class="tc-manifesto">
+            <div class="tc-manifesto-label">Teoria do Contrário — Fase 3 de 3</div>
+            <div class="tc-manifesto-text">Você plantou a semente <em>anteontem à noite</em>.<br>Regou ela a manhã inteira com as 3 IAs e o NotebookLM.<br>Agora <em>colhe</em> — e compartilha a colheita com o grupo.</div>
+          </div>
+
+          <h3>As três fases completas</h3>
+
+          <div class="tc-phases">
+            <div class="tc-phase">
+              <div class="tc-phase-num">01</div>
+              <div class="tc-phase-label">Plantou</div>
+              <div class="tc-phase-title">Anteontem · 17:00</div>
+              <div class="tc-phase-text">Escolheu o protocolo. Construiu o primeiro argumento contrário. Anotou a pergunta-chave. Dormiu com ela.</div>
+            </div>
+            <div class="tc-arrow">→</div>
+            <div class="tc-phase">
+              <div class="tc-phase-num">02</div>
+              <div class="tc-phase-label">Regou</div>
+              <div class="tc-phase-title">Ontem · manhã inteira</div>
+              <div class="tc-phase-text">Buscou evidência real no Gemini. Analisou artigos no Claude. Sintetizou no GPT. Organizou no NotebookLM.</div>
+            </div>
+            <div class="tc-arrow">→</div>
+            <div class="tc-phase active">
+              <div class="tc-phase-num">03</div>
+              <div class="tc-phase-label">Colhe</div>
+              <div class="tc-phase-title">Agora · 16:00</div>
+              <div class="tc-phase-text">Traz a conclusão para o grupo. O protocolo se sustenta? Precisa revisão? Tem exceções claras?</div>
+            </div>
+          </div>
+
+          <h3>Os quatro veredictos possíveis</h3>
+          <p>Depois de investigar com rigor, sua conclusão sobre o protocolo escolhido vai cair em um dos quatro veredictos abaixo. Não existe um "certo" — o valor está na honestidade com que você chegou à conclusão.</p>
+
+          <div class="capability-grid">
+            <div class="capability-card">
+              <div class="capability-icon">✓</div>
+              <div class="capability-content">
+                <div class="capability-title">O protocolo se sustenta</div>
+                <div class="capability-text">A evidência que você encontrou confirma o protocolo. Mas agora você o aplica com <strong>convicção fundamentada</strong>, não herdada. Ganho real.</div>
+              </div>
+            </div>
+            <div class="capability-card">
+              <div class="capability-icon">◐</div>
+              <div class="capability-content">
+                <div class="capability-title">O protocolo tem exceções</div>
+                <div class="capability-text">Ele se sustenta na regra, mas você identificou situações específicas em que não se aplica. Agora você decide com discernimento, não com automatismo.</div>
+              </div>
+            </div>
+            <div class="capability-card">
+              <div class="capability-icon">◒</div>
+              <div class="capability-content">
+                <div class="capability-title">O protocolo precisa revisão</div>
+                <div class="capability-text">A evidência sugere que sim, o protocolo deveria evoluir. Você não pode mudar o guideline sozinho, mas pode adaptar sua prática e propor discussão no seu serviço.</div>
+              </div>
+            </div>
+            <div class="capability-card">
+              <div class="capability-icon">✕</div>
+              <div class="capability-content">
+                <div class="capability-title">A evidência é insuficiente</div>
+                <div class="capability-text">A literatura não responde à sua pergunta com clareza. Mas agora você sabe <em>exatamente onde</em> falta evidência — e isso é pauta de pesquisa, artigo, tese.</div>
+              </div>
+            </div>
+          </div>
+
+          <h3>Como apresentar ao grupo</h3>
+          <p>Cada participante tem <strong>90 segundos</strong> para apresentar sua colheita. A estrutura da fala é fixa — para que a comparação entre as apresentações seja justa:</p>
+
+          <div class="steps-guide">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h4>Protocolo (10 segundos)</h4>
+                <p>"O protocolo que questionei foi [X], na situação clínica [Y]."</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h4>Argumento contrário (20 segundos)</h4>
+                <p>"Meu argumento contrário era [A, B, C], baseado em [fonte geral da evidência]."</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h4>O que a evidência revelou (40 segundos)</h4>
+                <p>"Ao investigar, descobri que [achado principal]. A qualidade da evidência é [alta/moderada/baixa]. Os contra-argumentos que encontrei foram [X e Y]."</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">4</div>
+              <div class="step-content">
+                <h4>Veredicto (20 segundos)</h4>
+                <p>"Minha conclusão é que o protocolo [se sustenta / tem exceções / precisa revisão / tem evidência insuficiente]. Na prática, daqui para frente, vou [decisão concreta]."</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout">
+            <div class="callout-label">A regra de escuta</div>
+            <p>Ninguém comenta a apresentação do outro durante essa rodada. Cada colheita é individual e merece respeito. Os debates ficam para depois do módulo, informalmente, no café ou no caminho de volta.</p>
+          </div>
+
+          <div class="callout">
+            <div class="callout-label">O que você ganhou, independente do veredicto</div>
+            <p>Você saiu de "eu sigo esse protocolo porque me ensinaram" para "eu sigo esse protocolo porque [razão fundamentada por evidência]". Essa mudança é irreversível. A partir de hoje, toda vez que aplicar esse protocolo, você o aplica com <strong>posse intelectual</strong>. Esse é o ganho real do curso.</p>
+          </div>
+        `,
         prompts: null
       },
       {
         id: 'etica-cfm',
         horario: '16:30–17:00',
         titulo: 'Ética, CFM e Responsabilidade',
-        summary: 'O que o CFM permite hoje. Como documentar o uso de IA no prontuário. Responsabilidade civil.',
+        summary: 'O único momento do curso co-conduzido por três vozes — um intensivista-diretor, uma advogada, um médico-instrutor. A fronteira entre o que a IA pode fazer e o que você pode permitir que ela faça.',
         avatar: null,
-        conteudo: null,
+        conteudo: `
+          <div class="stage-card">
+            <div class="stage-label">Módulo co-conduzido</div>
+            <div class="stage-title">Três perspectivas, uma questão:<br><strong>até onde a IA vai</strong> na sua prática clínica?</div>
+          </div>
+
+          <h3>As três vozes deste módulo</h3>
+          <p>Este é o único módulo do curso em que eu não conduzo sozinho. A composição desta turma nos oferece um luxo pedagógico raríssimo — por isso vamos aproveitar:</p>
+
+          <div class="role-matrix">
+            <div class="matrix-card">
+              <div class="matrix-role">Quelen Manske</div>
+              <div class="matrix-name">Voz jurídica</div>
+              <div class="matrix-task">Advogada de saúde. Traz a dimensão da responsabilidade civil, da documentação defensiva, da <abbr class="gloss" data-gloss="Lei Geral de Proteção de Dados — legislação brasileira sobre privacidade e dados pessoais" title="Lei Geral de Proteção de Dados — legislação brasileira sobre privacidade e dados pessoais">LGPD</abbr>.</div>
+            </div>
+            <div class="matrix-card">
+              <div class="matrix-role">Stefan Halla</div>
+              <div class="matrix-name">Voz institucional</div>
+              <div class="matrix-task">Diretor médico + intensivista. Traz a dimensão da implementação hospitalar, governança, risco corporativo.</div>
+            </div>
+            <div class="matrix-card">
+              <div class="matrix-role">Dr. Mbula</div>
+              <div class="matrix-name">Voz do instrutor</div>
+              <div class="matrix-task">Traz a experiência prática de quem já enfrentou essas situações e a síntese dos 16 horas de curso.</div>
+            </div>
+          </div>
+
+          <h3>O que o CFM permite hoje</h3>
+          <p>O quadro regulatório brasileiro evoluiu muito entre 2023 e 2026. A posição atual do <abbr class="gloss" data-gloss="Conselho Federal de Medicina — órgão que regulamenta a prática médica no Brasil" title="Conselho Federal de Medicina — órgão que regulamenta a prática médica no Brasil">CFM</abbr> pode ser organizada em três categorias:</p>
+
+          <div class="ethics-grid">
+            <div class="ethics-card can">
+              <div class="ethics-label">O que a IA PODE</div>
+              <div class="ethics-title">Ferramenta de apoio</div>
+              <div class="ethics-text">A IA pode ser utilizada como apoio à decisão clínica, à documentação, à pesquisa e à educação médica — com responsabilidade final do médico.</div>
+            </div>
+
+            <div class="ethics-card must">
+              <div class="ethics-label">O que a IA DEVE</div>
+              <div class="ethics-title">Documentação explícita</div>
+              <div class="ethics-text">Quando a IA contribui significativamente para uma decisão, isso deve estar documentado no prontuário — transparência protege o médico, o paciente e o sistema.</div>
+            </div>
+
+            <div class="ethics-card cant">
+              <div class="ethics-label">O que a IA NÃO PODE</div>
+              <div class="ethics-title">Substituir julgamento</div>
+              <div class="ethics-text">Diagnóstico, prescrição e conduta final permanecem responsabilidade exclusiva do médico. A IA não assina laudo, não prescreve, não dá alta.</div>
+            </div>
+
+            <div class="ethics-card cant">
+              <div class="ethics-label">O que NUNCA PODE</div>
+              <div class="ethics-title">Violação de privacidade</div>
+              <div class="ethics-text">Dados identificáveis de pacientes em plataformas de IA sem contrato de tratamento adequado violam a LGPD. Anonimização é obrigatória.</div>
+            </div>
+          </div>
+
+          <h3>Como documentar o uso de IA no prontuário</h3>
+          <p>Não existe ainda um padrão universal — mas há um padrão prudente que vem se consolidando na literatura brasileira e internacional:</p>
+
+          <div class="steps-guide">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h4>Registre o uso, não o prompt</h4>
+                <p>No prontuário, uma linha basta: <em>"Consultado apoio de IA (GPT-4/Claude/Gemini) para [análise de laudo / diagnóstico diferencial / cálculo de dose]. Decisão final clínica baseada em [sua justificativa]."</em></p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h4>Guarde o prompt separadamente</h4>
+                <p>O prompt exato usado e a resposta recebida podem ser guardados em arquivo pessoal anonimizado, como parte do seu registro de uso de ferramentas. Não entram no prontuário do paciente, mas ficam disponíveis se forem solicitados em auditoria.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h4>Anonimize antes, sempre</h4>
+                <p>Nome, CPF, número de prontuário, data de nascimento — nunca enviados para as IAs. Use iniciais, idade aproximada, número interno não-rastreável.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">4</div>
+              <div class="step-content">
+                <h4>Informe o paciente quando significativo</h4>
+                <p>Se a IA teve papel relevante na decisão — e o paciente perguntar — seja transparente. "Utilizei ferramentas de apoio baseadas em inteligência artificial para auxiliar meu raciocínio. A decisão é minha." Isso fortalece a relação, não enfraquece.</p>
+              </div>
+            </div>
+          </div>
+
+          <h3>Implementação institucional — a voz de Stefan</h3>
+          <p>Tem diferença entre um médico usar IA no próprio consultório e um hospital implementar IA para todos os médicos. Quando Stefan fala desse lado, vale ouvir com atenção — porque esta turma tem um diretor médico presente, e isso é ouro.</p>
+
+          <div class="callout">
+            <div class="callout-label">Perguntas para levar para o seu hospital depois do curso</div>
+            <p>Existe política institucional sobre uso de IA? Se sim, quais ferramentas estão autorizadas? Existe contrato de tratamento de dados com os fornecedores? Quem é o responsável técnico pela governança? Existe treinamento obrigatório? Como o uso é auditado? Essas perguntas, se vocês levarem, aceleram em meses a adoção responsável nos serviços onde atuam.</p>
+          </div>
+
+          <h3>A voz jurídica — Quelen responde</h3>
+          <p>Vou abrir espaço nos próximos 10 minutos para que a Quelen responda <strong>ao vivo</strong> três perguntas da sala. Aproveitem. Advogada de saúde em curso de IA médica é luxo que esta turma tem e as próximas não terão necessariamente.</p>
+
+          <div class="callout">
+            <div class="callout-label">Perguntas sugeridas (se a sala travar)</div>
+            <p>"Se eu usar a IA como apoio e ela me induzir ao erro, quem responde?"<br>"O que conta como 'contribuição significativa' da IA no prontuário?"<br>"Posso usar ferramentas gratuitas (não contratadas) com dados anonimizados?"<br>"O consentimento informado precisa mencionar o uso de IA?"</p>
+          </div>
+        `,
         prompts: null
       },
       {
         id: 'minha-ferramenta',
         horario: '17:00–17:30',
         titulo: 'Minha Ferramenta, Minha Especialidade',
-        summary: 'Cada participante compartilha com o grupo a ferramenta construída.',
+        summary: 'A ferramenta que você construiu ontem à manhã volta agora — não para ser explicada, mas para ser demonstrada. Funcionando. Ao vivo. Na frente da turma.',
         avatar: null,
-        conteudo: null,
+        conteudo: `
+          <div class="stage-card">
+            <div class="stage-label">Apresentação ao vivo</div>
+            <div class="stage-title">O que vocês construíram nos últimos dois dias<br>funciona <strong>agora</strong>, na frente do grupo.</div>
+          </div>
+
+          <h3>Como funciona a apresentação</h3>
+          <p>Cada participante tem <strong>90 segundos</strong>. Não é PowerPoint. Não é explicação teórica. É demonstração ao vivo da ferramenta construída — abre, mostra, funciona.</p>
+
+          <div class="steps-guide">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h4>Apresente a ferramenta (15 segundos)</h4>
+                <p>"Minha ferramenta se chama [nome]. Ela resolve [problema da sua rotina]. É feita para quando [contexto de uso]."</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h4>Demonstre ao vivo (60 segundos)</h4>
+                <p>Projete sua tela. Cole um caso real (anonimizado). A IA processa. Mostra o resultado. Comenta o que a ferramenta acabou de entregar.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h4>Compartilhe uma aprendizagem (15 segundos)</h4>
+                <p>"O que eu não esperava quando construí foi [insight]. A próxima versão vai [melhoria já identificada]."</p>
+              </div>
+            </div>
+          </div>
+
+          <h3>O que fazer durante as outras apresentações</h3>
+
+          <div class="capability-grid">
+            <div class="capability-card">
+              <div class="capability-icon">◈</div>
+              <div class="capability-content">
+                <div class="capability-title">Observe os padrões</div>
+                <div class="capability-text">Algumas ferramentas vão ter estruturas que você pode adaptar. Anote: "a Natiéle fez X — posso fazer parecido para Y na minha área."</div>
+              </div>
+            </div>
+            <div class="capability-card">
+              <div class="capability-icon">◉</div>
+              <div class="capability-content">
+                <div class="capability-title">Identifique complementaridades</div>
+                <div class="capability-text">A ferramenta de obstetrícia da Valéria pode precisar da análise cardíaca do André. Conexões que nascem aqui viram colaborações depois.</div>
+              </div>
+            </div>
+            <div class="capability-card">
+              <div class="capability-icon">◎</div>
+              <div class="capability-content">
+                <div class="capability-title">Celebre o que acertou</div>
+                <div class="capability-text">Uma ferramenta funcionando em 48 horas é conquista real. Aplauda, reconheça. O grupo construiu junto — cada ferramenta é vitória coletiva.</div>
+              </div>
+            </div>
+            <div class="capability-card">
+              <div class="capability-icon">◍</div>
+              <div class="capability-content">
+                <div class="capability-title">Anote contatos</div>
+                <div class="capability-text">Quem fez o quê. Depois do curso, você vai querer voltar para trocar ideia com alguns. Grupo de WhatsApp facilita — mas anotação própria também.</div>
+              </div>
+            </div>
+          </div>
+
+          <h3>Ordem sugerida das apresentações</h3>
+          <p>Para dar ritmo e equilíbrio à rodada, sugiro a seguinte ordem. Ninguém é obrigado a seguir — mas funciona como ponto de partida:</p>
+
+          <div class="role-matrix">
+            <div class="matrix-card">
+              <div class="matrix-role">Abertura</div>
+              <div class="matrix-name">Arthur Farah</div>
+              <div class="matrix-task">O estudante começa. Se ele construiu uma ferramenta viável em 2 dias sem formação médica completa, calibra a expectativa dos demais.</div>
+            </div>
+            <div class="matrix-card">
+              <div class="matrix-role">Bloco 1</div>
+              <div class="matrix-name">As 7 GOs</div>
+              <div class="matrix-task">Rodada da obstetrícia — maior agrupamento da turma, ferramentas podem conversar entre si.</div>
+            </div>
+            <div class="matrix-card">
+              <div class="matrix-role">Bloco 2</div>
+              <div class="matrix-name">Carla · Enfermagem</div>
+              <div class="matrix-task">A enfermeira obstétrica apresenta. Mostra ao grupo que as ferramentas de IA não são exclusividade médica.</div>
+            </div>
+            <div class="matrix-card">
+              <div class="matrix-role">Bloco 3</div>
+              <div class="matrix-name">Os 4 clínicos</div>
+              <div class="matrix-task">Stefan, André, Francisco, João, Diogo — cada um com sua ferramenta de especialidade. Variedade máxima de abordagens.</div>
+            </div>
+            <div class="matrix-card">
+              <div class="matrix-role">Bloco 4</div>
+              <div class="matrix-name">Quelen · Direito</div>
+              <div class="matrix-task">Fechamento jurídico. A advogada mostra uma ferramenta aplicada ao direito em saúde — inesperada, memorável.</div>
+            </div>
+            <div class="matrix-card">
+              <div class="matrix-role">Fechamento</div>
+              <div class="matrix-name">Aplausos coletivos</div>
+              <div class="matrix-task">Todas as ferramentas apresentadas. Registro fotográfico do grupo com as telas abertas. Momento do curso que fica na memória.</div>
+            </div>
+          </div>
+
+          <div class="callout">
+            <div class="callout-label">O que esta rodada prova</div>
+            <p>Nenhum de vocês era "usuário avançado de IA" quando entrou aqui na sexta. Em menos de 48 horas, cada um está apresentando uma ferramenta funcional, adaptada à sua prática, pronta para usar na segunda-feira. Isso é <strong>a prova concreta</strong> de que o curso funcionou. Ninguém precisa de certificado para saber disso — mas vai levar o certificado mesmo assim.</p>
+          </div>
+
+          <div class="callout">
+            <div class="callout-label">Registro</div>
+            <p>Grave sua própria apresentação no celular (tela mais áudio). Você vai querer ter isso — para mostrar em entrevistas, para ajustar a próxima versão, para comparar com o que construir daqui a 6 meses. A memória visual do momento vale ouro.</p>
+          </div>
+        `,
         prompts: null
       },
       {
         id: 'encerramento',
         horario: '17:30–18:00',
         titulo: 'Encerramento',
-        summary: 'Plano de 7 dias. Entrega dos certificados.',
+        summary: 'Trinta minutos. Plano de sete dias. Certificado na mão. Uma frase final. E amanhã, segunda-feira, vocês já não são os mesmos médicos que entraram aqui sexta.',
         avatar: null,
-        conteudo: null,
+        conteudo: `
+          <div class="quote-hero">
+            <div class="quote-mark">"</div>
+            <div class="quote-text">Sexta-feira vocês entraram aqui <strong>curiosos</strong>.<br>Hoje saem <strong>diferentes</strong>.<br>Na segunda-feira, a prática é outra.</div>
+          </div>
+
+          <h3>O plano de 7 dias</h3>
+          <p>O que acontece da segunda até o próximo domingo define se este curso vira transformação permanente ou memória agradável de um fim de semana. Esse plano é seu contrato com você mesmo.</p>
+
+          <div class="plan-days">
+            <div class="plan-day">
+              <div class="plan-day-num">1</div>
+              <div class="plan-day-label">Segunda</div>
+              <div class="plan-day-task">Use o seu <strong>Perfil Clínico Permanente</strong> em pelo menos 3 consultas ou decisões reais.</div>
+            </div>
+            <div class="plan-day">
+              <div class="plan-day-num">2</div>
+              <div class="plan-day-label">Terça</div>
+              <div class="plan-day-task">Aplique o <strong>prompt blindado de medicamentos</strong> na sua prescrição mais complexa do dia.</div>
+            </div>
+            <div class="plan-day">
+              <div class="plan-day-num">3</div>
+              <div class="plan-day-label">Quarta</div>
+              <div class="plan-day-task">Dite por voz um <strong>laudo ou evolução completa</strong>. Compare com como você faria digitando.</div>
+            </div>
+            <div class="plan-day">
+              <div class="plan-day-num">4</div>
+              <div class="plan-day-label">Quinta</div>
+              <div class="plan-day-task">Abra seu <strong>NotebookLM</strong>. Adicione 2 documentos novos. Faça uma pergunta à biblioteca.</div>
+            </div>
+            <div class="plan-day">
+              <div class="plan-day-num">5</div>
+              <div class="plan-day-label">Sexta</div>
+              <div class="plan-day-task">Refine sua <strong>ferramenta pessoal</strong> baseado no uso real da semana. Versão 1.1.</div>
+            </div>
+            <div class="plan-day">
+              <div class="plan-day-num">6</div>
+              <div class="plan-day-label">Sábado</div>
+              <div class="plan-day-task">Compartilhe sua ferramenta no <strong>grupo de WhatsApp da turma</strong>. Veja o que os outros compartilharam.</div>
+            </div>
+            <div class="plan-day">
+              <div class="plan-day-num">7</div>
+              <div class="plan-day-label">Domingo</div>
+              <div class="plan-day-task">Avalie: o que funcionou, o que travou, o que virou hábito. Planeje a <strong>próxima semana</strong>.</div>
+            </div>
+          </div>
+
+          <h3>O que vocês levam daqui</h3>
+
+          <div class="capability-grid">
+            <div class="capability-card">
+              <div class="capability-icon">◈</div>
+              <div class="capability-content">
+                <div class="capability-title">Sistema funcionando</div>
+                <div class="capability-text">As 4 IAs personalizadas, prompts validados, uma ferramenta própria. Tudo pronto para segunda.</div>
+              </div>
+            </div>
+            <div class="capability-card">
+              <div class="capability-icon">◉</div>
+              <div class="capability-content">
+                <div class="capability-title">Metodologia AIMED</div>
+                <div class="capability-text">Framework de prompt clínico internalizado. Não precisa lembrar — vira automático.</div>
+              </div>
+            </div>
+            <div class="capability-card">
+              <div class="capability-icon">◎</div>
+              <div class="capability-content">
+                <div class="capability-title">Teoria do Contrário</div>
+                <div class="capability-text">Uma nova postura clínica. Você passa a usar a IA para questionar, não para confirmar.</div>
+              </div>
+            </div>
+            <div class="capability-card">
+              <div class="capability-icon">◍</div>
+              <div class="capability-content">
+                <div class="capability-title">Acesso vitalício ao site</div>
+                <div class="capability-text">Este AIMED OS continua no ar. Volte quando quiser. Ele é seu.</div>
+              </div>
+            </div>
+            <div class="capability-card">
+              <div class="capability-icon">◐</div>
+              <div class="capability-content">
+                <div class="capability-title">Rede da turma</div>
+                <div class="capability-text">Grupo de WhatsApp permanente. Troca entre colegas que viveram os mesmos 2 dias.</div>
+              </div>
+            </div>
+            <div class="capability-card">
+              <div class="capability-icon">◐</div>
+              <div class="capability-content">
+                <div class="capability-title">Certificado de 16 horas</div>
+                <div class="capability-text">Documento oficial. Mas o verdadeiro certificado está funcionando no seu notebook agora.</div>
+              </div>
+            </div>
+          </div>
+
+          <h3>Um pedido final</h3>
+          <p>Vocês são parte de uma turma que vai ser referência. Quando alguém me perguntar "como é o AIMED?", vou lembrar de vocês. Quando outro médico em outra cidade ouvir falar do curso, vocês vão ser os que <strong>fizeram funcionar primeiro</strong>.</p>
+          <p>Três pedidos pequenos, grandes no impacto:</p>
+
+          <div class="steps-guide">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h4>Use de verdade</h4>
+                <p>O curso só existe se vira prática. Não deixe o notebook na gaveta. Abra amanhã.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h4>Volte com perguntas</h4>
+                <p>O grupo de WhatsApp é permanente. Dúvida real vale mais que dúvida perfeita. Pergunte.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h4>Ensine alguém</h4>
+                <p>A melhor forma de consolidar é explicar. Escolha um colega que não fez o curso e mostre <strong>uma coisa</strong> que você aprendeu. Só uma.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="certificate">
+            <div class="cert-stamp">AIMED · Joinville · Abril 2026</div>
+            <div class="cert-title">Certificado <em>Vivo</em></div>
+            <div class="cert-subtitle">
+              O certificado impresso registra 16 horas. Este registra o que vocês realmente levam: um sistema funcionando, uma metodologia internalizada e um grupo que cresceu junto.
+            </div>
+            <div class="cert-meta">
+              <span>25 e 26 de Abril de 2026</span>
+              <span>Hotel Le Canard</span>
+              <span>Joinville · SC</span>
+            </div>
+          </div>
+
+          <div class="quote-hero">
+            <div class="quote-mark">"</div>
+            <div class="quote-text">
+              <strong>2026 é o ano do prompt.</strong><br>
+              Pouca coisa resiste a um prompt bem feito.<br>
+              <span style="font-size: 0.72em; opacity: 0.9;">E agora, vocês <em>sabem escrever</em>.</span>
+            </div>
+          </div>
+
+          <div class="callout">
+            <div class="callout-label">Até breve</div>
+            <p>O Dr. Mbula, a InovaMed e toda a rede AIMED agradecem cada um dos 15 participantes desta turma. Carla, Quelen, Francisco, Arthur, Stefan, Alexandra, Valéria, Helena, Natiéle, Layane, Fernanda L., Fernanda C., Diogo, João e André — vocês fizeram a diferença. Até a próxima edição.</p>
+          </div>
+        `,
         prompts: null
       }
     ]
@@ -2692,6 +4898,9 @@ function renderModule(modulo, bloco) {
   `;
 
   view.innerHTML = html;
+
+  // Aplica tooltips de glossário em todas as abreviaturas
+  aplicarGlossario();
 }
 
 /* ============================================================
@@ -2793,6 +5002,8 @@ function setLevel(lvl) {
   if (modulo && modulo.prompts) {
     const el = document.getElementById('practice');
     el.outerHTML = renderPractice(modulo.prompts);
+    // Reaplica glossário após re-render
+    aplicarGlossario();
   }
 }
 
@@ -2803,6 +5014,134 @@ function findModule(id) {
     }
   }
   return null;
+}
+
+/* ============================================================
+   GLOSSÁRIO AUTOMÁTICO — aplica tooltip em abreviaturas
+   ============================================================ */
+
+const GLOSSARIO = {
+  // Órgãos e sociedades
+  'CFM': 'Conselho Federal de Medicina — órgão que regulamenta a prática médica no Brasil',
+  'ANVISA': 'Agência Nacional de Vigilância Sanitária',
+  'FDA': 'Food and Drug Administration — órgão regulador americano equivalente à ANVISA',
+  'FEBRASGO': 'Federação Brasileira das Associações de Ginecologia e Obstetrícia',
+  'SBP': 'Sociedade Brasileira de Pediatria',
+  'SBC': 'Sociedade Brasileira de Cardiologia',
+  'SBR': 'Sociedade Brasileira de Reumatologia',
+  'ASBAI': 'Associação Brasileira de Alergia e Imunologia',
+  'SUS': 'Sistema Único de Saúde',
+  'LGPD': 'Lei Geral de Proteção de Dados — legislação brasileira sobre privacidade e dados pessoais',
+  'SES-SC': 'Secretaria de Estado da Saúde de Santa Catarina',
+  'GINA': 'Global Initiative for Asthma — guideline internacional de asma',
+  'FIGO': 'International Federation of Gynecology and Obstetrics — federação internacional que classifica traçados de cardiotocografia',
+  'GRADE': 'Grading of Recommendations, Assessment, Development and Evaluation — sistema internacional para classificar qualidade da evidência científica',
+  'PICO': 'Paciente, Intervenção, Comparação, Outcome — estrutura padrão para formular perguntas de pesquisa clínica',
+
+  // Obstetrícia
+  'IG': 'Idade Gestacional — tempo de gestação em semanas',
+  'DUM': 'Data da Última Menstruação',
+  'DHEG': 'Doença Hipertensiva Específica da Gestação',
+  'HELLP': 'Hemólise, Elevação de enzimas hepáticas, Plaquetopenia — síndrome grave da gestação',
+  'CTG': 'Cardiotocografia — exame que registra batimentos cardíacos fetais e contrações uterinas',
+
+  // Exames
+  'RX': 'Radiografia',
+  'ECO': 'Ecocardiograma — ultrassom do coração',
+  'USG': 'Ultrassonografia',
+  'TC': 'Tomografia Computadorizada',
+  'RM': 'Ressonância Magnética',
+  'ECG': 'Eletrocardiograma',
+
+  // Medicina intensiva e clínica
+  'UTI': 'Unidade de Terapia Intensiva',
+  'PA': 'Pressão Arterial',
+  'FC': 'Frequência Cardíaca',
+  'DPOC': 'Doença Pulmonar Obstrutiva Crônica',
+  'IRC': 'Insuficiência Renal Crônica',
+  'HAS': 'Hipertensão Arterial Sistêmica',
+  'TEP': 'Tromboembolismo Pulmonar',
+  'FA': 'Fibrilação Atrial',
+  'IAM': 'Infarto Agudo do Miocárdio',
+  'ICC': 'Insuficiência Cardíaca Congestiva',
+  'PCR': 'Parada Cardiorrespiratória',
+  'PAC': 'Pneumonia Adquirida na Comunidade',
+  'ITU': 'Infecção do Trato Urinário',
+  'SARA': 'Síndrome da Angústia Respiratória Aguda',
+
+  // Laboratório
+  'TGO': 'Transaminase Glutâmico-Oxalacética — enzima hepática',
+  'TGP': 'Transaminase Glutâmico-Pirúvica — enzima hepática',
+  'LDH': 'Desidrogenase Láctica — enzima que se eleva em hemólise e lesão tecidual',
+
+  // Pesquisa e estatística
+  'RCT': 'Randomized Controlled Trial — ensaio clínico randomizado controlado',
+  'RR': 'Risco Relativo — medida estatística de associação',
+  'HR': 'Hazard Ratio — medida de risco ao longo do tempo',
+  'IC': 'Intervalo de Confiança',
+  'NNT': 'Number Needed to Treat — número de pacientes que precisa tratar para beneficiar um',
+  'NNH': 'Number Needed to Harm — número de pacientes tratados para causar um efeito adverso',
+  'AIJ': 'Artrite Idiopática Juvenil',
+
+  // IA e tecnologia
+  'IA': 'Inteligência Artificial',
+  'API': 'Application Programming Interface — interface que permite que sistemas se comuniquem',
+  'LLM': 'Large Language Model — modelo de linguagem de grande escala (como GPT, Claude, Gemini)',
+  'DOI': 'Digital Object Identifier — identificador único de publicações científicas',
+
+  // Outros
+  'COVID': 'Coronavirus Disease 2019 — doença respiratória causada pelo vírus SARS-CoV-2',
+  'REVALIDA': 'Exame Nacional de Revalidação de Diplomas Médicos — prova aplicada no Brasil'
+};
+
+function aplicarGlossario() {
+  const view = document.getElementById('moduleView');
+  if (!view) return;
+
+  // Regex que casa as chaves do glossário como palavras inteiras
+  const termos = Object.keys(GLOSSARIO).sort((a, b) => b.length - a.length);
+  const regex = new RegExp('\\b(' + termos.map(t => t.replace(/[-/]/g, '\\$&')).join('|') + ')\\b', 'g');
+
+  // Percorre nós de texto, ignorando conteúdo dentro de prompts, scripts e tags já processadas
+  function walk(node) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      const parent = node.parentNode;
+      if (!parent) return;
+      // Pula se já está dentro de abbr, code, pre, .prompt-text, .aimed-legend, script, style
+      if (parent.closest('abbr, code, pre, .prompt-text, .aimed-legend, .action-btn, script, style, .legend-item, .brand, .brand-sub, .m-time, .block-label')) return;
+
+      const texto = node.nodeValue;
+      if (!regex.test(texto)) return;
+      regex.lastIndex = 0;
+
+      const frag = document.createDocumentFragment();
+      let lastIndex = 0;
+      let match;
+      while ((match = regex.exec(texto)) !== null) {
+        if (match.index > lastIndex) {
+          frag.appendChild(document.createTextNode(texto.slice(lastIndex, match.index)));
+        }
+        const abbr = document.createElement('abbr');
+        abbr.className = 'gloss';
+        abbr.setAttribute('data-gloss', GLOSSARIO[match[1]]);
+        abbr.setAttribute('title', GLOSSARIO[match[1]]);
+        abbr.setAttribute('tabindex', '0');
+        abbr.textContent = match[1];
+        frag.appendChild(abbr);
+        lastIndex = match.index + match[1].length;
+      }
+      if (lastIndex < texto.length) {
+        frag.appendChild(document.createTextNode(texto.slice(lastIndex)));
+      }
+      parent.replaceChild(frag, node);
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      // Copia filhos antes de percorrer (evita loop infinito com nós novos)
+      const filhos = Array.from(node.childNodes);
+      filhos.forEach(walk);
+    }
+  }
+
+  walk(view);
 }
 
 /* ============================================================
