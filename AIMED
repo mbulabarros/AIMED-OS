@@ -1,0 +1,2926 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIMED OS · Joinville · 25-26 Abril 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   AIMED OS — Site-aula para o curso AIMED Joinville Abril 2026
+   Identidade: navy profundo + dourado cinematográfico
+   ============================================================ */
+
+:root {
+  --navy:         #050e1f;
+  --navy-mid:     #0a1930;
+  --navy-light:   #0f2545;
+  --navy-card:    #0d1e3a;
+  --navy-card-hi: #112545;
+  --gold:         #c9a84c;
+  --gold-light:   #e8c97a;
+  --gold-pale:    #f5e6c0;
+  --gold-dim:     #7a6030;
+  --white:        #ffffff;
+  --gray-100:     #e8edf5;
+  --gray-300:     #9aaabf;
+  --gray-500:     #4a5f7a;
+  --teal:         #25a8bc;
+  --teal-dark:    #1a7a8a;
+  --purple:       #a78bfa;
+  --purple-dark:  #6b46a3;
+  --coral:        #f87171;
+  --coral-dark:   #a33333;
+  --green:        #4ade80;
+  --green-dark:   #276639;
+  --border:       rgba(201,168,76,0.18);
+  --border-strong:rgba(201,168,76,0.45);
+  --radius:       6px;
+  --radius-lg:    10px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html, body {
+  background: var(--navy);
+  color: var(--gray-100);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content:'';
+  position:fixed; inset:0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events:none;
+  z-index:0;
+}
+
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+/* ============================================================
+   LAYOUT PRINCIPAL
+   ============================================================ */
+
+.app {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   SIDEBAR — TRILHA DO CURSO
+   ============================================================ */
+
+.sidebar {
+  background: var(--navy-mid);
+  border-right: 1px solid var(--border);
+  padding: 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.sidebar::-webkit-scrollbar { width: 6px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.25); border-radius: 3px; }
+
+.sidebar-header {
+  padding: 24px 24px 20px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--navy-mid);
+  z-index: 10;
+}
+
+.brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5em;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.brand em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.brand-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+.brand-date {
+  font-size: 12px;
+  color: var(--gray-300);
+  margin-top: 4px;
+}
+
+/* Blocos da trilha */
+.trail {
+  padding: 16px 0 40px;
+}
+
+.block-group {
+  margin-bottom: 8px;
+}
+
+.block-header {
+  padding: 14px 24px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.block-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.block-1 .block-dot { background: var(--teal); }
+.block-2 .block-dot { background: var(--gold); }
+.block-3 .block-dot { background: var(--purple); }
+.block-4 .block-dot { background: var(--coral); }
+
+.block-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+}
+
+.block-role {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold);
+  margin-left: auto;
+}
+
+.block-modules {
+  display: flex;
+  flex-direction: column;
+}
+
+.module-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 24px 10px 44px;
+  border-left: 2px solid transparent;
+  font-size: 13px;
+  color: var(--gray-300);
+  transition: all 0.2s;
+  position: relative;
+}
+
+.module-link::before {
+  content: '';
+  position: absolute;
+  left: 30px; top: 17px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(201,168,76,0.25);
+  transition: all 0.2s;
+}
+
+.module-link:hover {
+  background: rgba(201,168,76,0.04);
+  color: var(--gray-100);
+}
+.module-link:hover::before { background: var(--gold-dim); }
+
+.module-link.active {
+  background: rgba(201,168,76,0.08);
+  border-left-color: var(--gold);
+  color: var(--white);
+}
+.module-link.active::before {
+  background: var(--gold);
+  box-shadow: 0 0 0 4px rgba(201,168,76,0.15);
+}
+
+.module-link.done::before {
+  background: var(--gold);
+  opacity: 0.4;
+}
+
+.module-link.break {
+  color: var(--gray-500);
+  font-style: italic;
+  cursor: default;
+}
+.module-link.break:hover { background: transparent; color: var(--gray-500); }
+.module-link.break::before { background: rgba(201,168,76,0.15); }
+
+.m-time {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  color: var(--gold-dim);
+  flex-shrink: 0;
+  padding-top: 2px;
+  min-width: 62px;
+}
+
+.module-link.active .m-time { color: var(--gold); }
+
+.m-title {
+  flex: 1;
+  line-height: 1.35;
+}
+
+/* ============================================================
+   MAIN CONTENT
+   ============================================================ */
+
+.main {
+  padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.top-bar {
+  padding: 16px 40px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--navy);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+}
+
+.breadcrumb .sep { color: var(--border-strong); }
+.breadcrumb .current { color: var(--gold); }
+
+.top-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.top-btn {
+  padding: 6px 12px;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--gold);
+  font-family: 'DM Mono', monospace;
+  transition: all 0.2s;
+}
+.top-btn:hover { background: rgba(201,168,76,0.08); border-color: var(--border-strong); }
+
+/* ============================================================
+   MÓDULO — CONTEÚDO PRINCIPAL
+   ============================================================ */
+
+.module-view {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 40px 40px 80px;
+}
+
+.module-header {
+  margin-bottom: 40px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.module-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.module-eyebrow .divider {
+  width: 24px; height: 1px;
+  background: var(--gold);
+}
+
+.module-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8em, 4vw, 2.6em);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+
+.module-summary {
+  font-size: 1.05em;
+  color: var(--gray-300);
+  line-height: 1.7;
+  font-weight: 300;
+  max-width: 700px;
+}
+
+/* ============================================================
+   AVATAR SECTION
+   ============================================================ */
+
+.avatar-section {
+  margin-bottom: 40px;
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.avatar-header {
+  padding: 14px 20px;
+  background: var(--navy-mid);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar-badge {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--navy);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.avatar-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.avatar-video {
+  position: relative;
+  padding-bottom: 56.25%;
+  background: var(--navy);
+  overflow: hidden;
+}
+
+.avatar-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+
+.avatar-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--gold-dim);
+  background:
+    radial-gradient(ellipse at center, rgba(201,168,76,0.05) 0%, transparent 70%),
+    var(--navy);
+}
+
+.avatar-placeholder-icon {
+  font-size: 32px;
+  opacity: 0.4;
+}
+
+.avatar-placeholder-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  text-align: center;
+}
+.avatar-placeholder-text strong {
+  color: var(--gold);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 4px;
+  font-size: 13px;
+}
+
+/* ============================================================
+   CONTEÚDO DA AULA
+   ============================================================ */
+
+.content-section {
+  margin-bottom: 44px;
+}
+
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-label::before {
+  content: '';
+  width: 20px; height: 1px;
+  background: var(--gold);
+}
+
+.aula-content h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35em;
+  color: var(--white);
+  margin: 28px 0 14px;
+  font-weight: 700;
+}
+
+.aula-content p {
+  color: var(--gray-100);
+  margin-bottom: 14px;
+  line-height: 1.75;
+  font-weight: 300;
+  font-size: 1em;
+}
+
+.aula-content ul {
+  margin: 14px 0 20px;
+  padding-left: 0;
+}
+
+.aula-content ul li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 10px;
+  color: var(--gray-100);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.aula-content ul li::before {
+  content: '─';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-family: 'DM Mono', monospace;
+}
+
+.aula-content strong {
+  color: var(--gold-light);
+  font-weight: 500;
+}
+
+.aula-content em {
+  color: var(--gold-pale);
+  font-style: italic;
+}
+
+/* Callout / destaque */
+.callout {
+  background: var(--navy-card);
+  border-left: 2px solid var(--gold);
+  padding: 18px 22px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  margin: 24px 0;
+}
+
+.callout-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.callout p { margin: 0; color: var(--gray-100); }
+
+/* ============================================================
+   ÁREA DE PRÁTICA — PROMPT BUILDER
+   ============================================================ */
+
+.practice-section {
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 28px 24px;
+  margin-bottom: 32px;
+}
+
+.practice-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.practice-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3em;
+  color: var(--white);
+  font-weight: 700;
+}
+
+.practice-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+/* Seletor de nível 1/2/3 */
+.level-selector {
+  display: inline-flex;
+  gap: 0;
+  background: var(--navy);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 3px;
+}
+
+.level-btn {
+  padding: 7px 14px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.level-btn:hover { color: var(--gold); }
+
+.level-btn.active {
+  background: var(--gold);
+  color: var(--navy);
+  font-weight: 600;
+}
+
+/* Explicação do nível */
+.level-hint {
+  font-size: 13px;
+  color: var(--gray-300);
+  font-style: italic;
+  margin-bottom: 18px;
+  padding: 10px 14px;
+  background: rgba(201,168,76,0.05);
+  border-left: 2px solid var(--gold-dim);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+/* Caixa de prompt */
+.prompt-box {
+  position: relative;
+  background: var(--navy);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  margin-bottom: 16px;
+}
+
+.prompt-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  color: var(--gray-100);
+  line-height: 1.8;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-height: 450px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.prompt-text::-webkit-scrollbar { width: 5px; }
+.prompt-text::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.25); border-radius: 3px; }
+
+/* Anatomia AIMED visível */
+.prompt-text .ai-a { color: var(--teal); font-weight: 500; }
+.prompt-text .ai-i { color: var(--gold-light); font-weight: 500; }
+.prompt-text .ai-m { color: var(--purple); font-weight: 500; }
+.prompt-text .ai-e { color: var(--green); font-weight: 500; }
+.prompt-text .ai-d { color: var(--coral); font-weight: 500; }
+
+/* Botões de ação do prompt */
+.prompt-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 14px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gold);
+  transition: all 0.2s;
+}
+
+.action-btn:hover {
+  background: rgba(201,168,76,0.08);
+  border-color: var(--border-strong);
+  color: var(--gold-light);
+}
+
+.action-btn.primary {
+  background: var(--gold);
+  color: var(--navy);
+  border-color: var(--gold);
+  font-weight: 600;
+}
+
+.action-btn.primary:hover {
+  background: var(--gold-light);
+  border-color: var(--gold-light);
+  color: var(--navy);
+}
+
+.action-btn .icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.action-btn.copied {
+  background: var(--green-dark);
+  border-color: var(--green);
+  color: var(--green);
+}
+
+/* Legenda da anatomia AIMED */
+.aimed-legend {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 12px 16px;
+  background: rgba(5,14,31,0.6);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 14px;
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.05em;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--gray-300);
+}
+
+.legend-item .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+}
+
+.ld-a { background: var(--teal); }
+.ld-i { background: var(--gold-light); }
+.ld-m { background: var(--purple); }
+.ld-e { background: var(--green); }
+.ld-d { background: var(--coral); }
+
+/* ============================================================
+   NAVEGAÇÃO ENTRE MÓDULOS
+   ============================================================ */
+
+.module-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+}
+
+.nav-btn {
+  flex: 1;
+  max-width: 48%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 20px;
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.nav-btn:hover {
+  background: var(--navy-card-hi);
+  border-color: var(--border-strong);
+}
+
+.nav-btn.next {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.nav-btn .nav-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+}
+
+.nav-btn .nav-title {
+  font-size: 14px;
+  color: var(--gray-100);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.nav-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ============================================================
+   PLACEHOLDER (MÓDULO VAZIO)
+   ============================================================ */
+
+.placeholder {
+  padding: 40px;
+  background: var(--navy-card);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  color: var(--gray-300);
+}
+
+.placeholder-icon {
+  font-size: 32px;
+  color: var(--gold-dim);
+  margin-bottom: 12px;
+  opacity: 0.5;
+}
+
+.placeholder-text {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+}
+
+/* ============================================================
+   LAYOUTS ESPECIAIS DOS MÓDULOS
+   ============================================================ */
+
+.quote-hero {
+  padding: 56px 40px;
+  margin: 28px 0 40px;
+  background:
+    radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 70%),
+    var(--navy-card);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.quote-hero::before, .quote-hero::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.quote-hero::before { top: 0; }
+.quote-hero::after { bottom: 0; }
+
+.quote-mark {
+  font-family: 'Playfair Display', serif;
+  font-size: 72px;
+  color: var(--gold);
+  opacity: 0.3;
+  line-height: 0.5;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+.quote-text {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.3em, 2.6vw, 1.8em);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1.4;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.quote-text strong {
+  color: var(--gold);
+  font-style: normal;
+  font-weight: 700;
+}
+
+.promise-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 32px 0;
+}
+.promise-card {
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 20px;
+  transition: all 0.2s;
+}
+.promise-card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+}
+.promise-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2em;
+  font-weight: 900;
+  color: var(--gold);
+  opacity: 0.5;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.promise-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1em;
+  color: var(--white);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.promise-text {
+  font-size: 0.88em;
+  color: var(--gray-300);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.mini-map {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin: 24px 0;
+}
+.mini-map-item {
+  background: var(--navy-card);
+  padding: 18px 14px;
+  text-align: center;
+}
+.mini-map-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.mini-map-role {
+  font-family: 'Playfair Display', serif;
+  font-size: 1em;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 28px 0;
+}
+.platform-card {
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 20px;
+  border-top: 3px solid;
+}
+.platform-card.gpt { border-top-color: var(--green); }
+.platform-card.claude { border-top-color: var(--gold); }
+.platform-card.gemini { border-top-color: var(--teal); }
+
+.platform-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2em;
+  color: var(--white);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.platform-role {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  color: var(--gold);
+}
+.platform-steps { list-style: none; counter-reset: step; padding: 0; margin: 0; }
+.platform-steps li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 10px;
+  font-size: 0.87em;
+  color: var(--gray-100);
+  line-height: 1.55;
+  font-weight: 300;
+}
+.platform-steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0; top: 0;
+  width: 18px; height: 18px;
+  background: rgba(201,168,76,0.15);
+  border: 1px solid var(--border-strong);
+  color: var(--gold);
+  border-radius: 50%;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vs-compare {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 20px;
+  align-items: stretch;
+  margin: 28px 0;
+}
+.vs-card {
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 22px;
+}
+.vs-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15em;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.vs-card ul { list-style: none; padding: 0; }
+.vs-card li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 8px;
+  font-size: 0.9em;
+  color: var(--gray-100);
+  line-height: 1.55;
+  font-weight: 300;
+}
+.vs-card li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+}
+.vs-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3em;
+  font-style: italic;
+  color: var(--gold-dim);
+  min-width: 30px;
+}
+
+.checklist {
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  margin: 24px 0;
+}
+.checklist-header {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(201,168,76,0.08);
+}
+.checklist-item:last-child { border-bottom: none; }
+.check-box {
+  width: 20px; height: 20px;
+  border-radius: 4px;
+  border: 1.5px solid var(--gold);
+  background: transparent;
+  flex-shrink: 0;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1;
+}
+.check-box.done {
+  background: var(--gold);
+  color: var(--navy);
+}
+.check-text {
+  color: var(--gray-100);
+  font-size: 0.95em;
+  line-height: 1.55;
+  font-weight: 300;
+}
+.check-text strong {
+  color: var(--gold-light);
+  font-weight: 500;
+}
+
+.steps-guide { margin: 24px 0; }
+.step-item {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(201,168,76,0.08);
+}
+.step-item:last-child { border-bottom: none; }
+.step-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2em;
+  font-weight: 900;
+  color: var(--gold);
+  opacity: 0.7;
+  line-height: 1;
+}
+.step-content h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1em;
+  color: var(--white);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.step-content p {
+  color: var(--gray-100);
+  font-size: 0.92em;
+  line-height: 1.65;
+  font-weight: 300;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .promise-grid { grid-template-columns: 1fr; }
+  .platform-grid { grid-template-columns: 1fr; }
+  .mini-map { grid-template-columns: repeat(2, 1fr); }
+  .vs-compare { grid-template-columns: 1fr; }
+  .vs-divider { transform: rotate(90deg); padding: 8px 0; }
+}
+
+/* ============================================================
+   LAYOUTS BLOCO 2 — TARDE DE SÁBADO
+   ============================================================ */
+
+/* Galeria de tipos de exame */
+.exam-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 24px 0;
+}
+.exam-card {
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 14px;
+  text-align: center;
+  transition: all 0.2s;
+}
+.exam-card:hover {
+  border-color: var(--border-strong);
+  transform: translateY(-2px);
+}
+.exam-icon {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8em;
+  color: var(--gold);
+  font-style: italic;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+.exam-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--white);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.exam-desc {
+  font-size: 0.78em;
+  color: var(--gray-300);
+  line-height: 1.4;
+  font-weight: 300;
+}
+
+/* Cenários em 3 colunas (fluxo de voz) */
+.scenario-flow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 28px 0;
+}
+.scenario-card {
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 20px;
+}
+.scenario-card::before {
+  content: '';
+  display: block;
+  width: 32px; height: 2px;
+  background: var(--gold);
+  margin-bottom: 14px;
+}
+.scenario-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.scenario-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1em;
+  color: var(--white);
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.scenario-text {
+  font-size: 0.88em;
+  color: var(--gray-300);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* Grid de alertas */
+.alert-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 28px 0;
+}
+.alert-card {
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid;
+  border-radius: var(--radius);
+  padding: 20px 22px;
+}
+.alert-card.danger { border-left-color: var(--coral); }
+.alert-card.warning { border-left-color: var(--gold); }
+.alert-card.info { border-left-color: var(--teal); }
+.alert-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.alert-card.danger .alert-label { color: var(--coral); }
+.alert-card.warning .alert-label { color: var(--gold); }
+.alert-card.info .alert-label { color: var(--teal); }
+.alert-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05em;
+  color: var(--white);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.alert-text {
+  font-size: 0.88em;
+  color: var(--gray-300);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* Manifesto da Teoria do Contrário */
+.tc-manifesto {
+  padding: 56px 44px;
+  margin: 32px 0;
+  background:
+    linear-gradient(135deg, rgba(201,168,76,0.08) 0%, transparent 70%),
+    var(--navy-card);
+  border: 2px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+}
+.tc-manifesto::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 180px; height: 180px;
+  background: radial-gradient(circle at top right, rgba(201,168,76,0.12), transparent 70%);
+  pointer-events: none;
+}
+.tc-manifesto-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+.tc-manifesto-text {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.2em, 2.4vw, 1.65em);
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.5;
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
+}
+.tc-manifesto-text em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+/* Fases da Teoria do Contrário */
+.tc-phases {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  gap: 10px;
+  align-items: stretch;
+  margin: 32px 0;
+}
+.tc-phase {
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 20px;
+  text-align: center;
+  transition: all 0.2s;
+}
+.tc-phase.active {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.06);
+}
+.tc-phase-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2em;
+  font-weight: 900;
+  color: var(--gold);
+  opacity: 0.4;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.tc-phase.active .tc-phase-num { opacity: 0.8; }
+.tc-phase-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.tc-phase-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05em;
+  color: var(--white);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.tc-phase-text {
+  font-size: 0.82em;
+  color: var(--gray-300);
+  line-height: 1.55;
+  font-weight: 300;
+}
+.tc-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-dim);
+  font-size: 18px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+}
+
+/* Campo aberto para preencher (efeito caderno) */
+.field-card {
+  background:
+    repeating-linear-gradient(transparent 0px, transparent 28px, rgba(201,168,76,0.06) 28px, rgba(201,168,76,0.06) 29px),
+    var(--navy-card);
+  border: 1px solid var(--border-strong);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 26px 30px;
+  margin: 24px 0;
+}
+.field-card-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.field-card-prompt {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2em;
+  color: var(--white);
+  font-style: italic;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+.field-card-hint {
+  font-size: 0.85em;
+  color: var(--gray-300);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* Carta para o dia seguinte */
+.letter-card {
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px 44px;
+  margin: 28px 0;
+  position: relative;
+}
+.letter-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 44px; right: 44px;
+  height: 2px;
+  background: var(--gold);
+}
+.letter-header {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+.letter-body {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05em;
+  color: var(--gray-100);
+  font-style: italic;
+  line-height: 1.75;
+}
+.letter-body p { margin-bottom: 16px; }
+.letter-body p:last-child { margin-bottom: 0; }
+.letter-body strong {
+  color: var(--gold-light);
+  font-weight: 600;
+  font-style: normal;
+}
+.letter-signature {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95em;
+  color: var(--gold);
+  text-align: right;
+  font-style: italic;
+}
+
+/* Responsive Bloco 2 */
+@media (max-width: 900px) {
+  .exam-gallery { grid-template-columns: repeat(2, 1fr); }
+  .scenario-flow { grid-template-columns: 1fr; }
+  .alert-grid { grid-template-columns: 1fr; }
+  .tc-phases { grid-template-columns: 1fr; }
+  .tc-arrow { transform: rotate(90deg); padding: 6px 0; }
+  .letter-card { padding: 28px 22px; }
+  .tc-manifesto { padding: 36px 24px; }
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+.mobile-toggle {
+  display: none;
+  position: fixed;
+  top: 12px; right: 12px;
+  z-index: 100;
+  width: 42px; height: 42px;
+  background: var(--navy-card);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  color: var(--gold);
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .app { grid-template-columns: 1fr; }
+  .sidebar {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    width: 300px;
+    z-index: 90;
+    transition: left 0.3s;
+    box-shadow: 0 0 40px rgba(0,0,0,0.5);
+  }
+  .sidebar.open { left: 0; }
+  .mobile-toggle { display: flex; }
+  .module-view { padding: 24px 20px 60px; }
+  .top-bar { padding: 14px 20px; }
+}
+
+/* ============================================================
+   TOAST (confirmação de cópia)
+   ============================================================ */
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--gold);
+  color: var(--navy);
+  padding: 14px 24px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  z-index: 1000;
+  transition: transform 0.3s;
+  box-shadow: 0 8px 30px rgba(201,168,76,0.3);
+  max-width: 90vw;
+  text-align: center;
+}
+
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+</style>
+</head>
+<body>
+
+<button class="mobile-toggle" onclick="toggleSidebar()">☰</button>
+
+<div class="app">
+
+  <!-- ============================================================
+       SIDEBAR — TRILHA DO CURSO
+       ============================================================ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="brand">AIMED <em>OS</em></div>
+      <div class="brand-sub">Joinville · Abril 2026</div>
+      <div class="brand-date">25 e 26 de Abril · Hotel Le Canard</div>
+    </div>
+    <nav class="trail" id="trail">
+      <!-- Populado por JS -->
+    </nav>
+  </aside>
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <main class="main">
+    <div class="top-bar">
+      <div class="breadcrumb" id="breadcrumb">
+        <span>AIMED OS</span>
+        <span class="sep">/</span>
+        <span class="current" id="crumb-module">Carregando…</span>
+      </div>
+      <div class="top-actions">
+        <button class="top-btn" onclick="window.print()">Imprimir</button>
+      </div>
+    </div>
+
+    <div class="module-view" id="moduleView">
+      <!-- Populado por JS -->
+    </div>
+  </main>
+
+</div>
+
+<div class="toast" id="toast">Copiado!</div>
+
+<script>
+/* ============================================================
+   AIMED OS — Dados do Programa
+   ============================================================ */
+
+const PROGRAMA = [
+  {
+    id: 'bloco-1',
+    numero: 1,
+    role: 'Arquiteto',
+    dia: 1,
+    modulos: [
+      {
+        id: 'abertura',
+        horario: '08:00–08:20',
+        titulo: 'Abertura',
+        summary: 'O tom dos próximos dois dias. Quem somos, o que vamos construir, e por que este curso é diferente de qualquer coisa que você viu sobre IA na medicina.',
+        avatar: null,
+        conteudo: `
+          <div class="quote-hero">
+            <div class="quote-mark">"</div>
+            <div class="quote-text"><strong>2026 é o ano do prompt.</strong><br>Pouca coisa resiste a um prompt bem feito.</div>
+          </div>
+
+          <h3>O que você leva daqui</h3>
+          <p>Este curso não é sobre a IA. É sobre <strong>você dirigindo a IA</strong>. A diferença está nas três promessas abaixo — são o contrato destes dois dias.</p>
+
+          <div class="promise-grid">
+            <div class="promise-card">
+              <div class="promise-number">01</div>
+              <div class="promise-title">Metodologia própria</div>
+              <div class="promise-text">Você sai com o framework AIMED internalizado. Assistente, Informações, Missão, Estrutura, Diretrizes — aplicado à sua especialidade.</div>
+            </div>
+            <div class="promise-card">
+              <div class="promise-number">02</div>
+              <div class="promise-title">Sistema funcionando</div>
+              <div class="promise-text">GPT, Claude, Gemini e NotebookLM personalizados para sua prática. Não "configurar depois" — funcionando na segunda de manhã.</div>
+            </div>
+            <div class="promise-card">
+              <div class="promise-number">03</div>
+              <div class="promise-title">Raciocínio crítico</div>
+              <div class="promise-text">A Teoria do Contrário como postura clínica permanente. Você passa a usar a IA para questionar, não para confirmar.</div>
+            </div>
+          </div>
+
+          <h3>O mapa dos dois dias</h3>
+          <p>Cada bloco se constrói sobre o anterior. Você entra como médico, sai como um sistema aumentado por IA.</p>
+
+          <div class="mini-map">
+            <div class="mini-map-item">
+              <div class="mini-map-label">Bloco 01 · Sáb manhã</div>
+              <div class="mini-map-role">Arquiteto</div>
+            </div>
+            <div class="mini-map-item">
+              <div class="mini-map-label">Bloco 02 · Sáb tarde</div>
+              <div class="mini-map-role">Clínico</div>
+            </div>
+            <div class="mini-map-item">
+              <div class="mini-map-label">Bloco 03 · Dom manhã</div>
+              <div class="mini-map-role">Pesquisador</div>
+            </div>
+            <div class="mini-map-item">
+              <div class="mini-map-label">Bloco 04 · Dom tarde</div>
+              <div class="mini-map-role">Integrador</div>
+            </div>
+          </div>
+
+          <div class="callout">
+            <div class="callout-label">Regra da sala</div>
+            <p>Todos aqui são alunos — <strong>incluindo eu</strong>. Especialidade, hierarquia institucional e tempo de carreira ficam na porta. O que acontece nesta sala é construção coletiva.</p>
+          </div>
+        `,
+        prompts: null
+      },
+      {
+        id: 'metodologia-aimed',
+        horario: '08:20–09:20',
+        titulo: 'Metodologia AIMED para Geração de Prompts',
+        summary: 'A anatomia do prompt médico de alta performance: Assistente, Informações, Missão, Estrutura e Diretrizes. Técnicas avançadas integradas à metodologia.',
+        avatar: null,
+        conteudo: `
+          <h3>Por que a maioria dos prompts médicos falha</h3>
+          <p>A IA não é ruim — o prompt é raso. Quando o médico escreve <em>"me dá um diagnóstico diferencial para dor torácica"</em>, ele está pedindo para a IA adivinhar 80% do contexto: idade, comorbidades, posição clínica, nível de evidência esperado, formato da resposta, limites éticos. O resultado é genérico e frustrante.</p>
+          <p>A <strong>Metodologia AIMED</strong> resolve isso transformando o prompt em uma estrutura clínica com 5 componentes não-negociáveis.</p>
+
+          <h3>Os 5 componentes AIMED</h3>
+          <ul>
+            <li><strong>A — Assistente:</strong> Quem é o especialista que está respondendo. Não "um médico" — mas <em>cardiologista intensivista com 20 anos de UTI adulto, com viés para condutas conservadoras baseadas em evidência</em>.</li>
+            <li><strong>I — Informações:</strong> O contexto clínico denso. Idade, peso, história, medicações, exames, achados. Quanto mais, melhor.</li>
+            <li><strong>M — Missão:</strong> Verbo de ação concreto e saída esperada. Não "me ajude" — mas <em>"liste os 5 diagnósticos diferenciais mais prováveis em ordem de probabilidade, com raciocínio para cada um"</em>.</li>
+            <li><strong>E — Estrutura:</strong> O formato exato da resposta. Tabela? Lista? Prosa? Markdown? Quais seções? Em que ordem?</li>
+            <li><strong>D — Diretrizes:</strong> Limites éticos, viéses a evitar, fontes preferidas, o que nunca fazer. É onde o médico assina a postura clínica.</li>
+          </ul>
+
+          <div class="callout">
+            <div class="callout-label">Princípio fundamental</div>
+            <p>A especificidade no campo <strong>Assistente</strong> é a variável de maior impacto. Um "A" vago produz toda a cadeia vaga. Um "A" preciso levanta o teto da IA inteira.</p>
+          </div>
+
+          <h3>Técnicas avançadas integradas ao AIMED</h3>
+          <ul>
+            <li><strong>Cadeia de raciocínio:</strong> peça para a IA "pensar passo a passo antes de responder" dentro da Missão.</li>
+            <li><strong>Calibração por exemplo:</strong> nas Diretrizes, adicione "responda no mesmo estilo deste exemplo" e cole um exemplo de resposta que você considera padrão-ouro.</li>
+            <li><strong>Auto-refinamento:</strong> termine com "após responder, revise criticamente sua própria resposta e aponte 2 fragilidades".</li>
+          </ul>
+        `,
+        prompts: {
+          titulo: 'Diagnóstico diferencial em obstetrícia',
+          nivel1: {
+            hint: 'Prompt direto — funciona, mas perde profundidade',
+            texto: `Você é obstetra.\n\nPaciente: 32 anos, G2P1, 34 semanas, dor abdominal superior + PA 160x110 + proteinúria.\n\nListe os principais diagnósticos diferenciais.`
+          },
+          nivel2: {
+            hint: 'Com contexto e estrutura — melhora significativa',
+            texto: `<span class="ai-a">Você é obstetra especialista em gestação de alto risco, com 15 anos de centro obstétrico, viés para conduta proativa em emergência hipertensiva.</span>\n\n<span class="ai-i">Paciente: 32 anos, G2P1 (cesárea prévia 2022), IG 34s4d por USG 1º tri, dor em hipocôndrio direito há 6h, PA 160x110 mmHg (confirmada em 2 medidas), proteinúria 3+ fita, plaquetas 98.000, TGO 142, TGP 168, LDH 620.</span>\n\n<span class="ai-m">Liste os 5 diagnósticos diferenciais mais prováveis, em ordem decrescente de probabilidade. Para cada um: mecanismo fisiopatológico, exame que confirma, conduta imediata.</span>\n\n<span class="ai-e">Formato: tabela markdown com colunas (Diagnóstico | Probabilidade | Confirmação | Conduta imediata).</span>\n\n<span class="ai-d">Sinalize explicitamente se houver risco materno-fetal iminente. Não ofereça conduta sem confirmar que o centro cirúrgico está disponível.</span>`
+          },
+          nivel3: {
+            hint: 'Raciocínio em cadeia + auto-refinamento — precisão máxima',
+            texto: `<span class="ai-a">Você é obstetra especialista em gestação de alto risco, com 15 anos de centro obstétrico, viés para conduta proativa em emergência hipertensiva. Atua em hospital terciário com UTI materna e neonatal disponíveis.</span>\n\n<span class="ai-i">Paciente: 32 anos, G2P1 (cesárea prévia 2022 por DHEG), IG 34s4d por USG 1º tri, dor em hipocôndrio direito há 6h (EVA 8/10), cefaleia frontal há 4h, PA 160x110 mmHg (confirmada em 2 medidas com 15min de intervalo), proteinúria 3+ em fita urinária.\n\nLaboratório (últimas 2h): plaquetas 98.000, TGO 142, TGP 168, LDH 620, creatinina 1.1, ácido úrico 8.2, bilirrubina total 1.8.\n\nCTG: traçado categoria II, variabilidade mínima, sem desacelerações.\nUSG: peso fetal estimado 2.150g (p35), ILA 8, Doppler umbilical com índice de pulsatilidade p90.</span>\n\n<span class="ai-m">Antes de responder, raciocine passo a passo:\n1. Quais critérios de gravidade de pré-eclâmpsia estão presentes?\n2. A paciente preenche critérios para HELLP completo ou parcial?\n3. Qual o nível de urgência para interrupção?\n\nDepois do raciocínio, apresente os 5 diagnósticos diferenciais em ordem decrescente de probabilidade. Para cada um: mecanismo, confirmação laboratorial/exame, conduta imediata, janela de tempo para ação.\n\nAo final, revise criticamente sua própria resposta e aponte 2 fragilidades ou pontos onde um obstetra sênior discordaria.</span>\n\n<span class="ai-e">Formato:\n1. Raciocínio passo a passo (prosa curta, 3-5 linhas por item)\n2. Tabela markdown dos 5 diagnósticos (Diagnóstico | Probabilidade % | Fisiopatologia | Confirmação | Conduta | Janela)\n3. Síntese em 3 linhas: diagnóstico mais provável + conduta imediata + próximo passo em 30min\n4. Auto-crítica: 2 fragilidades da resposta</span>\n\n<span class="ai-d">Esta paciente preenche critérios de gravidade. Priorize segurança materna sobre maturidade fetal. Não ofereça conduta expectante se houver critério de iminência. Referencie sempre a FEBRASGO e o protocolo local quando houver divergência com literatura internacional. Assuma que o centro cirúrgico e UTI neonatal estão disponíveis — mencione explicitamente a necessidade de comunicar a equipe multiprofissional.</span>`
+          }
+        }
+      },
+      {
+        id: 'personalizacao-ias',
+        horario: '09:20–10:00',
+        titulo: 'Personalização das IAs',
+        summary: 'As três IAs principais que vamos usar no curso. Você vai transformar cada uma em uma versão personalizada da sua especialidade — funcionando permanentemente, sem precisar explicar quem é você toda vez.',
+        avatar: null,
+        conteudo: `
+          <h3>O conceito: Perfil Clínico Permanente</h3>
+          <p>Até agora você provavelmente abre o ChatGPT e começa todo prompt explicando quem é, o que faz, em que hospital trabalha, quais protocolos segue. Isso é <strong>energia desperdiçada toda vez</strong>.</p>
+          <p>O Perfil Clínico Permanente resolve isso: você configura <em>uma vez</em> quem você é, em que contexto trabalha, quais são seus princípios clínicos — e a IA passa a responder já sabendo tudo isso. Você ganha 5 minutos em cada consulta com ela.</p>
+
+          <div class="callout">
+            <div class="callout-label">A pergunta que você responde agora</div>
+            <p>Se você tivesse que explicar para um colega recém-chegado <strong>quem você é clinicamente em 3 parágrafos</strong> — sua especialidade, sua postura, seus critérios — o que estaria lá? Essa é a matéria-prima do seu perfil.</p>
+          </div>
+
+          <h3>As três plataformas, lado a lado</h3>
+          <p>Cada uma tem uma interface diferente para personalização. Mesmo perfil, três caminhos.</p>
+
+          <div class="platform-grid">
+            <div class="platform-card gpt">
+              <div class="platform-name">ChatGPT</div>
+              <div class="platform-role">Instruções Personalizadas</div>
+              <ul class="platform-steps">
+                <li>Menu do perfil → <strong>Personalizar ChatGPT</strong></li>
+                <li>Campo <em>"Como você gostaria que o ChatGPT respondesse?"</em> recebe o perfil</li>
+                <li>Ativar para <em>todas as conversas novas</em></li>
+                <li>Vale para GPT padrão, GPTs customizados e voz</li>
+              </ul>
+            </div>
+            <div class="platform-card claude">
+              <div class="platform-name">Claude</div>
+              <div class="platform-role">Projetos + Style</div>
+              <ul class="platform-steps">
+                <li>Criar um <strong>Projeto</strong> por especialidade</li>
+                <li>Adicionar protocolos e diretrizes como arquivos do projeto</li>
+                <li>Colocar o perfil nas <em>Instruções do projeto</em></li>
+                <li>Todas as conversas dentro do projeto já sabem o contexto</li>
+              </ul>
+            </div>
+            <div class="platform-card gemini">
+              <div class="platform-name">Gemini</div>
+              <div class="platform-role">Gems + Memória</div>
+              <ul class="platform-steps">
+                <li>Criar um <strong>Gem</strong> com o perfil como instrução</li>
+                <li>Ativar <em>Memória</em> nas configurações da conta</li>
+                <li>Anexar documentos de referência ao Gem</li>
+                <li>Disponível no Gemini App e no Gemini Live</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3>Quando usar cada uma</h3>
+          <p>As três não são concorrentes — são <strong>colegas com perfis diferentes</strong>. O curso vai ensinar a dividir tarefas entre elas.</p>
+          <ul>
+            <li><strong>ChatGPT</strong> para síntese rápida, voz, versatilidade geral do dia a dia</li>
+            <li><strong>Claude</strong> para análise profunda de PDFs, raciocínio longo, crítica metodológica</li>
+            <li><strong>Gemini</strong> para literatura científica indexada em tempo real e multimodal</li>
+          </ul>
+
+          <div class="callout">
+            <div class="callout-label">Exercício ao vivo</div>
+            <p>Cada participante vai escrever o próprio perfil agora — em 10 minutos — e colar nas três plataformas. Ao final, vamos testar o mesmo prompt nas três e ver como a personalização muda a resposta.</p>
+          </div>
+        `,
+        prompts: {
+          titulo: 'Perfil Clínico Permanente — base para colar nas 3 IAs',
+          nivel1: {
+            hint: 'Perfil mínimo — rápido de colar, melhora em 30% a qualidade',
+            texto: `Sou médico(a) [ESPECIALIDADE], atuo em [CONTEXTO: consultório/hospital/UTI].\n\nMinha área específica de atuação é [SUB-ÁREA].\n\nQuando eu pedir ajuda clínica, me responda:\n- Em linguagem técnica, sem simplificações\n- Com foco em conduta prática\n- Sinalizando limitações da IA quando houver\n- Baseado em evidência atual brasileira quando possível`
+          },
+          nivel2: {
+            hint: 'Perfil completo AIMED — postura clínica embutida',
+            texto: `<span class="ai-a">Sou Dr(a). [NOME], médico(a) [ESPECIALIDADE] com [X] anos de formação. Atuo em [HOSPITAL/CLÍNICA], com subespecialidade em [ÁREA]. Minha postura clínica é [conservadora/proativa/baseada em evidência]. Sigo preferencialmente as diretrizes da [SBP/FEBRASGO/SBC/SBR/etc].</span>\n\n<span class="ai-i">Contexto institucional: [hospital terciário com UTI, hospital geral, consultório privado, etc.]. Recursos disponíveis: [exames, suporte, referência]. Limitações: [o que não tenho disponível].</span>\n\n<span class="ai-m">Quando eu trouxer uma questão clínica, ajude-me a:\n1. Estruturar o raciocínio diagnóstico\n2. Considerar diagnósticos diferenciais relevantes\n3. Propor conduta prática aplicável ao meu contexto</span>\n\n<span class="ai-e">Formato padrão das suas respostas:\n- Resposta direta primeiro, fundamentação depois\n- Use tabelas para comparações e decisões\n- Cite fontes brasileiras quando disponíveis\n- Sinalize nível de evidência quando relevante</span>\n\n<span class="ai-d">Nunca:\n- Ofereça diagnóstico ou conduta definitivos sem meu julgamento clínico\n- Use linguagem leiga — sou médico(a), não paciente\n- Invente referências científicas\n- Responda sobre áreas fora da minha especialidade sem avisar\n\nSempre:\n- Sinalize quando a literatura for controversa\n- Lembre que a decisão final é clínica, não algorítmica\n- Considere a realidade do SUS/saúde suplementar brasileira</span>`
+          },
+          nivel3: {
+            hint: 'Perfil master — postura + protocolos + viés + auto-calibração',
+            texto: `<span class="ai-a">Sou Dr(a). [NOME], [ESPECIALIDADE] com [X] anos de prática, formação em [INSTITUIÇÃO], residência em [INSTITUIÇÃO]. Atuo em [HOSPITAL] — [terciário/secundário], [público/privado/misto]. Subespecialidade: [ÁREA]. Publico em [ÁREAS DE PESQUISA]. Sou membro de [SOCIEDADES].\n\nPostura clínica:\n- [Conservador/proativo] em decisões de alto risco\n- [Favorece/questiona] condutas de guideline quando evidência recente é fraca\n- Prioriza [segurança/eficácia/experiência do paciente] em empate clínico\n- Trata condições limítrofes como [...]</span>\n\n<span class="ai-i">Recursos do meu contexto:\nDisponível: [exames, UTI, referência, equipe multidisciplinar]\nLimitado: [o que falta]\nPopulação atendida: [perfil socioeconômico, faixa etária, comorbidades frequentes]\n\nProtocolos que sigo preferencialmente:\n- [PROTOCOLO 1 — ex: FEBRASGO 2024 para pré-eclâmpsia]\n- [PROTOCOLO 2]\n- [PROTOCOLO 3]\n\nMedicações que tenho acesso imediato: [lista ou "formulário completo SUS"]</span>\n\n<span class="ai-m">Quando eu trouxer uma questão clínica:\n1. Antes de responder, identifique: é uma pergunta diagnóstica, terapêutica, prognóstica ou de decisão compartilhada?\n2. Raciocine passo a passo antes de concluir\n3. Sempre considere pelo menos 3 diagnósticos diferenciais relevantes\n4. Proponha conduta adaptada ao meu contexto, não conduta "de livro"\n5. Ao final, aponte 1-2 fragilidades do seu próprio raciocínio</span>\n\n<span class="ai-e">Formato padrão:\n\n**Conclusão primeiro** (2-3 linhas)\n\n**Raciocínio** (passo a passo, numerado)\n\n**Diagnósticos diferenciais** (tabela: Hipótese | Probabilidade | Confirmação | Conduta)\n\n**Conduta no meu contexto** (o que fazer nas próximas 30-60 minutos)\n\n**Fragilidades da resposta** (o que um sênior discordaria)\n\n**Referências** (se houver evidência forte recente, cite)</span>\n\n<span class="ai-d">Princípios inegociáveis:\n- Nunca invente referências, dosagens, protocolos ou guidelines inexistentes\n- Nunca ofereça diagnóstico definitivo — sugira hipóteses ranqueadas\n- Nunca use linguagem leiga — respondo como médico(a), não como paciente\n- Nunca pule o raciocínio — conclusões sem caminho são inúteis clinicamente\n- Nunca ignore a realidade brasileira — SUS, saúde suplementar, disponibilidade regional\n- Nunca trate questões fora da minha especialidade sem avisar explicitamente\n\nSempre:\n- Sinalize nível de evidência (alto/moderado/baixo/opinião de especialista)\n- Diferencie "o que diz o guideline" de "o que faria um sênior experiente"\n- Proponha conduta de <strong>próxima meia hora</strong> antes de conduta de longo prazo\n- Considere segurança medicamentosa automaticamente (interações, ajuste renal/hepático, gestação/lactação quando aplicável)\n- Lembre-me de decisão compartilhada quando houver equipoise\n\nAuto-calibração:\nSe detectar que eu estou pedindo algo fora da boa prática, sinalize isso antes de responder. Se a pergunta for muito vaga para resposta clínica segura, peça os dados que faltam em vez de chutar.</span>`
+          }
+        }
+      },
+      {
+        id: 'cafe-1',
+        horario: '10:00–10:15',
+        titulo: 'Café',
+        break: true
+      },
+      {
+        id: 'voz-primeira',
+        horario: '10:15–11:00',
+        titulo: 'A Voz como Primeira Ferramenta',
+        summary: 'Esqueça a tela por 45 minutos. Vamos falar com a IA como se fala com um colega no corredor — e ver o que muda quando a barreira do teclado desaparece.',
+        avatar: null,
+        conteudo: `
+          <h3>Por que começar pela voz</h3>
+          <p>A maioria dos médicos que tentam IA fracassa pela mesma razão: <strong>escrever prompt bom demora</strong>. Em um plantão, você não tem 5 minutos para digitar contexto clínico.</p>
+          <p>Voz resolve isso. Você fala o caso como falaria para um residente — a IA escuta, entende, responde. O prompt vira conversa. E o melhor: as versões atuais de voz do GPT e do Gemini já são <em>boas o suficiente</em> para uso clínico real.</p>
+
+          <div class="callout">
+            <div class="callout-label">O que muda quando você fala em vez de digitar</div>
+            <p>Você traz <strong>detalhes naturais</strong> que nunca digitaria. Tom da voz ("essa paciente está me preocupando"), contexto ambiental ("estou no centro obstétrico agora"), hesitação produtiva ("acho que é isso, mas...") — tudo isso vira contexto clínico que melhora a resposta.</p>
+          </div>
+
+          <h3>As duas ferramentas de voz que vamos usar</h3>
+          <p>GPT Voice e Gemini Live. Ambas no celular, ambas já disponíveis hoje, ambas com personalidades diferentes.</p>
+
+          <div class="vs-compare">
+            <div class="vs-card">
+              <div class="vs-name">GPT Voice</div>
+              <ul>
+                <li>Voz natural, cadência próxima da humana</li>
+                <li>Respostas mais longas e estruturadas</li>
+                <li>Melhor para ditar laudos e discutir casos</li>
+                <li>Acessível por qualquer GPT customizado</li>
+              </ul>
+            </div>
+            <div class="vs-divider">vs</div>
+            <div class="vs-card">
+              <div class="vs-name">Gemini Live</div>
+              <ul>
+                <li>Interrupção fluida — conversa de ida e volta</li>
+                <li>Acesso a dados em tempo real durante a fala</li>
+                <li>Melhor para brainstorming e consultas rápidas</li>
+                <li>Integrado ao Google — puxa agenda, Drive, Gmail</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3>Exercício ao vivo — cada um fala um caso</h3>
+          <p>Não é demonstração do instrutor. Cada participante, no próprio celular, abre o GPT Voice (ou o Gemini Live) e fala um caso real da sua rotina — <strong>sem anotar nada antes</strong>. Vamos observar três coisas em cada fala:</p>
+
+          <div class="steps-guide">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h4>A IA entendeu o contexto?</h4>
+                <p>Ela captou a especialidade, a gravidade, o ponto de decisão? Ou respondeu genérico?</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h4>A resposta foi útil em 30 segundos?</h4>
+                <p>Resposta clínica boa é resposta que cabe no tempo real de um plantão. Se demora demais, perde o valor.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h4>Você teria repetido o caso diferente sabendo o que sabe agora?</h4>
+                <p>Aqui mora o aprendizado. Falar com IA é treinar o próprio raciocínio de apresentação de caso.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout">
+            <div class="callout-label">A regra da voz</div>
+            <p>Quanto mais <strong>natural</strong> você fala, melhor a IA responde. Pausa, hesitação, "deixa eu pensar" — tudo isso ajuda. Não tente falar como prompt escrito. Fale como médico pensa.</p>
+          </div>
+        `,
+        prompts: {
+          titulo: 'Comando inicial para sessão de voz clínica',
+          nivel1: {
+            hint: 'Pedido simples — já filtra o modo "paciente" da IA',
+            texto: `Vou te passar um caso clínico por voz. Me escute até o fim, depois me dê sua análise.\n\nResponda em linguagem técnica — sou médico(a).`
+          },
+          nivel2: {
+            hint: 'Contexto + formato — a IA já sabe como escutar e responder',
+            texto: `<span class="ai-a">Vamos fazer uma sessão de discussão de caso. Você é um(a) colega especialista experiente na minha área.</span>\n\n<span class="ai-i">Vou te passar um caso clínico por voz. Eu posso hesitar, me corrigir no meio, trazer informação fora de ordem — é conversa normal de colegas, não apresentação formal.</span>\n\n<span class="ai-m">Depois que eu terminar de falar:\n1. Confirme se captou os pontos principais (em 2-3 linhas)\n2. Me diga os 3 diagnósticos diferenciais mais prováveis\n3. Sugira o próximo passo de investigação</span>\n\n<span class="ai-d">Se eu falar algo que você não entendeu ou achou estranho, pergunte. Não responda no vazio.</span>`
+          },
+          nivel3: {
+            hint: 'Modo corredor — IA como colega sênior em discussão informal',
+            texto: `<span class="ai-a">Você é um(a) colega sênior da minha especialidade — 20 anos de plantão, tom de corredor, sem formalidade acadêmica. Me trata como igual.</span>\n\n<span class="ai-i">Estou te passando um caso por voz em modo informal. Não é apresentação de visita — é aquela conversa de corredor, café na mão, "oi, queria te pedir uma opinião sobre uma paciente". Vou trazer informação fora de ordem, vou hesitar, vou me corrigir. Normal.</span>\n\n<span class="ai-m">Durante minha fala:\n- Se eu disser algo que soa preocupante clinicamente, me interrompa\n- Se faltar informação crítica, me pergunte\n- Se o caso for óbvio, diga logo\n\nAo final:\n1. Repita o caso em 3 linhas para eu confirmar que entendeu\n2. Me diga qual sua hipótese principal e por quê\n3. Me fale o que você faria agora — nos próximos 30 minutos\n4. Me diga o que <em>não</em> faria e por quê\n5. Me aponte 1 ponto cego do meu raciocínio (onde eu posso estar errando)</span>\n\n<span class="ai-e">Respostas em tom de conversa — não precisa de markdown, não precisa de bullets. Fale comigo.</span>\n\n<span class="ai-d">Não me deixe errar feio. Se eu estiver prestes a tomar uma decisão que soa perigosa, me segure antes de eu terminar de falar.</span>`
+          }
+        }
+      },
+      {
+        id: 'laboratorio-sistema',
+        horario: '11:00–12:00',
+        titulo: 'Laboratório: Seu Sistema Funcionando',
+        summary: 'A manhã inteira aterrissa aqui. Ao final dos próximos 60 minutos, você não terá "visto como se faz" — você terá um sistema seu, rodando, testado, pronto para segunda-feira.',
+        avatar: null,
+        conteudo: `
+          <h3>O que estamos fechando agora</h3>
+          <p>A manhã foi a construção. Este módulo é a <strong>integração</strong>. Ao final dele, você não deve ter dúvidas sobre se seu sistema funciona — porque você vai tê-lo testado ao vivo, com um caso seu, na frente de todos.</p>
+
+          <div class="checklist">
+            <div class="checklist-header">Checklist da manhã · o que você precisa ter pronto</div>
+            <div class="checklist-item">
+              <div class="check-box">✓</div>
+              <div class="check-text"><strong>Perfil Clínico Permanente</strong> colado no ChatGPT, Claude e Gemini</div>
+            </div>
+            <div class="checklist-item">
+              <div class="check-box">✓</div>
+              <div class="check-text"><strong>Primeiro prompt AIMED completo</strong> testado ao menos em uma das três IAs</div>
+            </div>
+            <div class="checklist-item">
+              <div class="check-box">✓</div>
+              <div class="check-text"><strong>GPT Voice (ou Gemini Live)</strong> ativado no celular e testado com um caso real</div>
+            </div>
+            <div class="checklist-item">
+              <div class="check-box">✓</div>
+              <div class="check-text"><strong>NotebookLM criado</strong> com ao menos um documento da sua especialidade carregado</div>
+            </div>
+            <div class="checklist-item">
+              <div class="check-box">✓</div>
+              <div class="check-text"><strong>Aplicativos instalados</strong> no celular (ChatGPT, Claude, Gemini, NotebookLM)</div>
+            </div>
+          </div>
+
+          <h3>NotebookLM — o fechamento natural</h3>
+          <p>NotebookLM é o quarto elemento do seu sistema. Não é uma IA conversacional como as outras três — é uma <strong>biblioteca inteligente</strong>. Você carrega documentos (PDFs, links, anotações) e o NotebookLM passa a responder perguntas <em>apenas sobre esses documentos</em>, com citação precisa.</p>
+          <p>Para o médico, isso muda tudo: você deixa de confiar na "memória" da IA e passa a <strong>alimentá-la com as suas próprias fontes validadas</strong>. Zero alucinação. Citação exata. Seu conhecimento, organizado.</p>
+
+          <div class="callout">
+            <div class="callout-label">Primeira carga sugerida</div>
+            <p>Escolha 3 documentos essenciais da sua especialidade — diretriz principal, protocolo do seu hospital, artigo que você cita com frequência. Carregue agora no NotebookLM. Nos blocos seguintes, vamos expandir.</p>
+          </div>
+
+          <h3>O teste ao vivo</h3>
+          <p>Para fechar a manhã, cada participante faz o mesmo teste — no próprio notebook, ao vivo — e mostra o resultado para um colega ao lado.</p>
+
+          <div class="steps-guide">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h4>Pergunte algo clínico genérico</h4>
+                <p>Sem usar o perfil. Algo como "me fale sobre pré-eclâmpsia". Guarde a resposta.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h4>Ative o seu Perfil Clínico Permanente</h4>
+                <p>Inicie uma nova conversa agora com o perfil configurado. Faça a mesma pergunta.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h4>Compare lado a lado</h4>
+                <p>A diferença entre as duas respostas é a medida do seu progresso na manhã. Normalmente é brutal.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout">
+            <div class="callout-label">Ponte para a tarde</div>
+            <p>Na tarde vamos colocar este sistema para trabalhar em situações clínicas específicas — laudos, voz clínica, cálculos, segurança medicamentosa. Saímos do "configurar" e entramos em "aplicar".</p>
+          </div>
+        `,
+        prompts: {
+          titulo: 'Prompt-teste para fim da manhã — comparação antes/depois',
+          nivel1: {
+            hint: 'Pergunta clínica genérica — teste o contraste antes/depois do perfil',
+            texto: `Paciente da minha especialidade com queixa principal [X] e achado principal [Y].\n\nQual a conduta?`
+          },
+          nivel2: {
+            hint: 'Mesmo caso, agora usando AIMED integrado ao Perfil Permanente',
+            texto: `<span class="ai-i">Caso real da minha rotina:\n\nPaciente [idade, sexo, comorbidades relevantes], queixa principal [X] há [tempo].\n\nExame físico: [achados principais].\nExames: [resultados relevantes].\n\nPonto de decisão: [qual é a pergunta clínica específica].</span>\n\n<span class="ai-m">Usando o meu Perfil Clínico Permanente (que você já conhece), me ajude a:\n1. Listar os 3 diagnósticos diferenciais mais prováveis no meu contexto\n2. Indicar o próximo exame que mais muda a conduta\n3. Sugerir conduta para os próximos 30 minutos</span>\n\n<span class="ai-e">Resposta em formato estruturado, com tabela para os diferenciais e bullets para a conduta.</span>`
+          },
+          nivel3: {
+            hint: 'Prompt master integrado — AIMED + voz + NotebookLM + auto-crítica',
+            texto: `<span class="ai-a">Use meu Perfil Clínico Permanente. Aja como colega sênior da minha especialidade em discussão de caso real, não como assistente genérico.</span>\n\n<span class="ai-i">Caso atual (dados completos):\n\n[BLOCO DE DADOS — idade, antecedentes, medicações, história, exame, exames complementares, tempo de evolução, tentativas terapêuticas prévias]\n\nContexto institucional: [meu hospital/consultório conforme perfil]\nRecursos disponíveis agora: [o que tenho no momento]\nPonto de decisão específico: [qual é exatamente a pergunta]</span>\n\n<span class="ai-m">Execute em 4 etapas:\n\n1. Antes de responder, raciocine passo a passo sobre o caso (não pule esta etapa)\n2. Apresente os 5 diagnósticos diferenciais mais prováveis em ordem, com probabilidade estimada e o achado que confirma ou afasta cada um\n3. Proponha conduta nos próximos 30 minutos, 2 horas e 24 horas\n4. Ao final, faça auto-crítica: 2 fragilidades do seu raciocínio e 1 viés possível que um sênior discordaria\n\nSe detectar que faltam dados críticos para responder com segurança, pergunte antes de responder — não chute.</span>\n\n<span class="ai-e">Formato:\n\n**Síntese do caso** (3 linhas, confirmando que entendeu)\n\n**Raciocínio** (numerado, prosa curta)\n\n**Diferenciais** (tabela: Hipótese | Prob. % | Confirmação | Afasta | Conduta específica)\n\n**Conduta temporal:**\n- Próximos 30 min: [...]\n- Próximas 2h: [...]\n- Próximas 24h: [...]\n\n**Alertas de segurança** (se houver interação medicamentosa, ajuste renal/hepático, gestação/lactação)\n\n**Fragilidades da minha análise** (2 pontos)\n\n**Onde um sênior discordaria** (1 ponto)</span>\n\n<span class="ai-d">Princípios:\n- Nunca invente referências, dosagens ou protocolos\n- Sinalize nível de evidência quando possível\n- Adapte conduta ao meu contexto brasileiro (SUS/saúde suplementar conforme perfil)\n- Priorize segurança do paciente sobre elegância da resposta\n- Se o caso for grave e o tempo for crítico, simplifique — não enrole\n- Considere fatores legais e éticos quando aplicáveis</span>`
+          }
+        }
+      }
+    ]
+  },
+  {
+    id: 'bloco-2',
+    numero: 2,
+    role: 'Clínico',
+    dia: 1,
+    modulos: [
+      {
+        id: 'laudos-exames',
+        horario: '14:00–15:00',
+        titulo: 'Análise de Laudos e Exames',
+        summary: 'A IA lê laudo em texto melhor que você em metade do tempo. Lê imagem com limitações reais. A aula é aprender a diferença — e onde cada uma pisa e onde cada uma escorrega.',
+        avatar: null,
+        conteudo: `
+          <h3>O que muda quando a IA lê seu laudo</h3>
+          <p>Um ecocardiograma de 2 páginas, um laudo de RM de coluna com 15 achados, um resultado de polissonografia — tudo isso exige <strong>tempo de leitura e organização mental</strong> que ninguém tem no consultório lotado.</p>
+          <p>A IA resolve isso em segundos. Mas só entrega valor real se você <em>souber o que pedir</em>. Pedir "me resume esse laudo" é desperdiçar a ferramenta. A aula de agora é sobre como extrair o máximo.</p>
+
+          <div class="callout">
+            <div class="callout-label">Princípio da aula</div>
+            <p>O laudo bruto é a matéria-prima. O que você quer é o <strong>impacto clínico</strong> — o que muda na sua conduta. A IA bem instruída faz essa ponte em segundos.</p>
+          </div>
+
+          <h3>Os 4 tipos de exame que vamos trabalhar</h3>
+          <p>Cada um tem uma forma ideal de entregar para a IA. Começamos pelos textuais (mais maduros) e avançamos para os visuais.</p>
+
+          <div class="exam-gallery">
+            <div class="exam-card">
+              <div class="exam-icon">RX</div>
+              <div class="exam-name">Radiografia</div>
+              <div class="exam-desc">Entrada: laudo em texto. Modo visual funcional.</div>
+            </div>
+            <div class="exam-card">
+              <div class="exam-icon">ECO</div>
+              <div class="exam-name">Ecocardiograma</div>
+              <div class="exam-desc">Entrada: texto. Excelente resumo e correlação clínica.</div>
+            </div>
+            <div class="exam-card">
+              <div class="exam-icon">USG</div>
+              <div class="exam-name">Ultrassom</div>
+              <div class="exam-desc">Entrada: texto. Obstétrico: cuidado com DUM.</div>
+            </div>
+            <div class="exam-card">
+              <div class="exam-icon">TC</div>
+              <div class="exam-name">Tomografia / RM</div>
+              <div class="exam-desc">Entrada: texto. Modo visual limitado para imagem.</div>
+            </div>
+          </div>
+
+          <h3>Limite ético inegociável</h3>
+          <p>Isto precisa ficar cristalino para a sala antes de qualquer demonstração:</p>
+
+          <div class="alert-grid">
+            <div class="alert-card info">
+              <div class="alert-label">O QUE A IA FAZ</div>
+              <div class="alert-title">Segunda opinião</div>
+              <div class="alert-text">Reorganiza informação, aponta correlações, sugere diagnósticos diferenciais baseados no laudo escrito.</div>
+            </div>
+            <div class="alert-card warning">
+              <div class="alert-label">O QUE A IA PODE FAZER</div>
+              <div class="alert-title">Pré-análise visual</div>
+              <div class="alert-text">Com modo visão, descreve achados radiológicos básicos. Útil como <em>apoio</em>, nunca como laudo.</div>
+            </div>
+            <div class="alert-card danger">
+              <div class="alert-label">O QUE A IA NÃO FAZ</div>
+              <div class="alert-title">Laudar por você</div>
+              <div class="alert-text">O laudo definitivo é responsabilidade do radiologista. A IA não substitui. Documentar no prontuário como ferramenta de apoio.</div>
+            </div>
+          </div>
+
+          <h3>O fluxo prático</h3>
+          <p>Você tem o laudo na mão (em texto ou foto). O fluxo funcional é:</p>
+
+          <div class="steps-guide">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h4>Entregue o laudo com contexto</h4>
+                <p>Cole o laudo completo + dados clínicos da paciente (idade, queixa, medicações). Sem contexto, a IA só organiza palavras.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h4>Peça impacto, não resumo</h4>
+                <p>"Quais desses achados mudam minha conduta?" é cem vezes melhor que "me resume esse laudo".</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h4>Confronte com sua própria leitura</h4>
+                <p>Leia o laudo você também. Se a IA apontou algo que você não viu, revise. Se você viu algo que a IA não destacou, pergunte por quê.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout">
+            <div class="callout-label">Exercício ao vivo</div>
+            <p>Cada participante traz um laudo real (anonimizado) de sua especialidade — de preferência um que <strong>já chegou na sua mesa hoje ou ontem</strong>. Vamos rodar juntos e comparar as leituras.</p>
+          </div>
+        `,
+        prompts: {
+          titulo: 'Análise estruturada de laudo com impacto clínico',
+          nivel1: {
+            hint: 'Pedido básico — útil, mas entrega genérico',
+            texto: `Analise este laudo de ecocardiograma e me diga o que é importante:\n\n[COLE O LAUDO]`
+          },
+          nivel2: {
+            hint: 'Com contexto clínico — a IA começa a ser útil',
+            texto: `<span class="ai-a">Use meu Perfil Clínico Permanente. Responda como colega experiente da minha especialidade.</span>\n\n<span class="ai-i">Paciente: [idade, sexo, queixa principal, comorbidades, medicações em uso].\n\nLaudo:\n[COLE O LAUDO COMPLETO]</span>\n\n<span class="ai-m">Analise o laudo em 3 camadas:\n1. Achados normais (confirmar que estão dentro do esperado)\n2. Achados anormais e sua gravidade clínica\n3. Impacto na conduta — o que muda na minha decisão?</span>\n\n<span class="ai-e">Formato: tabela para os achados anormais (Achado | Gravidade | Impacto clínico | Ação sugerida). Parágrafo curto de síntese ao final.</span>`
+          },
+          nivel3: {
+            hint: 'Prompt master — laudo + correlação + ponto cego + próximos passos',
+            texto: `<span class="ai-a">Use meu Perfil Clínico Permanente. Aja como colega sênior da especialidade correspondente ao exame — se for eco, cardiologista; se for USG obstétrico, GO de alto risco; etc. Postura: olho crítico de subespecialista que já viu esse tipo de laudo mil vezes.</span>\n\n<span class="ai-i">Contexto clínico do caso:\n\nPaciente: [idade, sexo, IMC se relevante]\nQueixa e história: [motivo do exame, sintomas, tempo]\nAntecedentes relevantes: [comorbidades, cirurgias, gestações se aplicável]\nMedicações atuais: [lista]\nExames prévios pertinentes: [se houver comparação]\nPonto de decisão clínica: [qual é a pergunta que este laudo precisa ajudar a responder]\n\nLaudo completo:\n[COLE O LAUDO INTEGRAL]</span>\n\n<span class="ai-m">Antes de responder, raciocine passo a passo:\n1. Qual é a pergunta clínica real por trás do pedido deste exame?\n2. Quais achados do laudo respondem diretamente a essa pergunta?\n3. Há achados que o radiologista/ecografista sinalizou e que merecem mais peso que o texto dá a entender?\n4. Há algo que <em>deveria</em> estar descrito e não está?\n\nDepois, entregue análise em 4 blocos:\n\nBloco A — Síntese em 3 linhas: o que este laudo, na paciente descrita, significa clinicamente.\n\nBloco B — Achados críticos (tabela: Achado | Significado clínico | Gravidade | Mudança de conduta)\n\nBloco C — Correlação com o quadro (laudo bate com a clínica? Há incoerência que justifique revisão do exame?)\n\nBloco D — Próximos passos em 3 janelas: próximas 2h / próximas 24h / próximas 2 semanas\n\nAo final, aponte 2 pontos cegos: (1) algo que o laudo não contempla e seria importante, (2) uma interpretação alternativa plausível.</span>\n\n<span class="ai-e">Use markdown com tabelas, bullets e destaques. Separe claramente os 4 blocos. No Bloco D, seja específico quanto a exames adicionais, referência, medicação.</span>\n\n<span class="ai-d">Princípios:\n- Nunca laudize por você. Você é segunda opinião, não primeira.\n- Se o laudo estiver incompleto ou mal descrito, sinalize antes de interpretar\n- Não invente medidas, valores ou classificações ausentes do texto\n- Considere a paciente brasileira, no contexto do meu hospital (conforme perfil)\n- Se o achado for crítico e urgente, quebre o formato e alerte primeiro</span>`
+          }
+        }
+      },
+      {
+        id: 'voz-clinica',
+        horario: '15:00–15:45',
+        titulo: 'A Voz como Ferramenta Clínica',
+        summary: 'De manhã, a voz foi experimentação. Agora é ferramenta de trabalho. Três cenários reais do dia-a-dia — laudo ditado, discussão com colega virtual, análise de consulta — funcionando em 45 minutos.',
+        avatar: null,
+        conteudo: `
+          <h3>O salto da manhã para a tarde</h3>
+          <p>De manhã você falou um caso e viu a IA estruturar. Foi <em>demonstração</em>. Agora vamos transformar isso em <strong>fluxo de trabalho real</strong> — três cenários específicos que você leva para o consultório na segunda-feira.</p>
+
+          <div class="callout">
+            <div class="callout-label">O que estamos construindo</div>
+            <p>Três atalhos que tiram o teclado do caminho. Você fala, a IA trabalha, o resultado sai em texto limpo — pronto para copiar, assinar, encaminhar ou discutir.</p>
+          </div>
+
+          <h3>Os três cenários</h3>
+
+          <div class="scenario-flow">
+            <div class="scenario-card">
+              <div class="scenario-label">Cenário 01</div>
+              <div class="scenario-title">Laudo ditado por voz</div>
+              <div class="scenario-text">Você termina o exame físico e dita a impressão em voz alta para o GPT. Em 30 segundos, sai um parágrafo formatado, gramática corrigida, pronto para colar no prontuário.</div>
+            </div>
+            <div class="scenario-card">
+              <div class="scenario-label">Cenário 02</div>
+              <div class="scenario-title">Discussão com colega virtual</div>
+              <div class="scenario-text">Gemini Live configurado como colega sênior da sua área. Você discute um caso complexo por voz como discutiria no corredor. A IA interrompe, pergunta, provoca.</div>
+            </div>
+            <div class="scenario-card">
+              <div class="scenario-label">Cenário 03</div>
+              <div class="scenario-title">Análise pós-consulta</div>
+              <div class="scenario-text">Após a consulta, você grava um áudio de 60 segundos resumindo o caso. A IA extrai: condutas, pendências, retornos, alertas. Zero digitação.</div>
+            </div>
+          </div>
+
+          <h3>O que fazer (e o que não fazer)</h3>
+
+          <div class="alert-grid">
+            <div class="alert-card info">
+              <div class="alert-label">SEMPRE</div>
+              <div class="alert-title">Anonimize ao falar</div>
+              <div class="alert-text">Use iniciais ou "a paciente". Nunca nome completo, nunca número de prontuário. LGPD se aplica à voz também.</div>
+            </div>
+            <div class="alert-card warning">
+              <div class="alert-label">CUIDADO</div>
+              <div class="alert-title">Revise antes de assinar</div>
+              <div class="alert-text">A IA transcreve e estrutura — mas pode interpretar errado um termo técnico. O médico continua sendo o responsável pelo texto final.</div>
+            </div>
+            <div class="alert-card danger">
+              <div class="alert-label">NUNCA</div>
+              <div class="alert-title">Grave paciente sem consentimento</div>
+              <div class="alert-text">Se estiver gravando a consulta com paciente presente, precisa de consentimento explícito e documentado. Sem exceção.</div>
+            </div>
+          </div>
+
+          <h3>Exercício guiado</h3>
+          <p>Cada participante vai fazer <strong>um laudo ditado</strong> ao vivo, no próprio celular, com um caso da sua especialidade. Vamos ver o texto formatado nascer na tela de todo mundo.</p>
+
+          <div class="callout">
+            <div class="callout-label">A métrica da aula</div>
+            <p>Se ao final dos 45 minutos você não tiver ditado pelo menos <strong>um laudo completo</strong> com sucesso — não saiu deste módulo. Continue até funcionar.</p>
+          </div>
+        `,
+        prompts: {
+          titulo: 'Comando para laudo ditado por voz',
+          nivel1: {
+            hint: 'Pedido simples — funciona para laudos curtos',
+            texto: `Vou ditar um laudo. Transcreva corrigindo gramática e formatando em parágrafos claros. Responda em linguagem médica formal.`
+          },
+          nivel2: {
+            hint: 'Com estrutura de laudo — resultado pronto para assinar',
+            texto: `<span class="ai-a">Use meu Perfil Clínico Permanente. Você é assistente de redação clínica.</span>\n\n<span class="ai-i">Vou ditar por voz os achados de [tipo de exame/consulta]. Posso falar fora de ordem, hesitar, me corrigir — transcreva o conteúdo final, não as hesitações.</span>\n\n<span class="ai-m">Formate como laudo/evolução no padrão brasileiro, com as seções:\n- Anamnese (se aplicável)\n- Exame físico ou achados\n- Impressão diagnóstica\n- Conduta\n\nCorrija gramática e termos em latim quando necessário. Mantenha linguagem técnica, impessoal.</span>\n\n<span class="ai-d">Não invente informação. Se eu não mencionar algum item, deixe em branco ou marque como [não informado]. Não coloque opinião clínica que eu não disse.</span>`
+          },
+          nivel3: {
+            hint: 'Laudo profissional + segurança LGPD + formatação pronta para prontuário',
+            texto: `<span class="ai-a">Use meu Perfil Clínico Permanente. Você é assistente de redação clínica especializado no padrão brasileiro de documentação médica (prontuário, laudo, evolução), com domínio da terminologia da minha especialidade.</span>\n\n<span class="ai-i">Vou ditar por voz o conteúdo de [laudo de exame / evolução de consulta / nota cirúrgica — especifique no áudio].\n\nContexto: estou [em consultório / hospital / centro obstétrico], o documento será [inserido em prontuário eletrônico / impresso e assinado / enviado ao solicitante].\n\nNa minha fala vou trazer:\n- Dados técnicos (medidas, achados, tempos)\n- Impressão clínica e raciocínio\n- Conduta e orientações</span>\n\n<span class="ai-m">Processamento em 3 etapas (execute todas):\n\n1. Extração: separe da minha fala o conteúdo clínico das hesitações, correções e comentários paralelos. Se eu me corrigir, use a versão corrigida.\n\n2. Estruturação: organize no formato padrão de [laudo/evolução/nota], com as seções apropriadas. Use markdown.\n\n3. Revisão ortográfica e terminológica: corrija termos médicos (ex: "hipertenso crônico" → "HAS crônica"), grafia de medicações, unidades de medida, siglas. Mantenha o que eu disse — não acrescente conteúdo clínico.</span>\n\n<span class="ai-e">Formato de saída:\n\n**Documento final formatado** (pronto para copiar e colar no prontuário)\n\n**Pontos de atenção do documento** (marcações de [não informado], [verificar], [confirmar dose] — se houver ambiguidades na minha fala)\n\n**Sugestão de próxima ação** (se o documento implicar algo: retorno, exame, encaminhamento)</span>\n\n<span class="ai-d">LGPD e segurança:\n- Se eu mencionar nome completo, CPF ou data de nascimento, substitua por [iniciais] ou [data anonimizada]\n- Se eu mencionar hospital ou colegas por nome, avise antes de gerar o documento\n\nÉtica profissional:\n- Nunca acrescente diagnóstico ou conduta que eu não tenha explicitado\n- Se eu cometer erro terminológico óbvio (ex: dose 10x acima do usual), sinalize com [verificar dose]\n- Se o conteúdo sugerir urgência (palavra como "crítico", "grave", "imediato"), marque o documento como [prioridade]\n- Mantenha o português clínico brasileiro — evite terminologia traduzida direta do inglês</span>`
+          }
+        }
+      },
+      {
+        id: 'cafe-2',
+        horario: '15:45–16:00',
+        titulo: 'Café',
+        break: true
+      },
+      {
+        id: 'medicamentos',
+        horario: '16:00–17:00',
+        titulo: 'Cálculos e Segurança Medicamentosa',
+        summary: 'O módulo mais sensível do curso. Uma interação medicamentosa não vista pode matar — uma dose calculada errado também. A IA ajuda ou atrapalha? Depende inteiramente de como você a instrui.',
+        avatar: null,
+        conteudo: `
+          <h3>A promessa e o risco</h3>
+          <p>A IA faz cálculos medicamentosos em segundos com precisão superior à maioria dos médicos — <em>quando bem instruída</em>. Ela também <strong>alucina dosagens com a mesma confiança</strong> que acerta, se mal instruída. É a ferramenta mais poderosa e mais perigosa do curso.</p>
+          <p>A aula deste módulo não é sobre pedir cálculo. É sobre <strong>como blindar seu prompt</strong> para que a IA nunca passe sem sinalizar risco.</p>
+
+          <div class="callout">
+            <div class="callout-label">Regra zero</div>
+            <p>Nenhuma dose calculada por IA entra em prescrição sem <strong>conferência manual</strong> do médico. A IA é calculadora inteligente, não prescritora. Esta regra não tem exceção.</p>
+          </div>
+
+          <h3>Os três tipos de alerta que seu prompt precisa forçar</h3>
+          <p>Um prompt medicamentoso bem construído obriga a IA a responder sobre três dimensões <em>sempre</em>, mesmo que você não pergunte:</p>
+
+          <div class="alert-grid">
+            <div class="alert-card danger">
+              <div class="alert-label">RISCO 01</div>
+              <div class="alert-title">Interações medicamentosas</div>
+              <div class="alert-text">Polifarmácia gera interações invisíveis. O prompt AIMED força a IA a cruzar automaticamente cada medicação com as demais.</div>
+            </div>
+            <div class="alert-card warning">
+              <div class="alert-label">RISCO 02</div>
+              <div class="alert-title">Ajuste por função de órgão</div>
+              <div class="alert-text">Função renal, hepática, gestação, lactação, idade. A dose "de bula" pode ser tóxica em contextos específicos — o prompt verifica antes.</div>
+            </div>
+            <div class="alert-card info">
+              <div class="alert-label">RISCO 03</div>
+              <div class="alert-title">Contraindicações absolutas</div>
+              <div class="alert-text">Algumas combinações simplesmente não podem. O prompt aponta essas antes de propor qualquer dose, inclusive reações alérgicas cruzadas.</div>
+            </div>
+          </div>
+
+          <h3>Casos específicos da turma</h3>
+          <p>Esta turma tem 7 ginecologistas/obstetras e 1 enfermeira obstétrica. O módulo vai focar pesadamente em dois universos críticos da obstetrícia, além de alguns específicos das outras especialidades.</p>
+
+          <div class="platform-grid">
+            <div class="platform-card gpt">
+              <div class="platform-name">Gestação</div>
+              <div class="platform-role">Obstetrícia · GOs + Enfermagem</div>
+              <ul class="platform-steps">
+                <li>Classificação de risco medicamentoso (FDA/ANVISA)</li>
+                <li>Ajuste por trimestre de gestação</li>
+                <li>Hipotensores, anticoagulantes, antibióticos</li>
+                <li>Sulfato de magnésio — dose + janela de toxicidade</li>
+              </ul>
+            </div>
+            <div class="platform-card claude">
+              <div class="platform-name">Puerpério / Lactação</div>
+              <div class="platform-role">Obstetrícia + Pediatria</div>
+              <ul class="platform-steps">
+                <li>Medicações compatíveis com amamentação</li>
+                <li>Analgesia pós-parto segura</li>
+                <li>Transferência placentária vs lactação</li>
+                <li>Psicofármacos no puerpério</li>
+              </ul>
+            </div>
+            <div class="platform-card gemini">
+              <div class="platform-name">Específicos da turma</div>
+              <div class="platform-role">Card. / Pneumo / Intensivo</div>
+              <ul class="platform-steps">
+                <li>Anticoagulação em cardiopatias</li>
+                <li>Broncodilatadores + ajuste em asma grave</li>
+                <li>Drogas vasoativas em UTI</li>
+                <li>Interações em polifarmácia do idoso</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3>Exercício ao vivo</h3>
+          <p>Cada participante traz <strong>uma prescrição real complexa</strong> (anonimizada) — de preferência uma que te gerou dúvida recente. Vamos rodar na IA com o prompt blindado e comparar com o que você prescreveu. Se a IA encontrar algo que você não viu, dissecamos juntos.</p>
+
+          <div class="callout">
+            <div class="callout-label">Resultado esperado</div>
+            <p>Ao final deste módulo, você sai com <strong>um prompt médico permanente de segurança medicamentosa</strong> — que vai ser copiado, colado e reusado toda vez que tiver dúvida de interação, dose ou contraindicação. Uma única ferramenta que já paga o curso.</p>
+          </div>
+        `,
+        prompts: {
+          titulo: 'Análise medicamentosa blindada — interações, dose, contraindicações',
+          nivel1: {
+            hint: 'Perguntar simples — útil para casos diretos',
+            texto: `Paciente gestante, 28 semanas, pressão 150x100, vou prescrever metildopa 500mg 3x/dia.\n\nEssa dose está adequada? Há alguma contraindicação ou interação relevante?`
+          },
+          nivel2: {
+            hint: 'Prompt AIMED estruturado — força os 3 alertas',
+            texto: `<span class="ai-a">Use meu Perfil Clínico Permanente. Aja como farmacêutico clínico sênior com especialização em [gestação/UTI/cardiologia — conforme o caso], postura conservadora, padrão de hospital terciário.</span>\n\n<span class="ai-i">Paciente:\n- Idade, sexo, peso\n- Função renal (creatinina, clearance estimado)\n- Função hepática (TGO, TGP, bilirrubinas)\n- Gestação? Idade gestacional? Lactação?\n- Comorbidades relevantes\n- Medicações em uso (lista completa com doses)\n\nNova prescrição proposta:\n[medicação, dose, via, intervalo, duração]</span>\n\n<span class="ai-m">Analise a nova prescrição em 3 eixos obrigatórios:\n\n1. Dose: adequada para o peso, função renal, função hepática e contexto gestacional/lactação\n2. Interações: cruze cada medicação em uso com a nova prescrição — sinalize qualquer interação moderada ou grave\n3. Contraindicações: absolutas e relativas no contexto da paciente</span>\n\n<span class="ai-e">Formato:\n\n**Decisão final** (prescrever como está / ajustar dose / substituir / contraindicar)\n\n**Análise por eixo:**\n- Dose: [análise]\n- Interações: [tabela de cada interação identificada]\n- Contraindicações: [lista]\n\n**Ajuste sugerido** (se houver)</span>\n\n<span class="ai-d">Nunca invente dose, interação ou classificação FDA. Se não tiver certeza, diga "consultar bula" ou "verificar em base atualizada" explicitamente. Se detectar risco grave, sinalize no topo antes de qualquer análise.</span>`
+          },
+          nivel3: {
+            hint: 'Prompt master de segurança medicamentosa — auto-crítica + alerta crítico',
+            texto: `<span class="ai-a">Use meu Perfil Clínico Permanente. Você é farmacêutico clínico hospitalar sênior, nível mestre, com 15 anos de prescrição supervisionada em hospital terciário. Sua função não é ser simpático — é <strong>pegar erros</strong>. Postura: paranoia clínica construtiva. Se existe alerta, você levanta. Se a prescrição for inadequada, você bloqueia antes de sair.</span>\n\n<span class="ai-i">Paciente (dados completos — preencha todos antes de rodar):\n\nIdentificação (iniciais, idade, sexo, peso, altura, IMC)\nFunção renal: creatinina ____, ureia ____, clearance estimado ____\nFunção hepática: TGO ____, TGP ____, BT ____, albumina ____\nGestação: [sim/não, IG, risco, trimestre] — lactação: [sim/não, idade do bebê]\nAlergias conhecidas: [lista — incluir cruzadas suspeitas]\nComorbidades ativas: [lista]\nCondições específicas relevantes: [diabetes, dislipidemia, cardiopatia, IRC, DPOC, etc.]\n\nMedicações em uso atual (lista completa):\n[medicação 1, dose, via, intervalo, há quanto tempo]\n[medicação 2...]\n[incluir fitoterápicos, suplementos, anticoncepcionais, qualquer coisa que a paciente ingere]\n\nNova prescrição proposta:\n[medicação, dose, via, intervalo, duração, indicação clínica]\n\nContexto: [ambulatorial/internação/UTI/centro cirúrgico]\nUrgência: [rotina/semi-urgente/urgente/emergência]</span>\n\n<span class="ai-m">Execute análise em 5 etapas obrigatórias (todas, em ordem):\n\n1. Adequação da indicação: a medicação proposta é a primeira escolha para a indicação, considerando o perfil da paciente? Ou há alternativa melhor?\n\n2. Análise de dose:\n   - Cálculo por peso (mg/kg se aplicável)\n   - Ajuste por função renal (fórmula de Cockcroft-Gault ou similar)\n   - Ajuste por função hepática\n   - Ajuste gestação/lactação se aplicável\n   - Comparação com faixa terapêutica usual\n\n3. Análise de interações (pareada, sistemática):\n   - Cruze a nova prescrição com <strong>cada</strong> medicação em uso\n   - Classifique cada interação: leve / moderada / grave / contraindicada\n   - Para as moderadas ou superiores, explique o mecanismo e o desfecho esperado\n\n4. Contraindicações:\n   - Absolutas no contexto da paciente\n   - Relativas com risco aumentado\n   - Alergias cruzadas possíveis\n\n5. Monitorização necessária:\n   - Parâmetros clínicos (PA, FC, diurese, sinais específicos)\n   - Parâmetros laboratoriais (com frequência)\n   - Tempo até efeito esperado\n   - Sinais de toxicidade para alertar à paciente</span>\n\n<span class="ai-e">Formato de saída estruturado:\n\n**⚠ ALERTA** (se houver algo crítico — deve aparecer PRIMEIRO, antes de qualquer análise. Usar apenas se for realmente crítico.)\n\n**Decisão recomendada:**\n[ ] Prescrever como proposto\n[ ] Prescrever com ajuste (especificar)\n[ ] Substituir por alternativa (especificar qual e por quê)\n[ ] Contraindicado (especificar motivo)\n\n**Análise detalhada (tabelada):**\n\n| Eixo | Achado | Ação |\n|---|---|---|\n| Indicação | | |\n| Dose | | |\n| Interações | | |\n| Contraindicações | | |\n| Monitorização | | |\n\n**Prescrição final sugerida** (em formato pronto para transcrever no prontuário):\n[medicação exata, dose, via, intervalo, duração, orientações]\n\n**Auto-crítica:** 1 ponto em que meu sênior poderia discordar da análise e por quê.</span>\n\n<span class="ai-d">Princípios inegociáveis:\n- Nunca invente dose, interação, mecanismo ou categoria de risco FDA/ANVISA. Se não tiver certeza, diga explicitamente "verificar em fonte atualizada"\n- Se a prescrição tiver risco grave na paciente descrita, o ⚠ ALERTA vem primeiro, em destaque, antes de tudo\n- Nunca ofereça dose "de livro" sem considerar o contexto da paciente\n- Se os dados fornecidos forem insuficientes para análise segura (falta função renal, falta peso, etc.), PARE e peça os dados antes de qualquer conclusão\n- Para gestantes: sempre classifique a medicação em categoria de risco e o impacto específico no trimestre\n- Para lactantes: sempre informe a transferência para o leite e a segurança para o lactente\n- Considere a disponibilidade brasileira (SUS/particular) — não sugira medicação que a paciente não tem acesso\n- Nunca termine sem a linha final: "Esta análise é apoio clínico. A decisão e a responsabilidade são do médico prescritor."</span>`
+          }
+        }
+      },
+      {
+        id: 'tc-plantando',
+        horario: '17:00–17:50',
+        titulo: 'Teoria do Contrário — Plantando a Semente',
+        summary: 'O momento em que o curso muda de categoria. Até aqui você aprendeu a usar a IA para ajudar. Agora vai aprender a usá-la para questionar. Um protocolo seu. Uma dúvida viva. Sem resposta hoje.',
+        avatar: null,
+        conteudo: `
+          <div class="tc-manifesto">
+            <div class="tc-manifesto-label">Manifesto — Teoria do Contrário</div>
+            <div class="tc-manifesto-text">A medicina não avança porque alguém <em>confirma</em> o que já sabemos.<br>Avança quando alguém tem coragem de <em>questionar</em> o que todos repetem.</div>
+            <div class="tc-manifesto-text" style="font-size: 1.15em; margin-top: 20px;">A IA é o primeiro parceiro de debate disponível <em>24 horas por dia</em> que não se intimida com a sua autoridade.<br>Use isso.</div>
+          </div>
+
+          <h3>O que é a Teoria do Contrário</h3>
+          <p>É uma metodologia de raciocínio clínico simples de descrever e difícil de executar: você pega um protocolo que aceita como verdade, pede à IA que <strong>construa o argumento mais forte possível contra ele</strong>, e sustenta esse argumento até onde a evidência permitir.</p>
+          <p>O objetivo não é derrubar o protocolo. É <strong>entender até onde ele se sustenta</strong>. Quando o argumento contrário cai, você volta ao protocolo com convicção <em>fundamentada</em> em vez de herdada. Quando ele se sustenta, você descobriu uma fronteira da sua prática.</p>
+
+          <div class="callout">
+            <div class="callout-label">Distinção crítica</div>
+            <p>Teoria do Contrário <strong>não é</strong> contrariar por contrariar. Não é ser do contra. Não é desrespeito à ciência. É exatamente o oposto: é <strong>levar a evidência a sério o suficiente</strong> para não aceitar verdades por autoridade — e sim testá-las até o limite.</p>
+          </div>
+
+          <h3>As três fases — por que começamos plantando</h3>
+          <p>A Teoria do Contrário atravessa os dois dias do curso em três fases distintas. Hoje estamos na primeira. Só.</p>
+
+          <div class="tc-phases">
+            <div class="tc-phase active">
+              <div class="tc-phase-num">01</div>
+              <div class="tc-phase-label">Plantando</div>
+              <div class="tc-phase-title">Agora · Bloco 2</div>
+              <div class="tc-phase-text">Você escolhe o protocolo, constrói o argumento inicial, anota a dúvida. Vai dormir com ela.</div>
+            </div>
+            <div class="tc-arrow">→</div>
+            <div class="tc-phase">
+              <div class="tc-phase-num">02</div>
+              <div class="tc-phase-label">Regando</div>
+              <div class="tc-phase-title">Amanhã · Bloco 3</div>
+              <div class="tc-phase-text">Com as 3 IAs e o NotebookLM, você busca a evidência que sustenta ou desmonta o argumento.</div>
+            </div>
+            <div class="tc-arrow">→</div>
+            <div class="tc-phase">
+              <div class="tc-phase-num">03</div>
+              <div class="tc-phase-label">Colhendo</div>
+              <div class="tc-phase-title">Amanhã · Bloco 4</div>
+              <div class="tc-phase-text">Você traz a conclusão para o grupo. O protocolo sustenta? Precisa de revisão? Tem exceções?</div>
+            </div>
+          </div>
+
+          <h3>A regra desta fase</h3>
+          <p>Hoje, você só <strong>planta</strong>. Não resolve, não pesquisa, não conclui. Escolhe o protocolo, deixa a IA construir o argumento contrário, identifica qual é a dúvida que esse argumento abriu — e para.</p>
+          <p>Essa pausa é pedagogicamente intencional. A dúvida precisa <strong>fermentar</strong> até amanhã. Resolução rápida mata o aprendizado. A melhor parte da Teoria do Contrário é o desconforto de dormir com uma pergunta clínica sem resposta.</p>
+
+          <h3>Agora é com você</h3>
+          <p>Pare por 30 segundos antes de avançar. Responda mentalmente:</p>
+
+          <div class="field-card">
+            <div class="field-card-label">Sua escolha</div>
+            <div class="field-card-prompt">Qual é um protocolo da sua especialidade que você aplica por hábito, mas que <strong>nunca parou para questionar a fundo</strong>?</div>
+            <div class="field-card-hint">Pode ser um protocolo de conduta, uma recomendação de diretriz, uma decisão que você repete toda semana sem reflexão renovada. Escolha um que te cause leve incômodo — ele será o foco.</div>
+          </div>
+
+          <div class="callout">
+            <div class="callout-label">Exemplos reais desta turma (use como inspiração)</div>
+            <p><strong>Obstetrícia:</strong> indicação de cesárea em apresentação pélvica a termo · uso rotineiro de sulfato de magnésio em pré-eclâmpsia leve · corticoterapia antenatal após 34 semanas</p>
+            <p><strong>Cardiologia:</strong> estratificação de risco pré-operatória em cirurgias não cardíacas · anticoagulação em FA de baixo score · uso de estatina em prevenção primária acima de 75 anos</p>
+            <p><strong>Pediatria:</strong> tempo de antibiótico em ITU febril · protocolo de bronquiolite com salbutamol · vacinação em grupos específicos</p>
+            <p><strong>Pneumologia:</strong> uso de corticoide inalatório em DPOC não-exacerbador · duração de antibiótico em PAC · indicação de oxigenoterapia domiciliar</p>
+          </div>
+
+          <h3>O exercício ao vivo</h3>
+          <p>Com o protocolo escolhido, cada participante abre o Claude (ideal para raciocínio complexo) e usa o prompt abaixo. O objetivo dos próximos 30 minutos é <strong>deixar a IA construir o melhor argumento contrário possível</strong> — e você resistir à tentação de já responder.</p>
+        `,
+        prompts: {
+          titulo: 'Construção do argumento contrário — fase de plantio',
+          nivel1: {
+            hint: 'Pedido direto — útil para uma primeira exploração',
+            texto: `Protocolo que aplico na minha prática: [DESCREVA]\n\nConstrua o argumento mais forte possível CONTRA esse protocolo.\n\nNão precisa concordar com o argumento — precisa apresentá-lo da forma mais convincente possível, como faria um advogado defendendo essa posição.`
+          },
+          nivel2: {
+            hint: 'Teoria do Contrário estruturada — 5 ângulos de ataque',
+            texto: `<span class="ai-a">Use meu Perfil Clínico Permanente. Aja agora como advogado do diabo intelectualmente honesto. Sua função é construir o argumento mais forte possível contra um protocolo que eu sigo.</span>\n\n<span class="ai-i">Protocolo em questão:\n[DESCREVA O PROTOCOLO com detalhes — qual diretriz, qual situação clínica, qual a recomendação específica]\n\nMinha postura atual: sigo este protocolo porque [explique sua razão atual]</span>\n\n<span class="ai-m">Construa o argumento contrário em 5 ângulos de ataque:\n\n1. Ângulo da evidência: a base científica do protocolo tem falhas metodológicas? Os estudos primários têm limitações importantes?\n\n2. Ângulo da generalização: o protocolo foi testado em populações diferentes da que atendo? A extrapolação é segura?\n\n3. Ângulo do contexto brasileiro: há particularidades do SUS, da saúde suplementar ou da epidemiologia brasileira que tornam o protocolo menos aplicável?\n\n4. Ângulo do risco/benefício: o benefício absoluto (não relativo) justifica o risco e o custo no contexto real?\n\n5. Ângulo da alternativa: existe conduta alternativa com evidência competitiva que o protocolo ignora?</span>\n\n<span class="ai-e">Para cada ângulo:\n- Apresente o argumento em 3-5 linhas\n- Cite o tipo de evidência que o sustenta (meta-análise, RCT, estudo observacional, opinião de especialista)\n- Identifique qual é a principal fragilidade deste argumento (honestidade intelectual)\n\nAo final, diga qual dos 5 ângulos você considera o argumento contrário mais forte e por quê.</span>\n\n<span class="ai-d">Regras da Teoria do Contrário:\n- Não invente estudos, autores ou dados\n- Não banque o "iconoclasta" — use honestidade intelectual\n- Se algum dos ângulos não tiver sustentação real, diga abertamente "este ângulo é fraco porque..."\n- NÃO resolva a questão. Não conclua a favor do protocolo nem contra. Apenas apresente o argumento contrário da forma mais forte possível.\n- Ao final, liste <strong>3 perguntas específicas</strong> que eu precisaria investigar amanhã para julgar este argumento</span>`
+          },
+          nivel3: {
+            hint: 'Teoria do Contrário profunda — argumentos + contra-argumentos + pergunta-chave',
+            texto: `<span class="ai-a">Use meu Perfil Clínico Permanente. Assuma agora o papel duplo: advogado do diabo intelectualmente honesto + historiador da medicina. Seu trabalho é dissecar um protocolo que eu sigo e construir o argumento contrário mais forte possível — sem trair a verdade científica. Postura: rigor acadêmico, zero cinismo, zero sensacionalismo. Você é o colega que em um Journal Club levanta a pergunta que ninguém queria fazer.</span>\n\n<span class="ai-i">Protocolo sob análise:\n[Descreva o protocolo clínico com máximo de detalhe: qual diretriz, qual instituição emissora, qual ano, qual é a recomendação específica, em qual cenário clínico aplicamos, qual é o nível de evidência oficial]\n\nMinha postura atual e base do meu hábito clínico:\n[Por que eu sigo este protocolo hoje? Foi aprendizado de residência? Guideline nacional? Recomendação do chefe? Evidência que li diretamente? Seja honesto sobre a origem do seu hábito.]\n\nContexto da minha prática:\n[Tipo de hospital, tipo de paciente, frequência com que aplico, últimas vezes que me ocorreu dúvida sobre esse protocolo]</span>\n\n<span class="ai-m">Execute análise em 6 camadas obrigatórias:\n\nCamada 1 — Arqueologia do protocolo\nDe onde vem essa recomendação? Qual foi o estudo seminal? Em que contexto foi criada (qual população, qual época, quais limitações)? Já foi revista desde então? Com que frequência?\n\nCamada 2 — Construção do argumento contrário (5 ângulos)\n  2.1. Ângulo metodológico: fragilidades dos estudos que sustentam\n  2.2. Ângulo da população: para quem o protocolo NÃO foi validado\n  2.3. Ângulo do tamanho de efeito: o benefício absoluto é clinicamente relevante?\n  2.4. Ângulo do contexto brasileiro: o protocolo importado se aplica à nossa realidade?\n  2.5. Ângulo da alternativa: o que propõem os dissidentes sérios na literatura?\n\nCamada 3 — Ranking dos 5 ângulos\nQual é o argumento contrário mais forte? Qual é o mais fraco? Por quê?\n\nCamada 4 — Contra-argumento ao contra-argumento (honestidade)\nPara o ângulo mais forte identificado, qual é a melhor defesa do protocolo atual? Por que, apesar deste argumento contrário, ainda se sustenta (ou não)?\n\nCamada 5 — A pergunta-chave\nSe houvesse uma única pergunta que, se respondida, decidiria a disputa entre protocolo e argumento contrário — qual seria? Esta pergunta deve ser específica o suficiente para ser investigada empiricamente.\n\nCamada 6 — Roteiro de investigação para amanhã\nO que especificamente eu deveria buscar na literatura nas próximas 12 horas para julgar este argumento com base em evidência, não em opinião?</span>\n\n<span class="ai-e">Formato de saída:\n\n**Síntese em 3 linhas** (resumo brutal do argumento contrário mais forte)\n\n**Camada 1 — Arqueologia**\n[análise narrativa, 5-8 linhas]\n\n**Camada 2 — Os 5 ângulos de ataque**\n[para cada um: argumento + força estimada + principal fragilidade]\n\n**Camada 3 — Ranking**\nMais forte: [qual] — [por quê]\nMais fraco: [qual] — [por quê]\n\n**Camada 4 — O contra-argumento**\n[análise honesta da defesa do protocolo contra o ângulo mais forte]\n\n**Camada 5 — A pergunta-chave**\n> [a pergunta formulada com precisão]\n\n**Camada 6 — Para investigar amanhã:**\n1. [busca específica com termos de pesquisa]\n2. [busca específica]\n3. [busca específica]\n4. [documento, diretriz ou autor específico a consultar]\n\n**Meu conselho** (última linha): NÃO tente resolver isso hoje. Anote a pergunta-chave, durma com ela, investigue amanhã com o NotebookLM.</span>\n\n<span class="ai-d">Princípios inegociáveis da Teoria do Contrário:\n- Intelectualidade honesta sempre: se um argumento contrário é fraco, diga. Não force nada.\n- Zero invenção: não cite estudos, autores ou dados que você não tem certeza que existem. Se houver dúvida, diga "verificar"\n- Zero sensacionalismo: nada de "a medicina tradicional está errada"\n- Respeito ao protocolo: ele existe por uma razão. Seu trabalho é mostrar ONDE a razão pode não se aplicar, não destruí-la\n- Respeito ao médico: a postura é de colega no journal club, não de debatedor de rede social\n- Proibido concluir: esta fase é PLANTAR a dúvida. A IA não fecha, o médico fecha depois, na fase 3.\n- A pergunta-chave é o ouro do exercício. Se ela ficar fraca, o módulo inteiro fracassou. Invista nela.</span>`
+          }
+        }
+      },
+      {
+        id: 'ponte-amanha',
+        horario: '17:50–18:00',
+        titulo: 'Ponte para Amanhã',
+        summary: 'Dez minutos. Sem IA, sem prompts, sem discussão. Você e uma folha em branco. Escreva o que leva para casa — e principalmente, o que traz amanhã.',
+        avatar: null,
+        conteudo: `
+          <div class="letter-card">
+            <div class="letter-header">Instrução única deste módulo</div>
+            <div class="letter-body">
+              <p>Feche o notebook.</p>
+              <p>Pegue uma folha em branco — de verdade, papel e caneta, não celular — e responda três perguntas. Tem 10 minutos.</p>
+              <p>Essa folha é sua. <strong>Não vai ser vista por ninguém</strong>. É a âncora que faz a Teoria do Contrário amadurecer durante a noite.</p>
+              <p>Você vai voltar amanhã de manhã com essa folha na mão. O Bloco 3 começa com cada um lendo <strong>uma linha</strong> do que escreveu.</p>
+            </div>
+            <div class="letter-signature">— Até amanhã.</div>
+          </div>
+
+          <h3>As três perguntas</h3>
+
+          <div class="field-card">
+            <div class="field-card-label">Pergunta 01 — O protocolo</div>
+            <div class="field-card-prompt">Qual protocolo eu escolhi para a Teoria do Contrário?</div>
+            <div class="field-card-hint">Escreva em uma linha só. Sem preâmbulo, sem justificativa. Só o protocolo — nome, situação clínica, recomendação específica.</div>
+          </div>
+
+          <div class="field-card">
+            <div class="field-card-label">Pergunta 02 — O argumento</div>
+            <div class="field-card-prompt">Qual é o argumento contrário mais forte que surgiu?</div>
+            <div class="field-card-hint">Três a cinco linhas. Não precisa estar perfeito. Não precisa estar com referência. Precisa estar <strong>na ponta da sua caneta</strong>, do jeito que ficou claro para você depois da conversa com a IA.</div>
+          </div>
+
+          <div class="field-card">
+            <div class="field-card-label">Pergunta 03 — A dúvida</div>
+            <div class="field-card-prompt">Qual é a pergunta específica que eu preciso investigar amanhã para resolver isso?</div>
+            <div class="field-card-hint">Esta é a pergunta mais importante das três. Ela precisa ser <strong>concreta</strong>, <strong>verificável empiricamente</strong> e <strong>precisa o suficiente</strong> para você buscar amanhã no NotebookLM. Uma pergunta vaga produz pesquisa vaga.</div>
+          </div>
+
+          <div class="callout">
+            <div class="callout-label">Por que em papel</div>
+            <p>Escrever à mão muda o processamento cognitivo. Desacelera. Obriga a síntese. O celular tem <strong>mil distrações</strong> — o papel tem só você e a dúvida. Confie no processo.</p>
+          </div>
+
+          <div class="callout">
+            <div class="callout-label">Instrução final do Dia 1</div>
+            <p>Leve a folha para o jantar, para o hotel, para o sono. Releia antes de dormir. <strong>Não resolva</strong>. A Teoria do Contrário precisa do desconforto da noite para funcionar no Bloco 3.</p>
+          </div>
+        `,
+        prompts: null
+      }
+    ]
+  },
+  {
+    id: 'bloco-3',
+    numero: 3,
+    role: 'Pesquisador',
+    dia: 2,
+    modulos: [
+      {
+        id: 'boas-vindas-dia2',
+        horario: '08:00–08:10',
+        titulo: 'Boas-vindas ao Segundo Dia',
+        summary: 'Retomada do clima do grupo. Breve alinhamento sobre o que vem pela frente.',
+        avatar: null,
+        conteudo: null,
+        prompts: null
+      },
+      {
+        id: 'retomada-argumento',
+        horario: '08:10–08:20',
+        titulo: 'Retomada — O Argumento de Ontem',
+        summary: 'Cada participante compartilha em uma linha o argumento contrário que construiu no Dia 1.',
+        avatar: null,
+        conteudo: null,
+        prompts: null
+      },
+      {
+        id: 'artigos-reais',
+        horario: '08:20–09:15',
+        titulo: 'Como Encontrar Artigos Científicos Reais',
+        summary: 'Como pedir referências para GPT e Gemini sem receber artigos inexistentes. Estratégias de busca por especialidade com prompts AIMED.',
+        avatar: null,
+        conteudo: null,
+        prompts: null
+      },
+      {
+        id: 'tres-ias-ciencia',
+        horario: '09:15–10:00',
+        titulo: 'As Três IAs na Análise Científica',
+        summary: 'GPT sintetiza e compara. Gemini acessa literatura indexada. Claude lê PDFs completos e critica metodologia. Quando usar cada um.',
+        avatar: null,
+        conteudo: null,
+        prompts: null
+      },
+      {
+        id: 'cafe-3',
+        horario: '10:00–10:15',
+        titulo: 'Café',
+        break: true
+      },
+      {
+        id: 'notebooklm',
+        horario: '10:15–11:00',
+        titulo: 'NotebookLM — Biblioteca Científica Pessoal',
+        summary: 'Carga dos artigos selecionados, consulta com citações precisas, análise comparativa de estudos conflitantes.',
+        avatar: null,
+        conteudo: null,
+        prompts: null
+      },
+      {
+        id: 'construindo-ferramenta',
+        horario: '11:00–12:00',
+        titulo: 'Construindo Minha Ferramenta',
+        summary: 'Cada participante escolhe um problema real da sua rotina e aplica a Metodologia AIMED para construir sua solução personalizada.',
+        avatar: null,
+        conteudo: null,
+        prompts: null
+      }
+    ]
+  },
+  {
+    id: 'bloco-4',
+    numero: 4,
+    role: 'Integrador',
+    dia: 2,
+    modulos: [
+      {
+        id: 'caso-multissistemico',
+        horario: '14:00–14:10',
+        titulo: 'O Caso que Nenhum Especialista Resolve Sozinho',
+        summary: 'Apresentação objetiva do caso clínico real e multissistêmico — construído para as especialidades da turma de Joinville.',
+        avatar: null,
+        conteudo: null,
+        prompts: null
+      },
+      {
+        id: 'discussao-coletiva',
+        horario: '14:10–15:40',
+        titulo: 'Discussão Clínica com IA',
+        summary: '90 minutos de discussão coletiva. A IA acompanha e registra em tempo real. Ao final, apresenta sua síntese e proposta de conduta.',
+        avatar: null,
+        conteudo: null,
+        prompts: null
+      },
+      {
+        id: 'cafe-4',
+        horario: '15:40–16:00',
+        titulo: 'Café',
+        break: true
+      },
+      {
+        id: 'tc-colhendo',
+        horario: '16:00–16:30',
+        titulo: 'Teoria do Contrário — Colhendo',
+        summary: 'Cada especialista traz sua conclusão para o grupo. O protocolo se sustenta, precisa de revisão ou tem exceções?',
+        avatar: null,
+        conteudo: null,
+        prompts: null
+      },
+      {
+        id: 'etica-cfm',
+        horario: '16:30–17:00',
+        titulo: 'Ética, CFM e Responsabilidade',
+        summary: 'O que o CFM permite hoje. Como documentar o uso de IA no prontuário. Responsabilidade civil.',
+        avatar: null,
+        conteudo: null,
+        prompts: null
+      },
+      {
+        id: 'minha-ferramenta',
+        horario: '17:00–17:30',
+        titulo: 'Minha Ferramenta, Minha Especialidade',
+        summary: 'Cada participante compartilha com o grupo a ferramenta construída.',
+        avatar: null,
+        conteudo: null,
+        prompts: null
+      },
+      {
+        id: 'encerramento',
+        horario: '17:30–18:00',
+        titulo: 'Encerramento',
+        summary: 'Plano de 7 dias. Entrega dos certificados.',
+        avatar: null,
+        conteudo: null,
+        prompts: null
+      }
+    ]
+  }
+];
+
+/* ============================================================
+   ESTADO DA APLICAÇÃO
+   ============================================================ */
+
+let currentModuleId = null;
+let currentLevel = 2; // padrão: nível intermediário
+
+/* ============================================================
+   RENDER — TRILHA LATERAL
+   ============================================================ */
+
+function renderTrail() {
+  const trail = document.getElementById('trail');
+  trail.innerHTML = PROGRAMA.map(bloco => `
+    <div class="block-group block-${bloco.numero}">
+      <div class="block-header">
+        <div class="block-dot"></div>
+        <div class="block-label">Bloco ${String(bloco.numero).padStart(2,'0')} · Dia ${bloco.dia}</div>
+        <div class="block-role">${bloco.role}</div>
+      </div>
+      <div class="block-modules">
+        ${bloco.modulos.map(m => `
+          <a class="module-link ${m.break ? 'break' : ''}"
+             data-id="${m.id}"
+             onclick="${m.break ? '' : `selectModule('${m.id}')`}">
+            <span class="m-time">${m.horario}</span>
+            <span class="m-title">${m.titulo}</span>
+          </a>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ============================================================
+   SELECIONAR MÓDULO
+   ============================================================ */
+
+function selectModule(id) {
+  currentModuleId = id;
+
+  // atualizar sidebar
+  document.querySelectorAll('.module-link').forEach(a => {
+    a.classList.remove('active');
+    if (a.dataset.id === id) a.classList.add('active');
+  });
+
+  // encontrar módulo
+  let modulo = null, bloco = null;
+  for (const b of PROGRAMA) {
+    for (const m of b.modulos) {
+      if (m.id === id) { modulo = m; bloco = b; break; }
+    }
+    if (modulo) break;
+  }
+
+  if (!modulo) return;
+
+  renderModule(modulo, bloco);
+  document.getElementById('crumb-module').textContent = modulo.titulo;
+
+  // fechar sidebar no mobile
+  document.getElementById('sidebar').classList.remove('open');
+
+  // salvar no hash
+  window.location.hash = id;
+
+  // scroll top do conteúdo
+  document.querySelector('.main').scrollTop = 0;
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+/* ============================================================
+   RENDER — MÓDULO INDIVIDUAL
+   ============================================================ */
+
+function renderModule(modulo, bloco) {
+  const view = document.getElementById('moduleView');
+
+  // Encontrar módulo anterior/próximo
+  const flatModules = PROGRAMA.flatMap(b => b.modulos).filter(m => !m.break);
+  const idx = flatModules.findIndex(m => m.id === modulo.id);
+  const prev = idx > 0 ? flatModules[idx - 1] : null;
+  const next = idx < flatModules.length - 1 ? flatModules[idx + 1] : null;
+
+  let html = `
+    <header class="module-header">
+      <div class="module-eyebrow">
+        <span class="divider"></span>
+        <span>Bloco ${String(bloco.numero).padStart(2,'0')} · ${bloco.role}</span>
+        <span>·</span>
+        <span>${modulo.horario}</span>
+      </div>
+      <h1 class="module-title">${modulo.titulo}</h1>
+      <p class="module-summary">${modulo.summary}</p>
+    </header>
+  `;
+
+  // Avatar
+  html += renderAvatar(modulo);
+
+  // Conteúdo da aula
+  if (modulo.conteudo) {
+    html += `
+      <section class="content-section">
+        <div class="section-label">Conteúdo da aula</div>
+        <div class="aula-content">${modulo.conteudo}</div>
+      </section>
+    `;
+  } else {
+    html += `
+      <section class="content-section">
+        <div class="section-label">Conteúdo da aula</div>
+        <div class="placeholder">
+          <div class="placeholder-icon">◈</div>
+          <div class="placeholder-text">Conteúdo a ser preenchido</div>
+        </div>
+      </section>
+    `;
+  }
+
+  // Prática — prompts em 3 níveis
+  if (modulo.prompts) {
+    html += renderPractice(modulo.prompts);
+  }
+
+  // Navegação
+  html += `
+    <nav class="module-nav">
+      ${prev ? `
+        <button class="nav-btn prev" onclick="selectModule('${prev.id}')">
+          <span class="nav-label">← Anterior</span>
+          <span class="nav-title">${prev.titulo}</span>
+        </button>
+      ` : `<button class="nav-btn prev" disabled><span class="nav-label">Início</span><span class="nav-title">—</span></button>`}
+      ${next ? `
+        <button class="nav-btn next" onclick="selectModule('${next.id}')">
+          <span class="nav-label">Próximo →</span>
+          <span class="nav-title">${next.titulo}</span>
+        </button>
+      ` : `<button class="nav-btn next" disabled><span class="nav-label">Fim</span><span class="nav-title">—</span></button>`}
+    </nav>
+  `;
+
+  view.innerHTML = html;
+}
+
+/* ============================================================
+   RENDER — AVATAR
+   ============================================================ */
+
+function renderAvatar(modulo) {
+  if (modulo.avatar) {
+    return `
+      <section class="avatar-section">
+        <div class="avatar-header">
+          <div class="avatar-badge">M</div>
+          <div class="avatar-label">Dr. Mbula abre o tema</div>
+        </div>
+        <div class="avatar-video">
+          <iframe src="https://www.youtube.com/embed/${modulo.avatar}?rel=0" allowfullscreen></iframe>
+        </div>
+      </section>
+    `;
+  }
+  return `
+    <section class="avatar-section">
+      <div class="avatar-header">
+        <div class="avatar-badge">M</div>
+        <div class="avatar-label">Dr. Mbula abre o tema</div>
+      </div>
+      <div class="avatar-video">
+        <div class="avatar-placeholder">
+          <div class="avatar-placeholder-icon">▶</div>
+          <div class="avatar-placeholder-text">
+            <strong>Dr. Mbula ao vivo</strong>
+            Vídeo será adicionado em breve
+          </div>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+/* ============================================================
+   RENDER — ÁREA DE PRÁTICA (PROMPTS EM 3 NÍVEIS)
+   ============================================================ */
+
+function renderPractice(prompts) {
+  return `
+    <section class="practice-section" id="practice">
+      <div class="practice-header">
+        <div>
+          <div class="practice-label">Prática · Demonstração ao vivo</div>
+          <div class="practice-title">${prompts.titulo}</div>
+        </div>
+        <div class="level-selector" role="tablist">
+          <button class="level-btn ${currentLevel === 1 ? 'active' : ''}" onclick="setLevel(1)">Nível 1</button>
+          <button class="level-btn ${currentLevel === 2 ? 'active' : ''}" onclick="setLevel(2)">Nível 2</button>
+          <button class="level-btn ${currentLevel === 3 ? 'active' : ''}" onclick="setLevel(3)">Nível 3</button>
+        </div>
+      </div>
+
+      <div class="aimed-legend">
+        <div class="legend-item"><span class="dot ld-a"></span>Assistente</div>
+        <div class="legend-item"><span class="dot ld-i"></span>Informações</div>
+        <div class="legend-item"><span class="dot ld-m"></span>Missão</div>
+        <div class="legend-item"><span class="dot ld-e"></span>Estrutura</div>
+        <div class="legend-item"><span class="dot ld-d"></span>Diretrizes</div>
+      </div>
+
+      <div class="level-hint" id="levelHint">${prompts['nivel' + currentLevel].hint}</div>
+
+      <div class="prompt-box">
+        <div class="prompt-text" id="promptText">${prompts['nivel' + currentLevel].texto}</div>
+      </div>
+
+      <div class="prompt-actions">
+        <button class="action-btn primary" onclick="copyPrompt(this)">
+          <span class="icon">⎘</span> Copiar prompt
+        </button>
+        <button class="action-btn" onclick="openAI('chatgpt')">
+          <span class="icon">◔</span> Abrir no ChatGPT
+        </button>
+        <button class="action-btn" onclick="openAI('claude')">
+          <span class="icon">◑</span> Abrir no Claude
+        </button>
+        <button class="action-btn" onclick="openAI('gemini')">
+          <span class="icon">◕</span> Abrir no Gemini
+        </button>
+      </div>
+    </section>
+  `;
+}
+
+/* ============================================================
+   TROCAR NÍVEL
+   ============================================================ */
+
+function setLevel(lvl) {
+  currentLevel = lvl;
+  // re-render apenas da prática
+  const modulo = findModule(currentModuleId);
+  if (modulo && modulo.prompts) {
+    const el = document.getElementById('practice');
+    el.outerHTML = renderPractice(modulo.prompts);
+  }
+}
+
+function findModule(id) {
+  for (const b of PROGRAMA) {
+    for (const m of b.modulos) {
+      if (m.id === id) return m;
+    }
+  }
+  return null;
+}
+
+/* ============================================================
+   CLIPBOARD COM FALLBACK (funciona em file:// também)
+   ============================================================ */
+
+function copyToClipboard(text) {
+  // Tenta API moderna primeiro (só funciona em HTTPS ou localhost)
+  if (navigator.clipboard && window.isSecureContext) {
+    return navigator.clipboard.writeText(text);
+  }
+  // Fallback para file:// e HTTP
+  return new Promise((resolve, reject) => {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-9999px';
+    textArea.style.top = '0';
+    textArea.setAttribute('readonly', '');
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+      const ok = document.execCommand('copy');
+      document.body.removeChild(textArea);
+      if (ok) resolve();
+      else reject(new Error('execCommand falhou'));
+    } catch (err) {
+      document.body.removeChild(textArea);
+      reject(err);
+    }
+  });
+}
+
+/* ============================================================
+   COPIAR PROMPT
+   ============================================================ */
+
+function copyPrompt(btn) {
+  const promptText = document.getElementById('promptText').innerText;
+  copyToClipboard(promptText).then(() => {
+    btn.classList.add('copied');
+    btn.innerHTML = '<span class="icon">✓</span> Copiado!';
+    showToast('Prompt copiado para a área de transferência');
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<span class="icon">⎘</span> Copiar prompt';
+    }, 2000);
+  }).catch(err => {
+    console.error('Erro ao copiar:', err);
+    showToast('Erro ao copiar — selecione o texto manualmente');
+  });
+}
+
+/* ============================================================
+   ABRIR IA EM NOVA ABA
+   ============================================================ */
+
+function openAI(platform) {
+  const promptText = document.getElementById('promptText').innerText;
+
+  switch(platform) {
+    case 'chatgpt':
+      // ChatGPT aceita ?q= na URL — prompt já aparece digitado
+      const chatgptUrl = 'https://chatgpt.com/?q=' + encodeURIComponent(promptText);
+      window.open(chatgptUrl, '_blank');
+      showToast('✓ ChatGPT aberto com o prompt já digitado — só dar Enter');
+      break;
+
+    case 'claude':
+      // Claude não aceita prompt via URL — copia e abre
+      copyToClipboard(promptText).catch(e => console.error(e));
+      window.open('https://claude.ai/new', '_blank');
+      showToast('✓ Prompt copiado — no Claude, cole com Ctrl+V (Cmd+V no Mac)');
+      break;
+
+    case 'gemini':
+      // Gemini não aceita prompt via URL — copia e abre
+      copyToClipboard(promptText).catch(e => console.error(e));
+      window.open('https://gemini.google.com/app', '_blank');
+      showToast('✓ Prompt copiado — no Gemini, cole com Ctrl+V (Cmd+V no Mac)');
+      break;
+  }
+}
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 4000);
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderTrail();
+
+  // Carregar módulo do hash ou padrão
+  const hashId = window.location.hash.slice(1);
+  const firstModule = PROGRAMA[0].modulos[0].id;
+  selectModule(hashId || firstModule);
+});
+
+</script>
+
+</body>
+</html>
