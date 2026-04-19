@@ -82,6 +82,156 @@ a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
 
 /* ============================================================
+   LOGÍSTICA — BOTÃO NA SIDEBAR
+   ============================================================ */
+
+.logistica-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(201,168,76,0.05);
+  color: var(--gold);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.logistica-btn:hover, .logistica-btn.active {
+  background: rgba(201,168,76,0.13);
+  color: var(--gold-light);
+}
+.logistica-icon { font-size: 15px; }
+.logistica-label { flex: 1; text-align: left; }
+.logistica-arrow { opacity: 0.4; transition: all 0.2s; }
+.logistica-btn:hover .logistica-arrow, .logistica-btn.active .logistica-arrow {
+  opacity: 1; transform: translateX(4px);
+}
+
+/* ============================================================
+   LOGÍSTICA — PÁGINA INTERNA
+   ============================================================ */
+.logistica-hero {
+  background: var(--navy-card);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: 32px 36px;
+  margin-bottom: 36px;
+  position: relative;
+  overflow: hidden;
+}
+.logistica-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+}
+.logistica-hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2em; font-weight: 700;
+  color: var(--white); line-height: 1.15; margin-bottom: 12px;
+}
+.logistica-hero-title em { color: var(--gold); font-style: italic; }
+.logistica-hero-meta { display: flex; flex-wrap: wrap; gap: 12px; }
+.logistica-meta-pill {
+  display: flex; align-items: center; gap: 6px;
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  letter-spacing: 0.1em; color: var(--gold);
+  background: rgba(201,168,76,0.1); border: 1px solid var(--border);
+  padding: 5px 12px; border-radius: 20px;
+}
+.logistica-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 28px;
+}
+.logistica-card {
+  background: var(--navy-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 22px 24px; transition: border-color 0.2s;
+}
+.logistica-card:hover { border-color: var(--border-strong); }
+.logistica-card.wide { grid-column: 1 / -1; }
+.logistica-card-icon { font-size: 22px; margin-bottom: 10px; }
+.logistica-card-label {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold-dim); margin-bottom: 6px;
+}
+.logistica-card-title {
+  font-family: 'Playfair Display', serif; font-size: 1.1em;
+  font-weight: 700; color: var(--white); margin-bottom: 8px;
+}
+.logistica-card p { font-size: 0.9em; color: var(--gray-300); line-height: 1.7; font-weight: 300; }
+.logistica-card a { color: var(--gold); text-decoration: underline; text-decoration-color: rgba(201,168,76,0.35); }
+.logistica-card a:hover { color: var(--gold-light); }
+.logistica-map-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 12px; padding: 8px 16px;
+  background: rgba(201,168,76,0.08); border: 1px solid var(--border);
+  border-radius: var(--radius); font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 0.1em; color: var(--gold);
+  text-transform: uppercase; transition: all 0.2s; cursor: pointer; text-decoration: none;
+}
+.logistica-map-btn:hover { background: rgba(201,168,76,0.18); border-color: var(--border-strong); }
+.logistica-section-title {
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 12px;
+}
+.logistica-section-title::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+.agenda-dia {
+  background: var(--navy-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 16px;
+}
+.agenda-dia-header {
+  display: flex; align-items: center; gap: 16px;
+  padding: 14px 24px; background: var(--navy-mid); border-bottom: 1px solid var(--border);
+}
+.agenda-dia-badge {
+  font-family: 'Playfair Display', serif; font-size: 1.8em;
+  font-weight: 900; color: var(--gold); line-height: 1; opacity: 0.75;
+}
+.agenda-dia-info { flex: 1; }
+.agenda-dia-label {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dim);
+}
+.agenda-dia-title {
+  font-family: 'Playfair Display', serif; font-size: 1.05em;
+  font-weight: 700; color: var(--white); margin-top: 2px;
+}
+.agenda-dia-role {
+  font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em;
+  color: var(--gold); background: rgba(201,168,76,0.1);
+  padding: 4px 10px; border-radius: 12px;
+}
+.agenda-items { padding: 6px 0; }
+.agenda-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 9px 24px; transition: background 0.15s;
+}
+.agenda-item:hover { background: rgba(201,168,76,0.03); }
+.agenda-item.break-item { opacity: 0.45; font-style: italic; }
+.agenda-item-time {
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  color: var(--gold-dim); flex-shrink: 0; min-width: 90px; padding-top: 1px;
+}
+.agenda-item-name { font-size: 13px; color: var(--gray-100); line-height: 1.45; }
+.logistica-link-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 10px 18px; border: 1px solid var(--border);
+  border-radius: var(--radius); font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--gray-100); background: var(--navy-card-hi); transition: all 0.2s;
+  cursor: pointer; text-decoration: none;
+}
+.logistica-link-btn:hover { border-color: var(--gold); color: var(--gold-light); background: rgba(201,168,76,0.07); }
+.logistica-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+
+/* ============================================================
    LAYOUT PRINCIPAL
    ============================================================ */
 
@@ -2630,6 +2780,11 @@ abbr.gloss:hover::before {
       <div class="brand-sub">Joinville · Abril 2026</div>
       <div class="brand-date">25 e 26 de Abril · Hotel Le Canard</div>
     </div>
+    <button class="logistica-btn" id="logisticaBtn" onclick="showLogistica()">
+      <span class="logistica-icon">📍</span>
+      <span class="logistica-label">Logística do Curso</span>
+      <span class="logistica-arrow">→</span>
+    </button>
     <nav class="trail" id="trail">
       </nav>
     <div class="colofao">
@@ -2665,7 +2820,7 @@ abbr.gloss:hover::before {
 
     <div class="sobre-eyebrow">Autor &amp; Fundador</div>
     <div class="sobre-identity">
-      <div class="sobre-photo" style="background-image: url('data:image/jpeg;base64,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');" role="img" aria-label="Retrato do Dr. Mbula Luzingu Barros"></div>
+      <div class="sobre-photo" style="background-image: url('https://inovamed.pro/wp-content/uploads/2026/02/Gemini_Generated_Image_pwtbbkpwtbbkpwtb-1-scaled.jpeg');" role="img" aria-label="Retrato do Dr. Mbula Luzingu Barros"></div>
       <div class="sobre-identity-text">
         <h2 class="sobre-title">Dr. Mbula <em>Luzingu Barros</em></h2>
         <div class="sobre-role">Médico Intensivista Pediátrico · Arquiteto de IA · Joinville/SC</div>
@@ -2704,7 +2859,7 @@ abbr.gloss:hover::before {
         <a class="sobre-link" href="https://inovamed.pro" target="_blank" rel="noopener noreferrer">
           <span class="icon">→</span> InovaMed · Portal Brasileiro de IA em Medicina
         </a>
-        <a class="sobre-link" href="https://inovamed.pro" target="_blank" rel="noopener noreferrer">
+        <a class="sobre-link" href="https://www.amazon.com.br/dp/B0GMP56TH4" target="_blank" rel="noopener noreferrer">
           <span class="icon">↗</span> Livro "100 PONTOS"
         </a>
       </div>
@@ -5133,6 +5288,7 @@ function isShort(id) { return SHORTS_IDS.includes(id); }
 
 function selectModule(id) {
   currentModuleId = id;
+  document.getElementById('logisticaBtn').classList.remove('active');
   document.querySelectorAll('.module-link').forEach(a => {
     a.classList.remove('active');
     if (a.dataset.id === id) a.classList.add('active');
@@ -5482,6 +5638,190 @@ function showToast(msg) {
 }
 
 function toggleSidebar() { document.getElementById('sidebar').classList.toggle('open'); }
+
+function showLogistica() {
+  // Highlight button
+  document.querySelectorAll('.module-link').forEach(a => a.classList.remove('active'));
+  document.getElementById('logisticaBtn').classList.add('active');
+  document.getElementById('crumb-module').textContent = 'Logística do Curso';
+  document.getElementById('sidebar').classList.remove('open');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  const view = document.getElementById('moduleView');
+  view.innerHTML = `
+    <div class="module-view">
+      <!-- Hero -->
+      <div class="logistica-hero">
+        <div class="logistica-hero-title">
+          AIMED <em>Joinville</em><br>Informações Logísticas
+        </div>
+        <div class="logistica-hero-meta">
+          <div class="logistica-meta-pill">📅 25 e 26 de Abril de 2026</div>
+          <div class="logistica-meta-pill">🏨 Hotel Le Canard</div>
+          <div class="logistica-meta-pill">📍 Joinville · SC</div>
+          <div class="logistica-meta-pill">⏱ 16 horas · 70% prático</div>
+        </div>
+      </div>
+
+      <!-- Grid de informações -->
+      <div class="logistica-grid">
+
+        <div class="logistica-card">
+          <div class="logistica-card-icon">🏨</div>
+          <div class="logistica-card-label">Local do Curso</div>
+          <div class="logistica-card-title">Hotel Le Canard</div>
+          <p>
+            Rua Ministro Calógeras, 22<br>
+            Centro · Joinville · SC · 89201-180
+          </p>
+          <a class="logistica-map-btn" href="https://maps.google.com/?q=Hotel+Le+Canard+Joinville" target="_blank" rel="noopener">
+            🗺 Abrir no Google Maps
+          </a>
+        </div>
+
+        <div class="logistica-card">
+          <div class="logistica-card-icon">🕐</div>
+          <div class="logistica-card-label">Horários</div>
+          <div class="logistica-card-title">Credenciamento e Início</div>
+          <p>
+            <strong style="color:var(--gold-light)">Dia 1 — Sexta, 25/04</strong><br>
+            Credenciamento: 07:45 · Início: 08:00<br>
+            Encerramento previsto: 18:00<br><br>
+            <strong style="color:var(--gold-light)">Dia 2 — Sábado, 26/04</strong><br>
+            Início: 08:00 · Encerramento: 18:00
+          </p>
+        </div>
+
+        <div class="logistica-card">
+          <div class="logistica-card-icon">💻</div>
+          <div class="logistica-card-label">O que trazer</div>
+          <div class="logistica-card-title">Equipamentos & Contas</div>
+          <p>
+            ✦ Notebook <strong>carregado</strong> (obrigatório)<br>
+            ✦ Carregador e cabo de energia<br>
+            ✦ Mouse (recomendado)<br>
+            ✦ Celular com dados ou acesso ao Wi-Fi<br><br>
+            <strong style="color:var(--gold-light)">Contas de IA:</strong><br>
+            ✦ <strong>ChatGPT Plus</strong> — versão paga altamente recomendável<br>
+            ✦ <strong>Claude Pro</strong> — versão paga altamente recomendável<br>
+            ✦ <strong>Gemini Advanced</strong> — versão paga altamente recomendável<br>
+            ✦ <strong>NotebookLM</strong> — gratuito, conta Google suficiente
+          </p>
+        </div>
+
+        <div class="logistica-card">
+          <div class="logistica-card-icon">📶</div>
+          <div class="logistica-card-label">Conectividade</div>
+          <div class="logistica-card-title">Wi-Fi & Acesso</div>
+          <p>
+            Wi-Fi fornecido pelo Hotel Le Canard.<br>
+            Credenciais serão informadas na abertura do curso.<br><br>
+            <strong style="color:var(--gold-light)">Dica:</strong> tenha plano de dados como backup — sessões práticas exigem acesso estável às IAs.
+          </p>
+        </div>
+
+        <div class="logistica-card">
+          <div class="logistica-card-icon">🍽</div>
+          <div class="logistica-card-label">Alimentação</div>
+          <div class="logistica-card-title">Refeições & Coffee</div>
+          <p>
+            ✦ <strong style="color:var(--gold-light)">Coffee da manhã</strong> — simples, para o início do dia<br>
+            ✦ <strong style="color:var(--gold-light)">Coffee break da tarde</strong> — coffee break completo<br>
+            ✦ Almoço por conta do participante<br>
+            ✦ Restaurantes próximos ao hotel serão indicados<br><br>
+            Intervalo para almoço: <strong style="color:var(--gold-light)">12:00 às 14:00</strong>
+          </p>
+        </div>
+
+        <div class="logistica-card">
+          <div class="logistica-card-icon">🚗</div>
+          <div class="logistica-card-label">Como chegar</div>
+          <div class="logistica-card-title">Acesso e Estacionamento</div>
+          <p>
+            O Hotel Le Canard está localizado no Centro de Joinville, de fácil acesso.<br><br>
+            ✦ Estacionamento rotativo disponível nas proximidades<br>
+            ✦ Aplicativos de mobilidade (99, Uber) funcionam bem na região
+          </p>
+        </div>
+
+        <div class="logistica-card wide">
+          <div class="logistica-card-icon">📜</div>
+          <div class="logistica-card-label">Certificação</div>
+          <div class="logistica-card-title">Certificado de Participação</div>
+          <p>
+            Certificado de <strong style="color:var(--gold-light)">16 horas</strong> emitido pela InovaMed ao final do curso, mediante participação integral nos dois dias.<br>
+            O certificado será enviado por e-mail em até <strong style="color:var(--gold-light)">7 dias úteis</strong> após o encerramento.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Agenda Rápida -->
+      <div class="logistica-section-title" style="margin-bottom:18px">Agenda Resumida</div>
+
+      <div class="agenda-dia">
+        <div class="agenda-dia-header">
+          <div class="agenda-dia-badge">1</div>
+          <div class="agenda-dia-info">
+            <div class="agenda-dia-label">Sexta-feira · 25 de Abril</div>
+            <div class="agenda-dia-title">Do zero ao sistema — Arquiteto + Clínico</div>
+          </div>
+          <div class="agenda-dia-role">Blocos 01 e 02</div>
+        </div>
+        <div class="agenda-items">
+          <div class="agenda-item"><div class="agenda-item-time">07:45–08:00</div><div class="agenda-item-name">Credenciamento e boas-vindas</div></div>
+          <div class="agenda-item"><div class="agenda-item-time">08:00–09:30</div><div class="agenda-item-name">Bloco 1 — <strong>Arquiteto</strong> · Metodologia AIMED, plataformas e Perfil Clínico Permanente</div></div>
+          <div class="agenda-item break-item"><div class="agenda-item-time">09:30–09:45</div><div class="agenda-item-name">☕ Coffee da manhã</div></div>
+          <div class="agenda-item"><div class="agenda-item-time">09:45–12:00</div><div class="agenda-item-name">Bloco 1 cont. — Prompts AIMED, Teoria do Contrário (plantando), casos práticos</div></div>
+          <div class="agenda-item break-item"><div class="agenda-item-time">12:00–14:00</div><div class="agenda-item-name">🍽 Almoço</div></div>
+          <div class="agenda-item"><div class="agenda-item-time">14:00–15:30</div><div class="agenda-item-name">Bloco 2 — <strong>Clínico</strong> · Prontuário por voz, prescrição segura, raciocínio diagnóstico</div></div>
+          <div class="agenda-item break-item"><div class="agenda-item-time">15:30–16:00</div><div class="agenda-item-name">☕ Coffee Break (completo)</div></div>
+          <div class="agenda-item"><div class="agenda-item-time">16:00–17:30</div><div class="agenda-item-name">Bloco 2 cont. — Ferramenta personalizada por especialidade (construção ao vivo)</div></div>
+          <div class="agenda-item"><div class="agenda-item-time">17:30–18:00</div><div class="agenda-item-name">Síntese do Dia 1 · Desafio para o Dia 2</div></div>
+        </div>
+      </div>
+
+      <div class="agenda-dia">
+        <div class="agenda-dia-header">
+          <div class="agenda-dia-badge">2</div>
+          <div class="agenda-dia-info">
+            <div class="agenda-dia-label">Sábado · 26 de Abril</div>
+            <div class="agenda-dia-title">Pesquisa e integração — Pesquisador + Integrador</div>
+          </div>
+          <div class="agenda-dia-role">Blocos 03 e 04</div>
+        </div>
+        <div class="agenda-items">
+          <div class="agenda-item"><div class="agenda-item-time">08:00–09:30</div><div class="agenda-item-name">Bloco 3 — <strong>Pesquisador</strong> · Busca científica, literatura crítica, as 3 IAs na pesquisa</div></div>
+          <div class="agenda-item break-item"><div class="agenda-item-time">09:30–09:45</div><div class="agenda-item-name">☕ Coffee da manhã</div></div>
+          <div class="agenda-item"><div class="agenda-item-time">09:45–12:00</div><div class="agenda-item-name">Bloco 3 cont. — NotebookLM clínico, Teoria do Contrário (regando) · Discussão de caso multiprofissional</div></div>
+          <div class="agenda-item break-item"><div class="agenda-item-time">12:00–14:00</div><div class="agenda-item-name">🍽 Almoço</div></div>
+          <div class="agenda-item"><div class="agenda-item-time">14:00–15:30</div><div class="agenda-item-name">Bloco 4 — <strong>Integrador</strong> · Teoria do Contrário (colhendo), ética e CFM, apresentações ao vivo</div></div>
+          <div class="agenda-item break-item"><div class="agenda-item-time">15:30–16:00</div><div class="agenda-item-name">☕ Coffee Break (completo)</div></div>
+          <div class="agenda-item"><div class="agenda-item-time">16:00–17:30</div><div class="agenda-item-name">Bloco 4 cont. — Ferramenta finalizada · Demonstrações · Consolidação do sistema pessoal</div></div>
+          <div class="agenda-item"><div class="agenda-item-time">17:30–18:00</div><div class="agenda-item-name">Encerramento · Plano de 7 dias · Certificação</div></div>
+        </div>
+      </div>
+
+      <!-- Contatos e links -->
+      <div class="logistica-section-title" style="margin:28px 0 14px">Contato & Suporte</div>
+      <div class="logistica-card wide" style="margin-bottom:40px">
+        <div class="logistica-card-icon">📱</div>
+        <div class="logistica-card-label">Canais de comunicação</div>
+        <div class="logistica-card-title">Suporte e Comunidade</div>
+        <p style="margin-bottom:8px">Durante o curso: fale diretamente com o Dr. Mbula ou com a equipe de suporte.<br>Após o curso: todos os participantes serão adicionados ao <strong style="color:var(--gold-light)">grupo de WhatsApp da turma</strong>, que permanece ativo após o encerramento para troca contínua entre colegas.</p>
+        <div class="logistica-links">
+          <a class="logistica-link-btn" href="https://inovamed.pro" target="_blank" rel="noopener">
+            <span>🌐</span> InovaMed
+          </a>
+          <a class="logistica-link-btn" href="mailto:inovamed.pro@gmail.com">
+            <span>✉️</span> inovamed.pro@gmail.com
+          </a>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 function abrirSobre() { document.getElementById('sobreOverlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
 function fecharSobre() { document.getElementById('sobreOverlay').classList.remove('open'); document.body.style.overflow = ''; }
 
