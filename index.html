@@ -2602,6 +2602,20 @@ abbr.gloss:hover::before {
 
 .toast.show { transform: translateX(-50%) translateY(0); }
 
+
+/* YouTube Shorts — aspect ratio vertical 9:16 */
+.avatar-video.is-short {
+  padding-bottom: 177.78%; /* 16:9 invertido = 9:16 */
+  max-height: 520px;
+  background: var(--navy);
+}
+.avatar-video.is-short iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+
 </style>
 </head>
 <body>
@@ -2717,7 +2731,7 @@ const PROGRAMA = [
         horario: '08:00–08:20',
         titulo: 'Abertura',
         summary: 'O tom dos próximos dois dias. Quem somos, o que vamos construir, e por que este curso é diferente de qualquer coisa que você viu sobre IA na medicina.',
-        avatar: 'eGBBCJR10ng',
+        avatar: 'kerMhntZl9s',
         conteudo: `
           <div class="quote-hero">
             <div class="quote-mark">"</div>
@@ -2779,7 +2793,7 @@ const PROGRAMA = [
         horario: '08:20–09:20',
         titulo: 'Metodologia AIMED para Geração de Prompts',
         summary: 'A anatomia do prompt médico de alta performance: Assistente, Informações, Missão, Estrutura e Diretrizes. Técnicas avançadas integradas à metodologia.',
-        avatar: 'jkdZ7Tr7mNU',
+        avatar: 'Meop-9OeIXc',
         conteudo: `
           <h3>Por que a maioria dos prompts médicos falha</h3>
           <p>A IA não é ruim — o prompt é raso. Quando o médico escreve <em>"me dá um diagnóstico diferencial para dor torácica"</em>, ele está pedindo para a IA adivinhar 80% do contexto: idade, comorbidades, posição clínica, nível de evidência esperado, formato da resposta, limites éticos. O resultado é genérico e frustrante.</p>
@@ -2827,7 +2841,7 @@ const PROGRAMA = [
         horario: '09:20–10:00',
         titulo: 'Personalização das IAs',
         summary: 'As três IAs principais que vamos usar no curso. Você vai transformar cada uma em uma versão personalizada da sua especialidade — funcionando permanentemente, sem precisar explicar quem é você toda vez.',
-        avatar: null,
+        avatar: 'fec5eX_xS2U',
         conteudo: `
           <h3>O conceito: Perfil Clínico Permanente</h3>
           <p>Até agora você provavelmente abre o ChatGPT e começa todo prompt explicando quem é, o que faz, em que hospital trabalha, quais protocolos segue. Isso é <strong>energia desperdiçada toda vez</strong>.</p>
@@ -2914,7 +2928,7 @@ const PROGRAMA = [
         horario: '10:15–11:00',
         titulo: 'A Voz como Primeira Ferramenta',
         summary: 'Esqueça a tela por 45 minutos. Vamos falar com a IA como se fala com um colega no corredor — e ver o que muda quando a barreira do teclado desaparece.',
-        avatar: null,
+        avatar: '5WcmIEk4zvY',
         conteudo: `
           <h3>Por que começar pela voz</h3>
           <p>A maioria dos médicos que tentam IA fracassa pela mesma razão: <strong>escrever prompt bom demora</strong>. Em um plantão, você não tem 5 minutos para digitar contexto clínico.</p>
@@ -3003,7 +3017,7 @@ const PROGRAMA = [
         horario: '11:00–12:00',
         titulo: 'Laboratório: Seu Sistema Funcionando',
         summary: 'A manhã inteira aterrissa aqui. Ao final dos próximos 60 minutos, você não terá "visto como se faz" — você terá um sistema seu, rodando, testado, pronto para segunda-feira.',
-        avatar: '8nbSo5v153k',
+        avatar: '0nfv5kvKAuc',
         conteudo: `
           <h3>O que estamos fechando agora</h3>
           <p>A manhã foi a construção. Este módulo é a <strong>integração</strong>. Ao final dele, você não deve ter dúvidas sobre se seu sistema funciona — porque você vai tê-lo testado ao vivo, com um caso seu, na frente de todos.</p>
@@ -3102,7 +3116,7 @@ const PROGRAMA = [
         horario: '14:00–15:00',
         titulo: 'Análise de Laudos e Exames',
         summary: 'A IA lê laudo em texto melhor que você em metade do tempo. Lê imagem com limitações reais. A aula é aprender a diferença — e onde cada uma pisa e onde cada uma escorrega.',
-        avatar: null,
+        avatar: 'A4zS3y2qvXA',
         conteudo: `
           <h3>O que muda quando a IA lê seu laudo</h3>
           <p>Um ecocardiograma de 2 páginas, um laudo de RM de coluna com 15 achados, um resultado de polissonografia — tudo isso exige <strong>tempo de leitura e organização mental</strong> que ninguém tem no consultório lotado.</p>
@@ -3213,7 +3227,7 @@ const PROGRAMA = [
         horario: '15:00–15:45',
         titulo: 'A Voz como Ferramenta Clínica',
         summary: 'De manhã, a voz foi experimentação. Agora é ferramenta de trabalho. Três cenários reais do dia-a-dia — laudo ditado, discussão com colega virtual, análise de consulta — funcionando em 45 minutos.',
-        avatar: null,
+        avatar: '-smXno1mKd8',
         conteudo: `
           <h3>O salto da manhã para a tarde</h3>
           <p>De manhã você falou um caso e viu a IA estruturar. Foi <em>demonstração</em>. Agora vamos transformar isso em <strong>fluxo de trabalho real</strong> — três cenários específicos que você leva para o consultório na segunda-feira.</p>
@@ -3298,7 +3312,7 @@ const PROGRAMA = [
         horario: '16:00–17:00',
         titulo: 'Cálculos e Segurança Medicamentosa',
         summary: 'O módulo mais sensível do curso. Uma interação medicamentosa não vista pode matar — uma dose calculada errado também. A IA ajuda ou atrapalha? Depende inteiramente de como você a instrui.',
-        avatar: null,
+        avatar: 'mg7svZFjml8',
         conteudo: `
           <h3>A promessa e o risco</h3>
           <p>A IA faz cálculos medicamentosos em segundos com precisão superior à maioria dos médicos — <em>quando bem instruída</em>. Ela também <strong>alucina dosagens com a mesma confiança</strong> que acerta, se mal instruída. É a ferramenta mais poderosa e mais perigosa do curso.</p>
@@ -3395,7 +3409,7 @@ const PROGRAMA = [
         horario: '17:00–17:50',
         titulo: 'Teoria do Contrário — Plantando a Semente',
         summary: 'O momento em que o curso muda de categoria. Até aqui você aprendeu a usar a IA para ajudar. Agora vai aprender a usá-la para questionar. Um protocolo seu. Uma dúvida viva. Sem resposta hoje.',
-        avatar: null,
+        avatar: '5kQaLqa2mZU',
         conteudo: `
           <div class="tc-manifesto">
             <div class="tc-manifesto-label">Manifesto — Teoria do Contrário</div>
@@ -3557,7 +3571,7 @@ const PROGRAMA = [
         horario: '17:50–18:00',
         titulo: 'Ponte para Amanhã',
         summary: 'Dez minutos. Sem IA, sem prompts, sem discussão. Você e uma folha em branco. Escreva o que leva para casa — e principalmente, o que traz amanhã.',
-        avatar: null,
+        avatar: '5VnTyS_zCeQ',
         conteudo: `
           <div class="letter-card">
             <div class="letter-header">Instrução única deste módulo</div>
@@ -3615,7 +3629,7 @@ const PROGRAMA = [
         horario: '08:00–08:10',
         titulo: 'Boas-vindas ao Segundo Dia',
         summary: 'Breve. Essencial. Ontem foi construção. Hoje é aplicação científica. Breve alinhamento de clima, energia e o que vem.',
-        avatar: null,
+        avatar: 'TtZ-Ee7UTZg',
         conteudo: `
           <div class="quote-hero">
             <div class="quote-mark">"</div>
@@ -3676,7 +3690,7 @@ const PROGRAMA = [
         horario: '08:10–08:20',
         titulo: 'Retomada — O Argumento de Ontem',
         summary: 'Cada participante compartilha em uma linha o argumento contrário que dormiu com ele. Não é apresentação. É confissão coletiva de dúvida clínica.',
-        avatar: null,
+        avatar: '6mNXdfGrXdo',
         conteudo: `
           <div class="circle-open">
             <div class="circle-label">Círculo de abertura</div>
@@ -3747,7 +3761,7 @@ const PROGRAMA = [
         horario: '08:20–09:15',
         titulo: 'Como Encontrar Artigos Científicos Reais',
         summary: 'A IA pode inventar artigos com autor, revista, ano, DOI — tudo convincente, tudo falso. Este módulo ensina a separar literatura real de alucinação, e extrair o máximo do que é real.',
-        avatar: null,
+        avatar: 'MJat56OqGt8',
         conteudo: `
           <h3>O problema que vamos atacar</h3>
           <p>A pergunta mais frequente de médicos que começam a usar IA para pesquisa é alguma versão desta: <em>"Pedi referências e a IA citou um artigo lindo, da New England, com autor e DOI. Fui conferir e não existe. Por quê?"</em></p>
@@ -3861,7 +3875,7 @@ const PROGRAMA = [
         horario: '09:15–10:00',
         titulo: 'As Três IAs na Análise Científica',
         summary: 'Cada uma tem um papel na pesquisa. Confundir quem faz o quê é o erro que transforma pesquisa séria em perda de tempo. Aqui você aprende a orquestrar.',
-        avatar: null,
+        avatar: 'pyfqhE_Lb14',
         conteudo: `
           <h3>A orquestra de três</h3>
           <p>Até aqui você viu as 3 IAs como alternativas — "use a que achar melhor". Neste módulo muda tudo: elas são <strong>colaboradoras com papéis distintos</strong>. Um médico pesquisador de verdade usa as três em sequência, e cada uma contribui com o que faz melhor.</p>
@@ -3976,7 +3990,7 @@ para o NotebookLM. Agora você tem uma "biblioteca tematizada" sobre aquela dúv
         horario: '10:15–11:00',
         titulo: 'NotebookLM — Biblioteca Científica Pessoal',
         summary: 'Das 4 IAs do curso, o NotebookLM é a mais subestimada e a mais transformadora. É onde a pesquisa de hoje vira ativo permanente para os próximos 10 anos da sua carreira.',
-        avatar: 'SRD0c0tdtZM',
+        avatar: 'l7fv2WNHF6U',
         conteudo: `
           <div class="notebook-hero">
             <div class="notebook-label">NotebookLM</div>
@@ -4121,7 +4135,7 @@ para o NotebookLM. Agora você tem uma "biblioteca tematizada" sobre aquela dúv
         horario: '11:00–12:00',
         titulo: 'Construindo Minha Ferramenta',
         summary: 'A hora em que o sistema vira objeto. Não mais "prompts que eu uso" — uma ferramenta com nome, propósito e limites, criada por você, funcionando antes do almoço.',
-        avatar: null,
+        avatar: 'WacJ0fWUJGM',
         conteudo: `
           <h3>De prompts avulsos para ferramenta integrada</h3>
           <p>Até agora você aprendeu a usar prompts. Este módulo é sobre transformar esses prompts numa <strong>ferramenta nomeada e reutilizável</strong> — que você batiza, configura e incorpora à sua rotina clínica permanentemente.</p>
@@ -4310,7 +4324,7 @@ para o NotebookLM. Agora você tem uma "biblioteca tematizada" sobre aquela dúv
         horario: '14:00–14:10',
         titulo: 'O Caso que Nenhum Especialista Resolve Sozinho',
         summary: 'Uma gestante em terapia intensiva. Nove especialidades na sala. Nenhuma resolve sozinha. É aqui que os dois dias se provam — ou não.',
-        avatar: null,
+        avatar: '7miZzpYnYPc',
         conteudo: `
           <div class="stage-card">
             <div class="stage-label">Abertura do Bloco 4</div>
@@ -4461,7 +4475,7 @@ para o NotebookLM. Agora você tem uma "biblioteca tematizada" sobre aquela dúv
         horario: '14:10–15:40',
         titulo: 'Discussão Clínica com IA',
         summary: '90 minutos de discussão coletiva com a IA funcionando como escriba, consultora e advogada do diabo em tempo real. O momento mais denso dos dois dias.',
-        avatar: 'jzmj-Nb67yU',
+        avatar: 'xcVPQHNdA6A',
         conteudo: `
           <h3>A regra de ouro destes 90 minutos</h3>
           <p>A discussão é <strong>conduzida por vocês</strong>, não por mim. Eu modero, asseguro que todos sejam ouvidos e que a IA esteja sendo usada corretamente — mas as decisões clínicas, as objeções, as correções, saem da sala. Ninguém é plateia.</p>
@@ -4576,7 +4590,7 @@ para o NotebookLM. Agora você tem uma "biblioteca tematizada" sobre aquela dúv
         horario: '16:00–16:30',
         titulo: 'Teoria do Contrário — Colhendo',
         summary: 'A pergunta que você dormiu com ela volta agora. 36 horas depois, com evidência, com método, com o grupo ouvindo. É hora de colher o que foi plantado.',
-        avatar: null,
+        avatar: 'aZcX8XnRBiI',
         conteudo: `
           <div class="tc-manifesto">
             <div class="tc-manifesto-label">Teoria do Contrário — Fase 3 de 3</div>
@@ -4693,7 +4707,7 @@ para o NotebookLM. Agora você tem uma "biblioteca tematizada" sobre aquela dúv
         horario: '16:30–17:00',
         titulo: 'Ética, CFM e Responsabilidade',
         summary: 'O único momento do curso co-conduzido por três vozes — um intensivista-diretor, uma advogada, um médico-instrutor. A fronteira entre o que a IA pode fazer e o que você pode permitir que ela faça.',
-        avatar: null,
+        avatar: 'UDJQizjp3CQ',
         conteudo: `
           <div class="stage-card">
             <div class="stage-label">Módulo co-conduzido</div>
@@ -4807,7 +4821,7 @@ para o NotebookLM. Agora você tem uma "biblioteca tematizada" sobre aquela dúv
         horario: '17:00–17:30',
         titulo: 'Minha Ferramenta, Minha Especialidade',
         summary: 'A ferramenta que você construiu ontem à manhã volta agora — não para ser explicada, mas para ser demonstrada. Funcionando. Ao vivo. Na frente da turma.',
-        avatar: null,
+        avatar: 'iax2hOlDL-4',
         conteudo: `
           <div class="stage-card">
             <div class="stage-label">Apresentação ao vivo</div>
@@ -4927,7 +4941,7 @@ para o NotebookLM. Agora você tem uma "biblioteca tematizada" sobre aquela dúv
         horario: '17:30–18:00',
         titulo: 'Encerramento',
         summary: 'Trinta minutos. Plano de sete dias. Certificado na mão. Uma frase final. E amanhã, segunda-feira, vocês já não são os mesmos médicos que entraram aqui sexta.',
-        avatar: 'LWblEAvJt08',
+        avatar: 'YCmwm5sEHY4',
         conteudo: `
           <div class="quote-hero">
             <div class="quote-mark">"</div>
@@ -5113,6 +5127,10 @@ function renderTrail() {
   `).join('');
 }
 
+
+const SHORTS_IDS = ["fec5eX_xS2U", "5WcmIEk4zvY", "A4zS3y2qvXA", "-smXno1mKd8", "mg7svZFjml8", "5kQaLqa2mZU", "5VnTyS_zCeQ", "TtZ-Ee7UTZg", "6mNXdfGrXdo", "MJat56OqGt8", "pyfqhE_Lb14", "WacJ0fWUJGM", "7miZzpYnYPc", "aZcX8XnRBiI", "UDJQizjp3CQ", "iax2hOlDL-4"];
+function isShort(id) { return SHORTS_IDS.includes(id); }
+
 function selectModule(id) {
   currentModuleId = id;
   document.querySelectorAll('.module-link').forEach(a => {
@@ -5210,7 +5228,7 @@ function renderAvatar(modulo) {
           <div class="avatar-badge">M</div>
           <div class="avatar-label">Dr. Mbula abre o tema</div>
         </div>
-        <div class="avatar-video">
+        <div class="avatar-video${isShort(modulo.avatar) ? ' is-short' : ''}">
           <iframe 
             src="https://www.youtube.com/embed/${modulo.avatar}?rel=0&cc_load_policy=1&modestbranding=1&iv_load_policy=3" 
             title="Vídeo do Módulo"
