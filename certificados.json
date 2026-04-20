@@ -1,0 +1,69 @@
+{
+  "curso": "AIMED – JOINVILLE",
+  "data_evento": "25 e 26 de abril de 2026",
+  "carga_horaria": "16 horas",
+  "coordenador": "Dr. Mbula Luzingu Barros",
+  "crm": "CRM-SC 8512",
+  "certificados": {
+    "120258B853": {
+      "nome": "Carla",
+      "hash": "120258B853"
+    },
+    "7CA8D7E896": {
+      "nome": "Quelen",
+      "hash": "7CA8D7E896"
+    },
+    "F1820AA411": {
+      "nome": "Francisco",
+      "hash": "F1820AA411"
+    },
+    "BB0676E62D": {
+      "nome": "Arthur",
+      "hash": "BB0676E62D"
+    },
+    "F49AFB4807": {
+      "nome": "Stefan",
+      "hash": "F49AFB4807"
+    },
+    "58439C3135": {
+      "nome": "Alexandra",
+      "hash": "58439C3135"
+    },
+    "A816F405CA": {
+      "nome": "Valéria",
+      "hash": "A816F405CA"
+    },
+    "32E2EBC037": {
+      "nome": "Helena",
+      "hash": "32E2EBC037"
+    },
+    "6BAF2A8F6B": {
+      "nome": "Natiéle",
+      "hash": "6BAF2A8F6B"
+    },
+    "573C15B8AC": {
+      "nome": "Layane",
+      "hash": "573C15B8AC"
+    },
+    "9131E6749E": {
+      "nome": "Fernanda L.",
+      "hash": "9131E6749E"
+    },
+    "6D0B3B841C": {
+      "nome": "Fernanda C.",
+      "hash": "6D0B3B841C"
+    },
+    "B03902EC58": {
+      "nome": "Diogo",
+      "hash": "B03902EC58"
+    },
+    "B072222319": {
+      "nome": "João",
+      "hash": "B072222319"
+    },
+    "2B1057437B": {
+      "nome": "André",
+      "hash": "2B1057437B"
+    }
+  }
+}
