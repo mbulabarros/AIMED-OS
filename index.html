@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050e1f">
+<meta name="color-scheme" content="dark">
 <title>AIMED OS · Joinville · 25-26 Abril 2026</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%23050e1f'/%3E%3Ctext x='32' y='46' font-family='Playfair Display, Georgia, serif' font-size='42' font-weight='900' fill='%23c9a84c' text-anchor='middle' font-style='italic'%3EA%3C/text%3E%3C/svg%3E">
 
@@ -11,10 +16,17 @@
 <meta property="og:title" content="AIMED OS · Joinville · Abril 2026">
 <meta property="og:description" content="Site-aula do curso AIMED — Inteligência Artificial aplicada à prática médica com rigor metodológico. Fundador: Dr. Mbula Luzingu Barros. InovaMed.">
 <meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://inovamed.pro/aimed-joinville-abril-2026/">
+<meta property="og:image" content="https://inovamed.pro/wp-content/uploads/2026/02/Gemini_Generated_Image_pwtbbkpwtbbkpwtb-1-scaled.jpeg">
+<meta property="og:image:alt" content="AIMED — Curso de IA aplicada à prática médica · Dr. Mbula Luzingu Barros">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AIMED OS · Joinville · Abril 2026">
 <meta name="twitter:description" content="Site-aula do curso AIMED — Inteligência Artificial aplicada à prática médica com rigor metodológico.">
+<meta name="twitter:image" content="https://inovamed.pro/wp-content/uploads/2026/02/Gemini_Generated_Image_pwtbbkpwtbbkpwtb-1-scaled.jpeg">
+
+<!-- Ajuste esta canonical para a URL final em produção (GitHub Pages ou domínio custom) -->
+<link rel="canonical" href="https://inovamed.pro/aimed-joinville-abril-2026/">
 
 <meta name="description" content="AIMED — Curso presencial de Inteligência Artificial aplicada à prática médica. Metodologia autoral do Dr. Mbula Barros. Joinville, 25-26 de abril de 2026.">
 <meta name="author" content="Dr. Mbula Luzingu Barros">
@@ -1036,6 +1048,238 @@ ul { list-style: none; }
 .ld-m { background: var(--purple); }
 .ld-e { background: var(--green); }
 .ld-d { background: var(--coral); }
+
+/* ============================================================
+   KIT DE ORQUESTRAÇÃO — 3 IAs em sequência
+   Usado quando o prompt da Biblioteca é múltiplo (Gemini → Claude → GPT)
+   ============================================================ */
+
+.kit-howto {
+  background: linear-gradient(135deg, rgba(201,168,76,0.06), rgba(37,168,188,0.04));
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.kit-howto::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--teal), var(--purple), var(--green));
+}
+
+.kit-howto-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.kit-howto-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.kit-howto-title em { color: var(--gold); font-style: italic; }
+
+.kit-howto-intro {
+  font-size: 14px;
+  color: var(--gray-100);
+  line-height: 1.65;
+  margin-bottom: 18px;
+}
+
+.kit-flow-diagram {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: stretch;
+  gap: 10px;
+  margin: 18px 0 8px;
+}
+
+.kit-flow-node {
+  background: rgba(5,14,31,0.8);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 14px;
+  text-align: center;
+  min-height: 92px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.kit-flow-node.gemini { border-color: rgba(37,168,188,0.5); }
+.kit-flow-node.claude { border-color: rgba(167,139,250,0.5); }
+.kit-flow-node.gpt    { border-color: rgba(74,222,128,0.5); }
+
+.kit-flow-ia {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.kit-flow-node.gemini .kit-flow-ia { color: var(--teal); }
+.kit-flow-node.claude .kit-flow-ia { color: var(--purple); }
+.kit-flow-node.gpt    .kit-flow-ia { color: var(--green); }
+
+.kit-flow-role {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.05em;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.kit-flow-task {
+  font-size: 11px;
+  color: var(--gray-300);
+  line-height: 1.4;
+}
+
+.kit-flow-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 18px;
+  font-family: 'DM Mono', monospace;
+  opacity: 0.7;
+}
+
+.kit-howto-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.kit-howto-step {
+  font-size: 12px;
+  color: var(--gray-100);
+  line-height: 1.55;
+}
+
+.kit-howto-step strong {
+  display: block;
+  color: var(--gold-light);
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+/* Passos individuais do kit */
+.kit-step {
+  background: var(--navy-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 26px 28px;
+  margin-bottom: 20px;
+  position: relative;
+  transition: border-color 0.2s;
+}
+.kit-step:hover { border-color: var(--border-strong); }
+
+.kit-step.gemini { border-left: 3px solid var(--teal); }
+.kit-step.claude { border-left: 3px solid var(--purple); }
+.kit-step.gpt    { border-left: 3px solid var(--green); }
+
+.kit-step-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 6px;
+}
+
+.kit-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--navy);
+  border: 2px solid var(--border-strong);
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.kit-step.gemini .kit-step-num { color: var(--teal); border-color: rgba(37,168,188,0.5); }
+.kit-step.claude .kit-step-num { color: var(--purple); border-color: rgba(167,139,250,0.5); }
+.kit-step.gpt    .kit-step-num { color: var(--green); border-color: rgba(74,222,128,0.5); }
+
+.kit-step-meta {
+  flex: 1;
+}
+
+.kit-step-platform {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2px;
+}
+.kit-step.gemini .kit-step-platform { color: var(--teal); }
+.kit-step.claude .kit-step-platform { color: var(--purple); }
+.kit-step.gpt    .kit-step-platform { color: var(--green); }
+
+.kit-step-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35em;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+}
+.kit-step-title em { color: var(--gold); font-style: italic; }
+
+.kit-step-desc {
+  font-size: 13px;
+  color: var(--gray-300);
+  margin: 10px 0 16px;
+  line-height: 1.6;
+}
+
+.kit-step-input {
+  background: rgba(201,168,76,0.04);
+  border-left: 2px solid var(--gold-dim);
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  font-size: 12px;
+  color: var(--gray-100);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.kit-step-input strong {
+  color: var(--gold-light);
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 3px;
+}
+
+@media (max-width: 900px) {
+  .kit-flow-diagram { grid-template-columns: 1fr; }
+  .kit-flow-arrow { transform: rotate(90deg); padding: 4px 0; }
+  .kit-howto-steps { grid-template-columns: 1fr; }
+}
 
 /* ============================================================
    NAVEGAÇÃO ENTRE MÓDULOS
@@ -2590,6 +2834,24 @@ abbr.gloss:hover::before {
   cursor: pointer;
 }
 .colofao a:hover { color: var(--gold-light); }
+.colofao-link {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: var(--gold);
+  cursor: pointer;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  transition: color 0.2s;
+}
+.colofao-link:hover { color: var(--gold-light); }
+.colofao-link:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
 .colofao .divider {
   display: inline-block;
   margin: 0 8px;
@@ -2888,6 +3150,102 @@ abbr.gloss:hover::before {
   border: none;
 }
 
+/* ============================================================
+   IMPRESSÃO — CSS dedicado para @media print
+   Gera PDF limpo: sem sidebar, sem botões, cores legíveis
+   ============================================================ */
+@media print {
+  @page {
+    size: A4;
+    margin: 18mm 16mm;
+  }
+
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 11pt;
+    line-height: 1.45;
+  }
+  body::before { display: none !important; }
+
+  /* Esconder tudo que é interação/navegação */
+  .mobile-toggle,
+  .sidebar,
+  .top-bar,
+  .toast,
+  .sobre-overlay,
+  .module-nav,
+  .prompt-actions,
+  .biblioteca-back,
+  .level-btn,
+  .logistica-btn,
+  .biblioteca-btn,
+  .avatar-section,
+  iframe {
+    display: none !important;
+  }
+
+  /* Layout de uma coluna */
+  .app { display: block !important; }
+  .main { margin: 0 !important; padding: 0 !important; overflow: visible !important; }
+  .module-view { padding: 0 !important; max-width: none !important; }
+
+  /* Cores forçadas para preto sobre branco */
+  .module-title,
+  .module-summary,
+  h1, h2, h3, h4, p, li, strong, em {
+    color: #000 !important;
+  }
+  .module-eyebrow,
+  .section-label,
+  .callout-label { color: #444 !important; }
+
+  /* Blocos com borda fina em vez de fundo colorido */
+  .quote-hero, .callout, .promise-card, .platform-card, .biblioteca-card,
+  .logistica-card, .logistica-hero, .agenda-dia, .prompt-box {
+    background: #fff !important;
+    border: 1px solid #999 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+
+  /* Quebras de página antes de títulos principais */
+  .module-header { page-break-after: avoid; }
+  .content-section { page-break-before: auto; }
+  h1, h2 { page-break-after: avoid; }
+  ul, ol, table { page-break-inside: avoid; }
+
+  /* Links mostram a URL ao lado na impressão */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #666;
+  }
+
+  /* Prompts ficam em fonte monoespaçada legível */
+  .prompt-text {
+    font-family: 'Courier New', monospace !important;
+    font-size: 9pt !important;
+    background: #f5f5f5 !important;
+    color: #000 !important;
+    border: 1px solid #ccc !important;
+    padding: 8px !important;
+    white-space: pre-wrap !important;
+  }
+
+  /* Glossário expandido na impressão */
+  abbr.gloss {
+    border-bottom: none !important;
+    color: #000 !important;
+  }
+  abbr.gloss::after {
+    content: " (" attr(data-gloss) ")";
+    font-size: 9pt;
+    color: #555;
+    font-style: italic;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -2915,7 +3273,7 @@ abbr.gloss:hover::before {
     <nav class="trail" id="trail">
       </nav>
     <div class="colofao">
-      <a onclick="abrirSobre()">Sobre o autor</a>
+      <button type="button" class="colofao-link" onclick="abrirSobre()">Sobre o autor</button>
       <span class="divider">·</span>
       <a href="https://inovamed.pro" target="_blank" rel="noopener noreferrer">InovaMed</a>
       <br>
@@ -2941,7 +3299,7 @@ abbr.gloss:hover::before {
 
 </div>
 
-<div class="sobre-overlay" id="sobreOverlay" onclick="if(event.target===this) fecharSobre()">
+<div class="sobre-overlay" id="sobreOverlay" role="dialog" aria-modal="true" aria-labelledby="sobreTitle" aria-hidden="true" onclick="if(event.target===this) fecharSobre()">
   <article class="sobre-card">
     <button class="sobre-close" onclick="fecharSobre()" aria-label="Fechar">×</button>
 
@@ -2949,7 +3307,7 @@ abbr.gloss:hover::before {
     <div class="sobre-identity">
       <div class="sobre-photo" style="background-image: url('https://inovamed.pro/wp-content/uploads/2026/02/Gemini_Generated_Image_pwtbbkpwtbbkpwtb-1-scaled.jpeg');" role="img" aria-label="Retrato do Dr. Mbula Luzingu Barros"></div>
       <div class="sobre-identity-text">
-        <h2 class="sobre-title">Dr. Mbula <em>Luzingu Barros</em></h2>
+        <h2 class="sobre-title" id="sobreTitle">Dr. Mbula <em>Luzingu Barros</em></h2>
         <div class="sobre-role">Médico Intensivista Pediátrico · Arquiteto de IA · Joinville/SC</div>
       </div>
     </div>
@@ -2994,7 +3352,7 @@ abbr.gloss:hover::before {
   </article>
 </div>
 
-<div class="toast" id="toast">Copiado!</div>
+<div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">Copiado!</div>
 
 <script>
 /* ============================================================
@@ -5396,14 +5754,17 @@ function renderTrail() {
         <div class="block-role">${bloco.role}</div>
       </div>
       <div class="block-modules">
-        ${bloco.modulos.map(m => `
-          <a class="module-link ${m.break ? 'break' : ''}"
-             data-id="${m.id}"
-             onclick="${m.break ? '' : `selectModule('${m.id}')`}">
-            <span class="m-time">${m.horario}</span>
-            <span class="m-title">${m.titulo}</span>
-          </a>
-        `).join('')}
+        ${bloco.modulos.map(m => m.break
+          ? `<span class="module-link break" aria-hidden="true">
+               <span class="m-time">${m.horario}</span>
+               <span class="m-title">${m.titulo}</span>
+             </span>`
+          : `<a class="module-link" href="#${m.id}" data-id="${m.id}"
+                onclick="event.preventDefault(); selectModule('${m.id}');">
+               <span class="m-time">${m.horario}</span>
+               <span class="m-title">${m.titulo}</span>
+             </a>`
+        ).join('')}
       </div>
     </div>
   `).join('');
@@ -5434,8 +5795,12 @@ function selectModule(id) {
   renderModule(modulo, bloco);
   document.getElementById('crumb-module').textContent = modulo.titulo;
   document.getElementById('sidebar').classList.remove('open');
-  window.location.hash = id;
-  document.querySelector('.main').scrollTop = 0;
+  // Usa replaceState para não empurrar entrada no history e não disparar hashchange em loop
+  if (window.location.hash !== '#' + id) {
+    history.replaceState(null, '', '#' + id);
+  }
+  const mainEl = document.querySelector('.main');
+  if (mainEl) mainEl.scrollTop = 0;
   window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
@@ -5516,7 +5881,9 @@ function renderAvatar(modulo) {
           <iframe 
             src="https://www.youtube.com/embed/${modulo.avatar}?rel=0&cc_load_policy=1&modestbranding=1&iv_load_policy=3" 
             title="Vídeo do Módulo"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share" 
             allowfullscreen>
           </iframe>
         </div>
@@ -5702,67 +6069,168 @@ function aplicarGlossario() {
   walk(view);
 }
 
-function copyToClipboard(text) {
-  if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
-  return new Promise((resolve, reject) => {
-    const textArea = document.createElement('textarea');
-    textArea.value = text;
-    textArea.style.position = 'fixed'; textArea.style.left = '-9999px'; textArea.style.top = '0';
-    textArea.setAttribute('readonly', '');
-    document.body.appendChild(textArea);
-    textArea.focus(); textArea.select();
-    try {
-      const ok = document.execCommand('copy');
-      document.body.removeChild(textArea);
-      if (ok) resolve(); else reject(new Error('execCommand falhou'));
-    } catch (err) {
-      document.body.removeChild(textArea);
-      reject(err);
+/* ============================================================
+   CLIPBOARD & ABERTURA DE IAs — versão robusta
+   Corrige race condition entre clipboard e window.open,
+   trata pop-up blocker e dá feedback honesto ao usuário.
+   ============================================================ */
+
+/**
+ * Cópia 100% síncrona via execCommand.
+ * Necessário porque navigator.clipboard.writeText é assíncrona e
+ * falha silenciosamente quando o documento perde foco
+ * (ex.: logo após window.open). execCommand está deprecated mas
+ * continua suportado universalmente em todos os navegadores.
+ * @returns {boolean} true se copiou com sucesso
+ */
+function copiarSincrono(texto) {
+  const textarea = document.createElement('textarea');
+  textarea.value = texto;
+  textarea.style.position = 'fixed';
+  textarea.style.left = '-9999px';
+  textarea.style.top = '0';
+  textarea.setAttribute('readonly', '');
+  textarea.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(textarea);
+
+  // Preserva seleção prévia do usuário, se houver
+  const selecaoAnterior = document.getSelection().rangeCount > 0
+    ? document.getSelection().getRangeAt(0)
+    : null;
+
+  let sucesso = false;
+  try {
+    textarea.focus();
+    textarea.select();
+    textarea.setSelectionRange(0, texto.length); // iOS exige esta linha
+    sucesso = document.execCommand('copy');
+  } catch (err) {
+    console.error('Falha na cópia síncrona:', err);
+    sucesso = false;
+  } finally {
+    document.body.removeChild(textarea);
+    if (selecaoAnterior) {
+      const sel = document.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(selecaoAnterior);
     }
-  });
+  }
+
+  return sucesso;
 }
 
-function copyPrompt(btn) {
-  const promptText = document.getElementById('promptText').innerText;
+/**
+ * Cópia com Promise (usada quando não há navegação subsequente).
+ * Tenta a API moderna primeiro; se falhar, cai no método síncrono.
+ */
+function copyToClipboard(texto) {
+  if (navigator.clipboard && window.isSecureContext) {
+    return navigator.clipboard.writeText(texto).catch(() => {
+      // Fallback se a API moderna falhar (documento sem foco, etc.)
+      if (copiarSincrono(texto)) return Promise.resolve();
+      return Promise.reject(new Error('Cópia falhou em ambos os métodos'));
+    });
+  }
+  return copiarSincrono(texto)
+    ? Promise.resolve()
+    : Promise.reject(new Error('execCommand falhou'));
+}
+
+function copyPrompt(btn, targetId) {
+  const id = targetId || 'promptText';
+  const el = document.getElementById(id);
+  if (!el) return;
+  const promptText = el.innerText;
+
   copyToClipboard(promptText).then(() => {
     btn.classList.add('copied');
     btn.innerHTML = '<span class="icon">✓</span> Copiado!';
-    showToast('Prompt copiado para a área de transferência');
+    showToast('✓ Prompt copiado para a área de transferência');
     setTimeout(() => {
       btn.classList.remove('copied');
       btn.innerHTML = '<span class="icon">⎘</span> Copiar prompt';
     }, 2000);
   }).catch(err => {
     console.error('Erro ao copiar:', err);
-    showToast('Erro ao copiar — selecione o texto manualmente');
+    showToast('⚠ Erro ao copiar — selecione o texto manualmente');
   });
 }
 
-function openAI(platform) {
-  const promptText = document.getElementById('promptText').innerText;
-  switch(platform) {
-    case 'chatgpt':
-      window.open('https://chatgpt.com/?q=' + encodeURIComponent(promptText), '_blank');
-      showToast('✓ ChatGPT aberto com o prompt já digitado');
-      break;
-    case 'claude':
-      copyToClipboard(promptText).catch(e => console.error(e));
-      window.open('https://claude.ai/new', '_blank');
-      showToast('✓ Prompt copiado — cole no Claude');
-      break;
-    case 'gemini':
-      copyToClipboard(promptText).catch(e => console.error(e));
-      window.open('https://gemini.google.com/app', '_blank');
-      showToast('✓ Prompt copiado — cole no Gemini');
-      break;
+/**
+ * Mapa declarativo de plataformas.
+ * - `precisaCopiar: false` → URL carrega o prompt via query string (ChatGPT)
+ * - `precisaCopiar: true`  → copia prompt para clipboard antes de abrir
+ */
+const PLATAFORMAS_IA = {
+  chatgpt: {
+    nome: 'ChatGPT',
+    url: (prompt) => 'https://chatgpt.com/?q=' + encodeURIComponent(prompt),
+    precisaCopiar: false,
+    msgSucesso: '✓ ChatGPT aberto com o prompt já digitado'
+  },
+  claude: {
+    nome: 'Claude',
+    url: () => 'https://claude.ai/new',
+    precisaCopiar: true,
+    msgSucesso: '✓ Prompt copiado — cole no Claude (Ctrl+V / Cmd+V)'
+  },
+  gemini: {
+    nome: 'Gemini',
+    url: () => 'https://gemini.google.com/app',
+    precisaCopiar: true,
+    msgSucesso: '✓ Prompt copiado — cole no Gemini (Ctrl+V / Cmd+V)'
   }
+};
+
+function openAI(platform, targetId) {
+  const config = PLATAFORMAS_IA[platform];
+  if (!config) {
+    console.error('Plataforma desconhecida:', platform);
+    return;
+  }
+
+  const id = targetId || 'promptText';
+  const el = document.getElementById(id);
+  if (!el) {
+    showToast('⚠ Prompt não encontrado');
+    return;
+  }
+  const promptText = el.innerText;
+
+  // 1. Se precisa copiar, copia ANTES de abrir a janela (síncrono, sem race)
+  let copiaOk = true;
+  if (config.precisaCopiar) {
+    copiaOk = copiarSincrono(promptText);
+  }
+
+  // 2. Abre a janela no mesmo tick do clique (evita pop-up blocker)
+  const novaJanela = window.open(config.url(promptText), '_blank', 'noopener,noreferrer');
+
+  // 3. Feedback honesto baseado no que realmente aconteceu
+  if (!novaJanela) {
+    showToast(`⚠ Pop-up bloqueado — libere pop-ups para abrir o ${config.nome}`);
+    return;
+  }
+  if (config.precisaCopiar && !copiaOk) {
+    showToast(`⚠ Cópia falhou — copie o prompt manualmente e cole no ${config.nome}`);
+    return;
+  }
+  showToast(config.msgSucesso);
 }
+
+// Timeout do toast em escopo de módulo para permitir clearTimeout entre chamadas
+let _toastTimeoutId = null;
 
 function showToast(msg) {
   const toast = document.getElementById('toast');
+  if (!toast) return;
   toast.textContent = msg;
   toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), 4000);
+  if (_toastTimeoutId) clearTimeout(_toastTimeoutId);
+  _toastTimeoutId = setTimeout(() => {
+    toast.classList.remove('show');
+    _toastTimeoutId = null;
+  }, 4000);
 }
 
 
@@ -5778,63 +6246,428 @@ const BIBLIOTECA = [
     universal: true,
     icon: '🔬',
     area: 'Pesquisa Científica',
-    role: 'Para todos · bibliotecário + epidemiologista',
-    desc: 'Mapear literatura médica com rigor, ranquear evidência por GRADE, preparar base verificável para o NotebookLM. Funciona melhor no Gemini para busca + Claude para análise.',
-    titulo: 'Orquestrador de IA para Pesquisa Médica',
-    prompt: `<span class="ai-a">Use meu Perfil Clínico Permanente. Você é bibliotecário(a) científico(a) + epidemiologista com 20 anos em revisões sistemáticas, experiência em busca estruturada (PubMed, Scielo, Cochrane, Google Scholar) e análise crítica GRADE. Postura: paranoia editorial — você só cita o que pode verificar. Trabalha em sequência com outras IAs (Gemini para busca, Claude para leitura profunda, NotebookLM para biblioteca pessoal).</span>
+    role: 'Para todos · orquestração Gemini → Claude → GPT',
+    desc: 'Kit de 3 prompts orquestrados: Gemini busca e classifica · Claude faz análise GRADE crítica · GPT sintetiza para decisão clínica. Cada IA no seu ponto forte.',
+    titulo: 'Kit de Pesquisa Orquestrada · 3 IAs em sequência',
+    kit: {
+      howto: {
+        intro: `Não é um prompt — é um <strong>protocolo de 3 passos</strong> em que cada IA trabalha no papel que faz melhor. A saída de cada passo alimenta o próximo. No fim, você tem evidência rastreável, analisada com rigor GRADE, e uma decisão clínica acionável para segunda de manhã.`,
+        tempoTotal: '25–40 min',
+        diagrama: [
+          { plataforma: 'Gemini',  papel: 'Bibliotecário',         tarefa: 'Busca ativa + classificação com cota anti-confirmação' },
+          { plataforma: 'Claude',  papel: 'Reviewer metodológico',  tarefa: 'GRADE em 5 domínios · Qualidade ≠ Força' },
+          { plataforma: 'GPT',     papel: 'Consultor clínico',      tarefa: 'Síntese + plano segunda de manhã + NotebookLM' }
+        ],
+        dicas: [
+          { label: 'Antes de começar', texto: 'Tenha seu <strong>Perfil Clínico Permanente</strong> pronto para colar no início de cada prompt.' },
+          { label: 'Entre passos',     texto: 'Copie a saída completa do passo anterior e cole como contexto inicial no próximo.' },
+          { label: 'Honestidade',      texto: 'Se uma IA responder "não encontrei literatura suficiente", <strong>acredite</strong>. É honestidade, não falha.' }
+        ]
+      },
+      steps: [
+        {
+          num: 1,
+          platform: 'gemini',
+          platformLabel: 'Passo 1 · Gemini',
+          title: 'Buscador + Classificador',
+          desc: 'Gemini executa busca estruturada com protocolo pré-especificado, verifica existência dos artigos em tempo real, e seleciona 10 com cota obrigatória de literatura divergente. A saída desse passo alimenta o Claude.',
+          input: { label: 'Input', texto: 'Sua pergunta de pesquisa (tipada) + contexto de prática + finalidade.' },
+          prompt: `<span class="ai-a">Você é bibliotecário(a) científico(a) sênior com 20 anos em revisões sistemáticas Cochrane, experiência em busca estruturada (PubMed/MEDLINE, Embase, Scielo, Cochrane CENTRAL, Google Scholar, LILACS) e construção de strings com operadores booleanos + termos MeSH/DeCS. Postura: paranoia editorial. Você só cita o que encontrou em busca real e pôde verificar — nunca de memória. Se não encontrou, diga. Trabalha em sequência: sua saída alimenta o Claude (Passo 2, leitura profunda) e depois o GPT (Passo 3, síntese clínica).</span>
 
-<span class="ai-i">Pergunta de pesquisa no formato PICO (preencha antes de rodar):
-- População: [idade, condição, gênero, cenário]
-- Intervenção/exposição: [tratamento, fator de risco, teste diagnóstico]
-- Comparação: [placebo, tratamento padrão, grupo sem intervenção]
-- Outcome primário: [desfecho clínico duro, qualidade de vida, custo]
+<span class="ai-i">PASSO 1 — CLASSIFIQUE O TIPO DE PERGUNTA CLÍNICA:
+[ ] TERAPÊUTICA — "funciona? quanto melhor que alternativa?"
+[ ] DIAGNÓSTICA — "esse teste detecta a doença com qual acurácia?"
+[ ] PROGNÓSTICA — "qual a história natural / risco de desfecho?"
+[ ] ETIOLÓGICA — "X causa Y?"
+[ ] EPIDEMIOLÓGICA — "qual a prevalência/incidência em população Z?"
+[ ] ECONÔMICA — "é custo-efetivo no contexto Z?"
 
-Janela temporal: [últimos 5 anos / janela específica]
-Tipos de estudo aceitos: [meta-análise, RCT, coorte, consenso de sociedade]
-Contexto regional: [aplicável ao Brasil? SUS? suplementar? realidade local?]
-Finalidade: [decisão clínica individual / protocolo institucional / aula / publicação]</span>
+PASSO 2 — ESTRUTURA DA PERGUNTA (escolha conforme o tipo):
 
-<span class="ai-m">Execute em 4 etapas obrigatórias:
+Se TERAPÊUTICA → PICOTS:
+- P (População): idade, sexo biológico, condição principal, comorbidades, cenário
+- I (Intervenção): droga/procedimento/estratégia, dose, via, duração
+- C (Comparador): placebo, padrão de cuidado, outra intervenção ativa
+- O (Outcome primário): desfecho clínico duro preferencial (mortalidade > LDL)
+- T (Time horizon): seguimento mínimo clinicamente relevante
+- S (Setting): SUS / suplementar, terciário / APS, Brasil / mundo
 
-1. MAPA DO CAMPO (5–8 linhas): há consenso ou controvérsia? Se há controvérsia, quais são as correntes principais e quem são os grupos de referência de cada uma?
+Se DIAGNÓSTICA → PIRDTS:
+- P, I (Index test), R (Reference standard = padrão-ouro),
+  D (Diagnóstico-alvo), T (janela entre testes), S (cenário)
 
-2. SELEÇÃO DE 10 ARTIGOS mais relevantes, priorizando:
-   - 2–3 meta-análises ou revisões sistemáticas recentes
-   - 3–4 RCTs grandes e de alta qualidade
-   - 2–3 estudos observacionais robustos
-   - 1–2 consensos de sociedades médicas
+Se PROGNÓSTICA ou ETIOLÓGICA → PECOTS:
+- P, E (Exposição — fator de risco/proteção), C, O, T, S
 
-3. ANÁLISE GRADE da evidência como um todo: alta / moderada / baixa / muito baixa. Generalizabilidade ao Brasil. Vieses sistemáticos recorrentes (publicação, indústria, seleção).
+Se ECONÔMICA → PICOTS + perspectiva (SUS / sociedade / paciente) +
+  horizonte temporal + taxa de desconto + desfecho (QALY / DALY / vida salva)
 
-4. ROTEIRO DE APROFUNDAMENTO: 3 artigos que valem leitura completa no Claude + 2–3 perguntas que nem a melhor evidência atual responde.</span>
+PASSO 3 — METADADOS DA BUSCA:
+- Janela temporal: [últimos 5 anos / desde data X]
+- Idiomas: [inglês + português obrigatórios; outros?]
+- Bases prioritárias: [PubMed + Cochrane default; Scielo/LILACS se Brasil]
+- Finalidade: [decisão individual / protocolo / aula / publicação]
+- Rigor exigido: [rotina clínica / MBE estrita / preparação para publicação]
+- Contexto do solicitante: [minha especialidade, SUS/suplementar, terciário/APS]</span>
 
-<span class="ai-e">Formato estruturado:
+<span class="ai-m">Execute em 4 etapas OBRIGATÓRIAS:
 
-**MAPA DO CAMPO** (parágrafo)
+ETAPA 1 — PROTOCOLO DE BUSCA PRÉ-ESPECIFICADO
+ANTES de buscar qualquer coisa, declare:
+a) String de busca final com MeSH/DeCS + operadores booleanos + filtros
+b) Critérios de INCLUSÃO explícitos
+c) Critérios de EXCLUSÃO explícitos
+d) Data de corte da busca (hoje)
+e) Bases consultadas em ordem de prioridade
 
-**TABELA DE 10 ARTIGOS**
-| # | Autor (ano) | Revista | Tipo | N | Achado | DOI/Link | Confiança (1–10) |
+Este protocolo deve ser REPLICÁVEL — outro pesquisador rodando a mesma string deve encontrar resultados muito similares.
 
-**ANÁLISE GRADE** (bullets: qualidade geral · generalizabilidade Brasil · vieses sistemáticos)
+ETAPA 2 — BUSCA ATIVA COM VERIFICAÇÃO EM TEMPO REAL
+Busque AGORA. Para cada artigo candidato:
+- Confirme que o DOI/link ABRE (não invente)
+- Confirme autores, revista, ano, N a partir do abstract visível
+- Se algo não pôde ser verificado, marque [NÃO VERIFICADO]
 
-**ROTEIRO PARA CLAUDE** (3 artigos-chave com justificativa de por que ler na íntegra)
+ETAPA 3 — SELEÇÃO DE 10 ARTIGOS COM COTA ANTI-CONFIRMAÇÃO
 
-**PERGUNTAS EM ABERTO** (2–3 perguntas que a literatura atual não responde)
+Distribuição por tipo de estudo (ajuste conforme o tipo de pergunta):
+- 2–3 meta-análises ou revisões sistemáticas recentes
+- 3–4 estudos primários de alto padrão (desenho adequado ao tipo)
+- 2–3 estudos observacionais robustos ou série de casos notável
+- 1–2 consensos/diretrizes de sociedades médicas
 
-**BASE PARA NOTEBOOKLM** (DOIs/links prontos para carregar após verificação manual)</span>
+REGRA ANTI-CONFIRMAÇÃO — INEGOCIÁVEL:
+Se existir literatura que DIVERGE do consenso majoritário (estudos negativos, meta-análises que não replicaram efeito, críticas metodológicas publicadas, posições minoritárias de sociedades), ela DEVE ocupar pelo menos 2 dos 10 artigos.
 
-<span class="ai-d">Rigor científico inegociável:
-- NUNCA inventar autor, DOI, revista, N, fator de impacto ou resultado
-- Se uma informação não é certeza absoluta, marque [VERIFICAR] explicitamente
-- Se a literatura é escassa para a pergunta, diga abertamente — não preencha com aproximação
-- Diferencie evidência forte (RCT + meta-análise bem conduzidos) de evidência fraca (observacional isolado)
-- Priorize fontes brasileiras quando o tópico tem realidade epidemiológica própria
-- Sinalize conflitos de interesse sistemáticos (patrocínio industrial, autores ligados a fabricantes)
-- Se o campo tem controvérsia ideológica (rastreamento, telemedicina, paliativismo), apresente as correntes com equilíbrio
-- Considere realidade brasileira: SUS vs. suplementar, disponibilidade regional
+Se NÃO existe dissenso relevante, declare explicitamente:
+→ "Literatura convergente — campo consolidado"
+→ OU "Literatura convergente — pergunta nova, ainda sem dissenso"
+→ OU "Literatura potencialmente enviesada por supressão/publicação seletiva"
 
-Linha final inegociável:
-"Verifique cada referência antes de citar em qualquer contexto. A responsabilidade da citação é sempre do médico."</span>`
+ETAPA 4 — ROTEIRO PARA O CLAUDE (Passo 2)
+Dos 10, selecione os 3 que MAIS MERECEM LEITURA CRÍTICA PROFUNDA:
+→ 1 do lado majoritário (o mais citado ou metodologicamente robusto)
+→ 1 do lado dissidente (o melhor argumentado contra o consenso)
+→ 1 que baliza centralmente a pergunta original do médico
+
+Para cada, indique por que vale a leitura completa.</span>
+
+<span class="ai-e">FORMATO DE SAÍDA — siga literalmente:
+
+═══════════════════════════════════════════════
+PROTOCOLO DE BUSCA
+═══════════════════════════════════════════════
+String: [...]
+Inclusão: [...]
+Exclusão: [...]
+Data de corte: dd/mm/aaaa
+Bases: PubMed, Cochrane, [...]
+
+═══════════════════════════════════════════════
+MAPA DO CAMPO (5–8 linhas)
+═══════════════════════════════════════════════
+[Parágrafo: consenso ou controvérsia?]
+
+CORRENTE MAJORITÁRIA: [grupos/sociedades principais]
+CORRENTE MINORITÁRIA / DISSIDENTE: [quem, qual argumento]
+
+═══════════════════════════════════════════════
+TABELA DE 10 ARTIGOS
+═══════════════════════════════════════════════
+| # | Autor(ano) | Revista | Tipo | N | Achado principal | Alinha com | DOI | Confiança 1–10 |
+
+Coluna "Alinha com": majoritária / minoritária / neutra
+
+═══════════════════════════════════════════════
+ROTEIRO PARA O CLAUDE — 3 artigos para leitura profunda
+═══════════════════════════════════════════════
+1. [Ref] — POR QUÊ LER: [2 linhas]
+2. [Ref] — POR QUÊ LER: [2 linhas]
+3. [Ref] — POR QUÊ LER: [2 linhas]
+
+═══════════════════════════════════════════════
+PERGUNTAS EM ABERTO
+═══════════════════════════════════════════════
+2–3 perguntas que NEM A MELHOR LITERATURA ATUAL responde.
+
+═══════════════════════════════════════════════
+BASE CANDIDATA PARA NOTEBOOKLM
+═══════════════════════════════════════════════
+DOIs/links prontos para carga APÓS verificação manual pelo médico.
+
+═══════════════════════════════════════════════
+ENTREGA PARA O CLAUDE (Passo 2)
+═══════════════════════════════════════════════
+Cole no Claude junto com os PDFs dos 3 artigos priorizados:
+"Pergunta original: [...]
+Tipo: [TERAPÊUTICA / DIAGNÓSTICA / ...]
+Contexto clínico: [...]
+Estes 3 artigos foram priorizados pelo Gemini. 
+Tabela de contexto em anexo. 
+Execute análise GRADE crítica separando qualidade da evidência de força da recomendação."</span>
+
+<span class="ai-d">RIGOR CIENTÍFICO INEGOCIÁVEL:
+- NUNCA inventar autor, DOI, revista, N, fator de impacto ou achado
+- Se uma informação não foi verificada em tempo real, marque [VERIFICAR]
+- Se a literatura é escassa, DIGA — não preencha com aproximação
+- Priorize fontes brasileiras/latino-americanas quando há realidade epidemiológica local
+- Cota de dissenso não é opcional
+- Se a pergunta carrega hipótese embutida, REFORMULE no sentido oposto e reporte se os achados mudariam (Teoria do Contrário aplicada à busca)
+- Declare conflitos de interesse por artigo (patrocínio direto/indireto)
+- A responsabilidade da citação final é SEMPRE do médico
+
+Linha de entrega ao Claude:
+"Estes 3 artigos priorizados merecem sua leitura crítica profunda. A tabela de 10 fica como contexto. A pergunta original permanece ativa. Resultado esperado: análise GRADE por desfecho, separando qualidade da evidência de força da recomendação."</span>`
+        },
+        {
+          num: 2,
+          platform: 'claude',
+          platformLabel: 'Passo 2 · Claude',
+          title: 'Reviewer Metodológico',
+          desc: 'Claude recebe os 3 artigos priorizados pelo Gemini, anexados em PDF, e executa análise GRADE rigorosa em 7 dimensões por artigo, depois síntese por desfecho separando qualidade da evidência de força da recomendação.',
+          input: { label: 'Input', texto: 'Saída completa do Passo 1 (Gemini) + PDFs dos 3 artigos priorizados anexados.' },
+          prompt: `<span class="ai-a">Use meu Perfil Clínico Permanente. Você é reviewer sênior de revista médica de alto impacto + epidemiologista clínico com especialização em metodologia GRADE/Cochrane. Seu trabalho: entregar a leitura crítica que um residente inteligente gostaria de ter lido antes de aceitar o artigo como verdade. Zero condescendência. Máximo rigor. Trabalha em sequência: recebe do Gemini (Passo 1) os 3 artigos priorizados, entrega ao GPT (Passo 3) uma síntese acionável.</span>
+
+<span class="ai-i">VOCÊ VAI RECEBER (cole a saída do Passo 1 + anexe os PDFs):
+- A pergunta original tipada (PICOTS / PIRDTS / PECOTS)
+- 3 artigos em PDF (ou DOIs verificáveis) priorizados pelo Gemini
+- A classificação do Gemini: qual é majoritário, qual é dissidente, qual baliza
+- Meu contexto de prática: [especialidade, SUS/suplementar, terciário/APS, população atendida]
+- Decisão específica que preciso tomar (se aplicável a um paciente concreto)</span>
+
+<span class="ai-m">Execute análise em 3 CAMADAS:
+
+═══ CAMADA A — ANÁLISE GRADE POR ARTIGO (7 dimensões cada) ═══
+
+Para CADA um dos 3 artigos, aplique as 7 dimensões:
+
+1. VALIDADE INTERNA
+   - Desenho adequado ao tipo de pergunta? (RCT para terapia, transversal com padrão-ouro para diagnóstico, coorte para prognóstico)
+   - Randomização (se RCT): descrita, oculta, balanço de grupos basais?
+   - Cegamento: quem, como verificado, quebra aceitável?
+   - Perda de seguimento: %, motivos, análise por intenção de tratar?
+   - Análise estatística: pré-especificada, correções de múltiplas comparações, ajuste de confundidores?
+
+2. VALIDADE EXTERNA (aplicabilidade)
+   - População inclui pacientes como os que atendo no Brasil?
+   - Contexto de cuidado é comparável ao meu?
+   - Intervenção disponível no SUS / suplementar?
+   - Desfechos medidos importam clinicamente ou são apenas surrogates?
+
+3. TAMANHO E NATUREZA DO EFEITO
+   - Efeito ABSOLUTO (não apenas relativo — RR e HR enganam)
+   - Intervalo de confiança atravessa limite de não-efeito?
+   - NNT/NNH calculados ou calculáveis
+   - Clinicamente significativo ou apenas estatisticamente significativo?
+
+4. VIESES POSSÍVEIS
+   - Seleção, aferição, publicação (estudo registrado no ClinicalTrials.gov? Resultados batem com o registro?)
+   - Conflito de interesse (financiamento, vínculos dos autores — verifique seção ICMJE)
+
+5. COMPARAÇÃO COM LITERATURA ANTERIOR
+   - Confirma ou contradiz meta-análises prévias?
+   - Se contradiz: é maior/melhor ou é outlier?
+   - O autor discute honestamente a literatura divergente?
+
+6. APLICABILIDADE À PERGUNTA ORIGINAL
+   - Responde diretamente? Parcialmente? Em que aspecto?
+
+7. POSICIONAMENTO FINAL
+   - Sustenta / enfraquece / neutro / contraproducente ao protocolo atual?
+   - Peso: fraco / moderado / forte
+
+═══ CAMADA B — SÍNTESE GRADE POR DESFECHO (não por artigo) ═══
+
+Para CADA DESFECHO CRÍTICO identificado nos 3 artigos:
+
+QUALIDADE DA EVIDÊNCIA — 5 domínios para REBAIXAR:
+- Risk of bias: alto / moderado / baixo (justifique)
+- Inconsistência: presente / ausente (I² se meta-análise; discrepância entre estudos se narrativa)
+- Indireção: população/intervenção/comparador/desfecho diferem da pergunta?
+- Imprecisão: IC cruza limite de não-efeito? OIS (optimal information size) atingido?
+- Viés de publicação: funnel plot? Registros vs. publicação?
+
+Se houver estudo observacional, considere 3 domínios para ELEVAR:
+- Magnitude grande (RR>2 ou <0.5)
+- Gradiente dose-resposta
+- Confundidores residuais plausíveis atenuariam o efeito observado?
+
+CLASSIFICAÇÃO: ALTA / MODERADA / BAIXA / MUITO BAIXA
+
+═══ CAMADA C — FORÇA DA RECOMENDAÇÃO (INDEPENDENTE da qualidade) ═══
+
+Considere:
+- Balanço benefício × dano (em valores ABSOLUTOS)
+- Valores e preferências do paciente brasileiro médio
+- Custo e viabilidade no SUS / suplementar
+- Equidade (quem é beneficiado / prejudicado?)
+
+FORÇA: FORTE a favor / CONDICIONAL a favor / CONDICIONAL contra / FORTE contra / INSUFICIENTE para recomendar
+
+SE QUALIDADE ≠ FORÇA, JUSTIFIQUE EXPLICITAMENTE.
+(Ex.: evidência baixa + recomendação forte é legítimo quando consequência da inação é catastrófica; evidência alta + recomendação condicional é legítimo quando benefício absoluto é pequeno.)</span>
+
+<span class="ai-e">FORMATO DE SAÍDA:
+
+═══════════════════════════════════════════════
+SÍNTESE EM 3 LINHAS (leitura crítica brutal)
+═══════════════════════════════════════════════
+
+═══════════════════════════════════════════════
+ANÁLISE POR ARTIGO (7 dimensões)
+═══════════════════════════════════════════════
+[Artigo 1] · 7 dimensões · Posição final · Peso
+[Artigo 2] · idem
+[Artigo 3] · idem
+
+═══════════════════════════════════════════════
+TABELA GRADE POR DESFECHO (NÃO por artigo)
+═══════════════════════════════════════════════
+| Desfecho crítico | Qualidade (5 domínios) | Força | Justificativa |
+
+═══════════════════════════════════════════════
+DECISÃO FUNDAMENTADA
+═══════════════════════════════════════════════
+Qualidade da evidência (global): [ALTA/MODERADA/BAIXA/MUITO BAIXA]
+Força da recomendação: [FORTE/CONDICIONAL/INSUFICIENTE]
+Posição: [sustenta / enfraquece / neutro / contraditório]
+Justificativa em 3–4 linhas.
+
+═══════════════════════════════════════════════
+PRÓXIMOS PASSOS
+═══════════════════════════════════════════════
+- Artigos relacionados para retroalimentar o Gemini?
+- Perguntas que estes 3 artigos abrem
+- Quais carregar no NotebookLM, quais descartar
+
+═══════════════════════════════════════════════
+ENTREGA PARA O GPT (Passo 3)
+═══════════════════════════════════════════════
+[Bloco pronto para copiar no GPT]
+Pergunta original: [...]
+Tipo: [...]
+Qualidade da evidência: [...]
+Força da recomendação: [...]
+Principais achados: [...]
+Principais caveats: [...]
+Meu contexto: [...]
+"Sintetize para aplicação clínica concreta na minha prática. Plano segunda de manhã + carga no NotebookLM."</span>
+
+<span class="ai-d">PRINCÍPIOS METODOLÓGICOS:
+- NÃO invente dados do artigo. Se não está no PDF, diga "não descrito"
+- Diferencie o que o autor AFIRMA do que os dados MOSTRAM
+- Conflito de interesse IMPORTA — sinalize explicitamente (financiamento industrial, autores contratados, últimos autores vinculados)
+- Estudo financiado pela indústria não é automaticamente ruim, mas merece atenção extra
+- Se o artigo é excelente, diga com a mesma firmeza que diria se fosse ruim
+- Considere a paciente brasileira média como beneficiária final — aplicabilidade importa tanto quanto validade
+- CALIBRE INCERTEZA em 3 níveis explícitos:
+  [ALTA CONFIANÇA] · [CONFIANÇA MODERADA — verifique] · [BAIXA CONFIANÇA — verifique obrigatoriamente] · [NÃO SEI]
+
+Proibido: entusiasmo ingênuo, jargão acadêmico gratuito, complacência com falhas metodológicas.
+
+Linha final: "Minha leitura é crítica, não final. A síntese clínica e o plano de ação são do GPT no Passo 3 — e a decisão, do médico no consultório."</span>`
+        },
+        {
+          num: 3,
+          platform: 'chatgpt',
+          platformLabel: 'Passo 3 · GPT',
+          title: 'Consultor Clínico + Plano de Ação',
+          desc: 'GPT fecha a orquestração: recebe a análise GRADE do Claude e transforma em síntese executiva + recomendação graduada + plano segunda de manhã + itens para o NotebookLM. Linguagem clínica aplicável, sem jargão gratuito.',
+          input: { label: 'Input', texto: 'Bloco "Entrega para o GPT" gerado no Passo 2 (Claude) + meu contexto clínico específico.' },
+          prompt: `<span class="ai-a">Use meu Perfil Clínico Permanente. Você é clínico(a) sênior da minha especialidade + consultor(a) em decisão baseada em evidência com foco em aplicabilidade no contexto brasileiro. Seu papel: fechamento da orquestração. Recebe do Claude (Passo 2) análise GRADE rigorosa e transforma em decisão clínica acionável — sem perder rigor, mas sem jargão acadêmico que atrapalha a aplicação segunda de manhã.</span>
+
+<span class="ai-i">VOCÊ VAI RECEBER (cole o bloco "Entrega para o GPT" do Passo 2):
+- Pergunta original tipada (do Passo 1 / Gemini)
+- Análise crítica completa do Passo 2 / Claude (GRADE em camadas A, B, C)
+- Qualidade da evidência e Força da recomendação SEPARADAS
+- Meu contexto de prática: [especialidade, SUS/suplementar, terciário/APS, população atendida]
+- Decisão específica que preciso tomar com paciente concreto (se aplicável)</span>
+
+<span class="ai-m">Execute em 4 ENTREGAS:
+
+1. SÍNTESE CLÍNICA EXECUTIVA (máximo 5 linhas)
+   Traduza o "qualidade moderada / força condicional" do Claude em LINGUAGEM CLÍNICA APLICÁVEL. O que isso significa para minha prática amanhã? Linguagem de corredor de hospital, sem jargão metodológico.
+
+2. RECOMENDAÇÃO GRADUADA
+   Use a combinação qualidade × força do Claude para propor:
+   → Se FORÇA FORTE: conduta preferencial clara
+   → Se FORÇA CONDICIONAL: conduta em shared decision-making (apresente as opções ao paciente)
+   → Se EVIDÊNCIA INSUFICIENTE: conduta em incerteza declarada
+   
+   SEMPRE com a opção de NÃO AGIR como alternativa legítima quando aplicável (princípio da não-maleficência).
+
+3. PLANO DE AÇÃO CONCRETO — SEGUNDA DE MANHÃ
+   Passos operacionais:
+   → O que fazer JÁ com os pacientes atuais que se encaixam?
+   → O que mudar no meu protocolo pessoal / institucional?
+   → O que MONITORAR para saber se a decisão foi certa?
+   → QUANDO reavaliar (gatilho temporal ou clínico)?
+
+4. CARGA NO NOTEBOOKLM — "biblioteca viva"
+   Dos artigos do Gemini + análise do Claude, o que vale arquivar?
+   → Quais 2–3 artigos carregar no NotebookLM específico do tema
+   → Qual pergunta permanente fazer a esse notebook no futuro
+   → Quando revisitar (próxima meta-análise esperada? atualização de diretriz?)</span>
+
+<span class="ai-e">FORMATO DE SAÍDA:
+
+═══════════════════════════════════════════════
+SÍNTESE CLÍNICA EXECUTIVA
+═══════════════════════════════════════════════
+[5 linhas em linguagem clínica de corredor]
+
+═══════════════════════════════════════════════
+RECOMENDAÇÃO
+═══════════════════════════════════════════════
+Qualidade da evidência: [ALTA/MODERADA/BAIXA/MUITO BAIXA]
+Força da recomendação: [FORTE/CONDICIONAL/INSUFICIENTE]
+
+Conduta recomendada: [...]
+Alternativa legítima: [...]
+Quando NÃO aplicar esta recomendação: [...]
+Opção de não-agir (se aplicável): [...]
+
+═══════════════════════════════════════════════
+PLANO DE AÇÃO — SEGUNDA DE MANHÃ
+═══════════════════════════════════════════════
+[ ] Pacientes atuais: [o quê fazer?]
+[ ] Protocolo pessoal: [qual mudança específica?]
+[ ] Monitorar: [desfecho, frequência]
+[ ] Reavaliar em: [data ou gatilho clínico]
+
+═══════════════════════════════════════════════
+BIBLIOTECA VIVA (NotebookLM)
+═══════════════════════════════════════════════
+Carregar no notebook "[tema]":
+- Artigo 1: [...]
+- Artigo 2: [...]
+- Análise do Claude (Passo 2): [...]
+
+Pergunta permanente para o notebook:
+"Quando aparecer caso com [características X], o que estes artigos sugerem?"
+
+Próxima revisita: [evento / data gatilho]
+
+═══════════════════════════════════════════════
+REGISTRO PARA PRONTUÁRIO (opcional)
+═══════════════════════════════════════════════
+"Conduta baseada em evidência [alta/moderada/baixa] com recomendação [forte/condicional/insuficiente] segundo síntese de literatura atualizada em dd/mm/aaaa via orquestração Gemini-Claude-GPT (verificação manual). Decisão individualizada considerando [fator específico do paciente]."</span>
+
+<span class="ai-d">DIRETRIZES:
+- Linguagem clínica sem jargão metodológico gratuito
+- Aplicável ao SUS e ao suplementar — aponte diferenças quando houver
+- Registre incertezas EXPLICITAMENTE quando aplicável
+- NUNCA substitua julgamento clínico individual do médico que acompanha o paciente
+- Se a evidência é insuficiente, DIGA. Não invente recomendação.
+- Respeite a autonomia do paciente — shared decision-making é o default em força condicional
+- Considere valores: pacientes diferentes podem ponderar benefício/risco de forma diferente
+- Se o paciente é frágil/idoso/comorbidade múltipla, ajuste aplicabilidade
+
+Linha final INEGOCIÁVEL:
+"A responsabilidade da decisão clínica é SEMPRE do médico que acompanha o paciente. A IA orquestrada é ferramenta, não oráculo. A orquestração das 3 IAs produziu evidência rastreável — a decisão continua humana."</span>`
+        }
+      ]
+    }
   },
 
   {
@@ -6493,6 +7326,10 @@ function showBiblioteca() {
   document.getElementById('bibliotecaBtn').classList.add('active');
   document.getElementById('crumb-module').textContent = 'Biblioteca AIMED';
   document.getElementById('sidebar').classList.remove('open');
+  currentModuleId = '__biblioteca__';
+  if (window.location.hash !== '#biblioteca') {
+    history.replaceState(null, '', '#biblioteca');
+  }
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
   const universais = BIBLIOTECA.filter(b => b.universal);
@@ -6542,6 +7379,8 @@ function showPromptBonus(id) {
   if (!b) return;
 
   const view = document.getElementById('moduleView');
+  const corpo = b.kit ? renderKitOrquestracao(b.kit) : renderPromptUnico(b);
+
   view.innerHTML = `
     <div class="module-view">
       <button class="biblioteca-back" onclick="showBiblioteca()">← Voltar à Biblioteca</button>
@@ -6557,13 +7396,120 @@ function showPromptBonus(id) {
         <p class="module-summary">${b.desc}</p>
       </header>
 
-      <section class="practice-section" id="practice">
-        <div class="practice-header">
-          <div>
-            <div class="practice-label">Prompt AIMED · Biblioteca Bônus</div>
-            <div class="practice-title">${b.titulo}</div>
+      ${corpo}
+    </div>
+  `;
+  aplicarGlossario();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/**
+ * Renderiza o formato clássico (um único prompt).
+ * Usado por todos os cards da Biblioteca que têm `b.prompt`.
+ */
+function renderPromptUnico(b) {
+  return `
+    <section class="practice-section" id="practice">
+      <div class="practice-header">
+        <div>
+          <div class="practice-label">Prompt AIMED · Biblioteca Bônus</div>
+          <div class="practice-title">${b.titulo}</div>
+        </div>
+      </div>
+      <div class="aimed-legend">
+        <div class="legend-item"><span class="dot ld-a"></span>Assistente</div>
+        <div class="legend-item"><span class="dot ld-i"></span>Informações</div>
+        <div class="legend-item"><span class="dot ld-m"></span>Missão</div>
+        <div class="legend-item"><span class="dot ld-e"></span>Estrutura</div>
+        <div class="legend-item"><span class="dot ld-d"></span>Diretrizes</div>
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-text" id="promptText">${b.prompt}</div>
+      </div>
+      <div class="prompt-actions">
+        <button class="action-btn primary" onclick="copyPrompt(this)">
+          <span class="icon">⎘</span> Copiar prompt
+        </button>
+        <button class="action-btn" onclick="openAI('chatgpt')">
+          <span class="icon">◔</span> Abrir no ChatGPT
+        </button>
+        <button class="action-btn" onclick="openAI('claude')">
+          <span class="icon">◑</span> Abrir no Claude
+        </button>
+        <button class="action-btn" onclick="openAI('gemini')">
+          <span class="icon">◕</span> Abrir no Gemini
+        </button>
+      </div>
+    </section>
+  `;
+}
+
+/**
+ * Renderiza um Kit de Orquestração: cabeçalho didático + N passos sequenciais.
+ * Cada passo tem seu próprio id de prompt e botão direcionado à IA correspondente.
+ */
+function renderKitOrquestracao(kit) {
+  // Cabeçalho didático: diagrama de fluxo + dicas
+  const howto = kit.howto;
+  const diagramaHtml = howto.diagrama.map((n, i) => {
+    const arrow = i < howto.diagrama.length - 1
+      ? '<div class="kit-flow-arrow">→</div>'
+      : '';
+    return `
+      <div class="kit-flow-node ${n.plataforma.toLowerCase()}">
+        <div class="kit-flow-ia">${n.plataforma}</div>
+        <div class="kit-flow-role">${n.papel}</div>
+        <div class="kit-flow-task">${n.tarefa}</div>
+      </div>
+      ${arrow}
+    `;
+  }).join('');
+
+  const dicasHtml = howto.dicas.map(d => `
+    <div class="kit-howto-step">
+      <strong>${d.label}</strong>
+      ${d.texto}
+    </div>
+  `).join('');
+
+  const headerKit = `
+    <div class="kit-howto">
+      <div class="kit-howto-label">Como usar este kit · Tempo estimado ${howto.tempoTotal}</div>
+      <div class="kit-howto-title">Orquestração <em>Gemini → Claude → GPT</em></div>
+      <div class="kit-howto-intro">${howto.intro}</div>
+      <div class="kit-flow-diagram">${diagramaHtml}</div>
+      <div class="kit-howto-steps">${dicasHtml}</div>
+    </div>
+  `;
+
+  // Os N passos (cada um é uma .practice-section completa)
+  const passosHtml = kit.steps.map(step => {
+    const promptId = `promptText_${step.num}`;
+    const stepInputHtml = step.input ? `
+      <div class="kit-step-input">
+        <strong>${step.input.label}</strong>
+        ${step.input.texto}
+      </div>
+    ` : '';
+
+    // Botão da IA principal do passo (destaque primário) + copiar + alternativas
+    const botaoPrincipal = step.platform === 'chatgpt'
+      ? `<button class="action-btn primary" onclick="openAI('chatgpt', '${promptId}')"><span class="icon">◔</span> Abrir no ChatGPT</button>`
+      : step.platform === 'claude'
+        ? `<button class="action-btn primary" onclick="openAI('claude', '${promptId}')"><span class="icon">◑</span> Abrir no Claude</button>`
+        : `<button class="action-btn primary" onclick="openAI('gemini', '${promptId}')"><span class="icon">◕</span> Abrir no Gemini</button>`;
+
+    return `
+      <section class="kit-step ${step.platform}">
+        <div class="kit-step-header">
+          <div class="kit-step-num">${step.num}</div>
+          <div class="kit-step-meta">
+            <div class="kit-step-platform">${step.platformLabel}</div>
+            <div class="kit-step-title">${step.title}</div>
           </div>
         </div>
+        <div class="kit-step-desc">${step.desc}</div>
+        ${stepInputHtml}
         <div class="aimed-legend">
           <div class="legend-item"><span class="dot ld-a"></span>Assistente</div>
           <div class="legend-item"><span class="dot ld-i"></span>Informações</div>
@@ -6572,27 +7518,19 @@ function showPromptBonus(id) {
           <div class="legend-item"><span class="dot ld-d"></span>Diretrizes</div>
         </div>
         <div class="prompt-box">
-          <div class="prompt-text" id="promptText">${b.prompt}</div>
+          <div class="prompt-text" id="${promptId}">${step.prompt}</div>
         </div>
         <div class="prompt-actions">
-          <button class="action-btn primary" onclick="copyPrompt(this)">
+          <button class="action-btn" onclick="copyPrompt(this, '${promptId}')">
             <span class="icon">⎘</span> Copiar prompt
           </button>
-          <button class="action-btn" onclick="openAI('chatgpt')">
-            <span class="icon">◔</span> Abrir no ChatGPT
-          </button>
-          <button class="action-btn" onclick="openAI('claude')">
-            <span class="icon">◑</span> Abrir no Claude
-          </button>
-          <button class="action-btn" onclick="openAI('gemini')">
-            <span class="icon">◕</span> Abrir no Gemini
-          </button>
+          ${botaoPrincipal}
         </div>
       </section>
-    </div>
-  `;
-  aplicarGlossario();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+    `;
+  }).join('');
+
+  return headerKit + passosHtml;
 }
 
 
@@ -6605,6 +7543,10 @@ function showLogistica() {
   document.getElementById('logisticaBtn').classList.add('active');
   document.getElementById('crumb-module').textContent = 'Logística do Curso';
   document.getElementById('sidebar').classList.remove('open');
+  currentModuleId = '__logistica__';
+  if (window.location.hash !== '#logistica') {
+    history.replaceState(null, '', '#logistica');
+  }
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
   const view = document.getElementById('moduleView');
@@ -6782,8 +7724,73 @@ function showLogistica() {
   `;
 }
 
-function abrirSobre() { document.getElementById('sobreOverlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
-function fecharSobre() { document.getElementById('sobreOverlay').classList.remove('open'); document.body.style.overflow = ''; }
+/* ============================================================
+   MODAL "SOBRE" — focus trap + restauração de foco
+   Mantém navegação por teclado presa dentro do modal enquanto
+   aberto, e devolve o foco ao elemento que o invocou ao fechar.
+   ============================================================ */
+
+let _sobreFocoAnterior = null;
+let _sobreFocusTrapHandler = null;
+
+const _isFocusable = (el) => {
+  const selector = 'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  return el.matches(selector) && el.offsetParent !== null;
+};
+
+function abrirSobre() {
+  const overlay = document.getElementById('sobreOverlay');
+  if (!overlay) return;
+
+  _sobreFocoAnterior = document.activeElement;
+  overlay.classList.add('open');
+  overlay.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+
+  // Move foco para o primeiro elemento focável do modal
+  const focaveis = Array.from(overlay.querySelectorAll(
+    'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+  )).filter(el => el.offsetParent !== null);
+
+  if (focaveis.length) focaveis[0].focus();
+
+  // Focus trap: prende Tab entre primeiro e último focável
+  _sobreFocusTrapHandler = (e) => {
+    if (e.key !== 'Tab') return;
+    if (!focaveis.length) { e.preventDefault(); return; }
+    const primeiro = focaveis[0];
+    const ultimo = focaveis[focaveis.length - 1];
+
+    if (e.shiftKey && document.activeElement === primeiro) {
+      e.preventDefault();
+      ultimo.focus();
+    } else if (!e.shiftKey && document.activeElement === ultimo) {
+      e.preventDefault();
+      primeiro.focus();
+    }
+  };
+  document.addEventListener('keydown', _sobreFocusTrapHandler);
+}
+
+function fecharSobre() {
+  const overlay = document.getElementById('sobreOverlay');
+  if (!overlay) return;
+
+  overlay.classList.remove('open');
+  overlay.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+
+  if (_sobreFocusTrapHandler) {
+    document.removeEventListener('keydown', _sobreFocusTrapHandler);
+    _sobreFocusTrapHandler = null;
+  }
+
+  // Restaura foco ao elemento que abriu o modal
+  if (_sobreFocoAnterior && typeof _sobreFocoAnterior.focus === 'function') {
+    _sobreFocoAnterior.focus();
+  }
+  _sobreFocoAnterior = null;
+}
 
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
@@ -6792,11 +7799,51 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
+/* ============================================================
+   BOOTSTRAP — inicialização com roteamento por hash
+   Suporta: #<id-módulo>, #logistica, #biblioteca
+   ============================================================ */
+
+function roteadorPorHash() {
+  const raw = decodeURIComponent(window.location.hash.slice(1));
+
+  if (raw === 'logistica') {
+    showLogistica();
+    return true;
+  }
+  if (raw === 'biblioteca') {
+    showBiblioteca();
+    return true;
+  }
+  if (!raw) return false;
+
+  // Valida que o id existe em PROGRAMA antes de chamar selectModule
+  const existe = PROGRAMA.some(b => b.modulos.some(m => !m.break && m.id === raw));
+  if (existe) {
+    selectModule(raw);
+    return true;
+  }
+  return false;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   renderTrail();
-  const hashId = window.location.hash.slice(1);
-  const firstModule = PROGRAMA[0].modulos[0].id;
-  selectModule(hashId || firstModule);
+
+  const primeiroModulo = PROGRAMA?.[0]?.modulos?.find(m => !m.break)?.id;
+  if (!primeiroModulo) {
+    console.error('PROGRAMA vazio ou mal formado — nada a renderizar.');
+    return;
+  }
+
+  // Rota inicial: hash válido OU primeiro módulo
+  if (!roteadorPorHash()) {
+    selectModule(primeiroModulo);
+  }
+
+  // Navegação via botões voltar/avançar do navegador
+  window.addEventListener('hashchange', () => {
+    roteadorPorHash();
+  });
 });
 </script>
 </body>
