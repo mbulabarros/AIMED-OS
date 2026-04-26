@@ -4397,8 +4397,232 @@ const PROGRAMA = [
         prompts: null
       },
       {
+        id: 'transformar-pico',
+        horario: '08:20–08:35',
+        titulo: 'Transformando a Dúvida em PICO',
+        summary: 'A dúvida que você dormiu com ela está em linguagem natural — honesta, mas inutilizável para busca científica. Antes de abrir o Gemini, ela precisa virar PICO. Quinze minutos de tradução estruturada que decidem a qualidade das próximas três horas de pesquisa.',
+        conteudo: `
+          <div class="quote-hero">
+            <div class="quote-mark">"</div>
+            <div class="quote-text">Uma pergunta vaga produz <strong>pesquisa vaga</strong>.<br>Uma pergunta PICO produz <strong>resposta investigável</strong>.</div>
+          </div>
+
+          <h3>Por que esse passo existe</h3>
+          <p>A dúvida que cada um soltou agora há pouco no círculo é — propositalmente — uma frase de plantão. <em>"Será que faz sentido continuar com X em Y?"</em> Honesta. Real. Inútil para o Gemini.</p>
+          <p>Se você colar essa frase direto na busca, o Gemini vai devolver uma constelação de artigos genéricos sobre <em>X</em> e sobre <em>Y</em> separadamente, e você vai gastar 40 minutos peneirando ruído. PICO existe para resolver isso em 15 minutos de trabalho cognitivo limpo.</p>
+
+          <div class="callout">
+            <div class="callout-label">A virada conceitual</div>
+            <p>PICO não é jargão acadêmico. É um <strong>diagnóstico da própria dúvida</strong>: quando você não consegue preencher os 4 campos, descobre que não sabia exatamente o que estava perguntando. Isso é informação, não fracasso.</p>
+          </div>
+
+          <h3>O acrônimo, sem mistério</h3>
+          <p>Formalizado em 1995 por Richardson e colegas no <em>ACP Journal Club</em> como esqueleto da Medicina Baseada em Evidências de Sackett, hoje é o padrão exigido pela Cochrane, pelo GRADE e implícito em qualquer busca séria no PubMed.</p>
+
+          <div class="role-table">
+            <div class="role-row">
+              <div class="role-cell-name">
+                <div class="role-name-ai">P</div>
+                <div class="role-name-tag">População</div>
+              </div>
+              <div class="role-cell-content">
+                <div class="role-strength"><strong>Quem é o paciente.</strong> Idade, sexo, condição de base, gravidade, contexto clínico. Específico, não "adulto com hipertensão" — mas "gestante de 32 semanas com pré-eclâmpsia sem critérios de gravidade".</div>
+                <div class="role-use">Vagueza típica: "pacientes graves", "idosos". Refinar até o ponto em que dois colegas leriam e visualizariam o mesmo paciente.</div>
+              </div>
+            </div>
+            <div class="role-row">
+              <div class="role-cell-name">
+                <div class="role-name-ai">I</div>
+                <div class="role-name-tag">Intervenção</div>
+              </div>
+              <div class="role-cell-content">
+                <div class="role-strength"><strong>O que se faz com o paciente.</strong> Em estudos etiológicos, vira <em>Exposição</em> (tabagismo, poluição). Especificar dose, via, frequência, duração — não "anticoagulação", mas "enoxaparina 40mg SC 1×/dia por 30 dias".</div>
+                <div class="role-use">Vagueza típica: nome genérico sem dose. Refinar até a especificidade da prescrição.</div>
+              </div>
+            </div>
+            <div class="role-row">
+              <div class="role-cell-name">
+                <div class="role-name-ai">C</div>
+                <div class="role-name-tag">Comparação</div>
+              </div>
+              <div class="role-cell-content">
+                <div class="role-strength"><strong>Contra o quê.</strong> Placebo, cuidado padrão, intervenção alternativa, ausência da exposição. Frequentemente está implícita na dúvida — você precisa torná-la explícita antes da busca.</div>
+                <div class="role-use">Vagueza típica: "comparar com o usual" sem dizer qual é o usual. Refinar nomeando a alternativa concreta.</div>
+              </div>
+            </div>
+            <div class="role-row">
+              <div class="role-cell-name">
+                <div class="role-name-ai">O</div>
+                <div class="role-name-tag">Outcome</div>
+              </div>
+              <div class="role-cell-content">
+                <div class="role-strength"><strong>Desfecho que decide.</strong> Primário (o que muda a conduta — mortalidade, complicação, falha) e secundários (efeitos adversos, qualidade de vida, custo). Não vale "melhora" genérica.</div>
+                <div class="role-use">Vagueza típica: "ver se funciona". Refinar nomeando o desfecho mensurável que importaria à beira do leito.</div>
+              </div>
+            </div>
+          </div>
+
+          <h3>Extensões úteis (PICOT e PICOS)</h3>
+          <p>Duas letras a mais que aparecem quando a pergunta exige especificação adicional:</p>
+
+          <div class="alert-grid">
+            <div class="alert-card info">
+              <div class="alert-label">+T</div>
+              <div class="alert-title">Time — janela temporal</div>
+              <div class="alert-text">Por quanto tempo o desfecho é seguido? 30 dias? 5 anos? Um desfecho de mortalidade aos 30 dias é uma pergunta diferente da mortalidade aos 5 anos.</div>
+            </div>
+            <div class="alert-card info">
+              <div class="alert-label">+S</div>
+              <div class="alert-title">Study design — desenho ideal</div>
+              <div class="alert-text">Que desenho responderia melhor: meta-análise, RCT, coorte prospectivo, caso-controle? A pergunta determina o tipo de estudo a buscar prioritariamente.</div>
+            </div>
+            <div class="alert-card warning">
+              <div class="alert-label">PECO</div>
+              <div class="alert-title">Para perguntas etiológicas</div>
+              <div class="alert-text">Quando a "intervenção" é uma exposição involuntária (tabagismo, poluição, dieta), I vira E. Útil para epidemiologia, saúde pública e perguntas de risco.</div>
+            </div>
+          </div>
+
+          <h3>Como se faz, em 5 passos</h3>
+          <p>Quinze minutos. Cada participante, no próprio celular, com a dúvida do papel na mão. Roda o prompt-mestre nas IAs (GPT, Claude ou Gemini — qualquer um serve aqui) e produz a versão PICO da própria dúvida.</p>
+
+          <div class="steps-guide">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h4>Cole o prompt-mestre</h4>
+                <p>O prompt nível 3 abaixo. Já tem todos os componentes AIMED. Você só preenche o bloco da dúvida bruta e do contexto.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h4>A IA diagnostica a pergunta</h4>
+                <p>Identifica o tipo (terapêutica, diagnóstica, prognóstica, etiológica) e — crucial — separa as perguntas embutidas. Frequentemente uma dúvida única esconde 2 ou 3.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h4>PICO estruturado</h4>
+                <p>Tabela com os 4 componentes preenchidos. Se faltarem dados (faixa etária, comparador), a IA pergunta antes de inventar.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">4</div>
+              <div class="step-content">
+                <h4>String de busca pronta</h4>
+                <p>Termos MeSH, sinônimos em português e inglês, operadores booleanos. Pronto para colar no PubMed ou no Gemini.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">5</div>
+              <div class="step-content">
+                <h4>Versão final em uma linha</h4>
+                <p>A pergunta refinada em prosa, em uma frase única. <strong>É essa frase que vai para o próximo módulo</strong> — ela é a entrada do Gemini.</p>
+              </div>
+            </div>
+          </div>
+
+          <h3>Exemplo trabalhado — sulfato de magnésio em pré-eclâmpsia leve</h3>
+          <p>Para calibrar o nível de especificidade que você precisa atingir, vamos olhar a transformação de uma dúvida real:</p>
+
+          <div class="field-card">
+            <div class="field-card-label">Dúvida bruta (do papel de ontem)</div>
+            <div class="field-card-prompt">"Será que faz sentido dar sulfato de magnésio em pré-eclâmpsia leve?"</div>
+            <div class="field-card-hint">Honesta. Inutilizável. Faltam: faixa de gravidade, comparador, desfecho que decide, janela temporal.</div>
+          </div>
+
+          <div class="role-table">
+            <div class="role-row">
+              <div class="role-cell-name">
+                <div class="role-name-ai">P</div>
+                <div class="role-name-tag">População</div>
+              </div>
+              <div class="role-cell-content">
+                <div class="role-strength">Gestantes com pré-eclâmpsia <em>sem critérios de gravidade</em>: PA &lt;160×110, sem proteinúria nefrótica, sem disfunção orgânica, plaquetas normais; 2º ou 3º trimestre.</div>
+              </div>
+            </div>
+            <div class="role-row">
+              <div class="role-cell-name">
+                <div class="role-name-ai">I</div>
+                <div class="role-name-tag">Intervenção</div>
+              </div>
+              <div class="role-cell-content">
+                <div class="role-strength">Sulfato de magnésio profilático intravenoso, esquema Zuspan ou Pritchard, até 24h pós-parto.</div>
+              </div>
+            </div>
+            <div class="role-row">
+              <div class="role-cell-name">
+                <div class="role-name-ai">C</div>
+                <div class="role-name-tag">Comparação</div>
+              </div>
+              <div class="role-cell-content">
+                <div class="role-strength">Não administrar sulfato de magnésio: apenas controle pressórico + monitorização materno-fetal.</div>
+              </div>
+            </div>
+            <div class="role-row">
+              <div class="role-cell-name">
+                <div class="role-name-ai">O</div>
+                <div class="role-name-tag">Outcome</div>
+              </div>
+              <div class="role-cell-content">
+                <div class="role-strength"><strong>Primário:</strong> incidência de eclâmpsia. <strong>Secundários:</strong> toxicidade materna por magnésio, prematuridade iatrogênica, eventos respiratórios, custo de internação.</div>
+              </div>
+            </div>
+            <div class="role-row">
+              <div class="role-cell-name">
+                <div class="role-name-ai">T</div>
+                <div class="role-name-tag">Tempo</div>
+              </div>
+              <div class="role-cell-content">
+                <div class="role-strength">Seguimento até 48h pós-parto (janela em que a eclâmpsia ainda pode ocorrer).</div>
+              </div>
+            </div>
+            <div class="role-row">
+              <div class="role-cell-name">
+                <div class="role-name-ai">S</div>
+                <div class="role-name-tag">Study design</div>
+              </div>
+              <div class="role-cell-content">
+                <div class="role-strength">Meta-análise de RCTs (existe — Magpie Trial e derivados são o ponto de partida).</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="field-card">
+            <div class="field-card-label">Versão final em uma linha (vai para o Gemini)</div>
+            <div class="field-card-prompt">Em gestantes com pré-eclâmpsia sem critérios de gravidade, o sulfato de magnésio profilático reduz a incidência de eclâmpsia o suficiente para justificar os efeitos adversos e a medicalização?</div>
+            <div class="field-card-hint">Repare a diferença em relação à frase do papel: agora é uma pergunta clínica completa, com população delimitada, intervenção específica, comparador implícito (não usar) e desfecho mensurável.</div>
+          </div>
+
+          <h3>Regra do exercício</h3>
+          <p>Quinze minutos. Quem terminar antes, revisa em dupla com o vizinho — o colega lê o seu PICO e aponta vaguezas. <strong>Só depois desta etapa, o Gemini abre.</strong> Pesquisar com a dúvida bruta é gastar tempo do curso.</p>
+
+          <div class="callout">
+            <div class="callout-label">Por que separamos isso do módulo de busca</div>
+            <p>No próximo módulo (08:35), você vai ao Gemini buscar artigos reais. Mas a qualidade da busca está sendo decidida <strong>aqui, agora</strong>. Quem chega no Gemini com PICO claro encontra evidência em 20 minutos. Quem chega com dúvida bruta passa o módulo inteiro peneirando lixo. A diferença é metodológica, não de sorte.</p>
+          </div>
+        `,
+        prompts: {
+          titulo: 'Transformador de dúvida em PICO — pronto para colar nas 3 IAs',
+          nivel1: {
+            hint: 'Pedido simples — útil quando a dúvida já está bem formulada',
+            texto: `Tenho uma dúvida clínica e quero transformá-la em formato PICO antes de buscar literatura.\n\nMinha dúvida:\n[ESCREVA A DÚVIDA EM LINGUAGEM NATURAL]\n\nMe ajude a preencher os 4 componentes:\n- População (P)\n- Intervenção (I)\n- Comparação (C)\n- Outcome / Desfecho (O)\n\nAo final, me dê a pergunta refinada em uma frase única, pronta para busca.`
+          },
+          nivel2: {
+            hint: 'PICO + extensões + string de busca — o nível recomendado em sala',
+            texto: `<span class="ai-a">Use meu Perfil Clínico Permanente. Você é metodologista clínica em medicina baseada em evidências, com experiência em formação de residentes. Postura: rigor metodológico de revisor da Cochrane, paciência didática de orientadora.</span>\n\n<span class="ai-i">Minha dúvida (em linguagem natural, do jeito que saiu no plantão):\n[COLE AQUI A FRASE DO PAPEL]\n\nContexto:\n- Especialidade: [...]\n- Tipo de serviço: [SUS terciário / saúde suplementar / consultório]\n- Origem da dúvida: [caso recente / leitura / discussão de plantão]</span>\n\n<span class="ai-m">Execute em 4 etapas:\n\n1. Diagnóstico da pergunta: tipo (terapêutica/diagnóstica/prognóstica/etiológica), e quantas perguntas distintas estão embutidas (se houver mais de uma, separe).\n\n2. PICO estruturado para cada pergunta:\n- P (População): específica em idade, condição, gravidade\n- I (Intervenção): específica em dose, via, duração\n- C (Comparação): explícita — placebo, cuidado padrão, alternativa\n- O primário: desfecho que decide a conduta\n- O secundários: efeitos adversos, qualidade de vida, custo\n\n3. Extensões PICOT (janela temporal) e PICOS (desenho ideal de estudo).\n\n4. String de busca: termos em português e inglês, com operadores AND/OR, filtros (tipo de estudo, anos, idioma).</span>\n\n<span class="ai-e">Formato:\n\n**Diagnóstico da pergunta**\n- Tipo: ...\n- Perguntas embutidas: ...\n\n**PICO estruturado** (tabela)\n| Componente | Conteúdo |\n|---|---|\n| P | |\n| I | |\n| C | |\n| O primário | |\n| O secundários | |\n\n**Extensões**\n- T: ...\n- S: ...\n\n**String de busca** (em bloco de código, pronta para colar no Gemini ou PubMed)\n\n**Versão final em uma linha** — pergunta refinada em prosa, frase única, pronta para a busca</span>\n\n<span class="ai-d">Princípios:\n- Fidelidade à intenção clínica original — o objetivo é tornar a pergunta buscável, não reescrevê-la\n- Se faltarem dados críticos (faixa etária, gravidade, desfecho), PERGUNTAR antes de inventar\n- Não inventar termos MeSH — se incerto, marcar [VERIFICAR MeSH browser]\n- Se houver mais de uma pergunta embutida, separar — busca dupla é busca que não responde nenhuma\n- Considerar contexto brasileiro nos desfechos relevantes</span>`
+          },
+          nivel3: {
+            hint: 'PICO master — diagnóstico + estrutura + extensões + busca + refinamento crítico',
+            texto: `<span class="ai-a">Use meu Perfil Clínico Permanente. Você é metodologista clínica sênior em medicina baseada em evidências, com 20 anos de revisões Cochrane e formação de médicos pesquisadores. Especialidade: transformar dúvidas clínicas brutas — do jeito que saem da cabeça de um médico no plantão — em perguntas de pesquisa buscáveis em bases indexadas. Postura: rigor metodológico de revisor de Cochrane, paciência didática de orientadora de mestrado. Você não muda a pergunta do médico — você a torna pesquisável.</span>\n\n<span class="ai-i">Minha dúvida (a pergunta-chave da minha Teoria do Contrário, em linguagem natural — pode estar fragmentada, com hesitação, sem desfecho explícito):\n\n> [COLE AQUI A FRASE EXATA QUE VOCÊ ESCREVEU NO PAPEL]\n\nContexto da minha prática:\n- Especialidade: [...]\n- Tipo de serviço: [SUS terciário / saúde suplementar / consultório / hospital geral]\n- População que atendo: [perfil etário, gravidade, comorbidades frequentes]\n- Origem da dúvida: [caso recente / leitura / discussão de plantão / divergência com colega]</span>\n\n<span class="ai-m">Execute em 5 etapas obrigatórias, em ordem:\n\nEtapa 1 — Diagnóstico da pergunta\n- Tipo de pergunta clínica: terapêutica / diagnóstica / prognóstica / etiológica / rastreamento / dano\n- Quantas perguntas distintas estão embutidas (frequentemente uma dúvida fragmentada esconde 2 ou 3 perguntas separadas — se sim, separe-as)\n- Desfecho está explícito ou precisa ser inferido?\n- Comparador está explícito ou precisa ser inferido?\n\nEtapa 2 — Conversão em PICO estruturado\nPara CADA pergunta identificada na Etapa 1, preencha:\n- P (População): idade, sexo, condição de base, gravidade, contexto\n- I (Intervenção/Exposição): específica em dose, via, frequência, duração\n- C (Comparação): placebo / cuidado padrão / intervenção alternativa / ausência da exposição — sugira o mais clinicamente relevante se não estiver explícito\n- O primário: o desfecho que decide a conduta (mortalidade, complicação específica, falha terapêutica)\n- O secundários: efeitos colaterais, qualidade de vida, custo, internação\n\nEtapa 3 — Extensões PICOT e PICOS\n- T (janela temporal): seguimento clinicamente relevante para o desfecho\n- S (study design ideal): RCT? meta-análise? coorte prospectivo? caso-controle? Justifique brevemente.\n\nEtapa 4 — String de busca pronta\nConstrua uma string booleana pronta para colar no PubMed, Google Scholar ou Gemini. Inclua:\n- Termos MeSH (apenas se tiver certeza — caso contrário marque [VERIFICAR MeSH browser])\n- Sinônimos em inglês e português\n- Operadores AND / OR / NOT\n- Filtros recomendados: tipo de estudo, janela temporal, língua, população humana\n\nEtapa 5 — Refinamento crítico\n- Vaguezas onde precisei inferir (e o que assumi)\n- Variações de busca paralela úteis (ex: se a pergunta era "gestantes", sugerir buscas separadas por trimestre, ou alto vs baixo risco)\n- Limitações antecipadas (literatura escassa, controvérsia ideológica, dados brasileiros raros)</span>\n\n<span class="ai-e">Formato estruturado:\n\n**1. Diagnóstico da pergunta**\n- Tipo: [...]\n- Perguntas embutidas: [1, 2 ou 3 — se >1, separar]\n- Desfecho original: [explícito ou inferido — qual]\n- Comparador original: [explícito ou inferido — qual]\n\n**2. PICO estruturado** (uma tabela para cada pergunta identificada)\n\n| Componente | Conteúdo |\n|---|---|\n| P | |\n| I | |\n| C | |\n| O primário | |\n| O secundários | |\n\n**3. Extensões**\n- T (janela temporal): \n- S (desenho ideal): \n- Justificativa: \n\n**4. String de busca pronta** (em bloco de código, pronta para copiar):\nstring booleana com termos MeSH, sinônimos, operadores e filtros\n\n**5. Refinamento crítico**\n- Vaguezas inferidas: \n- Variações de busca paralela: \n- Limitações antecipadas: \n\n**6. Versão final em uma linha** (pergunta refinada em prosa, para você revisar mentalmente antes de buscar):\n> [pergunta clínica reescrita com clareza, em uma frase única]</span>\n\n<span class="ai-d">Princípios inegociáveis:\n- Fidelidade à intenção clínica original — o objetivo não é reescrever a pergunta do médico, é torná-la buscável\n- NUNCA inventar termos MeSH. Se não tiver certeza, marcar [VERIFICAR PubMed MeSH browser]\n- Dúvida com mais de uma pergunta embutida = separar. Uma busca tentando responder duas coisas é uma busca que não responde nenhuma\n- Se faltarem dados críticos para PICO limpo (faixa etária, gravidade, desfecho), PERGUNTAR antes de inventar\n- Sinalizar explicitamente quando a literatura provavelmente é escassa — não forçar busca que retornará vazia\n- Considerar contexto brasileiro nos desfechos: disponibilidade no SUS, perfil epidemiológico nacional, divergência entre diretrizes brasileiras e internacionais\n- Última linha sempre a "versão final em uma linha" — é o que o médico cola no Gemini para iniciar a busca</span>`
+          }
+        }
+      },
+      {
         id: 'artigos-reais',
-        horario: '08:20–09:15',
+        horario: '08:35–09:15',
         titulo: 'Como Encontrar Artigos Científicos Reais',
         summary: 'A IA pode inventar artigos com autor, revista, ano, DOI — tudo convincente, tudo falso. Este módulo ensina a separar literatura real de alucinação, e extrair o máximo do que é real.',
         avatar: 'MJat56OqGt8',
