@@ -351,6 +351,287 @@ ul { list-style: none; }
 }
 .biblioteca-card:hover .biblioteca-card-cta { color: var(--gold-light); }
 
+/* ═══════════════════════════════════════════════════════════════
+   NÍVEL ULTRA — Consilium Adversarium
+   Cartão e selo distintos. Reservado a prompts de força crítica máxima.
+   ═══════════════════════════════════════════════════════════════ */
+.biblioteca-card.ultra {
+  background:
+    linear-gradient(135deg, #1a0d0d 0%, var(--navy-card) 45%, var(--navy-card-hi) 100%);
+  border: 1px solid rgba(248,113,113,0.32);
+  position: relative;
+  overflow: hidden;
+}
+.biblioteca-card.ultra::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 100% 0%, rgba(248,113,113,0.10) 0%, transparent 55%);
+  pointer-events: none;
+}
+.biblioteca-card.ultra:hover {
+  border-color: var(--coral);
+  background:
+    linear-gradient(135deg, #220f0f 0%, var(--navy-card-hi) 50%, var(--navy-light) 100%);
+  box-shadow: 0 4px 28px rgba(248,113,113,0.16);
+}
+.biblioteca-card.ultra .biblioteca-card-cta { color: var(--coral); }
+.biblioteca-card.ultra:hover .biblioteca-card-cta { color: #ff8a8a; }
+
+.biblioteca-card-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'DM Mono', monospace; font-size: 9px;
+  font-weight: 700; letter-spacing: 0.28em; text-transform: uppercase;
+  padding: 3px 8px;
+  border: 1px solid var(--coral);
+  color: var(--coral);
+  border-radius: 3px;
+  margin-bottom: 10px;
+  align-self: flex-start;
+  background: rgba(248,113,113,0.08);
+}
+.biblioteca-card-badge::before {
+  content: '⚔';
+  font-size: 11px;
+  letter-spacing: 0;
+}
+
+/* Disclaimer ULTRA — bloco visualmente arrebatador exibido antes do prompt */
+.ultra-warning {
+  position: relative;
+  background:
+    linear-gradient(135deg, rgba(248,113,113,0.06) 0%, rgba(163,51,51,0.08) 100%);
+  border: 1px solid rgba(248,113,113,0.32);
+  border-left: 3px solid var(--coral);
+  border-radius: var(--radius);
+  padding: 22px 26px 22px 30px;
+  margin: 8px 0 28px;
+  overflow: hidden;
+}
+.ultra-warning::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 0% 50%, rgba(248,113,113,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+.ultra-warning-eyebrow {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--coral); margin-bottom: 14px;
+}
+.ultra-warning-eyebrow::before {
+  content: '⚠';
+  font-size: 14px;
+  letter-spacing: 0;
+  color: var(--coral);
+}
+.ultra-warning-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.45em; font-weight: 700;
+  color: var(--white);
+  line-height: 1.25;
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
+}
+.ultra-warning-title em { color: var(--coral); font-style: italic; }
+.ultra-warning p {
+  font-size: 14px; color: var(--gray-100);
+  line-height: 1.75; margin: 0 0 10px;
+  font-weight: 300;
+}
+.ultra-warning p:last-child { margin-bottom: 0; }
+.ultra-warning strong { color: var(--gold-light); font-weight: 600; }
+.ultra-warning .ultra-activation {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  background: var(--navy);
+  border: 1px solid rgba(248,113,113,0.4);
+  color: var(--coral);
+  padding: 6px 10px;
+  border-radius: 4px;
+  margin: 4px 0;
+  letter-spacing: 0.05em;
+}
+.ultra-warning-rules {
+  margin: 14px 0 4px;
+  padding: 14px 0 0;
+  border-top: 1px solid rgba(248,113,113,0.18);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px 18px;
+}
+.ultra-warning-rule {
+  display: flex; gap: 10px;
+  font-size: 12.5px;
+  color: var(--gray-100);
+  line-height: 1.6;
+  font-weight: 300;
+}
+.ultra-warning-rule .num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--coral);
+  font-weight: 600;
+  min-width: 16px;
+  padding-top: 1px;
+}
+
+/* Toggle de idioma PT | EN — canto superior do disclaimer */
+.ultra-warning-eyebrow-row {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; margin-bottom: 14px;
+}
+.ultra-lang-toggle {
+  display: inline-flex;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(248,113,113,0.25);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.ultra-lang-btn {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 5px 12px; background: transparent;
+  color: var(--gray-300); border: none; cursor: pointer;
+  transition: all 0.18s;
+}
+.ultra-lang-btn:hover { color: var(--gold-light); }
+.ultra-lang-btn.active {
+  background: rgba(248,113,113,0.18);
+  color: var(--coral);
+  font-weight: 600;
+}
+
+/* Botão "Aceito os termos" + formulário de personalização */
+.ultra-cta-zone {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(248,113,113,0.18);
+}
+.ultra-accept-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600;
+  padding: 12px 22px;
+  background: var(--coral);
+  color: var(--navy);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 12px rgba(248,113,113,0.18);
+}
+.ultra-accept-btn:hover {
+  background: #ff8a8a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 18px rgba(248,113,113,0.32);
+}
+.ultra-accept-btn::after { content: '→'; font-size: 14px; letter-spacing: 0; }
+
+.ultra-form { display: none; }
+.ultra-form.open { display: block; animation: ultraFormIn 0.3s ease-out; }
+@keyframes ultraFormIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.ultra-form-intro {
+  font-size: 13px; color: var(--gold-light);
+  font-family: 'DM Mono', monospace; letter-spacing: 0.05em;
+  margin-bottom: 14px;
+}
+.ultra-form-intro::before { content: '✓ '; color: var(--green); font-weight: 700; }
+.ultra-form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.ultra-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 600px) { .ultra-form-row { grid-template-columns: 1fr; } }
+
+.ultra-form-field { display: flex; flex-direction: column; gap: 6px; }
+.ultra-form-label {
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold);
+}
+.ultra-form-label .req { color: var(--coral); margin-left: 2px; }
+.ultra-form-label .opt {
+  font-size: 9px; color: var(--gray-300);
+  margin-left: 6px; letter-spacing: 0.1em;
+}
+.ultra-form-textarea, .ultra-form-input, .ultra-form-select {
+  font-family: 'DM Mono', monospace; font-size: 13px;
+  background: var(--navy); color: var(--gray-100);
+  border: 1px solid rgba(248,113,113,0.22);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  transition: border-color 0.18s;
+  width: 100%; box-sizing: border-box;
+}
+.ultra-form-textarea {
+  min-height: 90px; resize: vertical; line-height: 1.5;
+}
+.ultra-form-textarea:focus, .ultra-form-input:focus, .ultra-form-select:focus {
+  outline: none;
+  border-color: var(--coral);
+  box-shadow: 0 0 0 2px rgba(248,113,113,0.12);
+}
+.ultra-form-select {
+  appearance: none; -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23f87171' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 30px;
+}
+.ultra-form-submit {
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600;
+  padding: 11px 20px;
+  background: transparent;
+  color: var(--coral);
+  border: 1px solid var(--coral);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.ultra-form-submit:hover {
+  background: rgba(248,113,113,0.12);
+  color: #ff8a8a;
+}
+.ultra-form-submit:disabled {
+  opacity: 0.4; cursor: not-allowed;
+}
+.ultra-form-status {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: rgba(74,222,128,0.06);
+  border-left: 2px solid var(--green);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 12.5px;
+  color: var(--green);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.04em;
+  display: none;
+}
+.ultra-form-status.show { display: block; }
+.ultra-form-status::before { content: '✓ '; font-weight: 700; }
+
+/* Marca dos campos preenchidos pelo usuário dentro do prompt */
+.prompt-text mark.ultra-filled {
+  background: rgba(74,222,128,0.14);
+  color: var(--gold-light);
+  padding: 1px 4px;
+  border-radius: 2px;
+  font-weight: 500;
+  border: 1px solid rgba(74,222,128,0.32);
+}
+
 .biblioteca-back {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 8px 16px; background: transparent;
@@ -6895,6 +7176,428 @@ Linha final INEGOCIÁVEL:
     }
   },
 
+  // ═══════════════════════════════════════════════════════════════
+  //  CONSILIUM ADVERSARIUM · MODO ULTRA
+  //  Reservado a quem precisa testar uma premissa até o limite.
+  //  Ativação por frase-chave + declaração de consciência.
+  // ═══════════════════════════════════════════════════════════════
+  {
+    id: 'tc-ultra',
+    universal: true,
+    level: 'ultra',
+    icon: '⚔️',
+    area: 'Consilium Adversarium · Modo Ultra',
+    role: 'Tribunal crítico de 15 epistemologias contra uma única premissa',
+    desc: 'Submete uma premissa única — protocolo, diretriz, dogma ou consenso — a 15 teorias críticas em sessão simultânea, com meta-análise recursiva e síntese acadêmica. Para quem precisa testar uma crença clínica até o seu limite estrutural.',
+    titulo: 'Consilium Adversarium — Tribunal Crítico Multiteórico contra Uma Premissa',
+    warning: {
+      eyebrow: 'Atenção · Modo Crítico Máximo · Use com Consciência',
+      title: 'Você está prestes a ativar o <em>Consilium Adversarium</em>',
+      body: [
+        'Esta é a ferramenta de refutação mais agressiva da Biblioteca AIMED. Ela aplica <strong>15 teorias críticas em paralelo</strong> contra uma única premissa, faz meta-análise da própria crítica e devolve uma síntese acadêmica em prosa. É feita para quem precisa testar uma crença clínica até o seu limite estrutural — não para quem busca confirmação.',
+        'Premissas válidas <strong>podem sair abaladas</strong> se mal contextualizadas, e premissas frágeis vão sair em frangalhos. A saída desta análise é <strong>insumo crítico, não veredito clínico.</strong> Quem ativa este modo aceita a responsabilidade de não converter dúvida construída em ação imprudente.',
+        'A ativação exige a frase-chave abaixo. Sem ela, a IA recusa a operação:',
+        '<span class="ultra-activation">⟨ATIVAR ANÁLISE CRÍTICA CONTRAFACTUAL · MODO ULTRA⟩</span>'
+      ],
+      rules: [
+        'Use somente sobre premissas que você está disposto(a) a ver questionadas estruturalmente.',
+        'Não execute em pacientes ativos sem antes consolidar a saída com a Teoria do Contrário padrão.',
+        'A última palavra é sempre clínica e contextualizada — nunca o output cru.',
+        'Não compartilhe a saída sem o contexto do framework — risco de mal-uso por terceiros.',
+        'Nunca aplique contra diretriz vigente em decisão de plantão — use para revisão fora da urgência.',
+        'Reconheça quando a análise revela apenas que o conceito se sustenta — isso também é resultado.'
+      ]
+    },
+    warning_en: {
+      eyebrow: 'Caution · Maximum Critical Mode · Use Consciously',
+      title: 'You are about to activate the <em>Consilium Adversarium</em>',
+      body: [
+        'This is the most aggressive refutation tool in the AIMED Library. It applies <strong>15 critical theories in parallel</strong> against a single premise, runs meta-analysis on its own critique, and returns an academic synthesis in prose. Built for those who need to test a clinical belief to its structural limit — not for those seeking confirmation.',
+        'Valid premises <strong>may emerge shaken</strong> if poorly contextualized, and fragile premises will come out in pieces. The output is <strong>critical input, not clinical verdict.</strong> Whoever activates this mode accepts the responsibility of not converting constructed doubt into reckless action.',
+        'Activation requires the key phrase below. Without it, the AI refuses operation:',
+        '<span class="ultra-activation">⟨ACTIVATE COUNTERFACTUAL CRITICAL ANALYSIS · ULTRA MODE⟩</span>'
+      ],
+      rules: [
+        'Use only on premises you are willing to see structurally questioned.',
+        'Do not run on active patients without first consolidating output through the standard Counter Theory.',
+        'The final word is always clinical and contextualized — never the raw output.',
+        'Do not share output without framework context — risk of misuse by third parties.',
+        'Never apply against current guidelines in on-call decisions — use for review outside urgency.',
+        'Recognize when the analysis only reveals that the concept holds — that is also a result.'
+      ]
+    },
+    demoFields: {
+      pt: {
+        cta: 'Aceito os termos · vou ativar o Consilium',
+        intro: 'Termos aceitos. Preencha o campo principal — os outros são opcionais.',
+        premise: {
+          label: 'Premissa, dúvida, afirmação ou cenário',
+          required: true,
+          placeholder: 'Ex: A reposição profilática de magnésio nas primeiras 48h pós-HSA é mandatória para reduzir vasoespasmo. (Seja específico — diretriz, condição, recomendação.)'
+        },
+        specialty: {
+          label: 'Sua especialidade · contexto de prática',
+          placeholder: 'Ex: pediatria intensiva · UTI cardíaca cirúrgica'
+        },
+        posture: {
+          label: 'Sua postura inicial honesta',
+          options: [
+            '(Selecione — opcional)',
+            'Aceito sem questionamento',
+            'Aceito com dúvidas',
+            'Suspeito ativamente',
+            'Quero refutar'
+          ]
+        },
+        submit: 'Gerar prompt personalizado',
+        status: 'Prompt personalizado abaixo · pronto para copiar ou abrir em ChatGPT, Claude, Gemini.',
+        errEmpty: 'Preencha a premissa para gerar o prompt.'
+      },
+      en: {
+        cta: 'I accept the terms · activate the Consilium',
+        intro: 'Terms accepted. Fill in the main field — the others are optional.',
+        premise: {
+          label: 'Premise, doubt, claim or scenario',
+          required: true,
+          placeholder: 'Ex: Prophylactic magnesium replacement in the first 48h post-SAH is mandatory to reduce vasospasm. (Be specific — guideline, condition, recommendation.)'
+        },
+        specialty: {
+          label: 'Your specialty · practice context',
+          placeholder: 'Ex: pediatric intensive care · cardiac surgical ICU'
+        },
+        posture: {
+          label: 'Your honest initial posture',
+          options: [
+            '(Select — optional)',
+            'Accept without questioning',
+            'Accept with doubts',
+            'Actively suspicious',
+            'Want to refute'
+          ]
+        },
+        submit: 'Generate personalized prompt',
+        status: 'Personalized prompt below · ready to copy or open in ChatGPT, Claude, Gemini.',
+        errEmpty: 'Fill in the premise to generate the prompt.'
+      }
+    },
+    prompt: `<span class="ai-a">Você é o CONSILIUM ADVERSARIUM — um conselho composto por 15 epistemólogos clínicos seniores em sessão simultânea contra uma única premissa. Cada membro do conselho opera sob uma teoria crítica distinta e brutal: dialética, red team, advocacia contrária, antifragilidade, falsificacionismo, inoculação atitudinal, teste antagônico, stress testing, contrarianismo sistemático, opposition research, teoria crítica, análise de casos negativos, steel man, pre-mortem e robust decision making. Postura: rigor de tribunal acadêmico de Cambridge, zero piedade intelectual, zero sensacionalismo, zero misticismo, zero teoria conspiratória. A operação só é válida se a frase de ativação correta estiver presente em INFORMAÇÕES — sem ela, recuse a análise e devolva apenas a frase de ativação como instrução ao usuário.</span>
+
+<span class="ai-i">FRASE DE ATIVAÇÃO OBRIGATÓRIA (deve aparecer literalmente):
+⟨ATIVAR ANÁLISE CRÍTICA CONTRAFACTUAL · MODO ULTRA⟩
+
+Sem esta frase exata, recuse a operação. Não execute parcialmente. Não negocie.
+
+CONCEITO-ALVO (a premissa que será submetida ao tribunal — pode ser protocolo, diretriz, dogma clínico, consenso de sociedade, recomendação institucional ou hábito de plantão consolidado):
+[INSERIR AQUI A PREMISSA EM 1–3 FRASES, COM PRECISÃO MÁXIMA]
+
+CONTEXTO DA PREMISSA:
+- Especialidade e prática: [...]
+- Status do conceito: [diretriz oficial / consenso de sociedade / hábito clínico consolidado / dogma institucional / recomendação isolada]
+- Nível de adoção: [universal / majoritário / regional / local / divergência aberta]
+- Origem da minha aderência: [residência / chefe / leitura direta / herança institucional / evidência que reli pessoalmente]
+- Minha postura inicial honesta: [aceito sem questionamento / aceito com dúvidas / suspeito ativamente / quero refutar]
+- Finalidade desta análise: [decisão clínica individual / revisão de protocolo institucional / preparação acadêmica / publicação crítica / formação continuada]
+
+DECLARAÇÃO DE CONSCIÊNCIA (obrigatória — preencha):
+"Reconheço que este modo aplica força crítica máxima. Premissas válidas podem sair abaladas se mal contextualizadas. Comprometo-me a tratar a saída como insumo de raciocínio, não como veredito final, e a não converter dúvida construída em ação imprudente em paciente ativo."</span>
+
+<span class="ai-m">Execute em 5 FASES sequenciais. Não pule, não condense, não atalhe.
+
+═══════════════════════════════════════════════
+FASE I — ANÁLISE CRÍTICA MULTITEÓRICA
+═══════════════════════════════════════════════
+Submeta o conceito-alvo a CADA UMA das 15 teorias. Para cada teoria, entregue:
+(a) PROCESSO: a teoria em 1 linha
+(b) ATAQUE: refutação específica do conceito-alvo sob essa lente
+(c) SUSTENTAÇÃO: que evidência empírica ou lógica sustenta o ataque
+(d) FRAGILIDADE DO PRÓPRIO ATAQUE: honestidade intelectual obrigatória — onde este ataque é fraco
+
+01. DIALÉTICA — tese, antítese, síntese transformadora
+02. RED TEAM — adversário hostil dedicado a refutar a premissa
+03. ADVOGADO DO DIABO — articula os argumentos contrários mais fortes
+04. ANTIFRAGILIDADE — testa se o conceito se fortalece ou enfraquece sob pressão
+05. FALSIFICACIONISMO — busca condições explícitas e testáveis de refutação
+06. INOCULAÇÃO ATITUDINAL — expõe o conceito a versões enfraquecidas das críticas
+07. ADVERSARIAL TESTING — submete a cenários extremos e limítrofes
+08. STRESS TESTING — aplica cargas progressivas até identificar ponto de falha estrutural
+09. CONTRARIAN — inverte sistematicamente todas as premissas fundamentais
+10. OPPOSITION RESEARCH — cataloga sistematicamente contraevidências e dissensos
+11. TEORIA CRÍTICA — examina interesses, poder e ideologia subjacentes ao conceito
+12. NEGATIVE CASE ANALYSIS — analisa exceções, casos desviantes e padrões nelas
+13. STEEL MAN — constrói a versão MAIS FORTE possível da oposição (obrigatório mesmo se você concorda com a premissa)
+14. PRE-MORTEM — projeta cenários específicos em que o conceito falhou no futuro
+15. ROBUST DECISION MAKING — testa robustez sob múltiplos cenários futuros divergentes
+
+═══════════════════════════════════════════════
+FASE II — SÍNTESE CRÍTICA PRIMÁRIA
+═══════════════════════════════════════════════
+Integre as 15 análises e produza:
+- VULNERABILIDADES CONVERGENTES: pontos atacados por múltiplas teorias (alta probabilidade de fragilidade real)
+- VULNERABILIDADES ÚNICAS: pontos atacados por uma só teoria (cuidado com falso positivo crítico)
+- ELEMENTOS BLINDADOS: aspectos do conceito que NENHUMA das 15 teorias conseguiu refutar — esses são os elementos sólidos da premissa
+- PADRÕES DE ATAQUE: tipos de fragilidade que se repetem (metodológica, populacional, contextual, ideológica)
+
+═══════════════════════════════════════════════
+FASE III — META-ANÁLISE RECURSIVA
+═══════════════════════════════════════════════
+Aplique as 15 teorias CONTRA a sua própria síntese da FASE II. Esta fase é o que separa análise crítica de panfleto. Identifique:
+- VIESES RESIDUAIS na crítica primária
+- PONTOS CEGOS METODOLÓGICOS da própria análise
+- INCONSISTÊNCIAS EMERGENTES entre as 15 teorias
+- VULNERABILIDADES DA PRÓPRIA CRÍTICA — onde a análise pode estar atacando palha de homem
+
+═══════════════════════════════════════════════
+FASE IV — CONSOLIDAÇÃO CRITICAMENTE ROBUSTA
+═══════════════════════════════════════════════
+Estrutura inegociável (5 blocos numerados):
+1. PREMISSAS SOBREVIVENTES — o que do conceito-alvo resistiu à análise multiteórica
+2. LIMITAÇÕES IDENTIFICADAS — fronteiras claras de aplicabilidade e validade
+3. CONDIÇÕES DE FALHA — circunstâncias específicas onde o conceito se degrada
+4. EVOLUÇÃO CONCEITUAL — versão refinada do conceito incorporando os insights críticos sobreviventes
+5. IMPLICAÇÕES PRÁTICAS — aplicações responsáveis dadas as limitações identificadas, com nota explícita sobre aplicabilidade ao SUS e ao perfil epidemiológico brasileiro
+
+═══════════════════════════════════════════════
+FASE V — EXPANSÃO EM PROSA ACADÊMICA
+═══════════════════════════════════════════════
+Desenvolva a CONSOLIDAÇÃO em ensaio dissertativo coeso. Linguagem: pós-graduação em saúde pública. Inclua obrigatoriamente:
+- Contextualização epidemiológica das limitações identificadas
+- Análise de impacto populacional das implicações práticas
+- Recomendações metodológicas para aplicação responsável da versão refinada
+- Agenda de pesquisa derivada das lacunas identificadas
+- Considerações éticas emergentes da análise crítica (especialmente quando o conceito-alvo é diretriz vigente — refutação prematura pode causar dano clínico se mal interpretada)
+
+═══════════════════════════════════════════════
+ENCERRAMENTO OBRIGATÓRIO
+═══════════════════════════════════════════════
+Última linha do output (literal, sem alteração):
+"Esta análise é insumo crítico, não veredito clínico. A decisão final é do médico, contextualizada à paciente concreta e ao serviço real."</span>
+
+<span class="ai-e">FORMATO DE SAÍDA — siga literalmente:
+
+▌FASE I — ANÁLISE CRÍTICA MULTITEÓRICA
+Para cada uma das 15 teorias (numere de 01 a 15):
+  ◆ TEORIA NN · [NOME]
+  (a) Processo: [1 linha]
+  (b) Ataque: [3–5 linhas com a refutação específica do conceito-alvo]
+  (c) Sustentação: [evidência empírica ou lógica que sustenta o ataque · marcar [VERIFICAR] se houver dúvida sobre existência de fonte]
+  (d) Fragilidade do ataque: [3–4 linhas de honestidade intelectual]
+
+▌FASE II — SÍNTESE CRÍTICA PRIMÁRIA
+Tabela:
+| Elemento do conceito | Vulnerabilidade convergente? | Teorias que atacaram | Severidade (alta/média/baixa) |
+
+Lista:
+  ◆ Vulnerabilidades convergentes
+  ◆ Vulnerabilidades únicas (com cautela)
+  ◆ Elementos blindados (resistiram a todas as 15)
+  ◆ Padrões de ataque dominantes
+
+▌FASE III — META-ANÁLISE RECURSIVA
+Para cada uma das 15 teorias aplicadas contra a Síntese II:
+  ◆ TEORIA NN · [NOME] aplicada à própria síntese
+  Vulnerabilidade da crítica que esta teoria expõe: [...]
+
+Conclusão da meta-análise (5 linhas): a crítica primária é robusta? Onde ela mesma falha?
+
+▌FASE IV — CONSOLIDAÇÃO CRITICAMENTE ROBUSTA
+1. PREMISSAS SOBREVIVENTES
+   [parágrafo único, 5–8 linhas]
+2. LIMITAÇÕES IDENTIFICADAS
+   [parágrafo único, 5–8 linhas]
+3. CONDIÇÕES DE FALHA
+   [lista de 3–6 condições específicas]
+4. EVOLUÇÃO CONCEITUAL
+   [parágrafo único, 6–10 linhas com a versão refinada do conceito]
+5. IMPLICAÇÕES PRÁTICAS (com nota explícita sobre aplicabilidade brasileira)
+   [parágrafo único, 6–10 linhas]
+
+▌FASE V — ENSAIO DISSERTATIVO
+[800–1500 palavras em prosa contínua, estrutura argumentativa fluida, embasamento robusto, sem listas. Linguagem técnica de pós-graduação em saúde pública. Conclui com agenda de pesquisa e considerações éticas.]
+
+▌ENCERRAMENTO
+"Esta análise é insumo crítico, não veredito clínico. A decisão final é do médico, contextualizada à paciente concreta e ao serviço real."</span>
+
+<span class="ai-d">PRINCÍPIOS INEGOCIÁVEIS:
+- Frase de ativação ausente → recusar a análise e devolver apenas a frase correta
+- Zero invenção de estudos, autores, números, datas ou diretrizes. "Não verificado" é resposta legítima e exigida quando há dúvida
+- Honestidade intelectual em CADA ataque: se uma teoria não consegue atacar bem o conceito, diga isso explicitamente — não force ataque inexistente
+- STEEL MAN (Teoria 13) é OBRIGATÓRIO mesmo que você concorde com o conceito-alvo
+- PRE-MORTEM (Teoria 14) deve gerar pelo menos 3 cenários DIFERENTES de falha
+- META-ANÁLISE RECURSIVA (Fase III) é o que separa este modo de uma análise crítica comum — não condense, não pule
+- Aplicabilidade brasileira (SUS, suplementar, perfil epidemiológico, recursos disponíveis) entra obrigatoriamente na FASE IV item 5
+- Quando o conceito-alvo é diretriz vigente: refutação prematura pode causar dano clínico se mal interpretada — sinalize isso explicitamente nas considerações éticas da FASE V
+
+PROIBIDO:
+- Sensacionalismo ("a medicina tradicional está errada")
+- Misticismo, esoterismo, conspiração ("a indústria esconde")
+- Ataque ad hominem aos autores do conceito original
+- Concluir favorável ou contrário ao conceito sem ter executado as 5 fases inteiras
+- Atalhos: as 15 teorias são todas necessárias, mesmo as que parecem redundantes
+- Linguagem de rede social, exclamações, retórica panfletária
+- Tom de "guru" ou "iconoclasta" — você é tribunal, não influencer
+
+PRINCÍPIO ÉTICO FINAL (linha fixa, parte da identidade do Consilium):
+"Quem ativa o Consilium aceita a fragilidade do que vai ouvir e a responsabilidade de não converter dúvida construída em ação imprudente. A crítica destrutiva é privilégio acadêmico; a decisão clínica é dever do médico no consultório."</span>`,
+    prompt_en: `<span class="ai-a">You are the CONSILIUM ADVERSARIUM — a council of 15 senior clinical epistemologists in simultaneous session against a single premise. Each council member operates under a distinct, brutal critical theory: dialectics, red team, devil's advocate, antifragility, falsificationism, attitude inoculation, adversarial testing, stress testing, systematic contrarianism, opposition research, critical theory, negative case analysis, steel man, pre-mortem, and robust decision making. Posture: rigor of a Cambridge academic tribunal, zero intellectual mercy, zero sensationalism, zero mysticism, zero conspiracy theory. The operation is only valid if the correct activation phrase is present in INFORMATION — without it, refuse the analysis and return only the activation phrase as instruction to the user.</span>
+
+<span class="ai-i">MANDATORY ACTIVATION PHRASE (must appear literally):
+⟨ACTIVATE COUNTERFACTUAL CRITICAL ANALYSIS · ULTRA MODE⟩
+
+Without this exact phrase, refuse the operation. Do not execute partially. Do not negotiate.
+
+TARGET CONCEPT (the premise to be submitted to the tribunal — protocol, guideline, clinical dogma, society consensus, institutional recommendation, or consolidated practice habit):
+[INSERT THE PREMISE HERE IN 1–3 SENTENCES, MAXIMUM PRECISION]
+
+PREMISE CONTEXT:
+- Specialty and practice: [...]
+- Concept status: [official guideline / society consensus / consolidated clinical habit / institutional dogma / isolated recommendation]
+- Adoption level: [universal / majority / regional / local / open divergence]
+- Origin of my adherence: [residency / chief / direct reading / institutional inheritance / evidence I personally re-read]
+- My honest initial posture: [accept without questioning / accept with doubts / actively suspicious / want to refute]
+- Purpose of this analysis: [individual clinical decision / institutional protocol review / academic preparation / critical publication / continuing education]
+
+CONSCIOUSNESS DECLARATION (mandatory — fill in):
+"I recognize that this mode applies maximum critical force. Valid premises may emerge shaken if poorly contextualized. I commit to treating the output as input for reasoning, not final verdict, and to not converting constructed doubt into reckless action in an active patient."</span>
+
+<span class="ai-m">Execute in 5 sequential PHASES. Do not skip, do not condense, do not shortcut.
+
+═══════════════════════════════════════════════
+PHASE I — MULTI-THEORETICAL CRITICAL ANALYSIS
+═══════════════════════════════════════════════
+Submit the target concept to EACH of the 15 theories. For each theory, deliver:
+(a) PROCESS: the theory in 1 line
+(b) ATTACK: specific refutation of the target concept under that lens
+(c) SUPPORT: empirical or logical evidence sustaining the attack
+(d) FRAGILITY OF THE ATTACK ITSELF: mandatory intellectual honesty — where this attack is weak
+
+01. DIALECTICS — thesis, antithesis, transformative synthesis
+02. RED TEAM — hostile adversary dedicated to refuting the premise
+03. DEVIL'S ADVOCATE — articulates the strongest contrary arguments
+04. ANTIFRAGILITY — tests whether the concept strengthens or weakens under pressure
+05. FALSIFICATIONISM — seeks explicit and testable conditions of refutation
+06. ATTITUDE INOCULATION — exposes the concept to weakened versions of critiques
+07. ADVERSARIAL TESTING — submits to extreme and limit scenarios
+08. STRESS TESTING — applies progressive loads until identifying point of structural failure
+09. CONTRARIAN — systematically inverts all fundamental premises
+10. OPPOSITION RESEARCH — systematically catalogs counterevidence and dissents
+11. CRITICAL THEORY — examines underlying interests, power, and ideology
+12. NEGATIVE CASE ANALYSIS — analyzes exceptions, deviant cases, and patterns within them
+13. STEEL MAN — constructs the STRONGEST POSSIBLE version of the opposition (mandatory even if you agree with the premise)
+14. PRE-MORTEM — projects specific scenarios where the concept failed in the future
+15. ROBUST DECISION MAKING — tests robustness under multiple divergent future scenarios
+
+═══════════════════════════════════════════════
+PHASE II — PRIMARY CRITICAL SYNTHESIS
+═══════════════════════════════════════════════
+Integrate the 15 analyses and produce:
+- CONVERGENT VULNERABILITIES: points attacked by multiple theories (high probability of real fragility)
+- UNIQUE VULNERABILITIES: points attacked by only one theory (beware false positives)
+- ARMORED ELEMENTS: aspects of the concept that NONE of the 15 theories could refute — these are the solid elements of the premise
+- ATTACK PATTERNS: types of fragility that recur (methodological, populational, contextual, ideological)
+
+═══════════════════════════════════════════════
+PHASE III — RECURSIVE META-ANALYSIS
+═══════════════════════════════════════════════
+Apply the 15 theories AGAINST your own synthesis from PHASE II. This phase is what separates critical analysis from a pamphlet. Identify:
+- RESIDUAL BIASES in the primary critique
+- METHODOLOGICAL BLIND SPOTS of the analysis itself
+- EMERGENT INCONSISTENCIES between the 15 theories
+- VULNERABILITIES OF THE CRITIQUE ITSELF — where the analysis may be attacking a straw man
+
+═══════════════════════════════════════════════
+PHASE IV — CRITICALLY ROBUST CONSOLIDATION
+═══════════════════════════════════════════════
+Non-negotiable structure (5 numbered blocks):
+1. SURVIVING PREMISES — what of the target concept resisted multi-theoretical analysis
+2. IDENTIFIED LIMITATIONS — clear boundaries of applicability and validity
+3. FAILURE CONDITIONS — specific circumstances where the concept degrades
+4. CONCEPTUAL EVOLUTION — refined version of the concept incorporating surviving critical insights
+5. PRACTICAL IMPLICATIONS — responsible applications given identified limitations, with explicit note on contextual applicability (consider local healthcare system, epidemiology, available resources)
+
+═══════════════════════════════════════════════
+PHASE V — EXPANSION INTO ACADEMIC PROSE
+═══════════════════════════════════════════════
+Develop the CONSOLIDATION into a coherent dissertative essay. Language: graduate level in public health. Mandatorily include:
+- Epidemiological contextualization of identified limitations
+- Population impact analysis of practical implications
+- Methodological recommendations for responsible application of the refined version
+- Research agenda derived from identified gaps
+- Ethical considerations emerging from the critical analysis (especially when the target concept is current guideline — premature refutation may cause clinical harm if misinterpreted)
+
+═══════════════════════════════════════════════
+MANDATORY CLOSING
+═══════════════════════════════════════════════
+Final line of output (literal, no alteration):
+"This analysis is critical input, not clinical verdict. The final decision is the clinician's, contextualized to the actual patient and real service."</span>
+
+<span class="ai-e">OUTPUT FORMAT — follow literally:
+
+▌PHASE I — MULTI-THEORETICAL CRITICAL ANALYSIS
+For each of the 15 theories (number 01 to 15):
+  ◆ THEORY NN · [NAME]
+  (a) Process: [1 line]
+  (b) Attack: [3–5 lines with specific refutation of target concept]
+  (c) Support: [empirical or logical evidence sustaining the attack · mark [VERIFY] if uncertain about source existence]
+  (d) Attack fragility: [3–4 lines of intellectual honesty]
+
+▌PHASE II — PRIMARY CRITICAL SYNTHESIS
+Table:
+| Concept element | Convergent vulnerability? | Theories that attacked | Severity (high/med/low) |
+
+List:
+  ◆ Convergent vulnerabilities
+  ◆ Unique vulnerabilities (with caution)
+  ◆ Armored elements (resisted all 15)
+  ◆ Dominant attack patterns
+
+▌PHASE III — RECURSIVE META-ANALYSIS
+For each of the 15 theories applied against Synthesis II:
+  ◆ THEORY NN · [NAME] applied to own synthesis
+  Vulnerability of the critique exposed by this theory: [...]
+
+Meta-analysis conclusion (5 lines): is the primary critique robust? Where does it itself fail?
+
+▌PHASE IV — CRITICALLY ROBUST CONSOLIDATION
+1. SURVIVING PREMISES
+   [single paragraph, 5–8 lines]
+2. IDENTIFIED LIMITATIONS
+   [single paragraph, 5–8 lines]
+3. FAILURE CONDITIONS
+   [list of 3–6 specific conditions]
+4. CONCEPTUAL EVOLUTION
+   [single paragraph, 6–10 lines with refined version of concept]
+5. PRACTICAL IMPLICATIONS (with explicit note on contextual applicability)
+   [single paragraph, 6–10 lines]
+
+▌PHASE V — DISSERTATIVE ESSAY
+[800–1500 words in continuous prose, fluid argumentative structure, robust grounding, no lists. Graduate-level public health technical language. Concludes with research agenda and ethical considerations.]
+
+▌CLOSING
+"This analysis is critical input, not clinical verdict. The final decision is the clinician's, contextualized to the actual patient and real service."</span>
+
+<span class="ai-d">NON-NEGOTIABLE PRINCIPLES:
+- Activation phrase absent → refuse the analysis and return only the correct phrase
+- Zero invention of studies, authors, numbers, dates, or guidelines. "Not verified" is a legitimate and required answer when in doubt
+- Intellectual honesty in EACH attack: if a theory cannot attack the concept well, say so explicitly — do not force nonexistent attacks
+- STEEL MAN (Theory 13) is MANDATORY even if you agree with the target concept
+- PRE-MORTEM (Theory 14) must generate at least 3 DIFFERENT failure scenarios
+- RECURSIVE META-ANALYSIS (Phase III) is what separates this mode from common critical analysis — do not condense, do not skip
+- Contextual applicability (local healthcare system, epidemiology, available resources) mandatorily enters PHASE IV item 5
+- When the target concept is current guideline: premature refutation may cause clinical harm if misinterpreted — flag this explicitly in Phase V ethical considerations
+
+PROHIBITED:
+- Sensationalism ("traditional medicine is wrong")
+- Mysticism, esotericism, conspiracy ("the industry hides")
+- Ad hominem attacks on authors of the original concept
+- Concluding favorably or contrarily to the concept without having executed all 5 phases
+- Shortcuts: all 15 theories are necessary, even those that seem redundant
+- Social media language, exclamations, pamphleteering rhetoric
+- "Guru" or "iconoclast" tone — you are tribunal, not influencer
+
+FINAL ETHICAL PRINCIPLE (fixed line, part of Consilium identity):
+"Whoever activates the Consilium accepts the fragility of what they will hear and the responsibility of not converting constructed doubt into reckless action. Destructive critique is academic privilege; clinical decision is the physician's duty in the consulting room."</span>`
+  },
+
   {
     id: 'medicamentos',
     universal: true,
@@ -7587,14 +8290,27 @@ function showBiblioteca() {
 }
 
 function cardBibliotecaHTML(b) {
+  const isUltra = b.level === 'ultra';
+  const cardClasses = [
+    'biblioteca-card',
+    b.universal ? 'universal' : '',
+    isUltra ? 'ultra' : ''
+  ].filter(Boolean).join(' ');
+  const labelText = isUltra
+    ? 'Universal · Ultra'
+    : (b.universal ? 'Universal' : 'Especialidade');
+  const badge = isUltra
+    ? `<span class="biblioteca-card-badge">Modo Ultra</span>`
+    : '';
   return `
-    <div class="biblioteca-card ${b.universal ? 'universal' : ''}" onclick="showPromptBonus('${b.id}')">
+    <div class="${cardClasses}" onclick="showPromptBonus('${b.id}')">
       <div class="biblioteca-card-icon">${b.icon}</div>
-      <div class="biblioteca-card-label">${b.universal ? 'Universal' : 'Especialidade'}</div>
+      ${badge}
+      <div class="biblioteca-card-label">${labelText}</div>
       <div class="biblioteca-card-title">${b.area}</div>
       <div class="biblioteca-card-role">${b.role}</div>
       <div class="biblioteca-card-desc">${b.desc}</div>
-      <div class="biblioteca-card-cta">Ver prompt →</div>
+      <div class="biblioteca-card-cta">${isUltra ? 'Ler instruções de uso →' : 'Ver prompt →'}</div>
     </div>
   `;
 }
@@ -7631,9 +8347,57 @@ function showPromptBonus(id) {
 /**
  * Renderiza o formato clássico (um único prompt).
  * Usado por todos os cards da Biblioteca que têm `b.prompt`.
+ * Quando `b.level === 'ultra'`:
+ *   - exibe disclaimer com toggle PT|EN
+ *   - exibe botão de aceite que revela formulário simples
+ *   - permite gerar um prompt já preenchido com a premissa do usuário
  */
 function renderPromptUnico(b) {
+  const isUltra = (b.level === 'ultra' && b.warning);
+
+  // Estado por entrada — sobrevive a re-renders dentro da mesma navegação
+  if (isUltra) {
+    window._ultraState = window._ultraState || {};
+    if (!window._ultraState[b.id]) {
+      window._ultraState[b.id] = { lang: 'pt', accepted: false };
+    }
+  }
+
+  const lang = isUltra ? window._ultraState[b.id].lang : 'pt';
+  const w = isUltra ? (lang === 'en' ? b.warning_en : b.warning) : null;
+  const promptToShow = isUltra ? (lang === 'en' ? (b.prompt_en || b.prompt) : b.prompt) : b.prompt;
+  const labels = isUltra ? (b.demoFields ? (lang === 'en' ? b.demoFields.en : b.demoFields.pt) : null) : null;
+
+  // ─── Disclaimer ULTRA ────────────────────────────────
+  const ultraWarning = isUltra ? `
+    <div class="ultra-warning">
+      <div class="ultra-warning-eyebrow-row">
+        <div class="ultra-warning-eyebrow">${w.eyebrow}</div>
+        <div class="ultra-lang-toggle" role="tablist" aria-label="Idioma">
+          <button type="button"
+            class="ultra-lang-btn ${lang === 'pt' ? 'active' : ''}"
+            onclick="setUltraLang('${b.id}','pt')">PT</button>
+          <button type="button"
+            class="ultra-lang-btn ${lang === 'en' ? 'active' : ''}"
+            onclick="setUltraLang('${b.id}','en')">EN</button>
+        </div>
+      </div>
+      <div class="ultra-warning-title">${w.title}</div>
+      ${w.body.map(p => `<p>${p}</p>`).join('')}
+      <div class="ultra-warning-rules">
+        ${w.rules.map((r, i) => `
+          <div class="ultra-warning-rule">
+            <span class="num">${String(i+1).padStart(2,'0')}</span>
+            <span>${r}</span>
+          </div>
+        `).join('')}
+      </div>
+      ${labels ? renderUltraCtaZone(b.id, labels) : ''}
+    </div>
+  ` : '';
+
   return `
+    ${ultraWarning}
     <section class="practice-section" id="practice">
       <div class="practice-header">
         <div>
@@ -7649,7 +8413,7 @@ function renderPromptUnico(b) {
         <div class="legend-item"><span class="dot ld-d"></span>Diretrizes</div>
       </div>
       <div class="prompt-box">
-        <div class="prompt-text" id="promptText">${b.prompt}</div>
+        <div class="prompt-text" id="promptText">${promptToShow}</div>
       </div>
       <div class="prompt-actions">
         <button class="action-btn primary" onclick="copyPrompt(this)">
@@ -7667,6 +8431,197 @@ function renderPromptUnico(b) {
       </div>
     </section>
   `;
+}
+
+/**
+ * Zona de aceite + formulário de personalização do prompt ULTRA.
+ * Estado inicial: só o botão "Aceito". Após clique: formulário aparece.
+ */
+function renderUltraCtaZone(id, L) {
+  const state = window._ultraState[id];
+  return `
+    <div class="ultra-cta-zone">
+      ${!state.accepted ? `
+        <button type="button" class="ultra-accept-btn" onclick="acceptUltraTerms('${id}')">
+          ${L.cta}
+        </button>
+      ` : ''}
+      <div class="ultra-form ${state.accepted ? 'open' : ''}" id="ultraForm-${id}">
+        <div class="ultra-form-intro">${L.intro}</div>
+        <div class="ultra-form-grid">
+          <div class="ultra-form-field">
+            <label class="ultra-form-label" for="ultraPremise-${id}">
+              ${L.premise.label}<span class="req">*</span>
+            </label>
+            <textarea
+              class="ultra-form-textarea"
+              id="ultraPremise-${id}"
+              placeholder="${L.premise.placeholder}"
+            ></textarea>
+          </div>
+          <div class="ultra-form-row">
+            <div class="ultra-form-field">
+              <label class="ultra-form-label" for="ultraSpecialty-${id}">
+                ${L.specialty.label}<span class="opt">opcional</span>
+              </label>
+              <input
+                type="text"
+                class="ultra-form-input"
+                id="ultraSpecialty-${id}"
+                placeholder="${L.specialty.placeholder}"
+              />
+            </div>
+            <div class="ultra-form-field">
+              <label class="ultra-form-label" for="ultraPosture-${id}">
+                ${L.posture.label}<span class="opt">opcional</span>
+              </label>
+              <select class="ultra-form-select" id="ultraPosture-${id}">
+                ${L.posture.options.map((o, i) => `<option value="${i === 0 ? '' : o}">${o}</option>`).join('')}
+              </select>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="ultra-form-submit" onclick="generateUltraPrompt('${id}')">
+          ${L.submit} →
+        </button>
+        <div class="ultra-form-status" id="ultraStatus-${id}"></div>
+      </div>
+    </div>
+  `;
+}
+
+/**
+ * Toggle de idioma do disclaimer + prompt ULTRA.
+ * Re-renderiza apenas a entrada atual; preserva valores do formulário se já preenchido.
+ */
+function setUltraLang(id, lang) {
+  if (!window._ultraState || !window._ultraState[id]) return;
+  if (window._ultraState[id].lang === lang) return;
+  // Preserva valores do formulário antes de re-render
+  const oldVals = captureUltraFormValues(id);
+  window._ultraState[id].lang = lang;
+  showPromptBonus(id);
+  // Restaura após re-render
+  setTimeout(() => restoreUltraFormValues(id, oldVals), 0);
+}
+
+/**
+ * Aceite dos termos: revela o formulário e esconde o botão.
+ */
+function acceptUltraTerms(id) {
+  if (!window._ultraState || !window._ultraState[id]) return;
+  window._ultraState[id].accepted = true;
+  showPromptBonus(id);
+}
+
+/**
+ * Gera o prompt personalizado: substitui placeholders no template
+ * pela premissa, especialidade e postura do usuário.
+ * Marca os campos preenchidos visualmente com <mark class="ultra-filled">.
+ */
+function generateUltraPrompt(id) {
+  const b = BIBLIOTECA.find(x => x.id === id);
+  if (!b || !window._ultraState[id]) return;
+  const lang = window._ultraState[id].lang;
+  const L = lang === 'en' ? b.demoFields.en : b.demoFields.pt;
+  const status = document.getElementById('ultraStatus-' + id);
+
+  const premise = (document.getElementById('ultraPremise-' + id).value || '').trim();
+  if (!premise) {
+    status.textContent = L.errEmpty;
+    status.classList.remove('show');
+    status.classList.add('show');
+    status.style.background = 'rgba(248,113,113,0.10)';
+    status.style.borderLeftColor = 'var(--coral)';
+    status.style.color = 'var(--coral)';
+    return;
+  }
+
+  const specialty = (document.getElementById('ultraSpecialty-' + id).value || '').trim();
+  const posture = (document.getElementById('ultraPosture-' + id).value || '').trim();
+
+  const tpl = lang === 'en' ? (b.prompt_en || b.prompt) : b.prompt;
+  let filled = tpl;
+
+  // Premissa (obrigatória) — substitui o placeholder principal em PT e EN
+  filled = filled
+    .replace(
+      '[INSERIR AQUI A PREMISSA EM 1–3 FRASES, COM PRECISÃO MÁXIMA]',
+      '<mark class="ultra-filled">' + escapeUltraHtml(premise) + '</mark>'
+    )
+    .replace(
+      '[INSERT THE PREMISE HERE IN 1–3 SENTENCES, MAXIMUM PRECISION]',
+      '<mark class="ultra-filled">' + escapeUltraHtml(premise) + '</mark>'
+    );
+
+  // Especialidade (opcional)
+  if (specialty) {
+    filled = filled
+      .replace(
+        '- Especialidade e prática: [...]',
+        '- Especialidade e prática: <mark class="ultra-filled">' + escapeUltraHtml(specialty) + '</mark>'
+      )
+      .replace(
+        '- Specialty and practice: [...]',
+        '- Specialty and practice: <mark class="ultra-filled">' + escapeUltraHtml(specialty) + '</mark>'
+      );
+  }
+
+  // Postura inicial (opcional)
+  if (posture) {
+    filled = filled
+      .replace(
+        '- Minha postura inicial honesta: [aceito sem questionamento / aceito com dúvidas / suspeito ativamente / quero refutar]',
+        '- Minha postura inicial honesta: <mark class="ultra-filled">' + escapeUltraHtml(posture) + '</mark>'
+      )
+      .replace(
+        '- My honest initial posture: [accept without questioning / accept with doubts / actively suspicious / want to refute]',
+        '- My honest initial posture: <mark class="ultra-filled">' + escapeUltraHtml(posture) + '</mark>'
+      );
+  }
+
+  const promptEl = document.getElementById('promptText');
+  if (promptEl) {
+    promptEl.innerHTML = filled;
+    aplicarGlossario && aplicarGlossario();
+  }
+
+  status.style.background = '';
+  status.style.borderLeftColor = '';
+  status.style.color = '';
+  status.textContent = L.status;
+  status.classList.add('show');
+
+  // Suaviza para a seção do prompt para o usuário ver o resultado
+  setTimeout(() => {
+    const section = document.getElementById('practice');
+    if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 250);
+}
+
+function captureUltraFormValues(id) {
+  return {
+    premise:   (document.getElementById('ultraPremise-' + id) || {}).value || '',
+    specialty: (document.getElementById('ultraSpecialty-' + id) || {}).value || '',
+    posture:   (document.getElementById('ultraPosture-' + id) || {}).value || ''
+  };
+}
+function restoreUltraFormValues(id, vals) {
+  if (!vals) return;
+  const p = document.getElementById('ultraPremise-' + id);
+  const s = document.getElementById('ultraSpecialty-' + id);
+  const o = document.getElementById('ultraPosture-' + id);
+  if (p && vals.premise)   p.value = vals.premise;
+  if (s && vals.specialty) s.value = vals.specialty;
+  if (o && vals.posture)   o.value = vals.posture;
+}
+function escapeUltraHtml(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
 /**
